@@ -174,5 +174,6 @@ var getSelector = function(role) {
 	return roles.map(_getSelector).join(',');
 };
 
-console.log(getChildRoles('abstract'));
-console.log(getSelector('landmark'));
+module.exports = {
+	getSelector: getSelector,
+}
