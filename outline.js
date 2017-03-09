@@ -263,6 +263,15 @@ var getSelector = function(role) {
 	return roles.map(_getSelector).join(',');
 };
 
+var getRole = function(el) {
+	for (var i = 0; i < roles.landmark.length; i++) {
+		var role = roles.landmark[i];
+		if (el.matches(_getSelector(role))) {
+			return role;
+		}
+	}
+};
+
 // http://www.ssbbartgroup.com/blog/how-the-w3c-text-alternative-computation-works/
 var getName = function(el) {
 	var ret = '';
@@ -326,7 +335,7 @@ document.addEventListener('keyup', function(event) {
 				el.tabIndex = -1;
 				el.focus();
 			});
-			a.textContent = getName(el);
+			a.textContent = getRole(el);
 			return a;
 		});
 
