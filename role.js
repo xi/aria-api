@@ -63,6 +63,7 @@ var extraSelectors = {
 	],
 };
 
+// https://www.w3.org/TR/wai-aria/roles
 var subRoles = {
 	command: ['button', 'link', 'menuitem'],
 	composite: ['grid', 'select', 'tablist'],
