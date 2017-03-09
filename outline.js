@@ -117,7 +117,7 @@ var extraSelectors = {
 	form: ['form'],
 	group: ['details', 'optgroup'],
 	heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
-	img: ['img:not[alt=""])'],
+	img: ['img:not([alt=""])'],
 	link: ['a[href]', 'area[href]', 'link[href]'],
 	listbox: ['datalist', 'select'],
 	list: ['dl', 'ol', 'ul'],
