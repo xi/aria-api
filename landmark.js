@@ -63,7 +63,7 @@ var extraSelectors = {
 	],
 };
 
-var inverseHierarchy = {
+var subRoles = {
 	command: ['button', 'link', 'menuitem'],
 	composite: ['grid', 'select', 'tablist'],
 	input: ['checkbox', 'option', 'select', 'spinbutton', 'textbox'],
@@ -142,7 +142,7 @@ var inverseHierarchy = {
 };
 
 var getChildRoles = function(role) {
-	var children = inverseHierarchy[role] || [];
+	var children = subRoles[role] || [];
 	var descendents = children.map(getChildRoles);
 
 	var result = [role];
