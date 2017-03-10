@@ -18,7 +18,7 @@ var getContent = function(root, noRecurse) {
 
 var allowNameFromContent = function(el) {
 	var role = query.getRole(el);
-	return !role || constants.nameFromContents.indexOf(role) != -1
+	return !role || constants.nameFromContents.indexOf(role) != -1;
 };
 
 // http://www.ssbbartgroup.com/blog/how-the-w3c-text-alternative-computation-works/

@@ -30,13 +30,15 @@ var truncate = function(s, length) {
 
 document.addEventListener('keyup', function(event) {
 	if (event.ctrlKey && !event.altKey) {
+		var matches, dialog, links;
+
 		if (event.key == 'm') {
 			event.preventDefault();
 
-			var matches = aria.querySelectorAll(document, 'landmark');
-			var dialog = createDialog();
+			matches = aria.querySelectorAll(document, 'landmark');
+			dialog = createDialog();
 
-			var links = Array.prototype.map.call(matches, function(el) {
+			links = Array.prototype.map.call(matches, function(el) {
 				var a = document.createElement('a');
 				a.href = '#';
 				a.addEventListener('click', function(event) {
@@ -63,10 +65,10 @@ document.addEventListener('keyup', function(event) {
 		} else if (event.key == ',') {
 			event.preventDefault();
 
-			var matches = aria.querySelectorAll(document, 'heading');
-			var dialog = createDialog();
+			matches = aria.querySelectorAll(document, 'heading');
+			dialog = createDialog();
 
-			var links = Array.prototype.map.call(matches, function(el) {
+			links = Array.prototype.map.call(matches, function(el) {
 				var a = document.createElement('a');
 				a.href = '#';
 				a.addEventListener('click', function(event) {
@@ -84,12 +86,15 @@ document.addEventListener('keyup', function(event) {
 		} else if (event.key == '.') {
 			event.preventDefault();
 
-			var matches = aria.querySelectorAll(document, 'link');
-			var dialog = createDialog();
+			matches = aria.querySelectorAll(document, 'link');
+			dialog = createDialog();
 
-			var links = Array.prototype.map.call(matches, function(el) {
+			links = Array.prototype.map.call(matches, function(el) {
 				var a = document.createElement('a');
 				a.href = el.href;
+				a.addEventListener('click', function(event) {
+					dialog.close();
+				});
 				a.textContent = aria.getName(el) || el.href;
 				return a;
 			});
