@@ -1,20 +1,24 @@
 var constants = require('./constants.js');
 var query = require('./query.js');
 
-var getContent = function(node, noRecurse) {
-	if (node.nodeType === node.TEXT_NODE) {
-		return node.textContent;
-	} else if (node.nodeType === node.ELEMENT_NODE) {
-		var before = window.getComputedStyle(node, ':before').getPropertyValue('content');
-		var after = window.getComputedStyle(node, ':after').getPropertyValue('content');
-		// FIXME: infinite recursion
-		return before + getName(node, noRecurse) + after;
+var getContent = function(root, noRecurse) {
+	var s = window.getComputedStyle(root, ':before').getPropertyValue('content');
+	var node = root.firstChild;
+	while (node) {
+		if (node.nodeType === node.TEXT_NODE) {
+			s += node.textContent;
+		} else if (node.nodeType === node.ELEMENT_NODE) {
+			s += getName(node, noRecurse);
+		}
+		node = node.nextSibling;
 	}
+	s += window.getComputedStyle(root, ':after').getPropertyValue('content');
+	return s;
 };
 
 var allowNameFromContent = function(el) {
 	var role = query.getRole(el);
-	return constants.nameFromContents.indexOf(role) != -1
+	return !role || constants.nameFromContents.indexOf(role) != -1
 };
 
 // http://www.ssbbartgroup.com/blog/how-the-w3c-text-alternative-computation-works/
