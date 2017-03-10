@@ -89,7 +89,6 @@ var roles = {
 // https://www.w3.org/TR/html-aria/#docconformance
 var extraSelectors = {
 	article: ['article'],
-	banner: ['body > header'],
 	button: [
 		'button',
 		'input[type="button"]',
@@ -100,7 +99,6 @@ var extraSelectors = {
 	],
 	cell: ['td'],
 	checkbox: ['input[type="checkbox"]'],
-	columnheader: ['th[scope="col"]'],
 	combobox: [
 		'input[type="email"][list]',
 		'input[type="search"][list]',
@@ -109,7 +107,6 @@ var extraSelectors = {
 		'input[type="url"][list]',
 	],
 	complementary: ['aside'],
-	contentinfo: ['body > footer'],
 	definition: ['dd'],
 	dialog: ['dialog'],
 	document: ['body'],
@@ -134,7 +131,6 @@ var extraSelectors = {
 	radio: ['input[type="radio"]'],
 	region: ['section'],
 	rowgroup: ['tbody', 'thead', 'tfoot'],
-	rowheader: ['th[scope="row"]'],
 	row: ['tr'],
 	searchbox: ['input[type="search"]:not([list])'],
 	separator: ['hr'],
@@ -149,6 +145,14 @@ var extraSelectors = {
 		'input[type="url"]:not([list])',
 		'textarea',
 	],
+
+	// `body >` is not correct
+	banner: ['body > header'],
+	contentinfo: ['body > footer'],
+
+	// if scope is missing, it is calculated automatically
+	rowheader: ['th[scope="row"]'],
+	columnheader: ['th[scope="col"]'],
 };
 
 // https://www.w3.org/TR/wai-aria/roles
