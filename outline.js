@@ -401,10 +401,22 @@ var walkDOM = function(root, fn) {
 	}
 };
 
-var matches = function(el, role) {
-	var actual = getRole(el);
-	var candidates = getSubRoles(role);
-	return candidates.indexOf(actual) != -1;
+var matches = function(el, selector) {
+	var actual;
+
+	if (selector.substr(0, 1) === ':') {
+		var attr = selector.substr(1);
+		return getAttribute(el, attr);
+	} else if (selector.substr(0, 1) === '[') {
+		var match = /\[([a-z]+)="(.*)"\]/.exec(selector);
+		actual = getAttribute(el, match[1]);
+		var rawValue = match[2];
+		return actual.toString() == rawValue;
+	} else {
+		actual = getRole(el);
+		var candidates = getSubRoles(selector);
+		return candidates.indexOf(actual) != -1;
+	}
 };
 
 var _querySelector = function(all) {
