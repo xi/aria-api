@@ -86,6 +86,51 @@ var roles = {
 	],
 };
 
+var attributes = {
+	// widget
+	'autocomplete': 'token',
+	'checked': 'tristate',
+	'disabled': 'bool',
+	'expanded': 'bool-undefined',
+	'haspopup': 'bool',
+	'hidden': 'bool',  // !
+	'invalid': 'token',
+	'label': 'string',
+	'level': 'int',
+	'multiline': 'bool',
+	'multiselectable': 'bool',
+	'orientation': 'token',
+	'pressed': 'tristate',
+	'readonly': 'bool',
+	'required': 'bool',
+	'selected': 'bool-undefined',
+	'sort': 'token',
+	'valuemax': 'number',
+	'valuemin': 'number',
+	'valuenow': 'number',
+	'valuetext': 'string',
+
+	// live
+	'atomic': 'bool',
+	'busy': 'bool',
+	'live': 'token',
+	'relevant': 'token-list',
+
+	// dragndrop
+	'dropeffect': 'token-list',
+	'grabbed': 'bool-undefined',
+
+	// relationship
+	'activedescendant': 'id',
+	'controls': 'id-list',
+	'describedby': 'id-list',
+	'flowto': 'id-list',
+	'labelledby': 'id-list',
+	'owns': 'id-list',
+	'posinset': 'int',
+	'setsize': 'int',
+};
+
 // https://www.w3.org/TR/html-aria/#docconformance
 var extraSelectors = {
 	article: ['article'],
@@ -291,6 +336,56 @@ var getRole = function(el) {
 		}
 	}
 	// FIXME: handle special cases;
+};
+
+var getAttribute = function(el, key) {
+	var type = attributes[key];
+	var raw = el.getAttribute('aria-' + key);
+
+	if (raw) {
+		if (type === 'bool') {
+			return raw === 'true';
+		} else if (type === 'tristate') {
+			return raw === 'true' ? true : raw === 'false' ? false : 'mixed';
+		} else if (type === 'bool-undefined') {
+			return raw === 'true' ? true : raw === 'false' ? false : undefined;
+		} else if (type === 'id-list') {
+			return raw.split(/\s+/);
+		} else if (type === 'integer') {
+			return parseInt(raw);
+		} else if (type === 'number') {
+			return parseFloat(raw);
+		} else if (type === 'token-list') {
+			return raw.split(/\s+/);
+		} else {
+			return raw;
+		}
+	}
+
+	if (key === 'level') {
+		for (var i = 1; i <= 6; i++) {
+			if (el.tagName === 'H' + i) {
+				return i;
+			}
+		}
+	} else if (key === 'disabled') {
+		return el.disabled;
+	} else if (key === 'placeholder') {
+		return el.placeholder;
+	} else if (key === 'required') {
+		return el.required;
+	} else if (key === 'readonly') {
+		return el.readonly;
+	} else if (key === 'hidden') {
+		var style = window.getComputedStyle(el);
+		return el.hidden || style.display === 'none' || style.visibility === 'hidden';
+	} else if (key === 'invalid' && el.checkValidity) {
+		return el.checkValidity();
+	}
+
+	if (type === 'bool' || type === 'tristate') {
+		return false;
+	}
 };
 
 var walkDOM = function(root, fn) {
