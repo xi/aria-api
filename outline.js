@@ -310,13 +310,13 @@ var querySelector = _querySelector();
 var querySelectorAll = _querySelector(true);
 
 // http://www.ssbbartgroup.com/blog/how-the-w3c-text-alternative-computation-works/
-var getName = function(el) {
+var getName = function(el, noRecurse, noContent) {
 	var ret = '';
 
-	if (el.matches('[aria-labelledby]')) {
+	if (!noRecurse && el.matches('[aria-labelledby]')) {
 		var id = el.getAttribute('aria-labelledby');
 		var label = document.getElementById(id);
-		ret = getName(label);
+		ret = getName(label, true);
 	} else if (el.matches('[aria-label]')) {
 		ret = el.getAttribute('aria-label');
 	} else if (el.label && el.labels.length > 0) {
@@ -328,7 +328,8 @@ var getName = function(el) {
 		ret = el.alt;
 	// caption
 	// table
-	} else if (el.textContent) {
+	} else if (!noContent && el.textContent) {
+		// FIXME: should be recursive
 		ret = el.textContent;
 	} else if (el.title) {
 		ret = el.title;
@@ -337,6 +338,22 @@ var getName = function(el) {
 	}
 
 	return ret.trim().replace(/\s+/g, ' ');
+};
+
+var getDescription = function(el) {
+	var ret = '';
+
+	if (el.matches('[aria-describedby]')) {
+		var id = el.getAttribute('aria-describedby');
+		var label = document.getElementById(id);
+		ret = getName(label, true);
+	} else if (el.title) {
+		ret = el.title;
+	} else if (el.placeholder) {
+		ret = el.placeholder;
+	}
+
+	return ret;
 };
 
 var createDialog = function() {
