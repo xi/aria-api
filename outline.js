@@ -512,6 +512,7 @@ var createDialog = function() {
 	dialog.addEventListener('close', function() {
 		dialog.parentNode.removeChild(dialog);
 	});
+	dialog.style = 'max-width: 90vw; max-height: 90vh; overflow: auto;';
 	document.body.appendChild(dialog);
 	return dialog;
 };
@@ -532,36 +533,73 @@ var truncate = function(s, length) {
 	} else {
 		return s;
 	}
-}
+};
 
 document.addEventListener('keyup', function(event) {
-	if (event.ctrlKey && !event.altKey && event.key == 'm') {
-		var dialog = createDialog();
+	if (event.ctrlKey && !event.altKey) {
+		if (event.key == 'm') {
+			event.preventDefault();
+			var dialog = createDialog();
 
-		var landmarks = querySelectorAll(document, 'landmark');
-		var links = Array.prototype.map.call(landmarks, function(el) {
-			var a = document.createElement('a');
-			a.href = '#';
-			a.addEventListener('click', function(event) {
-				event.preventDefault();
-				dialog.close();
-				el.tabIndex = -1;
-				el.focus();
+			var matches = querySelectorAll(document, 'landmark');
+			var links = Array.prototype.map.call(matches, function(el) {
+				var a = document.createElement('a');
+				a.href = '#';
+				a.addEventListener('click', function(event) {
+					event.preventDefault();
+					dialog.close();
+					el.tabIndex = -1;
+					el.focus();
+				});
+				a.textContent = getRole(el);
+
+				var name = getName(el, null, true);
+				var description = getDescription(el);
+				if (name) {
+					a.textContent += ' (' + name + ')';
+				}
+				if (description && description != name) {
+					a.title = description;
+				}
+				return a;
 			});
-			a.textContent = getRole(el);
 
-			var name = getName(el, null, true);
-			var description = getDescription(el);
-			if (name) {
-				a.textContent += ' (' + truncate(name, 10) + ')';
-			}
-			if (description && description != name) {
-				a.title = description;
-			}
-			return a;
-		});
+			dialog.appendChild(createList(links));
+			dialog.showModal();
+		} else if (event.key == ',') {
+			event.preventDefault();
+			var dialog = createDialog();
 
-		dialog.appendChild(createList(links));
-		dialog.showModal();
+			var matches = querySelectorAll(document, 'heading');
+			var links = Array.prototype.map.call(matches, function(el) {
+				var a = document.createElement('a');
+				a.href = '#';
+				a.addEventListener('click', function(event) {
+					event.preventDefault();
+					dialog.close();
+					el.tabIndex = -1;
+					el.focus();
+				});
+				a.textContent = getName(el);
+				return a;
+			});
+
+			dialog.appendChild(createList(links));
+			dialog.showModal();
+		} else if (event.key == '.') {
+			event.preventDefault();
+			var dialog = createDialog();
+
+			var matches = querySelectorAll(document, 'link');
+			var links = Array.prototype.map.call(matches, function(el) {
+				var a = document.createElement('a');
+				a.href = el.href;
+				a.textContent = getName(el) || el.href;
+				return a;
+			});
+
+			dialog.appendChild(createList(links));
+			dialog.showModal();
+		}
 	}
 });
