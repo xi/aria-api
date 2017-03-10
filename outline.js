@@ -234,6 +234,30 @@ var subRoles = {
 	],
 };
 
+var nameFromContents = [
+	'button',
+	'checkbox',
+	'columnheader',
+	'directory',
+	'gridcell',
+	'heading',
+	'link',
+	'listitem',
+	'menuitem',
+	'menuitemcheckbox',
+	'menuitemradio',
+	'option',
+	'radio',
+	'row',
+	'rowgroup',
+	'rowheader',
+	'section',
+	'sectionhead',
+	'tab',
+	'tooltip',
+	'treeitem',
+];
+
 var getSubRoles = function(role) {
 	var children = subRoles[role] || [];
 	var descendents = children.map(getSubRoles);
@@ -309,35 +333,55 @@ var _querySelector = function(all) {
 var querySelector = _querySelector();
 var querySelectorAll = _querySelector(true);
 
-// http://www.ssbbartgroup.com/blog/how-the-w3c-text-alternative-computation-works/
-var getName = function(el, noRecurse, noContent) {
-	var ret = '';
+var getContent = function(node, noRecurse) {
+	if (node.nodeType === node.TEXT_NODE) {
+		return node.textContent;
+	} else if (node.nodeType === node.ELEMENT_NODE) {
+		var before = window.getComputedStyle($0, ':before').getPropertyValue('content');
+		var after = window.getComputedStyle($0, ':after').getPropertyValue('content');
+		return before + getName(node, noRecurse) + after;
+	}
+};
 
+// http://www.ssbbartgroup.com/blog/how-the-w3c-text-alternative-computation-works/
+// https://www.w3.org/TR/accname-aam-1.1/#h-mapping_additional_nd_te
+var getName = function(el, noRecurse) {
+	var ret;
+
+	if (!noRecurse && matches(el, ':hidden')) {
+		return '';
+	}
 	if (!noRecurse && el.matches('[aria-labelledby]')) {
 		var id = el.getAttribute('aria-labelledby');
 		var label = document.getElementById(id);
 		ret = getName(label, true);
-	} else if (el.matches('[aria-label]')) {
+	}
+	if (!ret && el.matches('[aria-label]')) {
 		ret = el.getAttribute('aria-label');
-	} else if (el.label && el.labels.length > 0) {
+	}
+	if (!ret && el.label && el.labels.length > 0) {
 		ret = getName(el.labels[0]);
-	} else if (el.placeholder) {
+	}
+	if (!ret) {
 		ret = el.placeholder;
+	}
 	// figcaption
-	} else if (el.alt) {
+	if (!ret && !matches(el, 'presentation')) {
 		ret = el.alt;
+	}
 	// caption
 	// table
-	} else if (!noContent && el.textContent) {
-		// FIXME: should be recursive
-		ret = el.textContent;
-	} else if (el.title) {
+	if (!ret && (noRecurse || nameFromContents.indexOf(getRole(el)) != -1)) {
+		ret = getContent(el, noRecurse);
+	}
+	if (!ret) {
 		ret = el.title;
-	} else if (el.value) {
+	}
+	if (!ret) {
 		ret = el.value;
 	}
 
-	return ret.trim().replace(/\s+/g, ' ');
+	return (ret || '').trim().replace(/\s+/g, ' ');
 };
 
 var getDescription = function(el) {
