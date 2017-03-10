@@ -234,9 +234,9 @@ var subRoles = {
 	],
 };
 
-var getChildRoles = function(role) {
+var getSubRoles = function(role) {
 	var children = subRoles[role] || [];
-	var descendents = children.map(getChildRoles);
+	var descendents = children.map(getSubRoles);
 
 	var result = [role];
 
@@ -256,25 +256,58 @@ var getChildRoles = function(role) {
 	return result;
 };
 
-var _getSelector = function(role) {
-	var selector = '[role="' + role + '"]';
-	var extra = (extraSelectors[role] || []).map(sel => sel + ':not([role])');
-	return [selector].concat(extra).join(',');
-};
-
-var getSelector = function(role) {
-	var roles = getChildRoles(role);
-	return roles.map(_getSelector).join(',');
-};
-
 var getRole = function(el) {
-	for (var i = 0; i < roles.landmark.length; i++) {
-		var role = roles.landmark[i];
-		if (el.matches(_getSelector(role))) {
+	if (el.hasAttribute('role')) {
+		return el.getAttribute('role');
+	}
+	for (var role in extraSelectors) {
+		var selector = extraSelectors[role].join(',');
+		if (el.matches(selector)) {
 			return role;
 		}
 	}
+	// FIXME: handle special cases;
 };
+
+var walkDOM = function(root, fn) {
+	if (fn(root) === false) {
+		return false;
+	}
+	var node = root.firstChild;
+	while (node) {
+		if (walkDOM(node, fn) === false) {
+			return false;
+		}
+		node = node.nextSibling;
+	}
+};
+
+var matches = function(el, role) {
+	var actual = getRole(el);
+	var candidates = getSubRoles(role);
+	return candidates.indexOf(actual) != -1;
+};
+
+var _querySelector = function(all) {
+	return function(root, role) {
+		var results = [];
+		walkDOM(root, function(node) {
+			if (node.nodeType === node.ELEMENT_NODE) {
+				// FIXME: skip hidden elements
+				if (matches(node, role)) {
+					results.push(node);
+					if (!all) {
+						return false;
+					}
+				}
+			}
+		});
+		return all ? results : results[0];
+	};
+};
+
+var querySelector = _querySelector();
+var querySelectorAll = _querySelector(true);
 
 // http://www.ssbbartgroup.com/blog/how-the-w3c-text-alternative-computation-works/
 var getName = function(el) {
@@ -329,7 +362,7 @@ document.addEventListener('keyup', function(event) {
 	if (event.ctrlKey && !event.altKey && event.key == 'm') {
 		var dialog = createDialog();
 
-		var landmarks = document.querySelectorAll(getSelector('landmark'));
+		var landmarks = querySelectorAll(document, 'landmark');
 		var links = Array.prototype.map.call(landmarks, function(el) {
 			var a = document.createElement('a');
 			a.href = '#';
