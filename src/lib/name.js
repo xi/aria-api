@@ -41,11 +41,11 @@ var getName = function(el, noRecurse) {
 		ret = getName(el.labels[0]);
 	}
 	if (!ret) {
-		ret = el.placeholder;
+		ret = el.getAttribute('placeholder');
 	}
 	// figcaption
 	if (!ret && !query.matches(el, 'presentation')) {
-		ret = el.alt;
+		ret = el.getAttribute('alt');
 	}
 	// caption
 	// table
@@ -53,7 +53,7 @@ var getName = function(el, noRecurse) {
 		ret = getContent(el, noRecurse);
 	}
 	if (!ret) {
-		ret = el.title;
+		ret = el.getAttribute('title');
 	}
 	if (!ret) {
 		ret = el.value;
