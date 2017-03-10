@@ -375,6 +375,14 @@ var createList = function(items) {
 	return ul;
 };
 
+var truncate = function(s, length) {
+	if (s.length > length) {
+		return s.substr(0, length - 1) + '…';
+	} else {
+		return s;
+	}
+}
+
 document.addEventListener('keyup', function(event) {
 	if (event.ctrlKey && !event.altKey && event.key == 'm') {
 		var dialog = createDialog();
@@ -390,6 +398,15 @@ document.addEventListener('keyup', function(event) {
 				el.focus();
 			});
 			a.textContent = getRole(el);
+
+			var name = getName(el, null, true);
+			var description = getDescription(el);
+			if (name) {
+				a.textContent += ' (' + truncate(name, 10) + ')';
+			}
+			if (description && description != name) {
+				a.title = description;
+			}
 			return a;
 		});
 
