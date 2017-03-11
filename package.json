@@ -1,0 +1,13 @@
+{
+  "name": "aria-api",
+  "version": "1.0.0",
+  "description": "read aria roles and attributes from javascript",
+  "main": "index.js",
+  "keywords": [
+    "aria",
+    "accessibility",
+    "browser"
+  ],
+  "author": "Tobias Bengfort",
+  "license": "MIT"
+}
