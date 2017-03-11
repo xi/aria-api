@@ -9,5 +9,9 @@
     "browser"
   ],
   "author": "Tobias Bengfort",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "expect": "^1.20.2",
+    "mocha": "^3.2.0"
+  }
 }
