@@ -1,1 +1,1 @@
-// nothing here yet
+require('./test-name.js');
