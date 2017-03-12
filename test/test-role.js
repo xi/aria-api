@@ -38,4 +38,17 @@ describe('getRole', function() {
 			});
 		});
 	});
+
+	it('landmarks', function() {
+		return setupTestbed('landmarks.html').then(function() {
+			var actual = aria.querySelectorAll(testbed, 'landmark').map(aria.getRole);
+			expect(actual).toEqual([
+				'banner',
+				'main',
+				'form',
+				'complementary',
+				'contentinfo',
+			]);
+		});
+	});
 });
