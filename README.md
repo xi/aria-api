@@ -18,6 +18,16 @@ browserify. There is also an UMD build included as `dist/aria.js`.
 
 # Usage
 
+    var aria = require('aria-api'):
+
+    aria.querySelector('landmark').forEach(function(landmark) {
+        if (!aria.matches(landmark, ':hidden')) {
+            var role = aria.getRole(landmark);
+            var name = aria.getName(landmark);
+            console.log(role, name);
+        }
+    });
+
 ## getRole(element)
 
 Calculate an element's role.
