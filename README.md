@@ -80,10 +80,14 @@ That said, this is what I think it could be used for:
     Accessibility Engine for automated testing.
 -   [Visual ARIA Bookmarklet](http://whatsock.com/training/matrices/visual-aria.htm):
     Displays role, name, and description in any website.
+-   [ARIA Query](https://github.com/A11yance/aria-query):
+    Information from the ARIA spec as JavaScript structures.
 -   [Landmarks Browser Plugin](https://github.com/matatk/landmarks/blob/master/src/assemble/content.head.js):
     Provides landmark navigation in Firefox and Chrome.
 -   [Accessibility Object Model](https://wicg.github.io/aom/spec/):
     Draft spec for exposing the accessibility tree to JavaScript.
+-   [chrome.automation](https://developer.chrome.com/extensions/automation):
+    A propriatary API that exposes the accessibility to JavaScript.
 
 # Notes
 
