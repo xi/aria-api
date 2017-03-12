@@ -84,6 +84,18 @@ That said, this is what I think it could be used for:
     e.g. landmark navigation.
 -   Tools helping developers with improving accessibility.
 
+# Notes
+
+-   This is a pet project. I do not have the time to do extensive testing and
+    may skip some details now and then. I am happy to receive bug reports and
+    pull requests though.
+-   This library does not do any validity checks. Invalid attributes or roles
+    will not produce any warnings.
+-   In order to calculate the "hidden" attribute,
+    [Window.getComputedStyle()](https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle)
+    is called. This only seems to return reliable values if the element is
+    attached to `document`.
+
 # Related projects
 
 -   [axe-core](https://github.com/dequelabs/axe-core/):
@@ -98,15 +110,3 @@ That said, this is what I think it could be used for:
     Draft spec for exposing the accessibility tree to JavaScript.
 -   [chrome.automation](https://developer.chrome.com/extensions/automation):
     A propriatary API that exposes the accessibility to JavaScript.
-
-# Notes
-
--   This is a pet project. I do not have the time to do extensive testing and
-    may skip some details now and then. I am happy to receive bug reports and
-    pull requests though.
--   This library does not do any validity checks. Invalid attributes or roles
-    will not produce any warnings.
--   In order to calculate the "hidden" attribute,
-    [Window.getComputedStyle()](https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle)
-    is called. This only seems to return reliable values if the element is
-    attached to `document`.
