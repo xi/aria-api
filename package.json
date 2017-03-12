@@ -8,10 +8,18 @@
     "accessibility",
     "browser"
   ],
-  "author": "Tobias Bengfort",
+  "author": "Tobias Bengfort <tobias.bengfort@posteo.de>",
   "license": "MIT",
   "devDependencies": {
     "expect": "^1.20.2",
     "mocha": "^3.2.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xi/aria-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xi/aria-api/issues"
+  },
+  "homepage": "https://github.com/xi/aria-api#readme"
 }
