@@ -231,28 +231,73 @@ exports.nameFromContents = [
 	'treeitem',
 ];
 
+exports.labelable = [
+	'button',
+	'input:not([type="hidden"])',
+	'keygen',
+	'meter',
+	'output',
+	'progress',
+	'select',
+	'textarea',
+];
+
 },{}],3:[function(require,module,exports){
 var constants = require('./constants.js');
 var query = require('./query.js');
 
+var getPseudoContent = function(node, selector) {
+	var styles = window.getComputedStyle(node, selector);
+	var ret = styles.getPropertyValue('content');
+	if (ret === 'none' || ret.substr(0, 4) === '-moz') {
+		return '';
+	} else {
+		return ret;
+	}
+};
+
 var getContent = function(root) {
-	var s = window.getComputedStyle(root, ':before').getPropertyValue('content');
+	var ret = getPseudoContent(root, ':before');
 	var node = root.firstChild;
 	while (node) {
 		if (node.nodeType === node.TEXT_NODE) {
-			s += node.textContent;
+			ret += node.textContent;
 		} else if (node.nodeType === node.ELEMENT_NODE) {
-			s += getName(node, true);
+			ret += getName(node, true);
 		}
 		node = node.nextSibling;
 	}
-	s += window.getComputedStyle(root, ':after').getPropertyValue('content');
-	return s;
+	ret += getPseudoContent(root, ':after');
+	return ret;
 };
 
 var allowNameFromContent = function(el) {
 	var role = query.getRole(el);
 	return !role || constants.nameFromContents.indexOf(role) != -1;
+};
+
+var isLabelable = function(el) {
+	var selector = constants.labelable.join(',');
+	return el.matches(selector);
+};
+
+// Control.labels is part of the standard, but not supported in most browsers
+var getLabelNode = function(node) {
+	if (node.id) {
+		var selector = 'label[for="' + node.id + '"]';
+		var label = document.querySelector(selector);
+		if (label) {
+			return label;
+		}
+	}
+
+	var p = node.parentNode;
+	while (p) {
+		if (p.tagName === 'LABEL') {
+			return p;
+		}
+		p = p.parentNode;
+	}
 };
 
 // http://www.ssbbartgroup.com/blog/how-the-w3c-text-alternative-computation-works/
@@ -277,8 +322,11 @@ var getName = function(el, noRecurse, directReference) {
 	if (!ret && el.matches('[aria-label]')) {
 		ret = el.getAttribute('aria-label');
 	}
-	if (!ret && el.labels && el.labels.length > 0) {
-		ret = getName(el.labels[0], noRecurse);
+	if (!ret && isLabelable(el)) {
+		var label = getLabelNode(el);
+		if (label) {
+			ret = getName(label, noRecurse);
+		}
 	}
 	if (!ret) {
 		ret = el.getAttribute('placeholder');
