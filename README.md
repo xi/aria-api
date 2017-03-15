@@ -109,4 +109,4 @@ That said, this is what I think it could be used for:
 -   [Accessibility Object Model](https://wicg.github.io/aom/spec/):
     Draft spec for exposing the accessibility tree to JavaScript.
 -   [chrome.automation](https://developer.chrome.com/extensions/automation):
-    A propriatary API that exposes the accessibility to JavaScript.
+    A propriatary API that exposes the accessibility tree to JavaScript.
