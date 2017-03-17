@@ -1,10 +1,31 @@
+var LINK = '<a href="//example.com">click me</a>\n' +
+	'<span role="link">click me</span>';
+
+var NOLINK = '<a>click me not</a>\n' +
+	'<a href="//example.com" role="button">click me not</a>';
+
+var LANDMARKS = '<header>banner</header>\n' +
+	'<main>\n' +
+	'  <article>\n' +
+	'    <header>article header</header>\n' +
+	'    article\n' +
+	'  </article>\n' +
+	'  <form>some form</form>\n' +
+	'</main>\n' +
+	'<aside>complementary</aside>\n' +
+	'<div class="wrapper">\n' +
+	'  <footer>contentinfo</footer>\n' +
+	'</div>';
+
+
 describe('getRole', function() {
 	var testbed;
 
 	var setupTestbed = function(file) {
 		return fetch('role/' + file)
-		.then(response => response.text())
-		.then(html => {
+		.then(function(response) {
+			return response.text();
+		}).then(function(html) {
 			testbed.innerHTML = html;
 		});
 	};
@@ -21,34 +42,31 @@ describe('getRole', function() {
 
 	describe('links', function() {
 		it('link', function() {
-			return setupTestbed('link.html').then(function() {
-				for (var i = 0; i < testbed.children.length; i++) {
-					var actual = aria.getRole(testbed.children[i]);
-					expect(actual).toBe('link');
-				}
-			});
+			testbed.innerHTML = LINK;
+			for (var i = 0; i < testbed.children.length; i++) {
+				var actual = aria.getRole(testbed.children[i]);
+				expect(actual).toBe('link');
+			}
 		});
 
 		it('nolink', function() {
-			return setupTestbed('nolink.html').then(function() {
-				for (var i = 0; i < testbed.children.length; i++) {
-					var actual = aria.getRole(testbed.children[i]);
-					expect(actual).toNotBe('link');
-				}
-			});
+			testbed.innerHTML = NOLINK;
+			for (var i = 0; i < testbed.children.length; i++) {
+				var actual = aria.getRole(testbed.children[i]);
+				expect(actual).toNotBe('link');
+			}
 		});
 	});
 
 	it('landmarks', function() {
-		return setupTestbed('landmarks.html').then(function() {
-			var actual = aria.querySelectorAll(testbed, 'landmark').map(aria.getRole);
-			expect(actual).toEqual([
-				'banner',
-				'main',
-				'form',
-				'complementary',
-				'contentinfo',
-			]);
-		});
+		testbed.innerHTML = LANDMARKS;
+		var actual = aria.querySelectorAll(testbed, 'landmark').map(aria.getRole);
+		expect(actual).toEqual([
+			'banner',
+			'main',
+			'form',
+			'complementary',
+			'contentinfo',
+		]);
 	});
 });
