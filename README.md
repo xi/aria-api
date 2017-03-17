@@ -98,14 +98,16 @@ That said, this is what I think it could be used for:
 
 # Related projects
 
--   [axe-core](https://github.com/dequelabs/axe-core/):
-    Accessibility Engine for automated testing.
+-   [axe-core](https://github.com/dequelabs/axe-core/) and
+    [Accessibility Developer Tools](https://github.com/GoogleChrome/accessibility-developer-tools):
+    These are libraries for accessibility testing. They solve many of the same
+    issues as this library internally.
 -   [Visual ARIA Bookmarklet](http://whatsock.com/training/matrices/visual-aria.htm):
     Displays role, name, and description in any website.
+-   [ally.js](https://allyjs.io/):
+    A library providing many useful accessibility-related utilities.
 -   [ARIA Query](https://github.com/A11yance/aria-query):
     Information from the ARIA spec as JavaScript structures.
--   [Landmarks Browser Plugin](https://github.com/matatk/landmarks/blob/master/src/assemble/content.head.js):
-    Provides landmark navigation in Firefox and Chrome.
 -   [Accessibility Object Model](https://wicg.github.io/aom/spec/):
     Draft spec for exposing the accessibility tree to JavaScript.
 -   [chrome.automation](https://developer.chrome.com/extensions/automation):
