@@ -309,7 +309,7 @@ var getName = function(el, recursive, force) {
 	if (query.matches(el, 'presentation')) {
 		return getContent(el);
 	}
-	if (!recursive && el.matches('[aria-labelledby')) {
+	if (!recursive && el.matches('[aria-labelledby]')) {
 		var ids = el.getAttribute('aria-labelledby').split(/\s+/);
 		var strings = ids.map(function(id) {
 			var label = document.getElementById(id);
