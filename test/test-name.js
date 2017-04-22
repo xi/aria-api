@@ -217,4 +217,12 @@ describe('getName / getDescription', function() {
 			expect(aria.getDescription(testbed.firstChild)).toBe('My name is Garaventa the weird. (QED) Where are my marbles?');
 		});
 	});
+
+	describe('pseudo content', function() {
+		it('includes pseudo content', function() {
+			testbed.innerHTML = '<div class="test">bar</div>' +
+				'<style>.test::before { content: "foo" }</style>';
+			expect(aria.getName(testbed)).toBe('foobar');
+		});
+	});
 });
