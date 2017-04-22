@@ -119,10 +119,6 @@ exports.extraSelectors = {
 		'textarea',
 	],
 
-	// `body >` is not correct
-	banner: ['body > header'],
-	contentinfo: ['body > footer'],
-
 	// if scope is missing, it is calculated automatically
 	rowheader: ['th[scope="row"]'],
 	columnheader: ['th[scope="col"]'],
@@ -252,7 +248,9 @@ var getPseudoContent = function(node, selector) {
 	if (ret === 'none' || ret.substr(0, 4) === '-moz') {
 		return '';
 	} else {
-		return ret;
+		return ret
+			.replace(/^["']/, '')
+			.replace(/["']$/, '');
 	}
 };
 
@@ -302,16 +300,16 @@ var getLabelNode = function(node) {
 
 // http://www.ssbbartgroup.com/blog/how-the-w3c-text-alternative-computation-works/
 // https://www.w3.org/TR/accname-aam-1.1/#h-mapping_additional_nd_te
-var getName = function(el, noRecurse, directReference) {
+var getName = function(el, recursive, force) {
 	var ret;
 
-	if (!directReference && query.matches(el, ':hidden')) {
+	if (!force && query.matches(el, ':hidden')) {
 		return '';
 	}
 	if (query.matches(el, 'presentation')) {
 		return getContent(el);
 	}
-	if (!noRecurse && el.matches('[aria-labelledby]')) {
+	if (!recursive && el.matches('[aria-labelledby')) {
 		var ids = el.getAttribute('aria-labelledby').split(/\s+/);
 		var strings = ids.map(function(id) {
 			var label = document.getElementById(id);
@@ -322,29 +320,32 @@ var getName = function(el, noRecurse, directReference) {
 	if (!ret && el.matches('[aria-label]')) {
 		ret = el.getAttribute('aria-label');
 	}
-	if (!ret && isLabelable(el)) {
-		var label = getLabelNode(el);
-		if (label) {
-			ret = getName(label, noRecurse);
+	if (!query.matches(el, 'presentation')) {
+		if (!ret && isLabelable(el)) {
+			var label = getLabelNode(el);
+			if (label) {
+				ret = getName(label, recursive);
+			}
 		}
+		if (!ret) {
+			ret = el.getAttribute('placeholder');
+		}
+		// figcaption
+		if (!ret) {
+			ret = el.getAttribute('alt');
+		}
+		// caption
+		// table
 	}
 	if (!ret) {
-		ret = el.getAttribute('placeholder');
+		// FIXME: distinguish different input types
+		ret = el.value;
 	}
-	// figcaption
-	if (!ret && !query.matches(el, 'presentation')) {
-		ret = el.getAttribute('alt');
-	}
-	// caption
-	// table
-	if (!ret && (noRecurse || allowNameFromContent(el))) {
+	if (!ret && (recursive || allowNameFromContent(el))) {
 		ret = getContent(el);
 	}
 	if (!ret) {
 		ret = el.getAttribute('title');
-	}
-	if (!ret) {
-		ret = el.value;
 	}
 
 	return (ret || '').trim().replace(/\s+/g, ' ');
@@ -410,7 +411,19 @@ var getRole = function(el) {
 			return role;
 		}
 	}
-	// FIXME: handle special cases;
+
+	var notScoped = [
+		'article', 'aside', 'main', 'nav', 'section',
+	].map(function(key) {
+		return key + ' *';
+	}).join(',');
+
+	if (el.matches('header') && !el.matches(notScoped)) {
+		return 'banner';
+	}
+	if (el.matches('footer') && !el.matches(notScoped)) {
+		return 'contentinfo';
+	}
 };
 
 var getAttribute = function(el, key) {
