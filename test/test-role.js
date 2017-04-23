@@ -18,7 +18,7 @@ var LANDMARKS = '<header>banner</header>\n' +
 	'</div>';
 
 
-describe('getRole', function() {
+describe('query', function() {
 	var testbed;
 
 	var setupTestbed = function(file) {
@@ -37,36 +37,38 @@ describe('getRole', function() {
 	});
 
 	afterEach(function() {
-		document.body.removeChild(testbed);
+		testbed.remove();
 	});
 
-	describe('links', function() {
-		it('link', function() {
-			testbed.innerHTML = LINK;
-			for (var i = 0; i < testbed.children.length; i++) {
-				var actual = aria.getRole(testbed.children[i]);
-				expect(actual).toBe('link');
-			}
+	describe('getRole', function() {
+		describe('links', function() {
+			it('link', function() {
+				testbed.innerHTML = LINK;
+				for (var i = 0; i < testbed.children.length; i++) {
+					var actual = aria.getRole(testbed.children[i]);
+					expect(actual).toBe('link');
+				}
+			});
+
+			it('nolink', function() {
+				testbed.innerHTML = NOLINK;
+				for (var i = 0; i < testbed.children.length; i++) {
+					var actual = aria.getRole(testbed.children[i]);
+					expect(actual).toNotBe('link');
+				}
+			});
 		});
 
-		it('nolink', function() {
-			testbed.innerHTML = NOLINK;
-			for (var i = 0; i < testbed.children.length; i++) {
-				var actual = aria.getRole(testbed.children[i]);
-				expect(actual).toNotBe('link');
-			}
+		it('landmarks', function() {
+			testbed.innerHTML = LANDMARKS;
+			var actual = aria.querySelectorAll(testbed, 'landmark').map(aria.getRole);
+			expect(actual).toEqual([
+				'banner',
+				'main',
+				'form',
+				'complementary',
+				'contentinfo',
+			]);
 		});
-	});
-
-	it('landmarks', function() {
-		testbed.innerHTML = LANDMARKS;
-		var actual = aria.querySelectorAll(testbed, 'landmark').map(aria.getRole);
-		expect(actual).toEqual([
-			'banner',
-			'main',
-			'form',
-			'complementary',
-			'contentinfo',
-		]);
 	});
 });
