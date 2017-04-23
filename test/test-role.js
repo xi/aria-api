@@ -90,4 +90,15 @@ describe('query', function() {
 			expect(actual).toNotExist();
 		});
 	});
+
+	describe('querySelectorAll', function() {
+		it('comma-separated roles', function() {
+			testbed.innerHTML = LANDMARKS;
+			var actual1 = aria.querySelectorAll(testbed, 'banner,main');
+			expect(actual1.length).toEqual(2);
+
+			var actual2 = aria.querySelectorAll(testbed, 'banner,main,complementary');
+			expect(actual2.length).toEqual(3);
+		});
+	});
 });

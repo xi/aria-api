@@ -61,7 +61,8 @@ any of the following:
     string equals the specified value.
 
 Note that combinations of selectors are **not supported** (e.g. `main link`,
-`link:hidden`, `:not(:hidden)`).
+`link:hidden`, `:not(:hidden)`).  The single exception to this rule are
+comma-separated lists of roles, e.g. `link,button`.
 
 ## querySelector(element, selector)
 
