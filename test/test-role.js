@@ -37,7 +37,7 @@ describe('query', function() {
 	});
 
 	afterEach(function() {
-		testbed.remove();
+		document.body.removeChild(testbed);
 	});
 
 	describe('getRole', function() {
