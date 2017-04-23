@@ -10,4 +10,5 @@ module.exports = {
 	matches: query.matches,
 	querySelector: query.querySelector,
 	querySelectorAll: query.querySelectorAll,
+	closest: query.closest,
 };

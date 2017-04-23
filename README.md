@@ -73,6 +73,11 @@ See `matches()` for details.
 Similar to [Element.querySelectorAll()](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll).
 See `matches()` for details.
 
+## closest(element, selector)
+
+Similar to [Element.closest()](https://developer.mozilla.org/en-US/docs/Web/API/Element/closest)
+See `matches()` for details.
+
 # What is this for?
 
 First of all, I thought that something like this should exist. I have not yet

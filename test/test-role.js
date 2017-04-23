@@ -71,4 +71,23 @@ describe('query', function() {
 			]);
 		});
 	});
+
+	describe('closest', function() {
+		it('landmarks', function() {
+			testbed.innerHTML = LANDMARKS;
+			var el = testbed.querySelector('main header');
+			var actual = aria.closest(el, 'landmark');
+
+			expect(actual).toExist();
+			expect(actual.tagName.toLowerCase()).toEqual('main');
+		});
+
+		it('no match', function() {
+			testbed.innerHTML = LANDMARKS;
+			var el = testbed.querySelector('main header');
+			var actual = aria.closest(el, 'table');
+
+			expect(actual).toNotExist();
+		});
+	});
 });
