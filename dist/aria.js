@@ -11,6 +11,7 @@ module.exports = {
 	matches: query.matches,
 	querySelector: query.querySelector,
 	querySelectorAll: query.querySelectorAll,
+	closest: query.closest,
 };
 
 },{"./lib/name.js":3,"./lib/query.js":4}],2:[function(require,module,exports){
@@ -124,8 +125,12 @@ exports.extraSelectors = {
 	columnheader: ['th[scope="col"]'],
 };
 
+exports.scoped = [
+	'article *', 'aside *', 'main *', 'nav *', 'section *',
+].join(',');
+
 // https://www.w3.org/TR/wai-aria/roles
-exports.subRoles = {
+var subRoles = {
 	command: ['button', 'link', 'menuitem'],
 	composite: ['grid', 'select', 'tablist'],
 	input: ['checkbox', 'option', 'select', 'spinbutton', 'textbox'],
@@ -203,6 +208,28 @@ exports.subRoles = {
 	],
 };
 
+var getSubRoles = function(role) {
+	var children = subRoles[role] || [];
+	var descendents = children.map(getSubRoles);
+
+	var result = [role];
+
+	descendents.forEach(function(list) {
+		list.forEach(function(r) {
+			if (result.indexOf(r) === -1) {
+				result.push(r);
+			}
+		});
+	});
+
+	return result;
+};
+
+exports.subRoles = {};
+for (var role in subRoles) {
+	exports.subRoles[role] = getSubRoles(role);
+}
+
 exports.nameFromContents = [
 	'button',
 	'checkbox',
@@ -271,7 +298,7 @@ var getContent = function(root) {
 
 var allowNameFromContent = function(el) {
 	var role = query.getRole(el);
-	return !role || constants.nameFromContents.indexOf(role) != -1;
+	return !role || constants.nameFromContents.indexOf(role) !== -1;
 };
 
 var isLabelable = function(el) {
@@ -379,50 +406,35 @@ module.exports = {
 var constants = require('./constants.js');
 var util = require('./util.js');
 
-var getSubRoles = function(role) {
-	var children = constants.subRoles[role] || [];
-	var descendents = children.map(getSubRoles);
-
-	var result = [role];
-
-	children.forEach(function(r) {
-		if (result.indexOf(r) == -1) {
-			result.push(r);
-		}
-	});
-	descendents.forEach(function(list) {
-		list.forEach(function(r) {
-			if (result.indexOf(r) == -1) {
-				result.push(r);
-			}
-		});
-	});
-
-	return result;
+var getSubRoles = function(roles) {
+	return [].concat.apply([], roles.map(function(role) {
+		return constants.subRoles[role] || [role];
+	}));
 };
 
-var getRole = function(el) {
+// candidates can be passed for performance optimization
+var _getRole = function(el, candidates) {
 	if (el.hasAttribute('role')) {
 		return el.getAttribute('role');
 	}
 	for (var role in constants.extraSelectors) {
 		var selector = constants.extraSelectors[role].join(',');
-		if (el.matches(selector)) {
+		if ((!candidates || candidates.indexOf(role) !== -1) && el.matches(selector)) {
 			return role;
 		}
 	}
 
-	var notScoped = [
-		'article', 'aside', 'main', 'nav', 'section',
-	].map(function(key) {
-		return key + ' *';
-	}).join(',');
+	if (!candidates ||
+			candidates.indexOf('banner') !== -1 ||
+			candidates.indexOf('contentinfo') !== -1) {
+		var scoped = el.matches(constants.scoped);
 
-	if (el.matches('header') && !el.matches(notScoped)) {
-		return 'banner';
-	}
-	if (el.matches('footer') && !el.matches(notScoped)) {
-		return 'contentinfo';
+		if (el.matches('header') && !scoped) {
+			return 'banner';
+		}
+		if (el.matches('footer') && !scoped) {
+			return 'contentinfo';
+		}
 	}
 };
 
@@ -488,8 +500,8 @@ var matches = function(el, selector) {
 		var rawValue = match[2];
 		return actual.toString() == rawValue;
 	} else {
-		actual = getRole(el);
-		var candidates = getSubRoles(selector);
+		var candidates = getSubRoles(selector.split(','));
+		actual = _getRole(el, candidates);
 		return candidates.indexOf(actual) != -1;
 	}
 };
@@ -512,12 +524,21 @@ var _querySelector = function(all) {
 	};
 };
 
+var closest = function(el, selector) {
+	return util.searchUp(el, function(candidate) {
+		return matches(candidate, selector);
+	});
+};
+
 module.exports = {
-	getRole: getRole,
+	getRole: function(el) {
+		return _getRole(el);
+	},
 	getAttribute: getAttribute,
 	matches: matches,
 	querySelector: _querySelector(),
 	querySelectorAll: _querySelector(true),
+	closest: closest,
 };
 
 },{"./constants.js":2,"./util.js":5}],5:[function(require,module,exports){
@@ -534,8 +555,20 @@ var walkDOM = function(root, fn) {
 	}
 };
 
+var searchUp = function(el, test) {
+	var candidate = el.parentElement;
+	if (candidate) {
+		if (test(candidate)) {
+			return candidate;
+		} else {
+			return searchUp(candidate, test);
+		}
+	}
+};
+
 module.exports = {
 	walkDOM: walkDOM,
+	searchUp: searchUp,
 };
 
 },{}]},{},[1])(1)

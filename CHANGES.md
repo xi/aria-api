@@ -1,3 +1,11 @@
+0.1.0 (2017-07-12)
+------------------
+
+-	some performance optimizations
+-	add `closest()`
+-	allow comma separated roles in selectors
+
+
 0.0.2 (2017-04-22)
 ------------------
 
