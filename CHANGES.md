@@ -1,3 +1,10 @@
+0.1.1 (2017-08-03)
+------------------
+
+-	forms only get the implicity form role if they have an explicity label
+-	fixes to the calculation of the "hidden" property
+
+
 0.1.0 (2017-07-12)
 ------------------
 

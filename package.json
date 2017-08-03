@@ -1,6 +1,6 @@
 {
   "name": "aria-api",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Access ARIA information from JavaScript",
   "main": "index.js",
   "keywords": [

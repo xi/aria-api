@@ -85,7 +85,7 @@ exports.extraSelectors = {
 	dialog: ['dialog'],
 	document: ['body'],
 	figure: ['figure'],
-	form: ['form'],
+	form: ['form[aria-label]', 'form[aria-labelledby]'],
 	group: ['details', 'optgroup'],
 	heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
 	img: ['img:not([alt=""])'],
@@ -281,14 +281,14 @@ var getPseudoContent = function(node, selector) {
 	}
 };
 
-var getContent = function(root) {
+var getContent = function(root, referenced) {
 	var ret = getPseudoContent(root, ':before');
 	var node = root.firstChild;
 	while (node) {
 		if (node.nodeType === node.TEXT_NODE) {
 			ret += node.textContent;
 		} else if (node.nodeType === node.ELEMENT_NODE) {
-			ret += getName(node, true);
+			ret += getName(node, true, referenced);
 		}
 		node = node.nextSibling;
 	}
@@ -327,20 +327,20 @@ var getLabelNode = function(node) {
 
 // http://www.ssbbartgroup.com/blog/how-the-w3c-text-alternative-computation-works/
 // https://www.w3.org/TR/accname-aam-1.1/#h-mapping_additional_nd_te
-var getName = function(el, recursive, force) {
+var getName = function(el, recursive, referenced) {
 	var ret;
 
-	if (!force && query.matches(el, ':hidden')) {
+	if (query.getAttribute(el, 'hidden', referenced)) {
 		return '';
 	}
 	if (query.matches(el, 'presentation')) {
-		return getContent(el);
+		return getContent(el, referenced);
 	}
 	if (!recursive && el.matches('[aria-labelledby]')) {
 		var ids = el.getAttribute('aria-labelledby').split(/\s+/);
 		var strings = ids.map(function(id) {
 			var label = document.getElementById(id);
-			return getName(label, true, true);
+			return getName(label, true, label);
 		});
 		ret = strings.join(' ');
 	}
@@ -351,7 +351,7 @@ var getName = function(el, recursive, force) {
 		if (!ret && isLabelable(el)) {
 			var label = getLabelNode(el);
 			if (label) {
-				ret = getName(label, recursive);
+				ret = getName(label, recursive, label);
 			}
 		}
 		if (!ret) {
@@ -369,7 +369,7 @@ var getName = function(el, recursive, force) {
 		ret = el.value;
 	}
 	if (!ret && (recursive || allowNameFromContent(el))) {
-		ret = getContent(el);
+		ret = getContent(el, referenced);
 	}
 	if (!ret) {
 		ret = el.getAttribute('title');
@@ -385,7 +385,7 @@ var getDescription = function(el) {
 		var ids = el.getAttribute('aria-describedby').split(/\s+/);
 		var strings = ids.map(function(id) {
 			var label = document.getElementById(id);
-			return getName(label, true, true);
+			return getName(label, true, label);
 		});
 		ret = strings.join(' ');
 	} else if (el.title) {
@@ -438,7 +438,11 @@ var _getRole = function(el, candidates) {
 	}
 };
 
-var getAttribute = function(el, key) {
+var getAttribute = function(el, key, _hiddenRoot) {
+	if (key === 'hidden' && el === _hiddenRoot) {  // used for name calculation
+		return false;
+	}
+
 	var type = constants.attributes[key];
 	var raw = el.getAttribute('aria-' + key);
 
@@ -478,7 +482,11 @@ var getAttribute = function(el, key) {
 		return el.readonly;
 	} else if (key === 'hidden') {
 		var style = window.getComputedStyle(el);
-		return el.hidden || style.display === 'none' || style.visibility === 'hidden';
+		if (el.hidden || style.display === 'none' || style.visibility === 'hidden') {
+			return true;
+		} else if (el.clientHeight === 0) {  // rough check for performance
+			return el.parentNode && getAttribute(el.parentNode, 'hidden', _hiddenRoot);
+		}
 	} else if (key === 'invalid' && el.checkValidity) {
 		return el.checkValidity();
 	}
