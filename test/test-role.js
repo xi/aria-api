@@ -22,15 +22,6 @@ var LANDMARKS = '<header>banner</header>\n' +
 describe('query', function() {
 	var testbed;
 
-	var setupTestbed = function(file) {
-		return fetch('role/' + file)
-		.then(function(response) {
-			return response.text();
-		}).then(function(html) {
-			testbed.innerHTML = html;
-		});
-	};
-
 	beforeEach(function() {
 		testbed = document.createElement('div');
 		// make sure styles are actually computed
