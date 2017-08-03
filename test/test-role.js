@@ -10,10 +10,11 @@ var LANDMARKS = '<header>banner</header>\n' +
 	'    <header>article header</header>\n' +
 	'    article\n' +
 	'  </article>\n' +
-	'  <form>some form</form>\n' +
+	'  <form aria-label="some form"></form>\n' +
 	'</main>\n' +
 	'<aside>complementary</aside>\n' +
 	'<div class="wrapper">\n' +
+	'  <form>some form</form>\n' +
 	'  <footer>contentinfo</footer>\n' +
 	'</div>';
 
