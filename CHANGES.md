@@ -1,3 +1,11 @@
+0.2.0 (2017-12-29)
+------------------
+
+-	update role hierarchy to ARIA 1.1
+-	add dpub-aria role support
+-	fix readonly calculation
+
+
 0.1.1 (2017-08-03)
 ------------------
 
