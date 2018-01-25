@@ -84,10 +84,11 @@ See `matches()` for details.
 
 # What is this for?
 
-First of all, I thought that something like this should exist. I have not yet
-figured out where to use it, but I am sure there are valid use cases.
+First of all, I thought that something like this should exist. I currently use
+it for [a11y-outline](https://github.com/xi/a11y-outline/), a web extension
+that generates outlines based on WAI-ARIA roles.
 
-That said, this is what I think it could be used for:
+That said, this is what I think it could also be used for:
 
 -   Providing features based on the additional information provided by ARIA,
     e.g. landmark navigation.
