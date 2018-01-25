@@ -32,6 +32,9 @@ browserify. There is also an UMD build included as `dist/aria.js`.
 
 Calculate an element's role.
 
+Note that this will return only the most specific role. If you want to know
+whether an element *has* a role, use `matches()` instead.
+
 ## getAttribute(element, attribute)
 
 Calculate the value of an element's attribute (state or property). The
