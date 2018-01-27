@@ -92,5 +92,17 @@ describe('query', function() {
 			var actual2 = aria.querySelectorAll(testbed, 'banner,main,complementary');
 			expect(actual2.length).toEqual(3);
 		});
+
+		it('does treat none as alias of presentation', function() {
+			testbed.innerHTML = '<a role="presentation"></a><a role="none"></a>';
+			var actual = aria.querySelectorAll(testbed, 'presentation');
+			expect(actual.length).toEqual(2);
+		});
+
+		it('does treat presentation as alias of none', function() {
+			testbed.innerHTML = '<a role="presentation"></a><a role="none"></a>';
+			var actual = aria.querySelectorAll(testbed, 'none');
+			expect(actual.length).toEqual(2);
+		});
 	});
 });
