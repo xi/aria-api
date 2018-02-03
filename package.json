@@ -14,7 +14,11 @@
     "expect": "^1.20.2",
     "mocha": "^3.2.0"
   },
-  "files": ["index.js", "lib", "dist"],
+  "files": [
+    "index.js",
+    "lib",
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xi/aria-api.git"
@@ -22,5 +26,9 @@
   "bugs": {
     "url": "https://github.com/xi/aria-api/issues"
   },
-  "homepage": "https://github.com/xi/aria-api#readme"
+  "homepage": "https://github.com/xi/aria-api#readme",
+  "devDependencies": {
+    "accname-test": "git+https://github.com/xi/accname-test.git",
+    "mocha-phantomjs": "^4.1.0"
+  }
 }
