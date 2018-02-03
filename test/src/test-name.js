@@ -3,8 +3,7 @@ var accnameTest = require('accname-test/dist/accname-test');
 describe('getName / getDescription', function() {
 	Object.keys(accnameTest.files).forEach(function(name) {
 		var html = accnameTest.files[name];
-		var testbed;
-		testbed = document.createElement('div');
+		var testbed = document.createElement('div');
 		testbed.innerHTML = html;
 
 		describe(name, function() {
