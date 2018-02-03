@@ -278,6 +278,8 @@ exports.subRoles = {};
 for (var role in subRoles) {
 	exports.subRoles[role] = getSubRoles(role);
 }
+exports.subRoles['none'] = ['none', 'presentation'];
+exports.subRoles['presentation'] = ['presentation', 'none'];
 
 exports.nameFromContents = [
 	'button',
@@ -367,12 +369,12 @@ var getLabelNode = function(node) {
 		}
 	}
 
-	var p = node.parentNode;
+	var p = node.parentElement;
 	while (p) {
-		if (p.tagName === 'LABEL') {
+		if (p.tagName.toLowerCase() === 'label') {
 			return p;
 		}
-		p = p.parentNode;
+		p = p.parentElement;
 	}
 };
 
@@ -401,8 +403,8 @@ var getName = function(el, recursive, referenced) {
 	if (!query.matches(el, 'presentation')) {
 		if (!ret && isLabelable(el)) {
 			var label = getLabelNode(el);
-			if (label) {
-				ret = getName(label, recursive, label);
+			if (!recursive && label) {
+				ret = getName(label, true, label);
 			}
 		}
 		if (!ret) {
@@ -415,9 +417,16 @@ var getName = function(el, recursive, referenced) {
 		// caption
 		// table
 	}
-	if (!ret) {
-		// FIXME: distinguish different input types
-		ret = el.value;
+	// FIXME only if this is embedded in a label
+	if (!ret && query.matches(el, 'input')) {
+		// combobox
+		// button
+		if (query.matches(el, 'range')) {
+			ret = query.getAttribute(el, 'valuetext') || query.getAttribute(el, 'valuenow') || el.value;
+		} else {
+			ret = el.value;
+		}
+		ret = '' + ret;
 	}
 	if (!ret && (recursive || allowNameFromContent(el))) {
 		ret = getContent(el, referenced);
@@ -445,7 +454,7 @@ var getDescription = function(el) {
 		ret = el.placeholder;
 	}
 
-	return ret;
+	return (ret || '').trim().replace(/\s+/g, ' ');
 };
 
 module.exports = {
@@ -519,7 +528,7 @@ var getAttribute = function(el, key, _hiddenRoot) {
 
 	if (key === 'level') {
 		for (var i = 1; i <= 6; i++) {
-			if (el.tagName === 'H' + i) {
+			if (el.tagName.toLowerCase() === 'h' + i) {
 				return i;
 			}
 		}
@@ -561,7 +570,7 @@ var matches = function(el, selector) {
 	} else {
 		var candidates = getSubRoles(selector.split(','));
 		actual = _getRole(el, candidates);
-		return candidates.indexOf(actual) != -1;
+		return candidates.indexOf(actual) !== -1;
 	}
 };
 

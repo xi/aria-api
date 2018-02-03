@@ -1,3 +1,11 @@
+0.2.1 (2018-02-03)
+------------------
+
+-	extend tests for name/description calculation and fix some bugs
+-	case insensitive tagName matching
+-	treat roles "presentation" and "none" as aliases for each other
+
+
 0.2.0 (2017-12-29)
 ------------------
 
