@@ -18,10 +18,10 @@ describe('getName / getDescription', function() {
 			accnameTest.getTests(testbed).forEach(function(test) {
 				it(test.comment || name, function() {
 					if (test.name !== null) {
-						expect(aria.getName(test.element), test.name)
+						expect(aria.getName(test.element)).toBe(test.name)
 					}
 					if (test.description !== null) {
-						expect(aria.getDescription(test.element), test.description)
+						expect(aria.getDescription(test.element)).toBe(test.description)
 					}
 				});
 			});
