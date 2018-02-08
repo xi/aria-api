@@ -11,8 +11,10 @@
   "author": "Tobias Bengfort <tobias.bengfort@posteo.de>",
   "license": "MIT",
   "devDependencies": {
+    "accname-test": "git+https://github.com/xi/accname-test.git",
     "expect": "^1.20.2",
-    "mocha": "^3.2.0"
+    "mocha": "^3.2.0",
+    "mocha-phantomjs": "^4.1.0"
   },
   "files": [
     "index.js",
@@ -26,9 +28,5 @@
   "bugs": {
     "url": "https://github.com/xi/aria-api/issues"
   },
-  "homepage": "https://github.com/xi/aria-api#readme",
-  "devDependencies": {
-    "accname-test": "git+https://github.com/xi/accname-test.git",
-    "mocha-phantomjs": "^4.1.0"
-  }
+  "homepage": "https://github.com/xi/aria-api#readme"
 }
