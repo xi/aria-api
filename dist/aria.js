@@ -87,11 +87,13 @@ exports.extraSelectors = {
 	cell: ['td'],
 	checkbox: ['input[type="checkbox"]'],
 	combobox: [
+		'input:not([type])[list]',
 		'input[type="email"][list]',
 		'input[type="search"][list]',
 		'input[type="tel"][list]',
 		'input[type="text"][list]',
 		'input[type="url"][list]',
+		'select:not([multiple])',
 	],
 	complementary: ['aside'],
 	definition: ['dd'],
@@ -104,6 +106,7 @@ exports.extraSelectors = {
 	img: ['img:not([alt=""])'],
 	link: ['a[href]', 'area[href]', 'link[href]'],
 	list: ['dl', 'ol', 'ul'],
+	listbox: ['select[multiple]'],
 	listitem: ['dt', 'ul > li', 'ol > li'],
 	main: ['main'],
 	math: ['math'],
@@ -125,6 +128,7 @@ exports.extraSelectors = {
 	status: ['output'],
 	table: ['table'],
 	textbox: [
+		'input:not([type]):not([list])',
 		'input[type="email"]:not([list])',
 		'input[type="tel"]:not([list])',
 		'input[type="text"]:not([list])',
@@ -321,6 +325,7 @@ exports.labelable = [
 },{}],3:[function(require,module,exports){
 var constants = require('./constants.js');
 var query = require('./query.js');
+var util = require('./util.js');
 
 var getPseudoContent = function(node, selector) {
 	var styles = window.getComputedStyle(node, selector);
@@ -341,7 +346,13 @@ var getContent = function(root, referenced) {
 		if (node.nodeType === node.TEXT_NODE) {
 			ret += node.textContent;
 		} else if (node.nodeType === node.ELEMENT_NODE) {
-			ret += getName(node, true, referenced);
+			if (node.tagName.toLowerCase() === 'br') {
+				ret += '\n';
+			} else if (window.getComputedStyle(node).display.substr(0, 6) === 'inline') {
+				ret += getName(node, true, referenced);
+			} else {
+				ret += ' ' + getName(node, true, referenced) + ' ';
+			}
 		}
 		node = node.nextSibling;
 	}
@@ -360,22 +371,21 @@ var isLabelable = function(el) {
 };
 
 // Control.labels is part of the standard, but not supported in most browsers
-var getLabelNode = function(node) {
-	if (node.id) {
-		var selector = 'label[for="' + node.id + '"]';
-		var label = document.querySelector(selector);
-		if (label) {
-			return label;
+var getLabelNodes = function(element) {
+	var labels = [];
+	var labelable = constants.labelable.join(',');
+	util.walkDOM(document.body, function(node) {
+		if (node.tagName && node.tagName.toLowerCase() === 'label') {
+			if (node.getAttribute('for')) {
+				if (element.id && node.getAttribute('for') === element.id) {
+					labels.push(node);
+				}
+			} else if (node.querySelector(labelable) === element) {
+				labels.push(node);
+			}
 		}
-	}
-
-	var p = node.parentElement;
-	while (p) {
-		if (p.tagName.toLowerCase() === 'label') {
-			return p;
-		}
-		p = p.parentElement;
-	}
+	});
+	return labels;
 };
 
 // http://www.ssbbartgroup.com/blog/how-the-w3c-text-alternative-computation-works/
@@ -401,32 +411,37 @@ var getName = function(el, recursive, referenced) {
 		ret = el.getAttribute('aria-label');
 	}
 	if (!query.matches(el, 'presentation')) {
-		if (!ret && isLabelable(el)) {
-			var label = getLabelNode(el);
-			if (!recursive && label) {
-				ret = getName(label, true, label);
-			}
+		if (!ret && !recursive && isLabelable(el)) {
+			var strings = getLabelNodes(el).map(function(label) {
+				return getName(label, true, label);
+			});
+			ret = strings.join(' ');
 		}
 		if (!ret) {
 			ret = el.getAttribute('placeholder');
 		}
-		// figcaption
 		if (!ret) {
 			ret = el.getAttribute('alt');
 		}
+		if (!ret && el.matches('abbr,acronym') && el.title) {
+			ret = el.title;
+		}
+		// figcaption
 		// caption
 		// table
 	}
 	// FIXME only if this is embedded in a label
-	if (!ret && query.matches(el, 'input')) {
-		// combobox
-		// button
-		if (query.matches(el, 'range')) {
-			ret = query.getAttribute(el, 'valuetext') || query.getAttribute(el, 'valuenow') || el.value;
-		} else {
-			ret = el.value;
+	if (!ret && query.matches(el, 'textbox,button,combobox,range')) {
+		if (query.matches(el, 'textbox,button')) {
+			ret = el.value || el.textContent;
+		} else if (query.matches(el, 'combobox')) {
+			var selected = query.querySelector(el, ':selected') || query.querySelector(el, 'option');
+			if (selected) {
+				ret = getName(selected, recursive, referenced);
+			}
+		} else if (query.matches(el, 'range')) {
+			ret = '' + (query.getAttribute(el, 'valuetext') || query.getAttribute(el, 'valuenow') || el.value);
 		}
-		ret = '' + ret;
 	}
 	if (!ret && (recursive || allowNameFromContent(el))) {
 		ret = getContent(el, referenced);
@@ -435,7 +450,7 @@ var getName = function(el, recursive, referenced) {
 		ret = el.getAttribute('title');
 	}
 
-	return (ret || '').trim().replace(/\s+/g, ' ');
+	return ret || '';
 };
 
 var getDescription = function(el) {
@@ -458,11 +473,13 @@ var getDescription = function(el) {
 };
 
 module.exports = {
-	getName: getName,
+	getName: function(el) {
+		return getName(el).replace(/\s+/g, ' ').trim();
+	},
 	getDescription: getDescription,
 };
 
-},{"./constants.js":2,"./query.js":4}],4:[function(require,module,exports){
+},{"./constants.js":2,"./query.js":4,"./util.js":5}],4:[function(require,module,exports){
 var constants = require('./constants.js');
 var util = require('./util.js');
 

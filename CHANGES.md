@@ -1,3 +1,12 @@
+0.2.2 (2018-02-14)
+------------------
+
+-	name: further improve support for embedded controls
+-	name: use title attribute as alternative text for `<abbr>` and `<acronym>`
+-	name: correctly handle multiple labels
+-	name: add whitespace for `<br>` and around non non-inline elements
+-	add some missing implicit role mappings (e.g. select)
+
 0.2.1 (2018-02-03)
 ------------------
 
