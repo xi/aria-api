@@ -118,7 +118,7 @@ exports.extraSelectors = {
 	option: ['option'],
 	progressbar: ['progress'],
 	radio: ['input[type="radio"]'],
-	region: ['section'],
+	region: ['section[aria-label]', 'section[aria-labelledby]'],
 	rowgroup: ['tbody', 'thead', 'tfoot'],
 	row: ['tr'],
 	searchbox: ['input[type="search"]:not([list])'],
@@ -330,17 +330,18 @@ var util = require('./util.js');
 var getPseudoContent = function(node, selector) {
 	var styles = window.getComputedStyle(node, selector);
 	var ret = styles.getPropertyValue('content');
-	if (ret === 'none' || ret.substr(0, 4) === '-moz') {
+	if (!ret) {
+		return ''
+	}
+	if (ret.substr(0, 1) !== '"') {
 		return '';
 	} else {
-		return ret
-			.replace(/^["']/, '')
-			.replace(/["']$/, '');
+		return ret.slice(1, -1);
 	}
 };
 
 var getContent = function(root, referenced) {
-	var ret = getPseudoContent(root, ':before');
+	var ret = '';
 	var node = root.firstChild;
 	while (node) {
 		if (node.nodeType === node.TEXT_NODE) {
@@ -348,7 +349,9 @@ var getContent = function(root, referenced) {
 		} else if (node.nodeType === node.ELEMENT_NODE) {
 			if (node.tagName.toLowerCase() === 'br') {
 				ret += '\n';
-			} else if (window.getComputedStyle(node).display.substr(0, 6) === 'inline') {
+			} else if (window.getComputedStyle(node).display.substr(0, 6) === 'inline' &&
+					node.tagName.toLowerCase() !== 'input' &&
+					node.tagName.toLowerCase() !== 'img') {  // https://github.com/w3c/accname/issues/3
 				ret += getName(node, true, referenced);
 			} else {
 				ret += ' ' + getName(node, true, referenced) + ' ';
@@ -356,7 +359,6 @@ var getContent = function(root, referenced) {
 		}
 		node = node.nextSibling;
 	}
-	ret += getPseudoContent(root, ':after');
 	return ret;
 };
 
@@ -391,7 +393,7 @@ var getLabelNodes = function(element) {
 // http://www.ssbbartgroup.com/blog/how-the-w3c-text-alternative-computation-works/
 // https://www.w3.org/TR/accname-aam-1.1/#h-mapping_additional_nd_te
 var getName = function(el, recursive, referenced) {
-	var ret;
+	var ret = '';
 
 	if (query.getAttribute(el, 'hidden', referenced)) {
 		return '';
@@ -407,7 +409,7 @@ var getName = function(el, recursive, referenced) {
 		});
 		ret = strings.join(' ');
 	}
-	if (!ret && el.matches('[aria-label]')) {
+	if (!ret.trim() && el.matches('[aria-label]')) {
 		ret = el.getAttribute('aria-label');
 	}
 	if (!query.matches(el, 'presentation')) {
@@ -417,13 +419,13 @@ var getName = function(el, recursive, referenced) {
 			});
 			ret = strings.join(' ');
 		}
-		if (!ret) {
-			ret = el.getAttribute('placeholder');
+		if (!ret.trim()) {
+			ret = el.getAttribute('placeholder') || '';
 		}
-		if (!ret) {
-			ret = el.getAttribute('alt');
+		if (!ret.trim()) {
+			ret = el.getAttribute('alt') || '';
 		}
-		if (!ret && el.matches('abbr,acronym') && el.title) {
+		if (!ret.trim() && el.matches('abbr,acronym') && el.title) {
 			ret = el.title;
 		}
 		// figcaption
@@ -431,11 +433,11 @@ var getName = function(el, recursive, referenced) {
 		// table
 	}
 	// FIXME only if this is embedded in a label
-	if (!ret && query.matches(el, 'textbox,button,combobox,range')) {
+	if (!ret.trim() && query.matches(el, 'textbox,button,combobox,range,menu')) {
 		if (query.matches(el, 'textbox,button')) {
 			ret = el.value || el.textContent;
-		} else if (query.matches(el, 'combobox')) {
-			var selected = query.querySelector(el, ':selected') || query.querySelector(el, 'option');
+		} else if (query.matches(el, 'combobox,menu')) {
+			var selected = query.querySelector(el, ':selected') || query.querySelector(el, 'option,menuitem');
 			if (selected) {
 				ret = getName(selected, recursive, referenced);
 			}
@@ -443,14 +445,16 @@ var getName = function(el, recursive, referenced) {
 			ret = '' + (query.getAttribute(el, 'valuetext') || query.getAttribute(el, 'valuenow') || el.value);
 		}
 	}
-	if (!ret && (recursive || allowNameFromContent(el))) {
+	if (!ret.trim() && (recursive || allowNameFromContent(el))) {
 		ret = getContent(el, referenced);
 	}
-	if (!ret) {
-		ret = el.getAttribute('title');
+	if (!ret.trim()) {
+		ret = el.title || '';
 	}
 
-	return ret || '';
+	var before = getPseudoContent(el, ':before');
+	var after = getPseudoContent(el, ':after');
+	return before + ret + after;
 };
 
 var getDescription = function(el) {
