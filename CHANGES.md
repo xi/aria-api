@@ -1,3 +1,16 @@
+0.2.3 (2018-03-01)
+------------------
+
+-	name: add additional whitespace around `<input>` and `<img>` elements
+-	name: treat menus like comboboxes
+-	name: fix some cases where pseudo content was omitted
+-	name: ignore whitespace-only names in the computations
+-	name: ignore any non-string pseudo content (some dynamic cases like `attr()`
+	or `conter()` are not handled correctly yet)
+-	sections only get the implicit landmark role if they have an explicit label
+	(same as forms)
+
+
 0.2.2 (2018-02-14)
 ------------------
 
@@ -6,6 +19,7 @@
 -	name: correctly handle multiple labels
 -	name: add whitespace for `<br>` and around non non-inline elements
 -	add some missing implicit role mappings (e.g. select)
+
 
 0.2.1 (2018-02-03)
 ------------------
