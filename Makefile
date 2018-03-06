@@ -9,7 +9,7 @@ test/test-name.js: test/src/test-name.js
 	browserify $< -o $@
 
 test: test/test-name.js
-	./node_modules/.bin/phantomjs node_modules/mocha-phantomjs-core/mocha-phantomjs-core.js test/index.html
+	./node_modules/.bin/mocha-headless-chrome -a no-sandbox -a disable-setuid-sandbox -f test/index.html
 
 clean:
 	rm -f dist/aria.js
