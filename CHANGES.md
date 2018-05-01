@@ -1,3 +1,10 @@
+0.2.5 (2018-05-01)
+------------------
+
+-	support graphics-aria
+-	name: various improvements
+
+
 0.2.4 (2018-03-01)
 ------------------
 
