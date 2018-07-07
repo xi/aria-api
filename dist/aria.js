@@ -73,15 +73,19 @@ exports.attributes = {
 	'sort': 'token',
 };
 
-exports.attributeMapping = {
-	'checked': 'checked',
-	'colspan': 'colSpan',
+exports.attributeStrongMapping = {
 	'disabled': 'disabled',
-	'expanded': 'open',
-	'multiselectable': 'multiple',
+	'hidden': 'hidden',
 	'placeholder': 'placeholder',
 	'readonly': 'readOnly',
 	'required': 'required',
+};
+
+exports.attributeWeakMapping = {
+	'checked': 'checked',
+	'colspan': 'colSpan',
+	'expanded': 'open',
+	'multiselectable': 'multiple',
 	'rowspan': 'rowSpan',
 	'selected': 'selected',
 };
@@ -145,6 +149,7 @@ exports.extraSelectors = {
 	spinbutton: ['input[type="number"]'],
 	status: ['output'],
 	table: ['table'],
+	term: ['dfn', 'dt'],
 	textbox: [
 		'input:not([type]):not([list])',
 		'input[type="email"]:not([list])',
@@ -362,7 +367,7 @@ var getPseudoContent = function(node, selector) {
 	var ret = styles.getPropertyValue('content');
 	var inline = styles.display.substr(0, 6) === 'inline';
 	if (!ret) {
-		return ''
+		return '';
 	}
 	if (ret.substr(0, 1) !== '"') {
 		return '';
@@ -519,6 +524,10 @@ var getName = function(el, recursive, referenced) {
 	return before + ret + after;
 };
 
+var getNameTrimmed = function(el) {
+	return getName(el).replace(/\s+/g, ' ').trim();
+};
+
 var getDescription = function(el) {
 	var ret = '';
 
@@ -535,13 +544,17 @@ var getDescription = function(el) {
 		ret = el.placeholder;
 	}
 
-	return (ret || '').trim().replace(/\s+/g, ' ');
+	ret = (ret || '').trim().replace(/\s+/g, ' ');
+
+	if (ret === getNameTrimmed(el)) {
+		ret = '';
+	}
+
+	return ret;
 };
 
 module.exports = {
-	getName: function(el) {
-		return getName(el).replace(/\s+/g, ' ').trim();
-	},
+	getName: getNameTrimmed,
 	getDescription: getDescription,
 };
 
@@ -586,6 +599,23 @@ var getAttribute = function(el, key, _hiddenRoot) {
 		return false;
 	}
 
+	if (constants.attributeStrongMapping.hasOwnProperty(key)) {
+		var value = el[constants.attributeStrongMapping[key]];
+		if (value) {
+			return value;
+		}
+	}
+	if (key === 'readonly' && el.contentEditable) {
+		return false;
+	} else if (key === 'invalid' && el.checkValidity) {
+		return !el.checkValidity();
+	} else if (key === 'hidden') {
+		var style = window.getComputedStyle(el);
+		if (style.display === 'none' || style.visibility === 'hidden') {
+			return true;
+		}
+	}
+
 	var type = constants.attributes[key];
 	var raw = el.getAttribute('aria-' + key);
 
@@ -622,16 +652,11 @@ var getAttribute = function(el, key, _hiddenRoot) {
 			}
 		}
 	} else if (key === 'hidden') {
-		var style = window.getComputedStyle(el);
-		if (el.hidden || style.display === 'none' || style.visibility === 'hidden') {
-			return true;
-		} else if (el.clientHeight === 0) {  // rough check for performance
+		if (el.clientHeight === 0) {  // rough check for performance
 			return el.parentNode && getAttribute(el.parentNode, 'hidden', _hiddenRoot);
 		}
-	} else if (key === 'invalid' && el.checkValidity) {
-		return el.checkValidity();
-	} else if (constants.attributeMapping.hasOwnProperty(key)) {
-		return el[constants.attributeMapping[key]];
+	} else if (constants.attributeWeakMapping.hasOwnProperty(key)) {
+		return el[constants.attributeWeakMapping[key]];
 	}
 
 	if (type === 'bool' || type === 'tristate') {

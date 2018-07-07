@@ -1,3 +1,12 @@
+0.2.6 (2018-07-07)
+------------------
+
+-	name: return empty description if same as name
+-	query: add support for term role
+-	query: consider conflicts (see
+	https://www.w3.org/TR/core-aam-1.1/#mapping_conflicts)
+
+
 0.2.5 (2018-05-01)
 ------------------
 
