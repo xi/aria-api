@@ -42,13 +42,13 @@ Calculate the value of an element's attribute (state or property). The
 
 ## getName(element)
 
-Calculate an element's name according to the [Text Alternative
-Computation](https://www.w3.org/TR/accname-aam-1.1/#h-mapping_additional_nd_te).
+Calculate an element's name according to the [Accessible Name and Description
+Computation](https://www.w3.org/TR/accname-aam-1.1/#mapping_additional_nd_te).
 
 ## getDescription(element)
 
-Calculate an element's description according to the [Text Alternative
-Computation](https://www.w3.org/TR/accname-aam-1.1/#h-mapping_additional_nd_te).
+Calculate an element's description according to the [Accessible Name and
+Description Computation](https://www.w3.org/TR/accname-aam-1.1/#mapping_additional_nd_te).
 
 ## matches(element, selector)
 
