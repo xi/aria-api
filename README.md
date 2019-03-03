@@ -94,6 +94,18 @@ That said, this is what I think it could also be used for:
     e.g. landmark navigation.
 -   Tools helping developers with improving accessibility.
 
+# Implemented standards
+
+-   [Accessible Rich Internet Applications 1.1](https://www.w3.org/TR/wai-aria-1.1/)
+-   [Core Accessibility API Mappings 1.1](https://www.w3.org/TR/core-aam-1.1/)
+-   [HTML Accessibility API Mappings 1.0](https://www.w3.org/TR/html-aam-1.0/)
+-   [WAI-ARIA Graphics Module 1.0](https://www.w3.org/TR/graphics-aria-1.0/)
+-   [Digital Publishing WAI-ARIA Module 1.0](https://www.w3.org/TR/graphics-aria-1.0/)
+-   [Accessible Name and Description Computation 1.1](https://www.w3.org/TR/accname-1.1/)
+
+I try to update the code whenever a new version of these specs becomes a
+recommendation.
+
 # Notes
 
 -   This is a pet project. I do not have the time to do extensive testing and
@@ -108,17 +120,16 @@ That said, this is what I think it could also be used for:
 
 # Related projects
 
+-   [Visual ARIA Bookmarklet](http://whatsock.com/training/matrices/visual-aria.htm):
+    Displays role, name, and description in any website. Maintained by one of
+    the editors of the [accname]() speca.
 -   [axe-core](https://github.com/dequelabs/axe-core/) and
     [Accessibility Developer Tools](https://github.com/GoogleChrome/accessibility-developer-tools):
     These are libraries for accessibility testing. They solve many of the same
     issues as this library internally.
--   [Visual ARIA Bookmarklet](http://whatsock.com/training/matrices/visual-aria.htm):
-    Displays role, name, and description in any website.
--   [ally.js](https://allyjs.io/):
-    A library providing many useful accessibility-related utilities.
 -   [ARIA Query](https://github.com/A11yance/aria-query):
     Information from the ARIA spec as JavaScript structures.
--   [Accessibility Object Model](https://wicg.github.io/aom/spec/):
+-   [Accessibility Object Model](https://wicg.github.io/aom/):
     Draft spec for exposing the accessibility tree to JavaScript.
 -   [chrome.automation](https://developer.chrome.com/extensions/automation):
     A propriatary API that exposes the accessibility tree to JavaScript.
