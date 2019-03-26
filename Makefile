@@ -9,7 +9,10 @@ test/test-name.js: test/src/test-name.js
 	browserify $< -o $@
 
 test: test/test-name.js
-	./node_modules/.bin/mocha-headless-chrome -a no-sandbox -a disable-setuid-sandbox -f test/index.html
+	PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium ./node_modules/.bin/mocha-headless-chrome -a no-sandbox -f test/index.html
+
+install:
+	PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1 npm install
 
 clean:
 	rm -f dist/aria.js
