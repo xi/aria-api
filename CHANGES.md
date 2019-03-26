@@ -1,3 +1,11 @@
+0.2.7 (2019-03-26)
+------------------
+
+-	name: fix some bugs in handeling of `aria-owns`
+-	name: various improvements
+-	update README to be more specific about the supported specs
+
+
 0.2.6 (2018-07-07)
 ------------------
 

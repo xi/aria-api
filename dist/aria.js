@@ -1,4 +1,4 @@
-(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.aria = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.aria = f()}})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 var query = require('./lib/query.js');
 var name = require('./lib/name.js');
 
@@ -341,8 +341,8 @@ exports.nameFromDescendant = {
 };
 
 exports.nameDefaults = {
-	'[type="submit"]': 'Submit',
-	'[type="reset"]': 'Reset',
+	'input[type="submit"]': 'Submit',
+	'input[type="reset"]': 'Reset',
 	'summary': 'Details',
 };
 
@@ -380,18 +380,22 @@ var getPseudoContent = function(node, selector) {
 	}
 };
 
-var getContent = function(root, referenced) {
+var getContent = function(root, referenced, owned) {
 	var children = [];
 
 	for (var i = 0; i < root.childNodes.length; i++) {
-		children.push(root.childNodes[i]);
+		var node = root.childNodes[i];
+		if (!node.id || !document.querySelector('[aria-owns~="' + node.id + '"]')) {
+			children.push(node);
+		}
 	}
 
 	var owns = query.getAttribute(root, 'owns') || [];
 	for (var i = 0; i < owns.length; i++) {
-		var owned = document.getElementById(owns[i]);
-		if (owned) {
-			children.push(owned);
+		var child = document.getElementById(owns[i]);
+		if (child && child !== root && owned.indexOf(child.id) === -1) {
+			children.push(child);
+			owned.push(child.id);
 		}
 	}
 
@@ -406,9 +410,9 @@ var getContent = function(root, referenced) {
 			} else if (window.getComputedStyle(node).display.substr(0, 6) === 'inline' &&
 					node.tagName.toLowerCase() !== 'input' &&
 					node.tagName.toLowerCase() !== 'img') {  // https://github.com/w3c/accname/issues/3
-				ret += getName(node, true, referenced);
+				ret += getName(node, true, referenced, owned);
 			} else {
-				ret += ' ' + getName(node, true, referenced) + ' ';
+				ret += ' ' + getName(node, true, referenced, owned) + ' ';
 			}
 		}
 	}
@@ -418,7 +422,7 @@ var getContent = function(root, referenced) {
 
 var allowNameFromContent = function(el) {
 	var role = query.getRole(el);
-	return !role || constants.nameFromContents.indexOf(role) !== -1;
+	return role && constants.nameFromContents.indexOf(role) !== -1;
 };
 
 var isLabelable = function(el) {
@@ -444,39 +448,48 @@ var getLabelNodes = function(element) {
 	return labels;
 };
 
-// http://www.ssbbartgroup.com/blog/how-the-w3c-text-alternative-computation-works/
-// https://www.w3.org/TR/accname-aam-1.1/#h-mapping_additional_nd_te
-var getName = function(el, recursive, referenced) {
-	var ret = '';
+var isInLabelForOtherWidget = function(el) {
+	var label = el.parentElement.closest('label');
+	var ownLabels = getLabelNodes(el);
+	return label && ownLabels.indexOf(label) === -1;
+};
 
+var getName = function(el, recursive, referenced, owned) {
+	var ret = '';
+	var owned = owned || [];
+
+	// A
 	if (query.getAttribute(el, 'hidden', referenced)) {
 		return '';
 	}
+
+	// B
 	if (!recursive && el.matches('[aria-labelledby]')) {
 		var ids = el.getAttribute('aria-labelledby').split(/\s+/);
 		var strings = ids.map(function(id) {
 			var label = document.getElementById(id);
-			return label ? getName(label, true, label) : '';
+			return label ? getName(label, true, label, owned) : '';
 		});
 		ret = strings.join(' ');
 	}
+
+	// C
 	if (!ret.trim() && el.matches('[aria-label]')) {
 		ret = el.getAttribute('aria-label');
 	}
-	if (!ret.trim() && query.matches(el, 'presentation')) {
-		return getContent(el, referenced);
-	}
-	if (!ret && !recursive && isLabelable(el)) {
+
+	// D
+	if (!ret.trim() && !recursive && isLabelable(el)) {
 		var strings = getLabelNodes(el).map(function(label) {
-			return getName(label, true, label);
+			return getName(label, true, label, owned);
 		});
 		ret = strings.join(' ');
 	}
 	if (!ret.trim()) {
-		ret = el.getAttribute('placeholder') || '';
+		ret = el.placeholder || '';
 	}
 	if (!ret.trim()) {
-		ret = el.getAttribute('alt') || '';
+		ret = el.alt || '';
 	}
 	if (!ret.trim() && el.matches('abbr,acronym') && el.title) {
 		ret = el.title;
@@ -486,28 +499,45 @@ var getName = function(el, recursive, referenced) {
 			if (el.matches(selector)) {
 				var descendant = el.querySelector(constants.nameFromDescendant[selector]);
 				if (descendant) {
-					ret = getName(descendant, true, descendant);
+					ret = getName(descendant, true, descendant, owned);
 				}
 			}
 		}
 	}
-	if (el.closest('label') || recursive || query.matches(el, 'button')) {
-		if (!ret.trim() && query.matches(el, 'textbox,button,combobox,listbox,range')) {
+
+	// E
+	if (!ret.trim() && (recursive || isInLabelForOtherWidget(el) || query.matches(el, 'button'))) {
+		if (query.matches(el, 'textbox,button,combobox,listbox,range')) {
 			if (query.matches(el, 'textbox,button')) {
 				ret = el.value || el.textContent;
 			} else if (query.matches(el, 'combobox,listbox')) {
 				var selected = query.querySelector(el, ':selected') || query.querySelector(el, 'option');
 				if (selected) {
-					ret = getName(selected, recursive, referenced);
+					ret = getName(selected, recursive, referenced, owned);
+				} else {
+					ret = el.value || '';
 				}
 			} else if (query.matches(el, 'range')) {
 				ret = '' + (query.getAttribute(el, 'valuetext') || query.getAttribute(el, 'valuenow') || el.value);
 			}
 		}
 	}
-	if (!ret.trim() && (recursive || allowNameFromContent(el)) && !query.matches(el, 'menu')) {
-		ret = getContent(el, referenced);
+
+	// F
+	// FIXME: menu is not mentioned in the spec
+	if (!ret.trim() && (recursive || allowNameFromContent(el) || el.closest('label')) && !query.matches(el, 'menu')) {
+		ret = getContent(el, referenced, owned);
 	}
+
+	// TODO: G
+	// TODO: H
+
+	// FIXME: not mentioned in the spec
+	if (!ret.trim() && query.matches(el, 'presentation')) {
+		return getContent(el, referenced, owned);
+	}
+
+	// FIXME: not mentioned in the spec
 	if (!ret.trim()) {
 		for (var selector in constants.nameDefaults) {
 			if (el.matches(selector)) {
@@ -515,6 +545,8 @@ var getName = function(el, recursive, referenced) {
 			}
 		}
 	}
+
+	// I
 	if (!ret.trim()) {
 		ret = el.title || '';
 	}
@@ -530,12 +562,13 @@ var getNameTrimmed = function(el) {
 
 var getDescription = function(el) {
 	var ret = '';
+	var owned = [];
 
 	if (el.matches('[aria-describedby]')) {
 		var ids = el.getAttribute('aria-describedby').split(/\s+/);
 		var strings = ids.map(function(id) {
 			var label = document.getElementById(id);
-			return label ? getName(label, true, label) : '';
+			return label ? getName(label, true, label, owned) : '';
 		});
 		ret = strings.join(' ');
 	} else if (el.title) {
