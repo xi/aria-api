@@ -17,10 +17,10 @@ describe('getAttribute(el, "hidden")', function() {
 		expect(aria.getAttribute(el, 'hidden')).toBe(true);
 	});
 
-	it('is true on display: none on parent', function() {
+	it('is false on display: none on parent', function() {
 		testbed.innerHTML = '<div style="display: none"><div class="test">test</div></div>';
 		var el = testbed.querySelector('.test');
-		expect(aria.getAttribute(el, 'hidden')).toBe(true);
+		expect(aria.getAttribute(el, 'hidden')).toBe(false);
 	});
 
 	it('is true on visibility: hidden', function() {
@@ -47,8 +47,14 @@ describe('getAttribute(el, "hidden")', function() {
 		expect(aria.getAttribute(el, 'hidden')).toBe(true);
 	});
 
-	it('is true on hidden attribute on parent', function() {
+	it('is false on hidden attribute on parent', function() {
 		testbed.innerHTML = '<div hidden><div class="test">test</div></div>';
+		var el = testbed.querySelector('.test');
+		expect(aria.getAttribute(el, 'hidden')).toBe(false);
+	});
+
+	it('is true on visually overwritten hidden attribute', function() {
+		testbed.innerHTML = '<div class="test" style="display: block" hidden>test</div>';
 		var el = testbed.querySelector('.test');
 		expect(aria.getAttribute(el, 'hidden')).toBe(true);
 	});
