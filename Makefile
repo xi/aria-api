@@ -6,7 +6,7 @@ dist/aria.js: index.js lib/*.js
 	browserify $< -o $@ -s aria
 
 test/test-name.js: test/src/test-name.js
-	browserify $< -o $@
+	browserify -t brfs $< -o $@
 
 test: test/test-name.js
 	PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium ./node_modules/.bin/mocha-headless-chrome -a no-sandbox -f test/index.html

@@ -1,9 +1,15 @@
-var accnameTest = require('accname-test/dist/accname-test');
+var fs = require('fs');
+var accnameTest = require('accname-test');
+
+var files = {
+	'w3c wiki': fs.readFileSync(__dirname + '/../../node_modules/accname-test/tests/w3c.html', 'utf8'),
+	'labels': fs.readFileSync(__dirname + '/../../node_modules/accname-test/tests/labels.html', 'utf8'),
+};
 
 describe('getName / getDescription', function() {
-	Object.keys(accnameTest.files).forEach(function(name) {
+	Object.keys(files).forEach(function(name) {
 		var testbed = document.createElement('div');
-		testbed.innerHTML = accnameTest.files[name];
+		testbed.innerHTML = files[name];
 
 		before(function() {
 			document.body.appendChild(testbed);
