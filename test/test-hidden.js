@@ -53,9 +53,9 @@ describe('getAttribute(el, "hidden")', function() {
 		expect(aria.getAttribute(el, 'hidden')).toBe(false);
 	});
 
-	it('is true on visually overwritten hidden attribute', function() {
+	it('is false on visually overwritten hidden attribute', function() {
 		testbed.innerHTML = '<div class="test" style="display: block" hidden>test</div>';
 		var el = testbed.querySelector('.test');
-		expect(aria.getAttribute(el, 'hidden')).toBe(true);
+		expect(aria.getAttribute(el, 'hidden')).toBe(false);
 	});
 });
