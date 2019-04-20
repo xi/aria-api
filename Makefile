@@ -2,7 +2,7 @@ dist/aria.js: index.js lib/*.js
 	mkdir -p dist
 	browserify $< -o $@ -s aria
 
-test/test-name.js: test/src/test-name.js
+test/%.js: test/src/%.js
 	browserify -t brfs $< -o $@
 
 test: test/test-name.js
