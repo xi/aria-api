@@ -1,3 +1,26 @@
+0.3.0 (2019-05-23)
+------------------
+
+-	new module atree for walking the accessibility tree. The tree is takes
+	`aria-owns` into account. Elements with `aria-hidden` are skipped.
+-	new module attrs contains some functions that were previously part of query.
+-	there is no longer a minified dist file.
+
+-	attrs: `aria.getAttribute(el, 'hidden')` no longer checks the ancestor
+	elements, only the element itself
+-	attrs: support implicit attribute values for roles
+-	attrs: a form element now also gets the role "form" if it has a `title`
+	attribute
+-	attrs: the `hidden` attribute is no longer considered to imply `aria-hidden`.
+	Instead, the implication is indirect via `display`. See
+	<https://github.com/w3c/html-aam/issues/178>.
+-	attrs: elements like header or footer only get implicit roles if they are not
+	scoped. The scoping detection has been fixed to include not only sectioning
+	content but also sectioning roots (e.g. blockquote).
+-	name: the code to detect recursion has been changed, hopefully for the
+	better.
+
+
 0.2.7 (2019-03-26)
 ------------------
 

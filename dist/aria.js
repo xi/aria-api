@@ -14,7 +14,210 @@ module.exports = {
 	closest: query.closest,
 };
 
-},{"./lib/name.js":3,"./lib/query.js":4}],2:[function(require,module,exports){
+},{"./lib/name.js":5,"./lib/query.js":6}],2:[function(require,module,exports){
+var attrs = require('./attrs');
+
+var _getOwner = function(node) {
+	if (node.nodeType === node.ELEMENT_NODE && node.id) {
+		var owner = document.querySelector('[aria-owns~="' + node.id + '"]');
+		if (owner) {
+			return owner;
+		}
+	}
+};
+
+var _getParentNode = function(node) {
+	return _getOwner(node) || node.parentNode;
+};
+
+var detectLoop = function(node) {
+	var tmp = _getParentNode(node);
+	while (tmp) {
+		if (tmp === node) {
+			return true;
+		}
+		tmp = _getParentNode(tmp);
+	}
+};
+
+var getOwner = function(node) {
+	if (node.nodeType === node.ELEMENT_NODE && node.id) {
+		var owner = document.querySelector('[aria-owns~="' + node.id + '"]');
+		if (owner && !detectLoop(node)) {
+			return owner;
+		}
+	}
+};
+
+var getParentNode = function(node) {
+	return getOwner(node) || node.parentNode;
+};
+
+var isHidden = function(node) {
+	return node.nodeType === node.ELEMENT_NODE && attrs.getAttribute(node, 'hidden');
+};
+
+var getChildNodes = function(node) {
+	var childNodes = [];
+
+	for (var i = 0; i < node.childNodes.length; i++) {
+		var child = node.childNodes[i];
+		if (!getOwner(child) && !isHidden(child)) {
+			childNodes.push(child);
+		}
+	}
+
+	if (node.nodeType === node.ELEMENT_NODE) {
+		var owns = attrs.getAttribute(node, 'owns') || [];
+		for (var i = 0; i < owns.length; i++) {
+			var child = document.getElementById(owns[i]);
+			// double check with getOwner for consistency
+			if (child && getOwner(child) === node && !isHidden(child)) {
+				childNodes.push(child);
+			}
+		}
+	}
+
+	return childNodes;
+};
+
+var walk = function(root, fn) {
+	fn(root);
+	getChildNodes(root).forEach(function(child) {
+		walk(child, fn);
+	});
+};
+
+var searchUp = function(node, test) {
+	var candidate = getParentNode(node);
+	if (candidate) {
+		if (test(candidate)) {
+			return candidate;
+		} else {
+			return searchUp(candidate, test);
+		}
+	}
+};
+
+module.exports = {
+	'getParentNode': getParentNode,
+	'getChildNodes': getChildNodes,
+	'walk': walk,
+	'searchUp': searchUp,
+};
+
+},{"./attrs":3}],3:[function(require,module,exports){
+var constants = require('./constants.js');
+
+// candidates can be passed for performance optimization
+var getRole = function(el, candidates) {
+	if (el.hasAttribute('role')) {
+		return el.getAttribute('role');
+	}
+	for (var role in constants.roles) {
+		var selector = (constants.roles[role].selectors || []).join(',');
+		if (selector && (!candidates || candidates.indexOf(role) !== -1) && el.matches(selector)) {
+			return role;
+		}
+	}
+
+	if (!candidates ||
+			candidates.indexOf('banner') !== -1 ||
+			candidates.indexOf('contentinfo') !== -1) {
+		var scoped = el.matches(constants.scoped);
+
+		if (el.matches('header') && !scoped) {
+			return 'banner';
+		}
+		if (el.matches('footer') && !scoped) {
+			return 'contentinfo';
+		}
+	}
+};
+
+var hasRole = function(el, roles) {
+	var candidates = [].concat.apply([], roles.map(function(role) {
+		return (constants.roles[role] || {}).subRoles || [role];
+	}));
+	actual = getRole(el, candidates);
+	return candidates.indexOf(actual) !== -1;
+};
+
+var getAttribute = function(el, key) {
+	if (constants.attributeStrongMapping.hasOwnProperty(key)) {
+		var value = el[constants.attributeStrongMapping[key]];
+		if (value) {
+			return value;
+		}
+	}
+	if (key === 'readonly' && el.contentEditable) {
+		return false;
+	} else if (key === 'invalid' && el.checkValidity) {
+		return !el.checkValidity();
+	} else if (key === 'hidden') {
+		var style = window.getComputedStyle(el);
+		if (style.display === 'none' || style.visibility === 'hidden') {
+			return true;
+		}
+	}
+
+	var type = constants.attributes[key];
+	var raw = el.getAttribute('aria-' + key);
+
+	if (raw) {
+		if (type === 'bool') {
+			return raw === 'true';
+		} else if (type === 'tristate') {
+			return raw === 'true' ? true : raw === 'false' ? false : 'mixed';
+		} else if (type === 'bool-undefined') {
+			return raw === 'true' ? true : raw === 'false' ? false : undefined;
+		} else if (type === 'id-list') {
+			return raw.split(/\s+/);
+		} else if (type === 'integer') {
+			return parseInt(raw);
+		} else if (type === 'number') {
+			return parseFloat(raw);
+		} else if (type === 'token-list') {
+			return raw.split(/\s+/);
+		} else {
+			return raw;
+		}
+	}
+
+	// TODO
+	// autocomplete
+	// contextmenu -> aria-haspopup
+	// indeterminate -> aria-checked="mixed"
+	// list -> aria-controls
+
+	if (key === 'level') {
+		for (var i = 1; i <= 6; i++) {
+			if (el.tagName.toLowerCase() === 'h' + i) {
+				return i;
+			}
+		}
+	} else if (constants.attributeWeakMapping.hasOwnProperty(key)) {
+		return el[constants.attributeWeakMapping[key]];
+	}
+
+	var role = getRole(el);
+	var defaults = (constants.roles[role] || {}).defaults;
+	if (defaults && defaults.hasOwnProperty(key)) {
+		return defaults[key];
+	}
+
+	if (type === 'bool' || type === 'tristate') {
+		return false;
+	}
+};
+
+module.exports = {
+	getRole: getRole,
+	hasRole: hasRole,
+	getAttribute: getAttribute,
+};
+
+},{"./constants.js":4}],4:[function(require,module,exports){
 exports.attributes = {
 	// widget
 	'autocomplete': 'token',
@@ -75,7 +278,6 @@ exports.attributes = {
 
 exports.attributeStrongMapping = {
 	'disabled': 'disabled',
-	'hidden': 'hidden',
 	'placeholder': 'placeholder',
 	'readonly': 'readOnly',
 	'required': 'required',
@@ -90,202 +292,447 @@ exports.attributeWeakMapping = {
 	'selected': 'selected',
 };
 
-// https://www.w3.org/TR/html-aria/#docconformance
-exports.extraSelectors = {
-	article: ['article'],
-	button: [
-		'button',
-		'input[type="button"]',
-		'input[type="image"]',
-		'input[type="reset"]',
-		'input[type="submit"]',
-		'summary',
-	],
-	cell: ['td'],
-	checkbox: ['input[type="checkbox"]'],
-	combobox: [
+// https://www.w3.org/TR/html-aam-1.0/#html-element-role-mappings
+// https://www.w3.org/TR/wai-aria/roles
+exports.roles = {
+	alert: {
+		childRoles: ['alertdialog'],
+		defaults: {
+			'live': 'assertive',
+			'atomic': true,
+		},
+	},
+	article: {
+		selectors: ['article'],
+	},
+	button: {
+		selectors: [
+			'button',
+			'input[type="button"]',
+			'input[type="image"]',
+			'input[type="reset"]',
+			'input[type="submit"]',
+			'summary',
+		],
+		nameFromContents: true,
+	},
+	cell: {
+		selectors: ['td'],
+		childRoles: ['gridcell', 'rowheader'],
+	},
+	checkbox: {
+		selectors: ['input[type="checkbox"]'],
+		childRoles: ['menuitemcheckbox', 'switch'],
+		nameFromContents: true,
+		defaults: {
+			'checked': 'false',
+		},
+	},
+	columnheader: {
+		selectors: ['th[scope="col"]'],
+		nameFromContents: true,
+	},
+	combobox: {
+		selectors: [
 		'input:not([type])[list]',
-		'input[type="email"][list]',
-		'input[type="search"][list]',
-		'input[type="tel"][list]',
-		'input[type="text"][list]',
-		'input[type="url"][list]',
-		'select:not([size]):not([multiple])',
-		'select[size="0"]:not([multiple])',
-		'select[size="1"]:not([multiple])',
-	],
-	complementary: ['aside'],
-	definition: ['dd'],
-	dialog: ['dialog'],
-	document: ['body'],
-	figure: ['figure'],
-	form: ['form[aria-label]', 'form[aria-labelledby]'],
-	group: ['details', 'optgroup'],
-	heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
-	img: ['img:not([alt=""])', 'graphics-symbol'],
-	link: ['a[href]', 'area[href]', 'link[href]'],
-	list: ['dl', 'ol', 'ul'],
-	listbox: [
-		'select[multiple]',
-		'select[size]:not([size="0"]):not([size="1"])',
-	],
-	listitem: ['dt', 'ul > li', 'ol > li'],
-	main: ['main'],
-	math: ['math'],
-	menuitemcheckbox: ['menuitem[type="checkbox"]'],
-	menuitem: ['menuitem[type="command"]'],
-	menuitemradio: ['menuitem[type="radio"]'],
-	menu: ['menu[type="context"]'],
-	navigation: ['nav'],
-	option: ['option'],
-	progressbar: ['progress'],
-	radio: ['input[type="radio"]'],
-	region: ['section[aria-label]', 'section[aria-labelledby]', 'section[title]'],
-	rowgroup: ['tbody', 'thead', 'tfoot'],
-	row: ['tr'],
-	searchbox: ['input[type="search"]:not([list])'],
-	separator: ['hr'],
-	slider: ['input[type="range"]'],
-	spinbutton: ['input[type="number"]'],
-	status: ['output'],
-	table: ['table'],
-	term: ['dfn', 'dt'],
-	textbox: [
-		'input:not([type]):not([list])',
-		'input[type="email"]:not([list])',
-		'input[type="tel"]:not([list])',
-		'input[type="text"]:not([list])',
-		'input[type="url"]:not([list])',
-		'textarea',
-	],
-
-	// if scope is missing, it is calculated automatically
-	rowheader: ['th[scope="row"]'],
-	columnheader: ['th[scope="col"]'],
+			'input[type="email"][list]',
+			'input[type="search"][list]',
+			'input[type="tel"][list]',
+			'input[type="text"][list]',
+			'input[type="url"][list]',
+			'select:not([size]):not([multiple])',
+			'select[size="0"]:not([multiple])',
+			'select[size="1"]:not([multiple])',
+		],
+		defaults: {
+			'expanded': false,
+			'haspopup': 'listbox',
+		},
+	},
+	command: {
+		childRoles: ['button', 'link', 'menuitem'],
+	},
+	complementary: {
+		selectors: ['aside'],
+	},
+	composite: {
+		childRoles: ['grid', 'select', 'spinbutton', 'tablist'],
+	},
+	definition: {
+		selectors: ['dd'],
+	},
+	dialog: {
+		selectors: ['dialog'],
+		childRoles: ['alertdialog'],
+	},
+	'doc-backlink': {
+		nameFromContents: true,
+	},
+	'doc-biblioref': {
+		nameFromContents: true,
+	},
+	'doc-glossref': {
+		nameFromContents: true,
+	},
+	'doc-noteref': {
+		nameFromContents: true,
+	},
+	document: {
+		selectors: ['body'],
+		childRoles: ['article', 'graphics-document'],
+	},
+	figure: {
+		selectors: ['figure'],
+	},
+	form: {
+		selectors: ['form[aria-label]', 'form[aria-labelledby]', 'form[title]'],
+	},
+	grid: {
+		childRoles: ['treegrid'],
+	},
+	gridcell: {
+		childRoles: ['columnheader', 'rowheader'],
+		nameFromContents: true,
+	},
+	group: {
+		selectors: ['details', 'optgroup'],
+		childRoles: ['row', 'select', 'toolbar', 'graphics-object'],
+	},
+	heading: {
+		selectors: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+		nameFromContents: true,
+		defaults: {
+			'level': 2,
+		},
+	},
+	img: {
+		selectors: ['img:not([alt=""])', 'graphics-symbol'],
+		childRoles: ['doc-cover'],
+	},
+	input: {
+		childRoles: ['checkbox', 'option', 'radio', 'slider', 'spinbutton', 'textbox'],
+	},
+	landmark: {
+		childRoles: [
+			'banner',
+			'complementary',
+			'contentinfo',
+			'doc-acknowledgments',
+			'doc-afterword',
+			'doc-appendix',
+			'doc-bibliography',
+			'doc-chapter',
+			'doc-conclusion',
+			'doc-credits',
+			'doc-endnotes',
+			'doc-epilogue',
+			'doc-errata',
+			'doc-foreword',
+			'doc-glossary',
+			'doc-introduction',
+			'doc-part',
+			'doc-preface',
+			'doc-prologue',
+			'form',
+			'main',
+			'navigation',
+			'region',
+			'search',
+		],
+	},
+	link: {
+		selectors: ['a[href]', 'area[href]', 'link[href]'],
+		childRoles: ['doc-backlink', 'doc-biblioref', 'doc-glossref', 'doc-noteref'],
+		nameFromContents: true,
+	},
+	list: {
+		selectors: ['dl', 'ol', 'ul'],
+		childRoles: ['directory', 'feed'],
+	},
+	listbox: {
+		selectors: [
+			'select[multiple]',
+			'select[size]:not([size="0"]):not([size="1"])',
+		],
+		defaults: {
+			'orientation': 'vertical',
+		},
+	},
+	listitem: {
+		selectors: ['dt', 'ul > li', 'ol > li'],
+		childRoles: ['doc-biblioentry', 'doc-endnote', 'treeitem'],
+	},
+	log: {
+		defaults: {
+			'live': 'polite',
+		},
+	},
+	main: {
+		selectors: ['main'],
+	},
+	math: {
+		selectors: ['math'],
+	},
+	menu: {
+		selectors: ['menu[type="context"]'],
+		childRoles: ['menubar'],
+		defaults: {
+			'orientation': 'vertical',
+		},
+	},
+	menubar: {
+		defaults: {
+			'orientation': 'horizontal',
+		},
+	},
+	menuitem: {
+		selectors: ['menuitem[type="command"]'],
+		childRoles: ['menuitemcheckbox'],
+		nameFromContents: true,
+	},
+	menuitemcheckbox: {
+		selectors: ['menuitem[type="checkbox"]'],
+		childRoles: ['menuitemradio'],
+		nameFromContents: true,
+		defaults: {
+			'checked': 'false',
+		},
+	},
+	menuitemradio: {
+		selectors: ['menuitem[type="radio"]'],
+		nameFromContents: true,
+		defaults: {
+			'checked': 'false',
+		},
+	},
+	navigation: {
+		selectors: ['nav'],
+		childRoles: ['doc-index', 'doc-pagelist', 'doc-toc'],
+	},
+	note: {
+		childRoles: ['doc-notice', 'doc-tip'],
+	},
+	option: {
+		selectors: ['option'],
+		childRoles: ['treeitem'],
+		nameFromContents: true,
+		defaults: {
+			'selected': 'false',
+		},
+	},
+	progressbar: {
+		selectors: ['progress'],
+	},
+	radio: {
+		selectors: ['input[type="radio"]'],
+		childRoles: ['menuitemradio'],
+		nameFromContents: true,
+		defaults: {
+			'checked': 'false',
+		},
+	},
+	range: {
+		childRoles: ['progressbar', 'scrollbar', 'slider', 'spinbutton'],
+	},
+	region: {
+		selectors: ['section[aria-label]', 'section[aria-labelledby]', 'section[title]'],
+	},
+	roletype: {
+		childRoles: ['structure', 'widget', 'window'],
+	},
+	row: {
+		selectors: ['tr'],
+		nameFromContents: true,
+	},
+	rowheader: {
+		selectors: ['th[scope="row"]'],
+		nameFromContents: true,
+	},
+	rowgroup: {
+		selectors: ['tbody', 'thead', 'tfoot'],
+		nameFromContents: true,
+	},
+	scrollbar: {
+		defaults: {
+			'orientation': 'vertical',
+			'valuemin': 0,
+			'valuemax': 100,
+			// FIXME: halfway between actual valuemin and valuemax
+			'valuenow': 50,
+		},
+	},
+	searchbox: {
+		selectors: ['input[type="search"]:not([list])'],
+	},
+	section: {
+		childRoles: [
+			'alert',
+			'cell',
+			'definition',
+			'doc-abstract',
+			'doc-colophon',
+			'doc-credit',
+			'doc-dedication',
+			'doc-epigraph',
+			'doc-example',
+			'doc-footnote',
+			'doc-qna',
+			'figure',
+			'group',
+			'img',
+			'landmark',
+			'list',
+			'listitem',
+			'log',
+			'marquee',
+			'math',
+			'note',
+			'status',
+			'table',
+			'tabpanel',
+			'term',
+			'tooltip',
+		],
+	},
+	sectionhead: {
+		childRoles: [
+			'columnheader',
+			'doc-subtitle',
+			'heading',
+			'rowheader',
+			'tab',
+		],
+		nameFromContents: true,
+	},
+	select: {
+		childRoles: ['combobox', 'listbox', 'menu', 'radiogroup', 'tree'],
+	},
+	separator: {
+		selectors: ['hr'],
+		childRoles: ['doc-pagebreak'],
+		defaults: {
+			'orientation': 'horizontal',
+			'valuemin': 0,
+			'valuemax': 100,
+			'valuenow': 50,
+		},
+	},
+	slider: {
+		selectors: ['input[type="range"]'],
+		defaults: {
+			'orientation': 'horizontal',
+			'valuemin': 0,
+			'valuemax': 100,
+			// FIXME: halfway between actual valuemin and valuemax
+			'valuenow': 50,
+		},
+	},
+	spinbutton: {
+		selectors: ['input[type="number"]'],
+		defaults: {
+			// FIXME: no valuemin/valuemax
+			'valuenow': 0,
+		},
+	},
+	status: {
+		selectors: ['output'],
+		childRoles: ['timer'],
+		defaults: {
+			'live': 'polite',
+			'atomic': true,
+		},
+	},
+	switch: {
+		nameFromContents: true,
+		defaults: {
+			'checked': false,
+		},
+	},
+	structure: {
+		childRoles: [
+			'application',
+			'document',
+			'none',
+			'presentation',
+			'rowgroup',
+			'section',
+			'sectionhead',
+			'separator',
+		],
+	},
+	tab: {
+		nameFromContents: true,
+		defaults: {
+			'selected': false,
+		},
+	},
+	table: {
+		selectors: ['table'],
+		childRoles: ['grid'],
+	},
+	tablist: {
+		defaults: {
+			'orientation': 'horizontal',
+		},
+	},
+	term: {
+		selectors: ['dfn', 'dt'],
+	},
+	textbox: {
+		selectors: [
+			'input:not([type]):not([list])',
+			'input[type="email"]:not([list])',
+			'input[type="tel"]:not([list])',
+			'input[type="text"]:not([list])',
+			'input[type="url"]:not([list])',
+			'textarea',
+		],
+		childRoles: ['searchbox'],
+	},
+	toolbar: {
+		defaults: {
+			'orientation': 'horizontal',
+		},
+	},
+	tooltip: {
+		nameFromContents: true,
+	},
+	tree: {
+		childRoles: ['treegrid'],
+		defaults: {
+			'orientation': 'vertical',
+		},
+	},
+	treeitem: {
+		nameFromContents: true,
+	},
+	widget: {
+		childRoles: [
+			'command',
+			'composite',
+			'gridcell',
+			'input',
+			'range',
+			'row',
+			'separator',
+			'tab',
+		],
+	},
+	window: {
+		childRoles: ['dialog'],
+	},
 };
 
 exports.scoped = [
-	'article *', 'aside *', 'main *', 'nav *', 'section *',
+	'main *',
+	// https://www.w3.org/TR/html/dom.html#sectioning-content-2
+	'article *', 'aside *', 'nav *', 'section *',
+	// https://www.w3.org/TR/html/sections.html#sectioning-roots
+	'blockquote *', 'details *', 'dialog *', 'fieldset *', 'figure *', 'td *',
 ].join(',');
 
-// https://www.w3.org/TR/wai-aria/roles
-var subRoles = {
-	cell: ['gridcell', 'rowheader'],
-	command: ['button', 'link', 'menuitem'],
-	composite: ['grid', 'select', 'spinbutton', 'tablist'],
-	img: ['doc-cover'],
-	input: ['checkbox', 'option', 'radio', 'slider', 'spinbutton', 'textbox'],
-	landmark: [
-		'banner',
-		'complementary',
-		'contentinfo',
-		'doc-acknowledgments',
-		'doc-afterword',
-		'doc-appendix',
-		'doc-bibliography',
-		'doc-chapter',
-		'doc-conclusion',
-		'doc-credits',
-		'doc-endnotes',
-		'doc-epilogue',
-		'doc-errata',
-		'doc-foreword',
-		'doc-glossary',
-		'doc-introduction',
-		'doc-part',
-		'doc-preface',
-		'doc-prologue',
-		'form',
-		'main',
-		'navigation',
-		'region',
-		'search',
-	],
-	range: ['progressbar', 'scrollbar', 'slider', 'spinbutton'],
-	roletype: ['structure', 'widget', 'window'],
-	section: [
-		'alert',
-		'cell',
-		'definition',
-		'doc-abstract',
-		'doc-colophon',
-		'doc-credit',
-		'doc-dedication',
-		'doc-epigraph',
-		'doc-example',
-		'doc-footnote',
-		'doc-qna',
-		'figure',
-		'group',
-		'img',
-		'landmark',
-		'list',
-		'listitem',
-		'log',
-		'marquee',
-		'math',
-		'note',
-		'status',
-		'table',
-		'tabpanel',
-		'term',
-		'tooltip',
-	],
-	sectionhead: [
-		'columnheader',
-		'doc-subtitle',
-		'heading',
-		'rowheader',
-		'tab',
-	],
-	select: ['combobox', 'listbox', 'menu', 'radiogroup', 'tree'],
-	separator: ['doc-pagebreak'],
-	structure: [
-		'application',
-		'document',
-		'none',
-		'presentation',
-		'rowgroup',
-		'section',
-		'sectionhead',
-		'separator',
-	],
-	table: ['grid'],
-	textbox: ['searchbox'],
-	widget: [
-		'command',
-		'composite',
-		'gridcell',
-		'input',
-		'range',
-		'row',
-		'separator',
-		'tab',
-	],
-	window: ['dialog'],
-	alert: ['alertdialog'],
-	checkbox: ['menuitemcheckbox', 'switch'],
-	dialog: ['alertdialog'],
-	gridcell: ['columnheader', 'rowheader'],
-	menuitem: ['menuitemcheckbox'],
-	menuitemcheckbox: ['menuitemradio'],
-	option: ['treeitem'],
-	radio: ['menuitemradio'],
-	status: ['timer'],
-	grid: ['treegrid'],
-	menu: ['menubar'],
-	tree: ['treegrid'],
-	document: ['article', 'graphics-document'],
-	group: ['row', 'select', 'toolbar', 'graphics-object'],
-	link: ['doc-backlink', 'doc-biblioref', 'doc-glossref', 'doc-noteref'],
-	list: ['directory', 'feed'],
-	listitem: ['doc-biblioentry', 'doc-endnote', 'treeitem'],
-	navigation: ['doc-index', 'doc-pagelist', 'doc-toc'],
-	note: ['doc-notice', 'doc-tip'],
-};
-
 var getSubRoles = function(role) {
-	var children = subRoles[role] || [];
+	var children = (exports.roles[role] || {}).childRoles || [];
 	var descendents = children.map(getSubRoles);
 
 	var result = [role];
@@ -301,38 +748,13 @@ var getSubRoles = function(role) {
 	return result;
 };
 
-exports.subRoles = {};
-for (var role in subRoles) {
-	exports.subRoles[role] = getSubRoles(role);
+for (var role in exports.roles) {
+	exports.roles[role].subRoles = getSubRoles(role);
 }
-exports.subRoles['none'] = ['none', 'presentation'];
-exports.subRoles['presentation'] = ['presentation', 'none'];
-
-exports.nameFromContents = [
-	'button',
-	'checkbox',
-	'columnheader',
-	'doc-backlink',
-	'doc-biblioref',
-	'doc-glossref',
-	'doc-noteref',
-	'gridcell',
-	'heading',
-	'link',
-	'menuitem',
-	'menuitemcheckbox',
-	'menuitemradio',
-	'option',
-	'radio',
-	'row',
-	'rowgroup',
-	'rowheader',
-	'sectionhead',
-	'tab',
-	'tooltip',
-	'treeitem',
-	'switch',
-];
+exports.roles['none'] = exports.roles['none'] || {};
+exports.roles['none'].subRoles = ['none', 'presentation'];
+exports.roles['presentation'] = exports.roles['presentation'] || {};
+exports.roles['presentation'].subRoles = ['presentation', 'none'];
 
 exports.nameFromDescendant = {
 	'figure': 'figcaption',
@@ -357,10 +779,10 @@ exports.labelable = [
 	'textarea',
 ];
 
-},{}],3:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 var constants = require('./constants.js');
+var atree = require('./atree.js');
 var query = require('./query.js');
-var util = require('./util.js');
 
 var getPseudoContent = function(node, selector) {
 	var styles = window.getComputedStyle(node, selector);
@@ -380,24 +802,8 @@ var getPseudoContent = function(node, selector) {
 	}
 };
 
-var getContent = function(root, referenced, owned) {
-	var children = [];
-
-	for (var i = 0; i < root.childNodes.length; i++) {
-		var node = root.childNodes[i];
-		if (!node.id || !document.querySelector('[aria-owns~="' + node.id + '"]')) {
-			children.push(node);
-		}
-	}
-
-	var owns = query.getAttribute(root, 'owns') || [];
-	for (var i = 0; i < owns.length; i++) {
-		var child = document.getElementById(owns[i]);
-		if (child && child !== root && owned.indexOf(child.id) === -1) {
-			children.push(child);
-			owned.push(child.id);
-		}
-	}
+var getContent = function(root, visited) {
+	var children = atree.getChildNodes(root);
 
 	var ret = '';
 	for (var i = 0; i < children.length; i++) {
@@ -410,9 +816,9 @@ var getContent = function(root, referenced, owned) {
 			} else if (window.getComputedStyle(node).display.substr(0, 6) === 'inline' &&
 					node.tagName.toLowerCase() !== 'input' &&
 					node.tagName.toLowerCase() !== 'img') {  // https://github.com/w3c/accname/issues/3
-				ret += getName(node, true, referenced, owned);
+				ret += getName(node, true, visited);
 			} else {
-				ret += ' ' + getName(node, true, referenced, owned) + ' ';
+				ret += ' ' + getName(node, true, visited) + ' ';
 			}
 		}
 	}
@@ -422,7 +828,7 @@ var getContent = function(root, referenced, owned) {
 
 var allowNameFromContent = function(el) {
 	var role = query.getRole(el);
-	return role && constants.nameFromContents.indexOf(role) !== -1;
+	return (constants.roles[role] || {}).nameFromContents;
 };
 
 var isLabelable = function(el) {
@@ -434,15 +840,13 @@ var isLabelable = function(el) {
 var getLabelNodes = function(element) {
 	var labels = [];
 	var labelable = constants.labelable.join(',');
-	util.walkDOM(document.body, function(node) {
-		if (node.tagName && node.tagName.toLowerCase() === 'label') {
-			if (node.getAttribute('for')) {
-				if (element.id && node.getAttribute('for') === element.id) {
-					labels.push(node);
-				}
-			} else if (node.querySelector(labelable) === element) {
+	document.querySelectorAll('label').forEach(function(node) {
+		if (node.getAttribute('for')) {
+			if (element.id && node.getAttribute('for') === element.id) {
 				labels.push(node);
 			}
+		} else if (node.querySelector(labelable) === element) {
+			labels.push(node);
 		}
 	});
 	return labels;
@@ -454,34 +858,41 @@ var isInLabelForOtherWidget = function(el) {
 	return label && ownLabels.indexOf(label) === -1;
 };
 
-var getName = function(el, recursive, referenced, owned) {
+var getName = function(el, recursive, visited, directReference) {
 	var ret = '';
-	var owned = owned || [];
+
+	visited = visited || [];
+	if (visited.includes(el)) {
+		if (!directReference) {
+			return '';
+		}
+	} else {
+		visited.push(el);
+	}
 
 	// A
-	if (query.getAttribute(el, 'hidden', referenced)) {
-		return '';
-	}
+	// handled in atree
 
 	// B
 	if (!recursive && el.matches('[aria-labelledby]')) {
 		var ids = el.getAttribute('aria-labelledby').split(/\s+/);
 		var strings = ids.map(function(id) {
 			var label = document.getElementById(id);
-			return label ? getName(label, true, label, owned) : '';
+			return label ? getName(label, true, visited, true) : '';
 		});
 		ret = strings.join(' ');
 	}
 
 	// C
 	if (!ret.trim() && el.matches('[aria-label]')) {
+		// FIXME: may skip to 2E
 		ret = el.getAttribute('aria-label');
 	}
 
 	// D
 	if (!ret.trim() && !recursive && isLabelable(el)) {
 		var strings = getLabelNodes(el).map(function(label) {
-			return getName(label, true, label, owned);
+			return getName(label, true, visited);
 		});
 		ret = strings.join(' ');
 	}
@@ -499,7 +910,7 @@ var getName = function(el, recursive, referenced, owned) {
 			if (el.matches(selector)) {
 				var descendant = el.querySelector(constants.nameFromDescendant[selector]);
 				if (descendant) {
-					ret = getName(descendant, true, descendant, owned);
+					ret = getName(descendant, true, visited);
 				}
 			}
 		}
@@ -513,7 +924,7 @@ var getName = function(el, recursive, referenced, owned) {
 			} else if (query.matches(el, 'combobox,listbox')) {
 				var selected = query.querySelector(el, ':selected') || query.querySelector(el, 'option');
 				if (selected) {
-					ret = getName(selected, recursive, referenced, owned);
+					ret = getName(selected, recursive, visited);
 				} else {
 					ret = el.value || '';
 				}
@@ -526,18 +937,9 @@ var getName = function(el, recursive, referenced, owned) {
 	// F
 	// FIXME: menu is not mentioned in the spec
 	if (!ret.trim() && (recursive || allowNameFromContent(el) || el.closest('label')) && !query.matches(el, 'menu')) {
-		ret = getContent(el, referenced, owned);
+		ret = getContent(el, visited);
 	}
 
-	// TODO: G
-	// TODO: H
-
-	// FIXME: not mentioned in the spec
-	if (!ret.trim() && query.matches(el, 'presentation')) {
-		return getContent(el, referenced, owned);
-	}
-
-	// FIXME: not mentioned in the spec
 	if (!ret.trim()) {
 		for (var selector in constants.nameDefaults) {
 			if (el.matches(selector)) {
@@ -546,8 +948,12 @@ var getName = function(el, recursive, referenced, owned) {
 		}
 	}
 
+	// G/H
+	// handled in getContent
+
 	// I
-	if (!ret.trim()) {
+	// FIXME: presentation not mentioned in the spec
+	if (!ret.trim() && !query.matches(el, 'presentation')) {
 		ret = el.title || '';
 	}
 
@@ -562,13 +968,12 @@ var getNameTrimmed = function(el) {
 
 var getDescription = function(el) {
 	var ret = '';
-	var owned = [];
 
 	if (el.matches('[aria-describedby]')) {
 		var ids = el.getAttribute('aria-describedby').split(/\s+/);
 		var strings = ids.map(function(id) {
 			var label = document.getElementById(id);
-			return label ? getName(label, true, label, owned) : '';
+			return label ? getName(label, true) : '';
 		});
 		ret = strings.join(' ');
 	} else if (el.title) {
@@ -591,134 +996,31 @@ module.exports = {
 	getDescription: getDescription,
 };
 
-},{"./constants.js":2,"./query.js":4,"./util.js":5}],4:[function(require,module,exports){
-var constants = require('./constants.js');
-var util = require('./util.js');
+},{"./atree.js":2,"./constants.js":4,"./query.js":6}],6:[function(require,module,exports){
+var attrs = require('./attrs.js');
+var atree = require('./atree.js');
 
-var getSubRoles = function(roles) {
-	return [].concat.apply([], roles.map(function(role) {
-		return constants.subRoles[role] || [role];
-	}));
-};
-
-// candidates can be passed for performance optimization
-var _getRole = function(el, candidates) {
-	if (el.hasAttribute('role')) {
-		return el.getAttribute('role');
-	}
-	for (var role in constants.extraSelectors) {
-		var selector = constants.extraSelectors[role].join(',');
-		if ((!candidates || candidates.indexOf(role) !== -1) && el.matches(selector)) {
-			return role;
-		}
-	}
-
-	if (!candidates ||
-			candidates.indexOf('banner') !== -1 ||
-			candidates.indexOf('contentinfo') !== -1) {
-		var scoped = el.matches(constants.scoped);
-
-		if (el.matches('header') && !scoped) {
-			return 'banner';
-		}
-		if (el.matches('footer') && !scoped) {
-			return 'contentinfo';
-		}
-	}
-};
-
-var getAttribute = function(el, key, _hiddenRoot) {
-	if (key === 'hidden' && el === _hiddenRoot) {  // used for name calculation
-		return false;
-	}
-
-	if (constants.attributeStrongMapping.hasOwnProperty(key)) {
-		var value = el[constants.attributeStrongMapping[key]];
-		if (value) {
-			return value;
-		}
-	}
-	if (key === 'readonly' && el.contentEditable) {
-		return false;
-	} else if (key === 'invalid' && el.checkValidity) {
-		return !el.checkValidity();
-	} else if (key === 'hidden') {
-		var style = window.getComputedStyle(el);
-		if (style.display === 'none' || style.visibility === 'hidden') {
-			return true;
-		}
-	}
-
-	var type = constants.attributes[key];
-	var raw = el.getAttribute('aria-' + key);
-
-	if (raw) {
-		if (type === 'bool') {
-			return raw === 'true';
-		} else if (type === 'tristate') {
-			return raw === 'true' ? true : raw === 'false' ? false : 'mixed';
-		} else if (type === 'bool-undefined') {
-			return raw === 'true' ? true : raw === 'false' ? false : undefined;
-		} else if (type === 'id-list') {
-			return raw.split(/\s+/);
-		} else if (type === 'integer') {
-			return parseInt(raw);
-		} else if (type === 'number') {
-			return parseFloat(raw);
-		} else if (type === 'token-list') {
-			return raw.split(/\s+/);
-		} else {
-			return raw;
-		}
-	}
-
-	// TODO
-	// autocomplete
-	// contextmenu -> aria-haspopup
-	// indeterminate -> aria-checked="mixed"
-	// list -> aria-controls
-
-	if (key === 'level') {
-		for (var i = 1; i <= 6; i++) {
-			if (el.tagName.toLowerCase() === 'h' + i) {
-				return i;
-			}
-		}
-	} else if (key === 'hidden') {
-		if (el.clientHeight === 0) {  // rough check for performance
-			return el.parentNode && getAttribute(el.parentNode, 'hidden', _hiddenRoot);
-		}
-	} else if (constants.attributeWeakMapping.hasOwnProperty(key)) {
-		return el[constants.attributeWeakMapping[key]];
-	}
-
-	if (type === 'bool' || type === 'tristate') {
-		return false;
-	}
-};
 
 var matches = function(el, selector) {
 	var actual;
 
 	if (selector.substr(0, 1) === ':') {
 		var attr = selector.substr(1);
-		return getAttribute(el, attr);
+		return attrs.getAttribute(el, attr);
 	} else if (selector.substr(0, 1) === '[') {
 		var match = /\[([a-z]+)="(.*)"\]/.exec(selector);
-		actual = getAttribute(el, match[1]);
+		actual = attrs.getAttribute(el, match[1]);
 		var rawValue = match[2];
 		return actual.toString() == rawValue;
 	} else {
-		var candidates = getSubRoles(selector.split(','));
-		actual = _getRole(el, candidates);
-		return candidates.indexOf(actual) !== -1;
+		return attrs.hasRole(el, selector.split(','));
 	}
 };
 
 var _querySelector = function(all) {
 	return function(root, role) {
 		var results = [];
-		util.walkDOM(root, function(node) {
+		atree.walk(root, function(node) {
 			if (node.nodeType === node.ELEMENT_NODE) {
 				// FIXME: skip hidden elements
 				if (matches(node, role)) {
@@ -734,51 +1036,23 @@ var _querySelector = function(all) {
 };
 
 var closest = function(el, selector) {
-	return util.searchUp(el, function(candidate) {
-		return matches(candidate, selector);
+	return atree.searchUp(el, function(candidate) {
+		if (candidate.nodeType === candidate.ELEMENT_NODE) {
+			return matches(candidate, selector);
+		}
 	});
 };
 
 module.exports = {
 	getRole: function(el) {
-		return _getRole(el);
+		return attrs.getRole(el);
 	},
-	getAttribute: getAttribute,
+	getAttribute: attrs.getAttribute,
 	matches: matches,
 	querySelector: _querySelector(),
 	querySelectorAll: _querySelector(true),
 	closest: closest,
 };
 
-},{"./constants.js":2,"./util.js":5}],5:[function(require,module,exports){
-var walkDOM = function(root, fn) {
-	if (fn(root) === false) {
-		return false;
-	}
-	var node = root.firstChild;
-	while (node) {
-		if (walkDOM(node, fn) === false) {
-			return false;
-		}
-		node = node.nextSibling;
-	}
-};
-
-var searchUp = function(el, test) {
-	var candidate = el.parentElement;
-	if (candidate) {
-		if (test(candidate)) {
-			return candidate;
-		} else {
-			return searchUp(candidate, test);
-		}
-	}
-};
-
-module.exports = {
-	walkDOM: walkDOM,
-	searchUp: searchUp,
-};
-
-},{}]},{},[1])(1)
+},{"./atree.js":2,"./attrs.js":3}]},{},[1])(1)
 });
