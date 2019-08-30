@@ -6,10 +6,10 @@ test/%.js: test/src/%.js
 	npx browserify -t brfs $< -o $@
 
 test: test/test-name.js
-	npx mocha-headless-chrome -a no-sandbox -f test/index.html
+	PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium npx mocha-headless-chrome -a no-sandbox -f test/index.html
 
 install:
-	npm install
+	PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1 npm install
 
 clean:
 	rm -f dist/aria.js
