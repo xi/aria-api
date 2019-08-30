@@ -1,15 +1,15 @@
 dist/aria.js: index.js lib/*.js
 	mkdir -p dist
-	browserify $< -o $@ -s aria
+	npx browserify $< -o $@ -s aria
 
 test/%.js: test/src/%.js
-	browserify -t brfs $< -o $@
+	npx browserify -t brfs $< -o $@
 
 test: test/test-name.js
-	PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium ./node_modules/.bin/mocha-headless-chrome -a no-sandbox -f test/index.html
+	npx mocha-headless-chrome -a no-sandbox -f test/index.html
 
 install:
-	PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1 npm install
+	npm install
 
 clean:
 	rm -f dist/aria.js
