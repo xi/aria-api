@@ -11,6 +11,9 @@ test: test/test-name.js
 install:
 	PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1 npm install
 
+install-chromium:
+	npm install -f --no-save puppeteer
+
 clean:
 	rm -f dist/aria.js
 	rm -f dist/aria.min.js
