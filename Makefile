@@ -6,7 +6,7 @@ test/%.js: test/src/%.js
 	npx browserify -t brfs $< -o $@
 
 test: test/test-name.js
-	PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium npx mocha-headless-chrome -a no-sandbox -f test/index.html
+	PUPPETEER_EXECUTABLE_PATH=$(which chromium) npx mocha-headless-chrome -a no-sandbox -f test/index.html
 
 install:
 	PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1 npm install
