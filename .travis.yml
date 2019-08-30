@@ -11,6 +11,6 @@ cache:
     - node_modules
     - $HOME/.nvm
 script:
-  - ./node_modules/.bin/mocha-headless-chrome -a no-sandbox -f test/index.html
+  - npx mocha-headless-chrome -a no-sandbox -f test/index.html
 notifications:
   email: false
