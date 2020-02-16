@@ -1,5 +1,6 @@
 var query = require('./lib/query.js');
 var name = require('./lib/name.js');
+var atree = require('./lib/atree.js');
 
 module.exports = {
 	getRole: query.getRole,
@@ -11,4 +12,7 @@ module.exports = {
 	querySelector: query.querySelector,
 	querySelectorAll: query.querySelectorAll,
 	closest: query.closest,
+
+	getParentNode: atree.getParentNode,
+	getChildNodes: atree.getChildNodes,
 };

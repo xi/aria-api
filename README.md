@@ -82,6 +82,16 @@ See `matches()` for details.
 Similar to [Element.closest()](https://developer.mozilla.org/en-US/docs/Web/API/Element/closest).
 See `matches()` for details.
 
+## getParentNode(node)
+
+Similar to [Node.parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode),
+but takes `aria-owns` into account.
+
+## getChildNodes(node)
+
+Similar to [Node.childNodes](https://developer.mozilla.org/en-US/docs/Web/API/Node/childNodes),
+but takes `aria-owns` into account.
+
 # What is this for?
 
 First of all, I thought that something like this should exist. I currently use
