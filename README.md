@@ -79,7 +79,7 @@ See `matches()` for details.
 
 ## closest(element, selector)
 
-Similar to [Element.closest()](https://developer.mozilla.org/en-US/docs/Web/API/Element/closest)
+Similar to [Element.closest()](https://developer.mozilla.org/en-US/docs/Web/API/Element/closest).
 See `matches()` for details.
 
 # What is this for?
@@ -111,6 +111,9 @@ recommendation.
 -   This is a pet project. I do not have the time to do extensive testing and
     may skip some details now and then. I am happy to receive bug reports and
     pull requests though.
+-   The standards are still in a very rough state. Many things are
+    unclear/undecided and therefore no browser really implements them. So
+    naturally, this library cannot really implement the standards either.
 -   This library does not do any validity checks. Invalid attributes or roles
     will not produce any warnings.
 -   In order to calculate the "hidden" attribute,
@@ -122,7 +125,7 @@ recommendation.
 
 -   [Visual ARIA Bookmarklet](http://whatsock.com/training/matrices/visual-aria.htm):
     Displays role, name, and description in any website. Maintained by one of
-    the editors of the [accname]() speca.
+    the editors of the [accname]() spec.
 -   [axe-core](https://github.com/dequelabs/axe-core/) and
     [Accessibility Developer Tools](https://github.com/GoogleChrome/accessibility-developer-tools):
     These are libraries for accessibility testing. They solve many of the same
@@ -133,3 +136,5 @@ recommendation.
     Draft spec for exposing the accessibility tree to JavaScript.
 -   [chrome.automation](https://developer.chrome.com/extensions/automation):
     A propriatary API that exposes the accessibility tree to JavaScript.
+-   [babelacc](https://xi.github.io/babelacc/):
+    A tool to compare the output of different libraries.
