@@ -130,6 +130,8 @@ recommendation.
     [Window.getComputedStyle()](https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle)
     is called. This only seems to return reliable values if the element is
     attached to `document`.
+-   Due to security restrictions it is not generally possible to inspect the
+    content of iframes, so they are ignored.
 
 # Related projects
 
