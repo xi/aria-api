@@ -1,3 +1,10 @@
+0.4.0 (2020-09-10)
+------------------
+
+-	use browser API `HTMLInputElement.labels` instead of own implementation
+-	expose previously internal functions `getParentNode()` and `getChildNodes()`
+
+
 0.3.0 (2019-05-23)
 ------------------
 

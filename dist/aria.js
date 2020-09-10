@@ -1,6 +1,7 @@
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.aria = f()}})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 var query = require('./lib/query.js');
 var name = require('./lib/name.js');
+var atree = require('./lib/atree.js');
 
 module.exports = {
 	getRole: query.getRole,
@@ -12,9 +13,12 @@ module.exports = {
 	querySelector: query.querySelector,
 	querySelectorAll: query.querySelectorAll,
 	closest: query.closest,
+
+	getParentNode: atree.getParentNode,
+	getChildNodes: atree.getChildNodes,
 };
 
-},{"./lib/name.js":5,"./lib/query.js":6}],2:[function(require,module,exports){
+},{"./lib/atree.js":2,"./lib/name.js":5,"./lib/query.js":6}],2:[function(require,module,exports){
 var attrs = require('./attrs');
 
 var _getOwner = function(node) {
@@ -116,21 +120,21 @@ var getRole = function(el, candidates) {
 	}
 	for (var role in constants.roles) {
 		var selector = (constants.roles[role].selectors || []).join(',');
-		if (selector && (!candidates || candidates.indexOf(role) !== -1) && el.matches(selector)) {
+		if (selector && (!candidates || candidates.includes(role)) && el.matches(selector)) {
 			return role;
 		}
 	}
 
 	if (!candidates ||
-			candidates.indexOf('banner') !== -1 ||
-			candidates.indexOf('contentinfo') !== -1) {
-		var scoped = el.matches(constants.scoped);
-
-		if (el.matches('header') && !scoped) {
-			return 'banner';
-		}
-		if (el.matches('footer') && !scoped) {
-			return 'contentinfo';
+			candidates.includes('banner') ||
+			candidates.includes('contentinfo')) {
+		if (!el.matches(constants.scoped)) {
+			if (el.matches('header')) {
+				return 'banner';
+			}
+			if (el.matches('footer')) {
+				return 'contentinfo';
+			}
 		}
 	}
 };
@@ -139,8 +143,8 @@ var hasRole = function(el, roles) {
 	var candidates = [].concat.apply([], roles.map(function(role) {
 		return (constants.roles[role] || {}).subRoles || [role];
 	}));
-	actual = getRole(el, candidates);
-	return candidates.indexOf(actual) !== -1;
+	var actual = getRole(el, candidates);
+	return candidates.includes(actual);
 };
 
 var getAttribute = function(el, key) {
@@ -174,7 +178,7 @@ var getAttribute = function(el, key) {
 		} else if (type === 'id-list') {
 			return raw.split(/\s+/);
 		} else if (type === 'integer') {
-			return parseInt(raw);
+			return parseInt(raw, 10);
 		} else if (type === 'number') {
 			return parseFloat(raw);
 		} else if (type === 'token-list') {
@@ -200,10 +204,12 @@ var getAttribute = function(el, key) {
 		return el[constants.attributeWeakMapping[key]];
 	}
 
-	var role = getRole(el);
-	var defaults = (constants.roles[role] || {}).defaults;
-	if (defaults && defaults.hasOwnProperty(key)) {
-		return defaults[key];
+	if (key in constants.attrsWithDefaults) {
+		var role = getRole(el);
+		var defaults = (constants.roles[role] || {}).defaults;
+		if (defaults && defaults.hasOwnProperty(key)) {
+			return defaults[key];
+		}
 	}
 
 	if (type === 'bool' || type === 'tristate') {
@@ -739,7 +745,7 @@ var getSubRoles = function(role) {
 
 	descendents.forEach(function(list) {
 		list.forEach(function(r) {
-			if (result.indexOf(r) === -1) {
+			if (!result.includes(r)) {
 				result.push(r);
 			}
 		});
@@ -748,8 +754,15 @@ var getSubRoles = function(role) {
 	return result;
 };
 
+exports.attrsWithDefaults = [];
+
 for (var role in exports.roles) {
 	exports.roles[role].subRoles = getSubRoles(role);
+	for (var key in exports.roles[role].defaults) {
+		if (!exports.attrsWithDefaults.includes(key)) {
+			exports.attrsWithDefaults.push(key);
+		}
+	}
 }
 exports.roles['none'] = exports.roles['none'] || {};
 exports.roles['none'].subRoles = ['none', 'presentation'];
@@ -836,26 +849,9 @@ var isLabelable = function(el) {
 	return el.matches(selector);
 };
 
-// Control.labels is part of the standard, but not supported in most browsers
-var getLabelNodes = function(element) {
-	var labels = [];
-	var labelable = constants.labelable.join(',');
-	document.querySelectorAll('label').forEach(function(node) {
-		if (node.getAttribute('for')) {
-			if (element.id && node.getAttribute('for') === element.id) {
-				labels.push(node);
-			}
-		} else if (node.querySelector(labelable) === element) {
-			labels.push(node);
-		}
-	});
-	return labels;
-};
-
 var isInLabelForOtherWidget = function(el) {
 	var label = el.parentElement.closest('label');
-	var ownLabels = getLabelNodes(el);
-	return label && ownLabels.indexOf(label) === -1;
+	return label && !Array.prototype.includes.call(el.labels, label);
 };
 
 var getName = function(el, recursive, visited, directReference) {
@@ -891,7 +887,7 @@ var getName = function(el, recursive, visited, directReference) {
 
 	// D
 	if (!ret.trim() && !recursive && isLabelable(el)) {
-		var strings = getLabelNodes(el).map(function(label) {
+		var strings = Array.prototype.map.call(el.labels, function(label) {
 			return getName(label, true, visited);
 		});
 		ret = strings.join(' ');
@@ -1011,7 +1007,7 @@ var matches = function(el, selector) {
 		var match = /\[([a-z]+)="(.*)"\]/.exec(selector);
 		actual = attrs.getAttribute(el, match[1]);
 		var rawValue = match[2];
-		return actual.toString() == rawValue;
+		return actual.toString() === rawValue;
 	} else {
 		return attrs.hasRole(el, selector.split(','));
 	}
@@ -1020,17 +1016,23 @@ var matches = function(el, selector) {
 var _querySelector = function(all) {
 	return function(root, role) {
 		var results = [];
-		atree.walk(root, function(node) {
-			if (node.nodeType === node.ELEMENT_NODE) {
-				// FIXME: skip hidden elements
-				if (matches(node, role)) {
-					results.push(node);
-					if (!all) {
-						return false;
+		try {
+			atree.walk(root, function(node) {
+				if (node.nodeType === node.ELEMENT_NODE) {
+					// FIXME: skip hidden elements
+					if (matches(node, role)) {
+						results.push(node);
+						if (!all) {
+							throw 'StopIteration';
+						}
 					}
 				}
+			});
+		} catch (e) {
+			if (e !== 'StopIteration') {
+				throw e;
 			}
-		});
+		}
 		return all ? results : results[0];
 	};
 };
