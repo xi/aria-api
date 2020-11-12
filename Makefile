@@ -2,10 +2,10 @@ dist/aria.js: index.js lib/*.js
 	mkdir -p dist
 	npx browserify $< -o $@ -s aria
 
-test/%.js: test/src/%.js
-	npx browserify -t brfs $< -o $@
+test/wpt-accname.js: wpt.py
+	python wpt.py wpt-master/accname/ > $@
 
-test: test/test-name.js
+test: test/wpt-accname.js
 	PUPPETEER_EXECUTABLE_PATH=$$(which chromium) npx mocha-headless-chrome -a no-sandbox -f test/index.html
 
 install:
