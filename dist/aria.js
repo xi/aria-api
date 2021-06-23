@@ -159,6 +159,10 @@ var getAttribute = function(el, key) {
 	} else if (key === 'invalid' && el.checkValidity) {
 		return !el.checkValidity();
 	} else if (key === 'hidden') {
+		// workaround for chromium
+		if (el.matches('noscript')) {
+			return true;
+		}
 		var style = window.getComputedStyle(el);
 		if (style.display === 'none' || style.visibility === 'hidden') {
 			return true;
