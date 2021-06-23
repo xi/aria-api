@@ -22,4 +22,10 @@ describe('getName / getDescription', function() {
 			}
 		});
 	});
+
+	it('ingores <noscript>', function() {
+		testbed.innerHTML = '<a id="test" href="#">test <noscript>moo</noscript></a>';
+		var element = document.querySelector('#test');
+		expect(aria.getName(element)).toBe('test');
+	});
 });
