@@ -15,10 +15,10 @@ describe('getName / getDescription', function() {
 			var element = document.querySelector('#test');
 
 			if (test.name !== null) {
-				expect(aria.getName(element)).toBe(test.name)
+				expect(aria.getName(element)).toBe(test.name);
 			}
 			if (test.description !== null) {
-				expect(aria.getDescription(element)).toBe(test.description)
+				expect(aria.getDescription(element)).toBe(test.description);
 			}
 		});
 	});
