@@ -1,3 +1,12 @@
+0.4.2 (2022-01-25)
+------------------
+
+-	assume separator is not focussable (i.e. structure, not widget)
+-	fix nameFromContents for cell
+-	fix: treat aria-hidden as bool-undefined
+-	fix: escape ids before inserting them into selectors
+
+
 0.4.1 (2021-06-23)
 ------------------
 

@@ -23,7 +23,7 @@ var attrs = require('./attrs');
 
 var _getOwner = function(node) {
 	if (node.nodeType === node.ELEMENT_NODE && node.id) {
-		var owner = document.querySelector('[aria-owns~="' + node.id + '"]');
+		var owner = document.querySelector('[aria-owns~="' + CSS.escape(node.id) + '"]');
 		if (owner) {
 			return owner;
 		}
@@ -46,7 +46,7 @@ var detectLoop = function(node) {
 
 var getOwner = function(node) {
 	if (node.nodeType === node.ELEMENT_NODE && node.id) {
-		var owner = document.querySelector('[aria-owns~="' + node.id + '"]');
+		var owner = document.querySelector('[aria-owns~="' + CSS.escape(node.id) + '"]');
 		if (owner && !detectLoop(node)) {
 			return owner;
 		}
@@ -228,62 +228,56 @@ module.exports = {
 };
 
 },{"./constants.js":4}],4:[function(require,module,exports){
+// https://www.w3.org/TR/wai-aria/#state_prop_def
 exports.attributes = {
-	// widget
-	'autocomplete': 'token',
-	'checked': 'tristate',
-	'current': 'token',
-	'disabled': 'bool',
-	'expanded': 'bool-undefined',
-	'haspopup': 'token',
-	'hidden': 'bool',  // !
-	'invalid': 'token',
-	'keyshortcuts': 'string',
-	'label': 'string',
-	'level': 'int',
-	'modal': 'bool',
-	'multiline': 'bool',
-	'multiselectable': 'bool',
-	'orientation': 'token',
-	'placeholder': 'string',
-	'pressed': 'tristate',
-	'readonly': 'bool',
-	'required': 'bool',
-	'roledescription': 'string',
-	'selected': 'bool-undefined',
-	'valuemax': 'number',
-	'valuemin': 'number',
-	'valuenow': 'number',
-	'valuetext': 'string',
-
-	// live
-	'atomic': 'bool',
-	'busy': 'bool',
-	'live': 'token',
-	'relevant': 'token-list',
-
-	// dragndrop
-	'dropeffect': 'token-list',
-	'grabbed': 'bool-undefined',
-
-	// relationship
 	'activedescendant': 'id',
+	'atomic': 'bool',
+	'autocomplete': 'token',
+	'busy': 'bool',
+	'checked': 'tristate',
 	'colcount': 'int',
 	'colindex': 'int',
 	'colspan': 'int',
 	'controls': 'id-list',
+	'current': 'token',
 	'describedby': 'id-list',
 	'details': 'id',
+	'disabled': 'bool',
+	'dropeffect': 'token-list',
 	'errormessage': 'id',
+	'expanded': 'bool-undefined',
 	'flowto': 'id-list',
+	'grabbed': 'bool-undefined',
+	'haspopup': 'token',
+	'hidden': 'bool-undefined',
+	'invalid': 'token',
+	'keyshortcuts': 'string',
+	'label': 'string',
 	'labelledby': 'id-list',
+	'level': 'int',
+	'live': 'token',
+	'modal': 'bool',
+	'multiline': 'bool',
+	'multiselectable': 'bool',
+	'orientation': 'token',
 	'owns': 'id-list',
+	'placeholder': 'string',
 	'posinset': 'int',
+	'pressed': 'tristate',
+	'readonly': 'bool',
+	'relevant': 'token-list',
+	'required': 'bool',
+	'roledescription': 'string',
 	'rowcount': 'int',
 	'rowindex': 'int',
 	'rowspan': 'int',
+	'selected': 'bool-undefined',
 	'setsize': 'int',
 	'sort': 'token',
+	'valuemax': 'number',
+	'valuemin': 'number',
+	'valuenow': 'number',
+	'valuetext': 'string',
 };
 
 exports.attributeStrongMapping = {
@@ -329,6 +323,7 @@ exports.roles = {
 	cell: {
 		selectors: ['td'],
 		childRoles: ['gridcell', 'rowheader'],
+		nameFromContents: true,
 	},
 	checkbox: {
 		selectors: ['input[type="checkbox"]'],
@@ -554,12 +549,12 @@ exports.roles = {
 		selectors: ['tr'],
 		nameFromContents: true,
 	},
-	rowheader: {
-		selectors: ['th[scope="row"]'],
-		nameFromContents: true,
-	},
 	rowgroup: {
 		selectors: ['tbody', 'thead', 'tfoot'],
+		nameFromContents: true,
+	},
+	rowheader: {
+		selectors: ['th[scope="row"]'],
 		nameFromContents: true,
 	},
 	scrollbar: {
@@ -618,13 +613,11 @@ exports.roles = {
 		childRoles: ['combobox', 'listbox', 'menu', 'radiogroup', 'tree'],
 	},
 	separator: {
+		// assume not focussable because <hr> is not
 		selectors: ['hr'],
 		childRoles: ['doc-pagebreak'],
 		defaults: {
 			'orientation': 'horizontal',
-			'valuemin': 0,
-			'valuemax': 100,
-			'valuenow': 50,
 		},
 	},
 	slider: {
@@ -652,12 +645,6 @@ exports.roles = {
 			'atomic': true,
 		},
 	},
-	switch: {
-		nameFromContents: true,
-		defaults: {
-			'checked': false,
-		},
-	},
 	structure: {
 		childRoles: [
 			'application',
@@ -669,6 +656,12 @@ exports.roles = {
 			'sectionhead',
 			'separator',
 		],
+	},
+	switch: {
+		nameFromContents: true,
+		defaults: {
+			'checked': false,
+		},
 	},
 	tab: {
 		nameFromContents: true,
@@ -724,7 +717,6 @@ exports.roles = {
 			'input',
 			'range',
 			'row',
-			'separator',
 			'tab',
 		],
 	},
