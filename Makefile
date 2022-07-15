@@ -2,7 +2,11 @@ dist/aria.js: index.js lib/*.js
 	mkdir -p dist
 	npx browserify $< -o $@ -s aria
 
-test/wpt-accname.js: wpt.py
+wpt-master:
+	wget https://github.com/web-platform-tests/wpt/archive/refs/heads/master.zip -O wpt-master.zip
+	unzip wpt-master.zip
+
+test/wpt-accname.js: wpt.py wpt-master
 	python wpt.py wpt-master/accname/ > $@
 
 test: test/wpt-accname.js
