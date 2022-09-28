@@ -58,4 +58,22 @@ describe('getAttribute(el, "hidden")', function() {
 		var el = testbed.querySelector('.test');
 		expect(aria.getAttribute(el, 'hidden')).toBe(undefined);
 	});
+
+	it('is true on children of <details>', function() {
+		testbed.innerHTML = '<details><summary>foo</summary><div class="test">test</div></details>';
+		var el = testbed.querySelector('.test');
+		expect(aria.getAttribute(el, 'hidden')).toBe(true);
+	});
+
+	it('is undefined on children of <details open>', function() {
+		testbed.innerHTML = '<details open><summary>foo</summary><div class="test">test</div></details>';
+		var el = testbed.querySelector('.test');
+		expect(aria.getAttribute(el, 'hidden')).toBe(undefined);
+	});
+
+	it('is undefined on <summary>', function() {
+		testbed.innerHTML = '<details><summary class="test">foo</summary><div>test</div></details>';
+		var el = testbed.querySelector('.test');
+		expect(aria.getAttribute(el, 'hidden')).toBe(undefined);
+	});
 });
