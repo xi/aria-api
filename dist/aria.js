@@ -35,12 +35,12 @@ var _getParentNode = function(node) {
 };
 
 var detectLoop = function(node) {
-	var tmp = _getParentNode(node);
-	while (tmp) {
-		if (tmp === node) {
+	var seen = [node]
+	while ((node = _getParentNode(node))) {
+		if (seen.includes(node)) {
 			return true;
 		}
-		tmp = _getParentNode(tmp);
+		seen.push(node)
 	}
 };
 
