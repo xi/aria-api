@@ -1,3 +1,10 @@
+0.4.3 (2022-10-04)
+------------------
+
+-	treat children of `<details>` as hidden
+-	avoid infinite loops with `aria-owns` (thanks to Jon Ribbens)
+
+
 0.4.2 (2022-01-25)
 ------------------
 

@@ -163,6 +163,9 @@ var getAttribute = function(el, key) {
 		if (el.matches('noscript')) {
 			return true;
 		}
+		if (el.matches('details:not([open]) :not(summary)')) {
+			return true;
+		}
 		var style = window.getComputedStyle(el);
 		if (style.display === 'none' || style.visibility === 'hidden') {
 			return true;
