@@ -834,7 +834,7 @@ var allowNameFromContent = function(el) {
 
 var isInLabelForOtherWidget = function(el) {
 	var label = el.parentElement.closest('label');
-	return label && (!el.label || !Array.prototype.includes.call(el.labels, label));
+	return label && (!el.labels || !Array.prototype.includes.call(el.labels, label));
 };
 
 var getName = function(el, recursive, visited, directReference) {
