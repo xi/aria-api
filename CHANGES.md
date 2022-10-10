@@ -1,3 +1,10 @@
+0.4.4 (2022-10-10)
+------------------
+
+-	use labels property as indicator that element is labelable
+-	fix issue with non-labelable elements inside label elements
+
+
 0.4.3 (2022-10-04)
 ------------------
 

@@ -780,17 +780,6 @@ exports.nameDefaults = {
 	'summary': 'Details',
 };
 
-exports.labelable = [
-	'button',
-	'input:not([type="hidden"])',
-	'keygen',
-	'meter',
-	'output',
-	'progress',
-	'select',
-	'textarea',
-];
-
 },{}],5:[function(require,module,exports){
 var constants = require('./constants.js');
 var atree = require('./atree.js');
@@ -843,14 +832,9 @@ var allowNameFromContent = function(el) {
 	return (constants.roles[role] || {}).nameFromContents;
 };
 
-var isLabelable = function(el) {
-	var selector = constants.labelable.join(',');
-	return el.matches(selector);
-};
-
 var isInLabelForOtherWidget = function(el) {
 	var label = el.parentElement.closest('label');
-	return label && !Array.prototype.includes.call(el.labels, label);
+	return label && (!el.label || !Array.prototype.includes.call(el.labels, label));
 };
 
 var getName = function(el, recursive, visited, directReference) {
@@ -885,7 +869,7 @@ var getName = function(el, recursive, visited, directReference) {
 	}
 
 	// D
-	if (!ret.trim() && !recursive && isLabelable(el)) {
+	if (!ret.trim() && !recursive && el.labels) {
 		var strings = Array.prototype.map.call(el.labels, function(label) {
 			return getName(label, true, visited);
 		});
