@@ -1,3 +1,12 @@
+0.4.6 (2023-01-08)
+------------------
+
+-	fix: `img[alt=""]` has role presentation
+-	fix handling of whitespace in some places (but still not perfect)
+-	only treat direct children of `<details>` as hidden. This is consistent with
+	how `display: none` is treated.
+
+
 0.4.5 (2022-10-10)
 ------------------
 

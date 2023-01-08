@@ -163,7 +163,7 @@ var getAttribute = function(el, key) {
 		if (el.matches('noscript')) {
 			return true;
 		}
-		if (el.matches('details:not([open]) :not(summary)')) {
+		if (el.matches('details:not([open]) > :not(summary)')) {
 			return true;
 		}
 		var style = window.getComputedStyle(el);
@@ -527,6 +527,9 @@ exports.roles = {
 		defaults: {
 			'selected': 'false',
 		},
+	},
+	presentation: {
+		selectors: ['img[alt=""]'],
 	},
 	progressbar: {
 		selectors: ['progress'],
@@ -932,8 +935,14 @@ var getName = function(el, recursive, visited, directReference) {
 
 	// I
 	// FIXME: presentation not mentioned in the spec
-	if (!ret.trim() && !query.matches(el, 'presentation')) {
+	if (!ret.trim() && (directReference || !query.matches(el, 'presentation'))) {
 		ret = el.title || '';
+	}
+
+	// FIXME: not exactly sure about this, but it reduces the number of failing
+	// WPT tests. Whitespace is hard.
+	if (!ret.trim()) {
+		ret = ' ';
 	}
 
 	var before = getPseudoContent(el, ':before');
