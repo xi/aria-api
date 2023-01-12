@@ -1,3 +1,9 @@
+0.4.7 (2023-01-12)
+------------------
+
+-	internal refactoring and performance improvements
+
+
 0.4.6 (2023-01-08)
 ------------------
 
