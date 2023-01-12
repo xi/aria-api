@@ -1,21 +1,21 @@
-describe('getName / getDescription', function() {
+describe('getName / getDescription', () => {
 	var testbed = document.createElement('div');
 	var known_failing = [
 		'Name test case 660',
 		'Name test case 659',
 	];
 
-	before(function() {
+	before(() => {
 		document.body.appendChild(testbed);
 	});
 
-	after(function() {
+	after(() => {
 		document.body.removeChild(testbed);
 	});
 
-	window.wpt.accname.forEach(function(test) {
+	window.wpt.accname.forEach(test => {
 		var _it = known_failing.includes(test.title) ? xit : it;
-		_it(test.title, function() {
+		_it(test.title, () => {
 			testbed.innerHTML = test.html;
 			var element = document.querySelector('#test');
 
@@ -28,13 +28,13 @@ describe('getName / getDescription', function() {
 		});
 	});
 
-	it('ingores <noscript>', function() {
+	it('ingores <noscript>', () => {
 		testbed.innerHTML = '<a id="test" href="#">test <noscript>moo</noscript></a>';
 		var element = document.querySelector('#test');
 		expect(aria.getName(element)).toBe('test');
 	});
 
-	it('ignores <img alt="">', function() {
+	it('ignores <img alt="">', () => {
 		testbed.innerHTML = '<img id="test" alt="" title="title">'
 		var element = document.querySelector('#test');
 		expect(aria.getName(element)).toBe('');

@@ -19,22 +19,22 @@ var LANDMARKS = '<header>banner</header>\n' +
 	'</div>';
 
 
-describe('query', function() {
+describe('query', () => {
 	var testbed;
 
-	beforeEach(function() {
+	beforeEach(() => {
 		testbed = document.createElement('div');
 		// make sure styles are actually computed
 		document.body.appendChild(testbed);
 	});
 
-	afterEach(function() {
+	afterEach(() => {
 		document.body.removeChild(testbed);
 	});
 
-	describe('getRole', function() {
-		describe('links', function() {
-			it('link', function() {
+	describe('getRole', () => {
+		describe('links', () => {
+			it('link', () => {
 				testbed.innerHTML = LINK;
 				for (var i = 0; i < testbed.children.length; i++) {
 					var actual = aria.getRole(testbed.children[i]);
@@ -42,7 +42,7 @@ describe('query', function() {
 				}
 			});
 
-			it('nolink', function() {
+			it('nolink', () => {
 				testbed.innerHTML = NOLINK;
 				for (var i = 0; i < testbed.children.length; i++) {
 					var actual = aria.getRole(testbed.children[i]);
@@ -51,7 +51,7 @@ describe('query', function() {
 			});
 		});
 
-		it('landmarks', function() {
+		it('landmarks', () => {
 			testbed.innerHTML = LANDMARKS;
 			var actual = aria.querySelectorAll(testbed, 'landmark').map(aria.getRole);
 			expect(actual).toEqual([
@@ -64,8 +64,8 @@ describe('query', function() {
 		});
 	});
 
-	describe('closest', function() {
-		it('landmarks', function() {
+	describe('closest', () => {
+		it('landmarks', () => {
 			testbed.innerHTML = LANDMARKS;
 			var el = testbed.querySelector('main header');
 			var actual = aria.closest(el, 'landmark');
@@ -74,7 +74,7 @@ describe('query', function() {
 			expect(actual.tagName.toLowerCase()).toEqual('main');
 		});
 
-		it('no match', function() {
+		it('no match', () => {
 			testbed.innerHTML = LANDMARKS;
 			var el = testbed.querySelector('main header');
 			var actual = aria.closest(el, 'table');
@@ -83,8 +83,8 @@ describe('query', function() {
 		});
 	});
 
-	describe('querySelectorAll', function() {
-		it('comma-separated roles', function() {
+	describe('querySelectorAll', () => {
+		it('comma-separated roles', () => {
 			testbed.innerHTML = LANDMARKS;
 			var actual1 = aria.querySelectorAll(testbed, 'banner,main');
 			expect(actual1.length).toEqual(2);
@@ -93,13 +93,13 @@ describe('query', function() {
 			expect(actual2.length).toEqual(3);
 		});
 
-		it('does treat none as alias of presentation', function() {
+		it('does treat none as alias of presentation', () => {
 			testbed.innerHTML = '<a role="presentation"></a><a role="none"></a>';
 			var actual = aria.querySelectorAll(testbed, 'presentation');
 			expect(actual.length).toEqual(2);
 		});
 
-		it('does treat presentation as alias of none', function() {
+		it('does treat presentation as alias of none', () => {
 			testbed.innerHTML = '<a role="presentation"></a><a role="none"></a>';
 			var actual = aria.querySelectorAll(testbed, 'none');
 			expect(actual.length).toEqual(2);
