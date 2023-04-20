@@ -1,0 +1,14 @@
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v3
+    - name: dependencies
+      run: npm install
+    - run: mkdir -p dist
+    - name: build
+      run: npx browserify index.js -o dist/aria.js -s aria
+    - name: test
+      run: npx mocha-headless-chrome -a no-sandbox -f test/index.html
