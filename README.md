@@ -107,7 +107,6 @@ That said, this is what I think it could also be used for:
 # Implemented standards
 
 -   [Accessible Rich Internet Applications 1.1](https://www.w3.org/TR/wai-aria-1.1/)
--   [Core Accessibility API Mappings 1.1](https://www.w3.org/TR/core-aam-1.1/)
 -   [HTML Accessibility API Mappings 1.0](https://www.w3.org/TR/html-aam-1.0/)
 -   [WAI-ARIA Graphics Module 1.0](https://www.w3.org/TR/graphics-aria-1.0/)
 -   [Digital Publishing WAI-ARIA Module 1.0](https://www.w3.org/TR/dpub-aria-1.0/)
