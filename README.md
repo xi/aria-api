@@ -108,6 +108,7 @@ That said, this is what I think it could also be used for:
 
 -   [Accessible Rich Internet Applications 1.2](https://www.w3.org/TR/wai-aria-1.2/)
 -   [HTML Accessibility API Mappings 1.0](https://www.w3.org/TR/html-aam-1.0/)
+-   [SVG Accessibility API Mappings](https://www.w3.org/TR/svg-aam-1.0/) (very incomplete)
 -   [WAI-ARIA Graphics Module 1.0](https://www.w3.org/TR/graphics-aria-1.0/)
 -   [Digital Publishing WAI-ARIA Module 1.1](https://www.w3.org/TR/dpub-aria-1.1/)
 -   [Accessible Name and Description Computation 1.1](https://www.w3.org/TR/accname-1.1/)
