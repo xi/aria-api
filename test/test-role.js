@@ -68,6 +68,12 @@ describe('query', () => {
 			var actual = aria.getRole(testbed.children[0]);
 			expect(actual).toEqual('generic');
 		});
+
+		it('converts to lower case', () => {
+			testbed.innerHTML = '<span role="LINK">';
+			var actual = aria.getRole(testbed.children[0]);
+			expect(actual).toEqual('link');
+		});
 	});
 
 	describe('closest', () => {
