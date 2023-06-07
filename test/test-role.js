@@ -62,6 +62,12 @@ describe('query', () => {
 				'contentinfo',
 			]);
 		});
+
+		it('returns the first if there is more than one explicit role', () => {
+			testbed.innerHTML = '<span role="generic link">';
+			var actual = aria.getRole(testbed.children[0]);
+			expect(actual).toEqual('generic');
+		});
 	});
 
 	describe('closest', () => {
@@ -104,5 +110,11 @@ describe('query', () => {
 			var actual = aria.querySelectorAll(testbed, 'none');
 			expect(actual.length).toEqual(2);
 		});
+
+		it('matches all explicitly given roles', () => {
+			testbed.innerHTML = '<span role="generic link">';
+			var actual = aria.querySelectorAll(testbed, 'link');
+			expect(actual.length).toEqual(1);
+		}
 	});
 });
