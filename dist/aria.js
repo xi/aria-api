@@ -123,20 +123,24 @@ var constants = require('./constants.js');
 // candidates can be passed for performance optimization
 var getRole = function(el, candidates) {
 	if (el.hasAttribute('role')) {
-		var role = el.getAttribute('role');
-		if (!candidates || candidates.includes(role)) {
-			return role;
-		} else {
-			return;
+		var roles = el.getAttribute('role').toLowerCase().split(/\s+/);
+		if (roles.length > 1 && candidates) {
+			return [roles, candidates];
 		}
-	}
-	var roles = candidates ? candidates : Object.keys(constants.roles);
-	for (var role of roles) {
-		var r = constants.roles[role];
-		if (r) {
-			var selector = (r.selectors || []).join(',');
-			if (selector && el.matches(selector)) {
+		for (var role of roles) {
+			if (!candidates || candidates.includes(role)) {
 				return role;
+			}
+		}
+	} else {
+		var roles = candidates ? candidates : Object.keys(constants.roles);
+		for (var role of roles) {
+			var r = constants.roles[role];
+			if (r) {
+				var selector = (r.selectors || []).join(',');
+				if (selector && el.matches(selector)) {
+					return role;
+				}
 			}
 		}
 	}
@@ -301,13 +305,8 @@ exports.attributeWeakMapping = {
 	'selected': 'selected',
 };
 
-var scoped = [
-	'main *',
-	// https://www.w3.org/TR/html/dom.html#sectioning-content-2
-	'article *', 'aside *', 'nav *', 'section *',
-	// https://www.w3.org/TR/html/sections.html#sectioning-roots
-	'blockquote *', 'details *', 'dialog *', 'fieldset *', 'figure *', 'td *',
-].join(',');
+// https://www.w3.org/TR/html/dom.html#sectioning-content-2
+var scoped = ['article *', 'aside *', 'nav *', 'section *'].join(',');
 
 // https://www.w3.org/TR/html-aam-1.0/#html-element-role-mappings
 // https://www.w3.org/TR/wai-aria/roles
@@ -323,7 +322,10 @@ exports.roles = {
 		selectors: ['article'],
 	},
 	banner: {
-		selectors: ['header:not(' + scoped + ')'],
+		selectors: [`header:not(main *, ${scoped})`],
+	},
+	blockquote: {
+		selectors: ['blockquote'],
 	},
 	button: {
 		selectors: [
@@ -336,18 +338,24 @@ exports.roles = {
 		],
 		nameFromContents: true,
 	},
+	caption: {
+		selectors: ['caption', 'figcaption'],
+	},
 	cell: {
-		selectors: ['td'],
-		childRoles: ['gridcell', 'rowheader'],
+		selectors: ['td', 'th:not([scope])'],
+		childRoles: ['columnheader', 'gridcell', 'rowheader'],
 		nameFromContents: true,
 	},
 	checkbox: {
 		selectors: ['input[type="checkbox"]'],
-		childRoles: ['menuitemcheckbox', 'switch'],
+		childRoles: ['switch'],
 		nameFromContents: true,
 		defaults: {
 			'checked': 'false',
 		},
+	},
+	code: {
+		selectors: ['code'],
 	},
 	columnheader: {
 		selectors: ['th[scope="col"]'],
@@ -355,7 +363,7 @@ exports.roles = {
 	},
 	combobox: {
 		selectors: [
-		'input:not([type])[list]',
+			'input:not([type])[list]',
 			'input[type="email"][list]',
 			'input[type="search"][list]',
 			'input[type="tel"][list]',
@@ -374,16 +382,24 @@ exports.roles = {
 		childRoles: ['button', 'link', 'menuitem'],
 	},
 	complementary: {
-		selectors: ['aside'],
+		selectors: [
+			`aside:not(${scoped})`,
+			'aside[aria-label]',
+			'aside[aria-labelledby]',
+			'aside[title]',
+		],
 	},
 	composite: {
 		childRoles: ['grid', 'select', 'spinbutton', 'tablist'],
 	},
 	contentinfo: {
-		selectors: ['footer:not(' + scoped + ')'],
+		selectors: [`footer:not(main *, ${scoped})`],
 	},
 	definition: {
 		selectors: ['dd'],
+	},
+	deletion: {
+		selectors: ['del', 's'],
 	},
 	dialog: {
 		selectors: ['dialog'],
@@ -401,15 +417,31 @@ exports.roles = {
 	'doc-noteref': {
 		nameFromContents: true,
 	},
+	'doc-pagebreak': {
+		nameFromContents: true,
+	},
+	'doc-subtitle': {
+		nameFromContents: true,
+	},
 	document: {
-		selectors: ['body'],
+		selectors: ['html'],
 		childRoles: ['article', 'graphics-document'],
+	},
+	emphasis: {
+		selectors: ['em'],
 	},
 	figure: {
 		selectors: ['figure'],
+		childRoles: ['doc-example'],
 	},
 	form: {
 		selectors: ['form[aria-label]', 'form[aria-labelledby]', 'form[title]'],
+	},
+	generic: {
+		// too many selectors to list
+	},
+	'graphics-document': {
+		selectors: ['svg'],
 	},
 	grid: {
 		childRoles: ['treegrid'],
@@ -419,7 +451,14 @@ exports.roles = {
 		nameFromContents: true,
 	},
 	group: {
-		selectors: ['details', 'optgroup'],
+		selectors: [
+			'address',
+			'details',
+			'fieldset',
+			'hgroup',
+			'optgroup',
+			'text',
+		],
 		childRoles: ['row', 'select', 'toolbar', 'graphics-object'],
 	},
 	heading: {
@@ -434,7 +473,18 @@ exports.roles = {
 		childRoles: ['doc-cover'],
 	},
 	input: {
-		childRoles: ['checkbox', 'option', 'radio', 'slider', 'spinbutton', 'textbox'],
+		childRoles: [
+			'checkbox',
+			'combobox',
+			'option',
+			'radio',
+			'slider',
+			'spinbutton',
+			'textbox',
+		],
+	},
+	insertion: {
+		selectors: ['ins'],
 	},
 	landmark: {
 		childRoles: [
@@ -465,16 +515,17 @@ exports.roles = {
 		],
 	},
 	link: {
-		selectors: ['a[href]', 'area[href]', 'link[href]'],
+		selectors: ['a[href]', 'area[href]'],
 		childRoles: ['doc-backlink', 'doc-biblioref', 'doc-glossref', 'doc-noteref'],
 		nameFromContents: true,
 	},
 	list: {
-		selectors: ['dl', 'ol', 'ul'],
+		selectors: ['dl', 'ol', 'ul', 'menu'],
 		childRoles: ['directory', 'feed'],
 	},
 	listbox: {
 		selectors: [
+			'datalist',
 			'select[multiple]',
 			'select[size]:not([size="0"]):not([size="1"])',
 		],
@@ -483,7 +534,7 @@ exports.roles = {
 		},
 	},
 	listitem: {
-		selectors: ['dt', 'ul > li', 'ol > li'],
+		selectors: ['li'],
 		childRoles: ['doc-biblioentry', 'doc-endnote', 'treeitem'],
 	},
 	log: {
@@ -497,8 +548,14 @@ exports.roles = {
 	math: {
 		selectors: ['math'],
 	},
+	meter: {
+		selectors: ['meter'],
+		defaults: {
+			'valuemin': 0,
+			'valuemax': 100,
+		},
+	},
 	menu: {
-		selectors: ['menu[type="context"]'],
 		childRoles: ['menubar'],
 		defaults: {
 			'orientation': 'vertical',
@@ -510,12 +567,10 @@ exports.roles = {
 		},
 	},
 	menuitem: {
-		selectors: ['menuitem[type="command"]'],
 		childRoles: ['menuitemcheckbox'],
 		nameFromContents: true,
 	},
 	menuitemcheckbox: {
-		selectors: ['menuitem[type="checkbox"]'],
 		childRoles: ['menuitemradio'],
 		nameFromContents: true,
 		defaults: {
@@ -523,7 +578,6 @@ exports.roles = {
 		},
 	},
 	menuitemradio: {
-		selectors: ['menuitem[type="radio"]'],
 		nameFromContents: true,
 		defaults: {
 			'checked': 'false',
@@ -544,11 +598,18 @@ exports.roles = {
 			'selected': 'false',
 		},
 	},
+	paragraph: {
+		selectors: ['p'],
+	},
 	presentation: {
 		selectors: ['img[alt=""]'],
 	},
 	progressbar: {
 		selectors: ['progress'],
+		defaults: {
+			'valuemin': 0,
+			'valuemax': 100,
+		},
 	},
 	radio: {
 		selectors: ['input[type="radio"]'],
@@ -559,7 +620,7 @@ exports.roles = {
 		},
 	},
 	range: {
-		childRoles: ['progressbar', 'scrollbar', 'slider', 'spinbutton'],
+		childRoles: ['meter', 'progressbar', 'scrollbar', 'slider', 'spinbutton'],
 	},
 	region: {
 		selectors: ['section[aria-label]', 'section[aria-labelledby]', 'section[title]'],
@@ -573,7 +634,6 @@ exports.roles = {
 	},
 	rowgroup: {
 		selectors: ['tbody', 'thead', 'tfoot'],
-		nameFromContents: true,
 	},
 	rowheader: {
 		selectors: ['th[scope="row"]'],
@@ -584,9 +644,10 @@ exports.roles = {
 			'orientation': 'vertical',
 			'valuemin': 0,
 			'valuemax': 100,
-			// FIXME: halfway between actual valuemin and valuemax
-			'valuenow': 50,
 		},
+	},
+	search: {
+		selectors: ['search'],
 	},
 	searchbox: {
 		selectors: ['input[type="search"]:not([list])'],
@@ -594,19 +655,27 @@ exports.roles = {
 	section: {
 		childRoles: [
 			'alert',
+			'blockquote',
+			'caption',
 			'cell',
+			'code',
 			'definition',
+			'deletion',
 			'doc-abstract',
 			'doc-colophon',
 			'doc-credit',
 			'doc-dedication',
 			'doc-epigraph',
-			'doc-example',
 			'doc-footnote',
+			'doc-pagefooter',
+			'doc-pageheader',
+			'doc-pullquote',
 			'doc-qna',
+			'emphasis',
 			'figure',
 			'group',
 			'img',
+			'insertion',
 			'landmark',
 			'list',
 			'listitem',
@@ -614,10 +683,15 @@ exports.roles = {
 			'marquee',
 			'math',
 			'note',
+			'paragraph',
 			'status',
+			'strong',
+			'subscript',
+			'superscript',
 			'table',
 			'tabpanel',
 			'term',
+			'time',
 			'tooltip',
 		],
 	},
@@ -632,7 +706,7 @@ exports.roles = {
 		nameFromContents: true,
 	},
 	select: {
-		childRoles: ['combobox', 'listbox', 'menu', 'radiogroup', 'tree'],
+		childRoles: ['listbox', 'menu', 'radiogroup', 'tree'],
 	},
 	separator: {
 		// assume not focussable because <hr> is not
@@ -640,6 +714,8 @@ exports.roles = {
 		childRoles: ['doc-pagebreak'],
 		defaults: {
 			'orientation': 'horizontal',
+			'valuemin': 0,
+			'valuemax': 100,
 		},
 	},
 	slider: {
@@ -655,8 +731,7 @@ exports.roles = {
 	spinbutton: {
 		selectors: ['input[type="number"]'],
 		defaults: {
-			// FIXME: no valuemin/valuemax
-			'valuenow': 0,
+			// FIXME: no valuemin/valuemax/valuenow
 		},
 	},
 	status: {
@@ -667,17 +742,28 @@ exports.roles = {
 			'atomic': true,
 		},
 	},
+	strong: {
+		selectors: ['strong'],
+	},
 	structure: {
 		childRoles: [
 			'application',
 			'document',
 			'none',
+			'generic',
 			'presentation',
+			'range',
 			'rowgroup',
 			'section',
 			'sectionhead',
 			'separator',
 		],
+	},
+	subscript: {
+		selectors: ['sub'],
+	},
+	superscript: {
+		selectors: ['sup'],
 	},
 	switch: {
 		nameFromContents: true,
@@ -714,6 +800,14 @@ exports.roles = {
 		],
 		childRoles: ['searchbox'],
 	},
+	time: {
+		selectors: ['time'],
+	},
+	timer: {
+		defaults: {
+			'live': 'off',
+		},
+	},
 	toolbar: {
 		defaults: {
 			'orientation': 'horizontal',
@@ -737,8 +831,10 @@ exports.roles = {
 			'composite',
 			'gridcell',
 			'input',
-			'range',
+			'progressbar',
 			'row',
+			'scrollbar',
+			'separator',
 			'tab',
 		],
 	},
@@ -905,6 +1001,12 @@ var getName = function(el, recursive, visited, directReference) {
 			}
 		}
 	}
+	if (!ret.trim() && el.matches('svg *')) {
+		var svgTitle = el.querySelector('title');
+		if (svgTitle && svgTitle.parentElement === el) {
+			ret = svgTitle.textContent;
+		}
+	}
 
 	// E
 	if (!ret.trim() && (recursive || isInLabelForOtherWidget(el) || query.matches(el, 'button'))) {
@@ -972,10 +1074,15 @@ var getDescription = function(el) {
 			return label ? getName(label, true) : '';
 		});
 		ret = strings.join(' ');
+	} else if (el.matches('[aria-description]')) {
+		ret = el.getAttribute('aria-description');
+	} else if (el.matches('svg *')) {
+		var svgDesc = el.querySelector('desc');
+		if (svgDesc && svgDesc.parentElement === el) {
+			ret = svgDesc.textContent;
+		}
 	} else if (el.title) {
 		ret = el.title;
-	} else if (el.placeholder) {
-		ret = el.placeholder;
 	}
 
 	ret = (ret || '').trim().replace(/\s+/g, ' ');

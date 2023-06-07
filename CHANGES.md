@@ -1,3 +1,15 @@
+0.5.0 (2023-06-07)
+------------------
+
+-	add support for WAI-ARIA 1.2
+-	add support for Digital Publishing WAI-ARIA Module 1.1
+-	add support for `aria-description`
+-	add incomplete support for SVG Accessibility API Mappings
+-	update HTML Accessibility API Mappings to the latest working draft
+-	fix parsing of the `role` attribute is it contains more than one entry
+-	do not consider `placeholder` for description
+
+
 0.4.7 (2023-01-12)
 ------------------
 
