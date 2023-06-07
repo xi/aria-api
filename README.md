@@ -135,7 +135,7 @@ recommendation.
 
 # Related projects
 
--   [Visual ARIA Bookmarklet](http://whatsock.com/training/matrices/visual-aria.htm):
+-   [Visual ARIA Bookmarklet](https://whatsock.github.io/visual-aria/github-bookmarklet/visual-aria.htm):
     Displays role, name, and description in any website. Maintained by one of
     the editors of the [accname]() spec.
 -   [axe-core](https://github.com/dequelabs/axe-core/) and
