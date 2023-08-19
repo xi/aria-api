@@ -6,6 +6,8 @@ tests = []
 
 
 def fenced(before, after, s):
+	if before not in s or after not in s:
+		return ''
 	start = s.find(before) + len(before)
 	end = s.find(after, start)
 	return s[start:end]
@@ -18,20 +20,31 @@ def get_value(word, s):
 	return fenced('"is",', ']', s[start + len(word):]).strip().strip('"')
 
 
-for filename in os.listdir(sys.argv[1]):
-	if not filename.endswith('.html'):
-		continue
+for root, _dirs, files in os.walk(sys.argv[1]):
+	for filename in files:
+		if not filename.endswith('.html'):
+			continue
 
-	with open(os.path.join(sys.argv[1], filename)) as fh:
-		raw = fh.read()
-		test = {
-			'filename': filename,
-			'title': fenced('<title>', '</title>', raw),
-			'html': fenced('<body>', '<div id="manualMode">', raw).strip(),
-			'name': get_value('"accName"', raw),
-			'description': get_value('"accDescription"', raw),
-		}
-		tests.append(test)
+		with open(os.path.join(root, filename)) as fh:
+			raw = fh.read()
+			if '<div id="manualMode">' in raw:
+				tests.append({
+					'filename': filename,
+					'title': fenced('<title>', '</title>', raw),
+					'html': fenced('<body>', '<div id="manualMode">', raw).strip(),
+					'name': get_value('"accName"', raw),
+					'description': get_value('"accDescription"', raw),
+					'selector': '#test',
+				})
+			elif 'class="ex"' in raw:
+				tests.append({
+					'filename': filename,
+					'title': fenced('<title>', '</title>', raw),
+					'html': fenced('<body>', '<script>', raw).strip(),
+					'name': None,
+					'description': None,
+					'selector': '.ex',
+				})
 
 print('window.wpt = window.wpt || {};')
 print('window.wpt.accname = ' + json.dumps(tests, indent='\t'))

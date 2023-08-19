@@ -17,13 +17,16 @@ describe('getName / getDescription', () => {
 		var _it = known_failing.includes(test.title) ? xit : it;
 		_it(test.title, () => {
 			testbed.innerHTML = test.html;
-			var element = document.querySelector('#test');
+			for (var element of document.querySelectorAll(test.selector)) {
+				var name = element.dataset.expectedlabel || test.name;
+				var description = element.dataset.expecteddescription || test.description;
 
-			if (test.name !== null) {
-				expect(aria.getName(element)).toBe(test.name);
-			}
-			if (test.description !== null) {
-				expect(aria.getDescription(element)).toBe(test.description);
+				if (name !== null) {
+					expect(aria.getName(element)).toBe(name);
+				}
+				if (description !== null) {
+					expect(aria.getDescription(element)).toBe(description);
+				}
 			}
 		});
 	});
