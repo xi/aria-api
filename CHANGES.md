@@ -6,7 +6,7 @@
 -	add support for `aria-description`
 -	add incomplete support for SVG Accessibility API Mappings
 -	update HTML Accessibility API Mappings to the latest working draft
--	fix parsing of the `role` attribute is it contains more than one entry
+-	fix parsing of the `role` attribute if it contains more than one entry
 -	do not consider `placeholder` for description
 
 
