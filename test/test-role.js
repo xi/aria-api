@@ -74,6 +74,12 @@ describe('query', () => {
 			var actual = aria.getRole(testbed.children[0]);
 			expect(actual).toEqual('link');
 		});
+
+		it('does treat presentation as alias of none', () => {
+			testbed.innerHTML = '<a role="presentation">';
+			var actual = aria.getRole(testbed.children[0]);
+			expect(actual).toEqual('none');
+		});
 	});
 
 	describe('closest', () => {
