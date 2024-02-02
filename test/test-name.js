@@ -18,8 +18,9 @@ describe('getName / getDescription', () => {
 		_it(test.title, () => {
 			testbed.innerHTML = test.html;
 			for (var element of document.querySelectorAll(test.selector)) {
-				var name = element.dataset.expectedlabel || test.name;
-				var description = element.dataset.expecteddescription || test.description;
+				var name = element.dataset.expectedlabel ?? test.name;
+				var description = element.dataset.expecteddescription ?? test.description;
+				expect(name ?? description).toNotBe(null);
 
 				if (name !== null) {
 					expect(aria.getName(element)).toBe(name);
