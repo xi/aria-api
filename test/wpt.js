@@ -1,5 +1,5 @@
 window.wpt = window.wpt || {};
-window.wpt.accname = [
+window.wpt["accname"] = [
 	{
 		"filename": "description_test_case_666-manual.html",
 		"title": "Description test case 666",
@@ -1336,4 +1336,4 @@ window.wpt.accname = [
 		"description": null,
 		"selector": ".ex"
 	}
-]
+];

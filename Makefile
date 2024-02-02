@@ -6,10 +6,10 @@ wpt-master:
 	wget https://github.com/web-platform-tests/wpt/archive/refs/heads/master.zip -O wpt-master.zip
 	unzip wpt-master.zip
 
-test/wpt-accname.js: wpt.py wpt-master
-	python wpt.py wpt-master/accname/ > $@
+test/wpt.js: wpt.py wpt-master
+	python wpt.py > $@
 
-test: test/wpt-accname.js
+test: test/wpt.js
 	PUPPETEER_EXECUTABLE_PATH=$$(which chromium) npx mocha-headless-chrome -a no-sandbox -f test/index.html
 
 install:

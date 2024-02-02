@@ -1,8 +1,6 @@
-import sys
-import os
 import json
-
-tests = []
+import os
+import sys
 
 
 def fenced(before, after, s):
@@ -20,31 +18,44 @@ def get_value(word, s):
 	return fenced('"is",', ']', s[start + len(word):]).strip().strip('"')
 
 
-for root, _dirs, files in sorted(os.walk(sys.argv[1])):
-	for filename in files:
-		if not filename.endswith('.html'):
-			continue
+def extract_tests(path):
+	tests = []
 
-		with open(os.path.join(root, filename)) as fh:
-			raw = fh.read()
-			if '<div id="manualMode">' in raw:
-				tests.append({
-					'filename': filename,
-					'title': fenced('<title>', '</title>', raw),
-					'html': fenced('<body>', '<div id="manualMode">', raw).strip(),
-					'name': get_value('"accName"', raw),
-					'description': get_value('"accDescription"', raw),
-					'selector': '#test',
-				})
-			elif 'class="ex"' in raw:
-				tests.append({
-					'filename': filename,
-					'title': fenced('<title>', '</title>', raw),
-					'html': fenced('<body>', '<script>', raw).strip(),
-					'name': None,
-					'description': None,
-					'selector': '.ex',
-				})
+	for root, _dirs, files in sorted(os.walk(path)):
+		for filename in files:
+			if not filename.endswith('.html'):
+				continue
+
+			with open(os.path.join(root, filename)) as fh:
+				raw = fh.read()
+
+				if '<div id="manualMode">' in raw:
+					tests.append({
+						'filename': filename,
+						'title': fenced('<title>', '</title>', raw),
+						'html': fenced('<body>', '<div id="manualMode">', raw).strip(),
+						'name': get_value('"accName"', raw),
+						'description': get_value('"accDescription"', raw),
+						'selector': '#test',
+					})
+				elif 'class="ex"' in raw:
+					tests.append({
+						'filename': filename,
+						'title': fenced('<title>', '</title>', raw),
+						'html': fenced('<body>', '<script>', raw).strip(),
+						'name': None,
+						'description': None,
+						'selector': '.ex',
+					})
+	return tests
+
+
+def render_tests(name):
+	path = os.path.join('wpt-master', name)
+	tests = extract_tests(path)
+	rendered = json.dumps(tests, indent='\t')
+	print(f'window.wpt["{name}"] = {rendered};')
+
 
 print('window.wpt = window.wpt || {};')
-print('window.wpt.accname = ' + json.dumps(tests, indent='\t'))
+render_tests('accname')
