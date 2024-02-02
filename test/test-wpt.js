@@ -20,8 +20,8 @@ describe('wpt', () => {
 				_it(test.title, () => {
 					testbed.innerHTML = test.html;
 					for (var element of document.querySelectorAll(test.selector)) {
-						var name = element.dataset.expectedlabel ?? test.name;
-						var description = element.dataset.expecteddescription ?? test.description;
+						var name = element.dataset.expectedlabel ?? test.name ?? null;
+						var description = element.dataset.expecteddescription ?? test.description ?? null;
 						expect(name ?? description).toNotBe(null);
 
 						if (name !== null) {

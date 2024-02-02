@@ -42,8 +42,6 @@ def extract_tests(path):
 							'filename': filename,
 							'title': data["title"],
 							'html': fenced('<body>', '<div id="manualMode">', raw).strip(),
-							'name': None,
-							'description': None,
 							'selector': f'#{step["element"]}',
 						}
 						for check in step['test'].get('IAccessible2', []):
@@ -58,8 +56,6 @@ def extract_tests(path):
 						'filename': filename,
 						'title': fenced('<title>', '</title>', raw),
 						'html': fenced('<body>', '<script>', raw).strip(),
-						'name': None,
-						'description': None,
 						'selector': '.ex',
 					})
 	return tests
