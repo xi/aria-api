@@ -20,7 +20,7 @@ def get_value(word, s):
 	return fenced('"is",', ']', s[start + len(word):]).strip().strip('"')
 
 
-for root, _dirs, files in os.walk(sys.argv[1]):
+for root, _dirs, files in sorted(os.walk(sys.argv[1])):
 	for filename in files:
 		if not filename.endswith('.html'):
 			continue
