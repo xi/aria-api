@@ -127,6 +127,6 @@ describe('query', () => {
 			testbed.innerHTML = '<span role="generic link">';
 			var actual = aria.querySelectorAll(testbed, 'link');
 			expect(actual.length).toEqual(1);
-		}
+		});
 	});
 });
