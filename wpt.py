@@ -30,14 +30,29 @@ def extract_tests(path):
 				raw = fh.read()
 
 				if '<div id="manualMode">' in raw:
-					tests.append({
-						'filename': filename,
-						'title': fenced('<title>', '</title>', raw),
-						'html': fenced('<body>', '<div id="manualMode">', raw).strip(),
-						'name': get_value('"accName"', raw),
-						'description': get_value('"accDescription"', raw),
-						'selector': '#test',
-					})
+					try:
+						data = json.loads(fenced('ATTAcomm(', ') ;', raw))
+					except json.JSONDecodeError:
+						continue
+
+					for step in data['steps']:
+						if step['type'] != 'test':
+							continue
+						test = {
+							'filename': filename,
+							'title': data["title"],
+							'html': fenced('<body>', '<div id="manualMode">', raw).strip(),
+							'name': None,
+							'description': None,
+							'selector': f'#{step["element"]}',
+						}
+						for check in step['test'].get('IAccessible2', []):
+							if check[1] == 'accName':
+								test['name'] = check[3]
+							elif check[1] == 'accDescription':
+								test['description'] = check[3]
+						if len(test) > 4:
+							tests.append(test)
 				elif 'class="ex"' in raw:
 					tests.append({
 						'filename': filename,
