@@ -31,7 +31,7 @@ describe('getName / getDescription', () => {
 		});
 	});
 
-	it('ingores <noscript>', () => {
+	it('ignores <noscript>', () => {
 		testbed.innerHTML = '<a id="test" href="#">test <noscript>moo</noscript></a>';
 		var element = document.querySelector('#test');
 		expect(aria.getName(element)).toBe('test');
