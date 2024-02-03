@@ -3,8 +3,34 @@
 describe('wpt', () => {
 	var testbed = document.createElement('div');
 	var known_failing = [
+		// whitespace
 		'Name test case 660',
 		'Name test case 659',
+
+		'el-form',  // <form> should always have the role form, but only be exposed as a landmark if it also has a name
+		'el-th',  // incomplete selectors for columnheader
+
+		// name required
+		'fallback role w/ region with no label',
+		'form without label',
+		'region without label',
+
+		// role conflicts
+		'focusable heading role none with tabindex=-1',
+		'focusable heading role none with tabindex=0',
+		'heading role none with global attr aria-label',
+		'p role none with global attr aria-label (prohibited role)',
+
+		// required parents
+		'orphaned columnheader outside the context of row',
+		'orphaned rowheader outside the context of row',
+		'orphaned gridcell outside the context of row',
+		'orphaned option outside the context of listbox',
+
+		// complectaed generic selectors
+		'el-aside-in-section-without-name',
+		'el-footer',
+		'el-header',
 	];
 
 	var withId = function(element, fn) {
@@ -29,7 +55,7 @@ describe('wpt', () => {
 					'html': testbed.innerHTML,
 					'name': element.dataset.expectedlabel,
 					'description': element.dataset.expecteddescription,
-					'role': element.dataset.expectedrole,
+					'role': element.dataset.expectedrole ?? data.role,
 					'selector': `#${element.id}`,
 				});
 			});

@@ -51,13 +51,23 @@ def extract_tests(path):
 								test['description'] = check[3]
 						if len(test) > 4:
 							tests.append(test)
-				elif 'class="ex"' in raw:
-					tests.append({
-						'filename': filename,
-						'title': fenced('<title>', '</title>', raw),
-						'html': fenced('<body>', '<script>', raw).strip(),
-						'selector': '.ex',
-					})
+				else:
+					if 'class="ex"' in raw:
+						tests.append({
+							'filename': filename,
+							'title': fenced('<title>', '</title>', raw),
+							'html': fenced('<body>', '<script>', raw).strip(),
+							'selector': '.ex',
+						})
+					if 'class="ex-generic"' in raw:
+						tests.append({
+							'filename': filename,
+							'title': fenced('<title>', '</title>', raw),
+							'html': fenced('<body>', '<script>', raw).strip(),
+							'role': 'generic',
+							'selector': '.ex-generic',
+						})
+
 	return tests
 
 
@@ -70,3 +80,11 @@ def render_tests(name):
 
 print('window.wpt = window.wpt || {};')
 render_tests('accname')
+render_tests('wai-aria')
+render_tests('graphics-aria')
+render_tests('dpub-aria')
+render_tests('core-aam')
+render_tests('graphics-aam')
+render_tests('dpub-aam')
+render_tests('html-aam')
+render_tests('svg-aam')
