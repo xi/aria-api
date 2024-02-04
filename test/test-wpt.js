@@ -38,12 +38,6 @@ describe('wpt', () => {
 		'el-aside-in-section-without-name',
 		'el-footer',
 		'el-header',
-
-		// ARIA 1.3
-		'image role == computedrole image',
-		'synonym img role == computedrole image',
-		'el-img',
-		'el-mark',
 	];
 
 	var withId = function(element, fn) {
