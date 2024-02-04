@@ -19,13 +19,13 @@ module.exports = {
 };
 
 },{"./lib/atree.js":2,"./lib/name.js":5,"./lib/query.js":6}],2:[function(require,module,exports){
-var attrs = require('./attrs');
+const attrs = require('./attrs');
 
-var _getOwner = function(node, owners) {
+const _getOwner = function(node, owners) {
 	if (node.nodeType === node.ELEMENT_NODE && node.id) {
-		var selector = '[aria-owns~="' + CSS.escape(node.id) + '"]';
+		const selector = '[aria-owns~="' + CSS.escape(node.id) + '"]';
 		if (owners) {
-			for (var owner of owners) {
+			for (const owner of owners) {
 				if (owner.matches(selector)) {
 					return owner;
 				}
@@ -36,12 +36,12 @@ var _getOwner = function(node, owners) {
 	}
 };
 
-var _getParentNode = function(node, owners) {
+const _getParentNode = function(node, owners) {
 	return _getOwner(node, owners) || node.parentNode;
 };
 
-var detectLoop = function(node, owners) {
-	var seen = [node];
+const detectLoop = function(node, owners) {
+	const seen = [node];
 	while ((node = _getParentNode(node, owners))) {
 		if (seen.includes(node)) {
 			return true;
@@ -50,35 +50,35 @@ var detectLoop = function(node, owners) {
 	}
 };
 
-var getOwner = function(node, owners) {
-	var owner = _getOwner(node, owners);
+const getOwner = function(node, owners) {
+	const owner = _getOwner(node, owners);
 	if (owner && !detectLoop(node, owners)) {
 		return owner;
 	}
 };
 
-var getParentNode = function(node, owners) {
+const getParentNode = function(node, owners) {
 	return getOwner(node, owners) || node.parentNode;
 };
 
-var isHidden = function(node) {
+const isHidden = function(node) {
 	return node.nodeType === node.ELEMENT_NODE && attrs.getAttribute(node, 'hidden');
 };
 
-var getChildNodes = function(node, owners) {
-	var childNodes = [];
+const getChildNodes = function(node, owners) {
+	const childNodes = [];
 
-	for (var i = 0; i < node.childNodes.length; i++) {
-		var child = node.childNodes[i];
+	for (let i = 0; i < node.childNodes.length; i++) {
+		const child = node.childNodes[i];
 		if (!getOwner(child, owners) && !isHidden(child)) {
 			childNodes.push(child);
 		}
 	}
 
 	if (node.nodeType === node.ELEMENT_NODE) {
-		var owns = attrs.getAttribute(node, 'owns') || [];
-		for (var i = 0; i < owns.length; i++) {
-			var child = document.getElementById(owns[i]);
+		const owns = attrs.getAttribute(node, 'owns') || [];
+		for (let i = 0; i < owns.length; i++) {
+			const child = document.getElementById(owns[i]);
 			// double check with getOwner for consistency
 			if (child && getOwner(child, owners) === node && !isHidden(child)) {
 				childNodes.push(child);
@@ -89,18 +89,18 @@ var getChildNodes = function(node, owners) {
 	return childNodes;
 };
 
-var walk = function(root, fn) {
-	var owners = document.querySelectorAll('[aria-owns]');
-	var queue = [root];
+const walk = function(root, fn) {
+	const owners = document.querySelectorAll('[aria-owns]');
+	let queue = [root];
 	while (queue.length) {
-		var item = queue.shift();
+		const item = queue.shift();
 		fn(item);
 		queue = getChildNodes(item, owners).concat(queue);
 	}
 };
 
-var searchUp = function(node, test) {
-	var candidate = getParentNode(node);
+const searchUp = function(node, test) {
+	const candidate = getParentNode(node);
 	if (candidate) {
 		if (test(candidate)) {
 			return candidate;
@@ -118,44 +118,59 @@ module.exports = {
 };
 
 },{"./attrs":3}],3:[function(require,module,exports){
-var constants = require('./constants.js');
+const constants = require('./constants.js');
+
+var unique = function(arr) {
+	return arr.filter((a, i) => arr.indexOf(a) === i);
+};
+
+var flatten = function(arr) {
+	return [].concat.apply([], arr);
+};
+
+var normalizeRoles = function(roles, includeAbstract) {
+	return unique(roles
+		.map(r => constants.aliases[r] || r)
+		.filter(r => constants.roles[r])
+		.filter(r => includeAbstract || !constants.roles[r].abstract)
+	);
+};
 
 // candidates can be passed for performance optimization
-var getRole = function(el, candidates) {
-	if (el.hasAttribute('role')) {
-		var roles = el.getAttribute('role').toLowerCase().split(/\s+/);
-		if (roles.length > 1 && candidates) {
-			return [roles, candidates];
-		}
-		for (var role of roles) {
+const getRole = function(el, candidates) {
+	// TODO: filter out any invalid roles (e.g. name or context required)
+	const roles = normalizeRoles(
+		(el.getAttribute('role') || '').toLowerCase().split(/\s+/)
+	);
+
+	if (roles.length > 1 && candidates) {
+		return [roles, candidates];
+	} else if (roles.length) {
+		for (const role of roles) {
 			if (!candidates || candidates.includes(role)) {
 				return role;
 			}
 		}
 	} else {
-		var roles = candidates ? candidates : Object.keys(constants.roles);
-		for (var role of roles) {
-			var r = constants.roles[role];
-			if (r) {
-				var selector = (r.selectors || []).join(',');
-				if (selector && el.matches(selector)) {
-					return role;
-				}
+		for (const role of (candidates || Object.keys(constants.roles))) {
+			const r = constants.roles[role];
+			if (!r.abstract && r.selectors && el.matches(r.selectors.join(','))) {
+				return role;
 			}
 		}
 	}
 };
 
-var hasRole = function(el, roles) {
-	var candidates = [].concat.apply([], roles.map(role => {
-		return (constants.roles[role] || {}).subRoles || [role];
-	}));
-	return !!getRole(el, candidates);
+const hasRole = function(el, roles) {
+	const subRoles = normalizeRoles(roles, true).map(role => {
+		return constants.roles[role].subRoles || [role];
+	});
+	return !!getRole(el, unique(flatten(subRoles)));
 };
 
-var getAttribute = function(el, key) {
+const getAttribute = function(el, key) {
 	if (constants.attributeStrongMapping.hasOwnProperty(key)) {
-		var value = el[constants.attributeStrongMapping[key]];
+		const value = el[constants.attributeStrongMapping[key]];
 		if (value) {
 			return value;
 		}
@@ -172,14 +187,14 @@ var getAttribute = function(el, key) {
 		if (el.matches('details:not([open]) > :not(summary)')) {
 			return true;
 		}
-		var style = window.getComputedStyle(el);
+		const style = window.getComputedStyle(el);
 		if (style.display === 'none' || style.visibility === 'hidden') {
 			return true;
 		}
 	}
 
-	var type = constants.attributes[key];
-	var raw = el.getAttribute('aria-' + key);
+	const type = constants.attributes[key];
+	const raw = el.getAttribute('aria-' + key);
 
 	if (raw) {
 		if (type === 'bool') {
@@ -208,7 +223,7 @@ var getAttribute = function(el, key) {
 	// list -> aria-controls
 
 	if (key === 'level') {
-		for (var i = 1; i <= 6; i++) {
+		for (let i = 1; i <= 6; i++) {
 			if (el.tagName.toLowerCase() === 'h' + i) {
 				return i;
 			}
@@ -218,8 +233,8 @@ var getAttribute = function(el, key) {
 	}
 
 	if (key in constants.attrsWithDefaults) {
-		var role = getRole(el);
-		var defaults = (constants.roles[role] || {}).defaults;
+		const role = getRole(el);
+		const defaults = constants.roles[role].defaults;
 		if (defaults && defaults.hasOwnProperty(key)) {
 			return defaults[key];
 		}
@@ -306,7 +321,7 @@ exports.attributeWeakMapping = {
 };
 
 // https://www.w3.org/TR/html/dom.html#sectioning-content-2
-var scoped = ['article *', 'aside *', 'nav *', 'section *'].join(',');
+const scoped = ['article *', 'aside *', 'nav *', 'section *'].join(',');
 
 // https://www.w3.org/TR/html-aam-1.0/#html-element-role-mappings
 // https://www.w3.org/TR/wai-aria/roles
@@ -318,6 +333,8 @@ exports.roles = {
 			'atomic': true,
 		},
 	},
+	alertdialog: {},
+	application: {},
 	article: {
 		selectors: ['article'],
 	},
@@ -342,7 +359,7 @@ exports.roles = {
 		selectors: ['caption', 'figcaption'],
 	},
 	cell: {
-		selectors: ['td', 'th:not([scope])'],
+		selectors: ['td', 'td ~ th:not([scope])'],
 		childRoles: ['columnheader', 'gridcell', 'rowheader'],
 		nameFromContents: true,
 	},
@@ -379,6 +396,7 @@ exports.roles = {
 		},
 	},
 	command: {
+		abstract: true,
 		childRoles: ['button', 'link', 'menuitem'],
 	},
 	complementary: {
@@ -390,6 +408,7 @@ exports.roles = {
 		],
 	},
 	composite: {
+		abstract: true,
 		childRoles: ['grid', 'select', 'spinbutton', 'tablist'],
 	},
 	contentinfo: {
@@ -405,24 +424,59 @@ exports.roles = {
 		selectors: ['dialog'],
 		childRoles: ['alertdialog'],
 	},
+	'doc-abstract': {},
+	'doc-acknowledgments': {},
+	'doc-afterword': {},
+	'doc-appendix': {},
 	'doc-backlink': {
 		nameFromContents: true,
 	},
+	'doc-biblioentry': {},
+	'doc-bibliography': {},
 	'doc-biblioref': {
 		nameFromContents: true,
 	},
+	'doc-chapter': {},
+	'doc-colophon': {},
+	'doc-conclusion': {},
+	'doc-cover': {},
+	'doc-credit': {},
+	'doc-credits': {},
+	'doc-dedication': {},
+	'doc-endnote': {},
+	'doc-endnotes': {},
+	'doc-epilogue': {},
+	'doc-epigraph': {},
+	'doc-errata': {},
+	'doc-example': {},
+	'doc-footnote': {},
+	'doc-foreword': {},
+	'doc-glossary': {},
 	'doc-glossref': {
 		nameFromContents: true,
 	},
+	'doc-index': {},
+	'doc-introduction': {},
 	'doc-noteref': {
 		nameFromContents: true,
 	},
+	'doc-notice': {},
 	'doc-pagebreak': {
 		nameFromContents: true,
 	},
+	'doc-pagefooter': {},
+	'doc-pageheader': {},
+	'doc-pagelist': {},
+	'doc-part': {},
+	'doc-preface': {},
+	'doc-prologue': {},
+	'doc-pullquote': {},
+	'doc-qna': {},
 	'doc-subtitle': {
 		nameFromContents: true,
 	},
+	'doc-tip': {},
+	'doc-toc': {},
 	document: {
 		selectors: ['html'],
 		childRoles: ['article', 'graphics-document'],
@@ -430,6 +484,7 @@ exports.roles = {
 	emphasis: {
 		selectors: ['em'],
 	},
+	feed: {},
 	figure: {
 		selectors: ['figure'],
 		childRoles: ['doc-example'],
@@ -438,11 +493,34 @@ exports.roles = {
 		selectors: ['form[aria-label]', 'form[aria-labelledby]', 'form[title]'],
 	},
 	generic: {
-		// too many selectors to list
+		selectors: [
+			'a:not([href])',
+			'area:not([href])',
+			`aside:not(${scoped}):not([aria-label]):not([aria-labelledby]):not([title])`,
+			'b',
+			'bdi',
+			'bdo',
+			'body',
+			'data',
+			'div',
+			// footer scoped
+			// header scoped
+			'i',
+			'li:not(ul > li):not(ol > li)',
+			'pre',
+			'q',
+			'samp',
+			'section:not([aria-label]):not([aria-labelledby]):not([title])',
+			'small',
+			'span',
+			'u',
+		],
 	},
 	'graphics-document': {
 		selectors: ['svg'],
 	},
+	'graphics-object': {},
+	'graphics-symbol': {},
 	grid: {
 		childRoles: ['treegrid'],
 	},
@@ -473,6 +551,7 @@ exports.roles = {
 		childRoles: ['doc-cover'],
 	},
 	input: {
+		abstract: true,
 		childRoles: [
 			'checkbox',
 			'combobox',
@@ -487,6 +566,7 @@ exports.roles = {
 		selectors: ['ins'],
 	},
 	landmark: {
+		abstract: true,
 		childRoles: [
 			'banner',
 			'complementary',
@@ -521,7 +601,7 @@ exports.roles = {
 	},
 	list: {
 		selectors: ['dl', 'ol', 'ul', 'menu'],
-		childRoles: ['directory', 'feed'],
+		childRoles: ['feed'],
 	},
 	listbox: {
 		selectors: [
@@ -534,7 +614,7 @@ exports.roles = {
 		},
 	},
 	listitem: {
-		selectors: ['li'],
+		selectors: ['ol > li', 'ul > li'],
 		childRoles: ['doc-biblioentry', 'doc-endnote', 'treeitem'],
 	},
 	log: {
@@ -545,6 +625,7 @@ exports.roles = {
 	main: {
 		selectors: ['main'],
 	},
+	marquee: {},
 	math: {
 		selectors: ['math'],
 	},
@@ -587,6 +668,9 @@ exports.roles = {
 		selectors: ['nav'],
 		childRoles: ['doc-index', 'doc-pagelist', 'doc-toc'],
 	},
+	none: {
+		selectors: ['img[alt=""]'],
+	},
 	note: {
 		childRoles: ['doc-notice', 'doc-tip'],
 	},
@@ -600,9 +684,6 @@ exports.roles = {
 	},
 	paragraph: {
 		selectors: ['p'],
-	},
-	presentation: {
-		selectors: ['img[alt=""]'],
 	},
 	progressbar: {
 		selectors: ['progress'],
@@ -619,13 +700,16 @@ exports.roles = {
 			'checked': 'false',
 		},
 	},
+	radiogroup: {},
 	range: {
+		abstract: true,
 		childRoles: ['meter', 'progressbar', 'scrollbar', 'slider', 'spinbutton'],
 	},
 	region: {
 		selectors: ['section[aria-label]', 'section[aria-labelledby]', 'section[title]'],
 	},
 	roletype: {
+		abstract: true,
 		childRoles: ['structure', 'widget', 'window'],
 	},
 	row: {
@@ -636,7 +720,7 @@ exports.roles = {
 		selectors: ['tbody', 'thead', 'tfoot'],
 	},
 	rowheader: {
-		selectors: ['th[scope="row"]'],
+		selectors: ['th[scope="row"]', 'th:not([scope]):not(td ~ th)'],
 		nameFromContents: true,
 	},
 	scrollbar: {
@@ -653,6 +737,7 @@ exports.roles = {
 		selectors: ['input[type="search"]:not([list])'],
 	},
 	section: {
+		abstract: true,
 		childRoles: [
 			'alert',
 			'blockquote',
@@ -696,6 +781,7 @@ exports.roles = {
 		],
 	},
 	sectionhead: {
+		abstract: true,
 		childRoles: [
 			'columnheader',
 			'doc-subtitle',
@@ -706,6 +792,7 @@ exports.roles = {
 		nameFromContents: true,
 	},
 	select: {
+		abstract: true,
 		childRoles: ['listbox', 'menu', 'radiogroup', 'tree'],
 	},
 	separator: {
@@ -746,12 +833,12 @@ exports.roles = {
 		selectors: ['strong'],
 	},
 	structure: {
+		abstract: true,
 		childRoles: [
 			'application',
 			'document',
 			'none',
 			'generic',
-			'presentation',
 			'range',
 			'rowgroup',
 			'section',
@@ -759,6 +846,7 @@ exports.roles = {
 			'separator',
 		],
 	},
+	suggestion: {},
 	subscript: {
 		selectors: ['sub'],
 	},
@@ -786,6 +874,7 @@ exports.roles = {
 			'orientation': 'horizontal',
 		},
 	},
+	tabpanel: {},
 	term: {
 		selectors: ['dfn', 'dt'],
 	},
@@ -822,10 +911,12 @@ exports.roles = {
 			'orientation': 'vertical',
 		},
 	},
+	treegrid: {},
 	treeitem: {
 		nameFromContents: true,
 	},
 	widget: {
+		abstract: true,
 		childRoles: [
 			'command',
 			'composite',
@@ -839,15 +930,16 @@ exports.roles = {
 		],
 	},
 	window: {
+		abstract: true,
 		childRoles: ['dialog'],
 	},
 };
 
-var getSubRoles = function(role) {
-	var children = (exports.roles[role] || {}).childRoles || [];
-	var descendents = children.map(getSubRoles);
+const getSubRoles = function(role) {
+	const children = (exports.roles[role]).childRoles || [];
+	const descendents = children.map(getSubRoles);
 
-	var result = [role];
+	const result = [role];
 
 	descendents.forEach(list => {
 		list.forEach(r => {
@@ -862,18 +954,19 @@ var getSubRoles = function(role) {
 
 exports.attrsWithDefaults = [];
 
-for (var role in exports.roles) {
+for (const role in exports.roles) {
 	exports.roles[role].subRoles = getSubRoles(role);
-	for (var key in exports.roles[role].defaults) {
+	for (const key in exports.roles[role].defaults) {
 		if (!exports.attrsWithDefaults.includes(key)) {
 			exports.attrsWithDefaults.push(key);
 		}
 	}
 }
-exports.roles['none'] = exports.roles['none'] || {};
-exports.roles['none'].subRoles = ['none', 'presentation'];
-exports.roles['presentation'] = exports.roles['presentation'] || {};
-exports.roles['presentation'].subRoles = ['presentation', 'none'];
+
+exports.aliases = {
+	'presentation': 'none',
+	'directory': 'list',
+};
 
 exports.nameFromDescendant = {
 	'figure': 'figcaption',
@@ -888,14 +981,14 @@ exports.nameDefaults = {
 };
 
 },{}],5:[function(require,module,exports){
-var constants = require('./constants.js');
-var atree = require('./atree.js');
-var query = require('./query.js');
+const constants = require('./constants.js');
+const atree = require('./atree.js');
+const query = require('./query.js');
 
-var getPseudoContent = function(node, selector) {
-	var styles = window.getComputedStyle(node, selector);
-	var ret = styles.getPropertyValue('content');
-	var inline = styles.display.substr(0, 6) === 'inline';
+const getPseudoContent = function(node, selector) {
+	const styles = window.getComputedStyle(node, selector);
+	const ret = styles.getPropertyValue('content');
+	const inline = styles.display.substr(0, 6) === 'inline';
 	if (!ret) {
 		return '';
 	}
@@ -910,12 +1003,12 @@ var getPseudoContent = function(node, selector) {
 	}
 };
 
-var getContent = function(root, visited) {
-	var children = atree.getChildNodes(root);
+const getContent = function(root, visited) {
+	const children = atree.getChildNodes(root);
 
-	var ret = '';
-	for (var i = 0; i < children.length; i++) {
-		var node = children[i];
+	let ret = '';
+	for (let i = 0; i < children.length; i++) {
+		const node = children[i];
 		if (node.nodeType === node.TEXT_NODE) {
 			ret += node.textContent;
 		} else if (node.nodeType === node.ELEMENT_NODE) {
@@ -934,13 +1027,15 @@ var getContent = function(root, visited) {
 	return ret;
 };
 
-var allowNameFromContent = function(el) {
-	var role = query.getRole(el);
-	return (constants.roles[role] || {}).nameFromContents;
+const allowNameFromContent = function(el) {
+	const role = query.getRole(el);
+	if (role) {
+		return constants.roles[role].nameFromContents;
+	}
 };
 
-var getName = function(el, recursive, visited, directReference) {
-	var ret = '';
+const getName = function(el, recursive, visited, directReference) {
+	let ret = '';
 
 	visited = visited || [];
 	if (visited.includes(el)) {
@@ -956,9 +1051,9 @@ var getName = function(el, recursive, visited, directReference) {
 
 	// B
 	if (!recursive && el.matches('[aria-labelledby]')) {
-		var ids = el.getAttribute('aria-labelledby').split(/\s+/);
-		var strings = ids.map(id => {
-			var label = document.getElementById(id);
+		const ids = el.getAttribute('aria-labelledby').split(/\s+/);
+		const strings = ids.map(id => {
+			const label = document.getElementById(id);
 			return label ? getName(label, true, visited, true) : '';
 		});
 		ret = strings.join(' ');
@@ -969,7 +1064,7 @@ var getName = function(el, recursive, visited, directReference) {
 		if (query.matches(el, 'textbox,button')) {
 			ret = el.value || el.textContent;
 		} else if (query.matches(el, 'combobox,listbox')) {
-			var selected = query.querySelector(el, ':selected') || query.querySelector(el, 'option');
+			const selected = query.querySelector(el, ':selected') || query.querySelector(el, 'option');
 			if (selected) {
 				ret = getName(selected, recursive, visited);
 			} else {
@@ -988,7 +1083,7 @@ var getName = function(el, recursive, visited, directReference) {
 
 	// D
 	if (!ret.trim() && !recursive && el.labels) {
-		var strings = Array.prototype.map.call(el.labels, label => {
+		const strings = Array.prototype.map.call(el.labels, label => {
 			return getName(label, true, visited);
 		});
 		ret = strings.join(' ');
@@ -1003,9 +1098,9 @@ var getName = function(el, recursive, visited, directReference) {
 		ret = el.title;
 	}
 	if (!ret.trim()) {
-		for (var selector in constants.nameFromDescendant) {
+		for (const selector in constants.nameFromDescendant) {
 			if (el.matches(selector)) {
-				var descendant = el.querySelector(constants.nameFromDescendant[selector]);
+				const descendant = el.querySelector(constants.nameFromDescendant[selector]);
 				if (descendant) {
 					ret = getName(descendant, true, visited);
 				}
@@ -1013,7 +1108,7 @@ var getName = function(el, recursive, visited, directReference) {
 		}
 	}
 	if (!ret.trim() && el.matches('svg *')) {
-		var svgTitle = el.querySelector('title');
+		const svgTitle = el.querySelector('title');
 		if (svgTitle && svgTitle.parentElement === el) {
 			ret = svgTitle.textContent;
 		}
@@ -1030,7 +1125,7 @@ var getName = function(el, recursive, visited, directReference) {
 	}
 
 	if (!ret.trim()) {
-		for (var selector in constants.nameDefaults) {
+		for (const selector in constants.nameDefaults) {
 			if (el.matches(selector)) {
 				ret = constants.nameDefaults[selector];
 			}
@@ -1052,29 +1147,29 @@ var getName = function(el, recursive, visited, directReference) {
 		ret = ' ';
 	}
 
-	var before = getPseudoContent(el, ':before');
-	var after = getPseudoContent(el, ':after');
+	const before = getPseudoContent(el, ':before');
+	const after = getPseudoContent(el, ':after');
 	return before + ret + after;
 };
 
-var getNameTrimmed = function(el) {
+const getNameTrimmed = function(el) {
 	return getName(el).replace(/\s+/g, ' ').trim();
 };
 
-var getDescription = function(el) {
-	var ret = '';
+const getDescription = function(el) {
+	let ret = '';
 
 	if (el.matches('[aria-describedby]')) {
-		var ids = el.getAttribute('aria-describedby').split(/\s+/);
-		var strings = ids.map(id => {
-			var label = document.getElementById(id);
+		const ids = el.getAttribute('aria-describedby').split(/\s+/);
+		const strings = ids.map(id => {
+			const label = document.getElementById(id);
 			return label ? getName(label, true) : '';
 		});
 		ret = strings.join(' ');
 	} else if (el.matches('[aria-description]')) {
 		ret = el.getAttribute('aria-description');
 	} else if (el.matches('svg *')) {
-		var svgDesc = el.querySelector('desc');
+		const svgDesc = el.querySelector('desc');
 		if (svgDesc && svgDesc.parentElement === el) {
 			ret = svgDesc.textContent;
 		}
@@ -1097,34 +1192,32 @@ module.exports = {
 };
 
 },{"./atree.js":2,"./constants.js":4,"./query.js":6}],6:[function(require,module,exports){
-var attrs = require('./attrs.js');
-var atree = require('./atree.js');
+const attrs = require('./attrs.js');
+const atree = require('./atree.js');
 
 
-var matches = function(el, selector) {
-	var actual;
-
+const matches = function(el, selector) {
 	if (selector.substr(0, 1) === ':') {
-		var attr = selector.substr(1);
+		const attr = selector.substr(1);
 		return attrs.getAttribute(el, attr);
 	} else if (selector.substr(0, 1) === '[') {
-		var match = /\[([a-z]+)="(.*)"\]/.exec(selector);
-		actual = attrs.getAttribute(el, match[1]);
-		var rawValue = match[2];
+		const match = /\[([a-z]+)="(.*)"\]/.exec(selector);
+		const actual = attrs.getAttribute(el, match[1]);
+		const rawValue = match[2];
 		return actual.toString() === rawValue;
 	} else {
 		return attrs.hasRole(el, selector.split(','));
 	}
 };
 
-var _querySelector = function(all) {
-	return function(root, role) {
-		var results = [];
+const _querySelector = function(all) {
+	return function(root, selector) {
+		const results = [];
 		try {
 			atree.walk(root, node => {
 				if (node.nodeType === node.ELEMENT_NODE) {
 					// FIXME: skip hidden elements
-					if (matches(node, role)) {
+					if (matches(node, selector)) {
 						results.push(node);
 						if (!all) {
 							throw 'StopIteration';
@@ -1141,7 +1234,7 @@ var _querySelector = function(all) {
 	};
 };
 
-var closest = function(el, selector) {
+const closest = function(el, selector) {
 	return atree.searchUp(el, candidate => {
 		if (candidate.nodeType === candidate.ELEMENT_NODE) {
 			return matches(candidate, selector);

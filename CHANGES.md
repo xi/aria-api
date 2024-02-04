@@ -1,3 +1,16 @@
+0.6.0 (2024-02-04)
+------------------
+
+-	getRole
+	-	use Web Platform Tests
+	-	fix rowheader selectors
+	-	fix listitem selectors
+	-	fix: directory is an alias for list
+	-	never return invalid, abstract, or alias roles
+	-	fall back to implicit role if all explicit roles are invalid
+-	getName
+	-	increase priority of embedded input element
+
 0.5.0 (2023-06-07)
 ------------------
 
