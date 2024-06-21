@@ -25,6 +25,8 @@ def extract_tests(path):
 		for filename in files:
 			if not filename.endswith('.html'):
 				continue
+			if filename.endswith('.tentative.html'):
+				continue
 
 			with open(os.path.join(root, filename)) as fh:
 				raw = fh.read()
