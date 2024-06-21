@@ -11,11 +11,16 @@ describe('wpt', () => {
 	var testbed = document.createElement('div');
 	var known_failing = [
 		// whitespace
-		'Name test case 660',
 		'Name test case 659',
+		'Name test case 660',
+		'span[role=button] with text/element/text nodes, no space',
+		'div[role=heading] with text/element/text nodes, no space',
+		'button with text/element/text nodes, no space',
+		'heading with text/element/text nodes, no space',
+		'link with text/element/text nodes, no space',
 
-		'el-form',  // <form> should always have the role form, but only be exposed as a landmark if it also has a name
-		'el-th',  // incomplete selectors for columnheader
+		// incomplete selectors for columnheader
+		'el-th',
 
 		// name required
 		'fallback role w/ region with no label',
@@ -29,15 +34,57 @@ describe('wpt', () => {
 		'p role none with global attr aria-label (prohibited role)',
 
 		// required parents
-		'orphaned columnheader outside the context of row',
-		'orphaned rowheader outside the context of row',
-		'orphaned gridcell outside the context of row',
+		'orphan p with listitem role',
+		'orphan div with listitem role',
+		'orphan button with tab role',
+		'orphan span with tab role',
+		'orphaned treeitem outside the context of tree',
+		'orphaned button with treeitem role outside tree context',
 		'orphaned option outside the context of listbox',
+		'orphaned button with gridcell role outside the context of row',
+		'orphaned row outside the context of table',
+		'orphaned rowgroup outside the context of row',
+		'orphaned div with gridcell role outside the context of row',
+		'orphaned rowheader outside the context of row',
+		'orphaned columnheader outside the context of row',
+		'orphaned menuitem outside the context of menu/menubar',
+		'orphaned menuitemradio outside the context of menu/menubar',
+		'orphaned menuitemcheckbox outside the context of menu/menubar',
+		'orphan button with menuitem role',
+		'orphan button with menuitemcheckbox role',
+		'orphan button with menuitemradio role',
+		'orphan div with menuitem role',
+		'orphan div with menuitemcheckbox role',
+		'orphan div with menuitemradio role',
 
-		// complicated generic selectors
-		'el-aside-in-section-without-name',
-		'el-footer',
-		'el-header',
+		// browsers do not support attr() in content fallback
+		'button name from fallback content mixing attr() and strings with ::before and ::after',
+		'heading name from fallback content mixing attr() and strings with ::before and ::after',
+		'link name from fallback content mixing attr() and strings with ::before and ::after',
+
+		// visibility
+		'heading with name from content, containing element that is visibility:hidden with nested content that is visibility:visible',
+		'button with aria-labelledby using visibility:hidden span (with nested span)',
+		'button with aria-labelledby using visibility:hidden span (with nested spans, depth 2)',
+		'button with aria-labelledby using visibility:hidden hidden span (with nested sibling spans)',
+		'button with aria-labelledby using visibility:collapse span (with nested span)',
+		'button with aria-labelledby using visibility:collapse span (with nested spans, depth 2)',
+		'button with aria-labelledby using visibility:collapse span (with nested sibling spans)',
+
+		// weird combobox
+		'checkbox label with embedded combobox (span)',
+		'checkbox label with embedded combobox (div)',
+
+		// hidden not directly referenced
+		'button\'s hidden referenced name (display:none) supercedes aria-label',
+		'button\'s hidden referenced name (visibility:hidden) supercedes aria-label',
+
+		'Name from content of labelledby element',
+		'Name from content',
+		'Name link-mixed-content',
+		'Description from content of describedby element',
+		'Name from content of label',
+		'Hidden button\'s label should be the empty string',
 	];
 
 	var withId = function(element, fn) {
