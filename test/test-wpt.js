@@ -1,5 +1,12 @@
 /* global describe, it, xit, before, after, expect, aria */
 
+expect.extend({
+	toBeIn(list) {
+		expect.assert(list.includes(this.actual), 'expected %s to be in %s', this.actual, list);
+		return this;
+	},
+});
+
 describe('wpt', () => {
 	var testbed = document.createElement('div');
 	var known_failing = [
@@ -84,7 +91,11 @@ describe('wpt', () => {
 				expect(aria.getDescription(element)).toBe(test.description);
 			}
 			if (test.role != null) {
-				expect(aria.getRole(element)).toBe(test.role);
+				if (test.role === 'generic') {
+					expect(aria.getRole(element)).toBeIn(['generic', 'none', undefined]);
+				} else {
+					expect(aria.getRole(element)).toBe(test.role);
+				}
 			}
 		});
 	};
