@@ -11,6 +11,12 @@ def fenced(before, after, s):
 	return s[start:end]
 
 
+def get_css(html):
+	start = '<style type="text/css">'
+	end = '</style>'
+	return start + fenced(start, end, html) + end
+
+
 def get_value(word, s):
 	start = s.find(word)
 	if start == -1:
@@ -58,14 +64,14 @@ def extract_tests(path):
 						tests.append({
 							'filename': filename,
 							'title': fenced('<title>', '</title>', raw),
-							'html': fenced('<body>', '<script>', raw).strip(),
+							'html': get_css(raw) + fenced('<body>', '<script>', raw).strip(),
 							'selector': '.ex',
 						})
 					if 'class="ex-generic"' in raw:
 						tests.append({
 							'filename': filename,
 							'title': fenced('<title>', '</title>', raw),
-							'html': fenced('<body>', '<script>', raw).strip(),
+							'html': get_css(raw) + fenced('<body>', '<script>', raw).strip(),
 							'role': 'generic',
 							'selector': '.ex-generic',
 						})
