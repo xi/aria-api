@@ -27,7 +27,7 @@ describe('wpt', () => {
 		'orphaned gridcell outside the context of row',
 		'orphaned option outside the context of listbox',
 
-		// complectaed generic selectors
+		// complicated generic selectors
 		'el-aside-in-section-without-name',
 		'el-footer',
 		'el-header',
