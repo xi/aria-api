@@ -188,7 +188,7 @@ const getAttribute = function(el, key) {
 			return true;
 		}
 		const style = window.getComputedStyle(el);
-		if (style.display === 'none' || style.visibility === 'hidden') {
+		if (style.display === 'none' || style.visibility === 'hidden' || style.visibility === 'collapse') {
 			return true;
 		}
 	}
@@ -257,14 +257,18 @@ exports.attributes = {
 	'activedescendant': 'id',
 	'atomic': 'bool',
 	'autocomplete': 'token',
+	'braillelabel': 'string',
+	'brailleroledescription': 'string',
 	'busy': 'bool',
 	'checked': 'tristate',
 	'colcount': 'int',
 	'colindex': 'int',
+	'colindextext': 'string',
 	'colspan': 'int',
 	'controls': 'id-list',
 	'current': 'token',
 	'describedby': 'id-list',
+	'description': 'string',
 	'details': 'id',
 	'disabled': 'bool',
 	'dropeffect': 'token-list',
@@ -294,6 +298,7 @@ exports.attributes = {
 	'roledescription': 'string',
 	'rowcount': 'int',
 	'rowindex': 'int',
+	'rowindextext': 'string',
 	'rowspan': 'int',
 	'selected': 'bool-undefined',
 	'setsize': 'int',
@@ -323,6 +328,19 @@ exports.attributeWeakMapping = {
 // https://www.w3.org/TR/html/dom.html#sectioning-content-2
 const scoped = ['article *', 'aside *', 'nav *', 'section *'].join(',');
 
+const svgSelectors = function(selector) {
+	return [
+		// `${selector}:has(> title:not(:empty))`,
+		// `${selector}:has(> desc:not(:empty))`,
+		`${selector}[aria-label]`,
+		`${selector}[aria-roledescription]`,
+		`${selector}[aria-labelledby]`,
+		`${selector}[aria-describedby]`,
+		`${selector}[tabindex]`,
+		`${selector}[role]`,
+	];
+};
+
 // https://www.w3.org/TR/html-aam-1.0/#html-element-role-mappings
 // https://www.w3.org/TR/wai-aria/roles
 exports.roles = {
@@ -337,6 +355,7 @@ exports.roles = {
 	application: {},
 	article: {
 		selectors: ['article'],
+		childRoles: ['comment'],
 	},
 	banner: {
 		selectors: [`header:not(main *, ${scoped})`],
@@ -398,6 +417,9 @@ exports.roles = {
 	command: {
 		abstract: true,
 		childRoles: ['button', 'link', 'menuitem'],
+	},
+	comment: {
+		nameFromContents: true,
 	},
 	complementary: {
 		selectors: [
@@ -494,8 +516,8 @@ exports.roles = {
 	},
 	generic: {
 		selectors: [
-			'a:not([href])',
-			'area:not([href])',
+			'a:not([*|href])',
+			'area:not([*|href])',
 			`aside:not(${scoped}):not([aria-label]):not([aria-labelledby]):not([title])`,
 			'b',
 			'bdi',
@@ -519,8 +541,23 @@ exports.roles = {
 	'graphics-document': {
 		selectors: ['svg'],
 	},
-	'graphics-object': {},
-	'graphics-symbol': {},
+	'graphics-object': {
+		selectors: [
+			...svgSelectors('symbol'),
+			...svgSelectors('use'),
+		],
+	},
+	'graphics-symbol': {
+		selectors: [
+			...svgSelectors('circle'),
+			...svgSelectors('ellipse'),
+			...svgSelectors('line'),
+			...svgSelectors('path'),
+			...svgSelectors('polygon'),
+			...svgSelectors('polyline'),
+			...svgSelectors('rect'),
+		],
+	},
 	grid: {
 		childRoles: ['treegrid'],
 	},
@@ -535,7 +572,11 @@ exports.roles = {
 			'fieldset',
 			'hgroup',
 			'optgroup',
+			...svgSelectors('foreignObject'),
+			...svgSelectors('g'),
 			'text',
+			...svgSelectors('textPath'),
+			...svgSelectors('tspan'),
 		],
 		childRoles: ['row', 'select', 'toolbar', 'graphics-object'],
 	},
@@ -546,8 +587,13 @@ exports.roles = {
 			'level': 2,
 		},
 	},
-	img: {
-		selectors: ['img:not([alt=""])', 'graphics-symbol'],
+	image: {
+		selectors: [
+			'img:not([alt=""])',
+			'graphics-symbol',
+			...svgSelectors('image'),
+			...svgSelectors('mesh'),
+		],
 		childRoles: ['doc-cover'],
 	},
 	input: {
@@ -595,7 +641,7 @@ exports.roles = {
 		],
 	},
 	link: {
-		selectors: ['a[href]', 'area[href]'],
+		selectors: ['a[*|href]', 'area[href]'],
 		childRoles: ['doc-backlink', 'doc-biblioref', 'doc-glossref', 'doc-noteref'],
 		nameFromContents: true,
 	},
@@ -625,6 +671,9 @@ exports.roles = {
 	main: {
 		selectors: ['main'],
 	},
+	mark: {
+		selectors: ['mark'],
+	},
 	marquee: {},
 	math: {
 		selectors: ['math'],
@@ -648,11 +697,10 @@ exports.roles = {
 		},
 	},
 	menuitem: {
-		childRoles: ['menuitemcheckbox'],
+		childRoles: ['menuitemcheckbox', 'menuitemradio'],
 		nameFromContents: true,
 	},
 	menuitemcheckbox: {
-		childRoles: ['menuitemradio'],
 		nameFromContents: true,
 		defaults: {
 			'checked': 'false',
@@ -759,12 +807,13 @@ exports.roles = {
 			'emphasis',
 			'figure',
 			'group',
-			'img',
+			'image',
 			'insertion',
 			'landmark',
 			'list',
 			'listitem',
 			'log',
+			'mark',
 			'marquee',
 			'math',
 			'note',
@@ -772,6 +821,7 @@ exports.roles = {
 			'status',
 			'strong',
 			'subscript',
+			'suggestion',
 			'superscript',
 			'table',
 			'tabpanel',
@@ -966,6 +1016,7 @@ for (const role in exports.roles) {
 exports.aliases = {
 	'presentation': 'none',
 	'directory': 'list',
+	'img': 'image',
 };
 
 exports.nameFromDescendant = {
@@ -985,25 +1036,43 @@ const constants = require('./constants.js');
 const atree = require('./atree.js');
 const query = require('./query.js');
 
-const getPseudoContent = function(node, selector) {
-	const styles = window.getComputedStyle(node, selector);
-	const ret = styles.getPropertyValue('content');
-	const inline = styles.display.substr(0, 6) === 'inline';
-	if (!ret) {
-		return '';
-	}
-	if (ret.substr(0, 1) !== '"') {
-		return '';
-	} else {
-		if (inline) {
-			return ret.slice(1, -1);
-		} else {
-			return ' ' + ret.slice(1, -1) + ' ';
-		}
-	}
+const addSpaces = function(text, el, pseudoSelector) {
+	// https://github.com/w3c/accname/issues/3
+	const styles = window.getComputedStyle(el, pseudoSelector);
+	const inline = styles.display === 'inline';
+	return inline ? text : ` ${text} `;
 };
 
-const getContent = function(root, visited) {
+const getPseudoContent = function(el, pseudoSelector) {
+	const styles = window.getComputedStyle(el, pseudoSelector);
+	let tail = styles.getPropertyValue('content').trim();
+	let ret = [];
+
+	let match;
+	while (tail.length) {
+		if (match = tail.match(/^"([^"]*)"/)) {
+			ret.push(match[1]);
+		} else if (match = tail.match(/^([a-z-]+)\(([^)]*)\)/)) {
+			if (match[1] === 'attr') {
+				ret.push(el.getAttribute(match[2]) || '');
+			}
+		} else if (match = tail.match(/^([a-z-]+)/)) {
+			if (match[1] === 'open-quote' || match[1] === 'close-quote') {
+				ret.push('"');
+			}
+		} else if (match = tail.match(/^\//)) {
+			ret = [];
+		} else {
+			// invalid content, ignore
+			return '';
+		}
+		tail = tail.slice(match[0].length).trim();
+	}
+
+	return addSpaces(ret.join(''), el, pseudoSelector);
+};
+
+const getContent = function(root, ongoingLabelledBy, visited) {
 	const children = atree.getChildNodes(root);
 
 	let ret = '';
@@ -1014,12 +1083,8 @@ const getContent = function(root, visited) {
 		} else if (node.nodeType === node.ELEMENT_NODE) {
 			if (node.tagName.toLowerCase() === 'br') {
 				ret += '\n';
-			} else if (window.getComputedStyle(node).display.substr(0, 6) === 'inline' &&
-					node.tagName.toLowerCase() !== 'input' &&
-					node.tagName.toLowerCase() !== 'img') {  // https://github.com/w3c/accname/issues/3
-				ret += getName(node, true, visited);
 			} else {
-				ret += ' ' + getName(node, true, visited) + ' ';
+				ret += getName(node, true, ongoingLabelledBy, visited);
 			}
 		}
 	}
@@ -1034,7 +1099,7 @@ const allowNameFromContent = function(el) {
 	}
 };
 
-const getName = function(el, recursive, visited, directReference) {
+const getName = function(el, recursive, ongoingLabelledBy, visited, directReference) {
 	let ret = '';
 
 	visited = visited || [];
@@ -1050,23 +1115,23 @@ const getName = function(el, recursive, visited, directReference) {
 	// handled in atree
 
 	// B
-	if (!recursive && el.matches('[aria-labelledby]')) {
+	if (!ongoingLabelledBy && el.matches('[aria-labelledby]')) {
 		const ids = el.getAttribute('aria-labelledby').split(/\s+/);
 		const strings = ids.map(id => {
 			const label = document.getElementById(id);
-			return label ? getName(label, true, visited, true) : '';
+			return label ? getName(label, true, true, visited, true) : '';
 		});
 		ret = strings.join(' ');
 	}
 
 	// E (the current draft has this at this high priority)
 	if (!ret.trim() && recursive) {
-		if (query.matches(el, 'textbox,button')) {
+		if (query.matches(el, 'textbox')) {
 			ret = el.value || el.textContent;
 		} else if (query.matches(el, 'combobox,listbox')) {
 			const selected = query.querySelector(el, ':selected') || query.querySelector(el, 'option');
 			if (selected) {
-				ret = getName(selected, recursive, visited);
+				ret = getName(selected, recursive, ongoingLabelledBy, visited);
 			} else {
 				ret = el.value || '';
 			}
@@ -1084,12 +1149,9 @@ const getName = function(el, recursive, visited, directReference) {
 	// D
 	if (!ret.trim() && !recursive && el.labels) {
 		const strings = Array.prototype.map.call(el.labels, label => {
-			return getName(label, true, visited);
+			return getName(label, true, ongoingLabelledBy, visited);
 		});
 		ret = strings.join(' ');
-	}
-	if (!ret.trim()) {
-		ret = el.placeholder || '';
 	}
 	if (!ret.trim()) {
 		ret = el.alt || '';
@@ -1102,7 +1164,7 @@ const getName = function(el, recursive, visited, directReference) {
 			if (el.matches(selector)) {
 				const descendant = el.querySelector(constants.nameFromDescendant[selector]);
 				if (descendant) {
-					ret = getName(descendant, true, visited);
+					ret = getName(descendant, true, ongoingLabelledBy, visited);
 				}
 			}
 		}
@@ -1113,11 +1175,14 @@ const getName = function(el, recursive, visited, directReference) {
 			ret = svgTitle.textContent;
 		}
 	}
+	if (!ret.trim() && el.matches('a')) {
+		ret = el.getAttribute('xlink:title') || '';
+	}
 
 	// F
 	// FIXME: menu is not mentioned in the spec
 	if (!ret.trim() && (recursive || allowNameFromContent(el) || el.closest('label')) && !query.matches(el, 'menu')) {
-		ret = getContent(el, visited);
+		ret = getContent(el, ongoingLabelledBy, visited);
 	}
 
 	if (!ret.trim() && query.matches(el, 'button')) {
@@ -1136,9 +1201,8 @@ const getName = function(el, recursive, visited, directReference) {
 	// handled in getContent
 
 	// I
-	// FIXME: presentation not mentioned in the spec
-	if (!ret.trim() && (directReference || !query.matches(el, 'presentation'))) {
-		ret = el.title || '';
+	if (!ret.trim()) {
+		ret = el.title || el.placeholder || '';
 	}
 
 	// FIXME: not exactly sure about this, but it reduces the number of failing
@@ -1149,11 +1213,14 @@ const getName = function(el, recursive, visited, directReference) {
 
 	const before = getPseudoContent(el, ':before');
 	const after = getPseudoContent(el, ':after');
-	return before + ret + after;
+	return addSpaces(before + ret + after, el);
 };
 
 const getNameTrimmed = function(el) {
-	return getName(el).replace(/\s+/g, ' ').trim();
+	return getName(el)
+		.replace(/[ \n\r\t\f]+/g, ' ')
+		.replace(/^ /, '')
+		.replace(/ $/, '');
 };
 
 const getDescription = function(el) {
@@ -1163,7 +1230,7 @@ const getDescription = function(el) {
 		const ids = el.getAttribute('aria-describedby').split(/\s+/);
 		const strings = ids.map(id => {
 			const label = document.getElementById(id);
-			return label ? getName(label, true) : '';
+			return label ? getName(label, true, true) : '';
 		});
 		ret = strings.join(' ');
 	} else if (el.matches('[aria-description]')) {
@@ -1175,6 +1242,9 @@ const getDescription = function(el) {
 		}
 	} else if (el.title) {
 		ret = el.title;
+	}
+	if (!ret.trim() && el.matches('a')) {
+		ret = el.getAttribute('xlink:title') || '';
 	}
 
 	ret = (ret || '').trim().replace(/\s+/g, ' ');

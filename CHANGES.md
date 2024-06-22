@@ -1,3 +1,21 @@
+0.7.0 (2024-06-22)
+------------------
+
+-	add support for SVG-AAM
+-	add support for WAI-ARIA 1.3
+-	fix: when deciding if an element is hidden, treat `visibility: collapsed` the
+	same as `visibility: hidden`
+-	getName
+	-	do not trim non-breaking spaces
+	-	add support for `open-quote`, `close-quote`, `attr(…)` and fallback values
+		in pseudo content
+	-	treat `placeholder` as tooltip
+	-	only add whitespace for online elements, not for inline-block
+	-	fallback to tooltip for any element
+	-	only ignore `aria-labelledby` when recursion was caused by
+		`aria-labelledby` or `aria-describedby`
+
+
 0.6.0 (2024-02-04)
 ------------------
 
@@ -10,6 +28,7 @@
 	-	fall back to implicit role if all explicit roles are invalid
 -	getName
 	-	increase priority of embedded input element
+
 
 0.5.0 (2023-06-07)
 ------------------
