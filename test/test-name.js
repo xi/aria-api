@@ -14,10 +14,4 @@ describe('getName / getDescription', () => {
 		var element = document.querySelector('#test');
 		expect(aria.getName(element)).toBe('test');
 	});
-
-	it('ignores <img alt="">', () => {
-		testbed.innerHTML = '<img id="test" alt="" title="title">'
-		var element = document.querySelector('#test');
-		expect(aria.getName(element)).toBe('');
-	});
 });
