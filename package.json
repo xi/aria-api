@@ -2,6 +2,7 @@
   "name": "aria-api",
   "version": "0.8.0",
   "description": "Access ARIA information from JavaScript",
+  "main": "dist/aria.js",
   "module": "index.js",
   "keywords": [
     "aria",
