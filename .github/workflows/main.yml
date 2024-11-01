@@ -9,6 +9,6 @@ jobs:
       run: npm install
     - run: mkdir -p dist
     - name: build
-      run: npx browserify index.js -o dist/aria.js -s aria
+      run: npx rollup index.js -o dist/aria.js -f umd -n aria
     - name: test
       run: npx mocha-headless-chrome -a no-sandbox -f test/index.html

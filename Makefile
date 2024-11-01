@@ -1,6 +1,6 @@
 dist/aria.js: index.js lib/*.js
 	mkdir -p dist
-	rollup $< -o $@ -f umd -n aria
+	npx rollup $< -o $@ -f umd -n aria
 
 wpt-master:
 	wget https://github.com/web-platform-tests/wpt/archive/refs/heads/master.zip -O wpt-master.zip
