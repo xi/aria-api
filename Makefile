@@ -1,6 +1,6 @@
 dist/aria.js: index.js lib/*.js
 	mkdir -p dist
-	npx browserify $< -o $@ -s aria
+	rollup $< -o $@ -f umd -n aria
 
 wpt-master:
 	wget https://github.com/web-platform-tests/wpt/archive/refs/heads/master.zip -O wpt-master.zip
