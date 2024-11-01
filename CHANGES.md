@@ -1,3 +1,13 @@
+0.8.0 (2024-11-01)
+------------------
+
+-	Convert the source code to ES modules. `dist/aria.js` is still an UMD bundle.
+-	The internal re-exports `query.getRole()` and `query.getAttribute()` have
+	been removed. Use the corresponding exports from `attrs` instead.
+-	fix: support `xlink:href` on `<area>` elements
+-	fix: consider `text-transform` in `getName()` and `getDescription()`
+
+
 0.7.0 (2024-06-22)
 ------------------
 
