@@ -14,7 +14,7 @@ complicated. This library takes care of exactly that.
     npm install aria-api
 
 This installation method works best if you use tools like webpack or
-browserify. There is also an UMD build included as `dist/aria.js`.
+rollup. There is also an UMD build included as `dist/aria.js`.
 
 # Usage
 
