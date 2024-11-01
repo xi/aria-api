@@ -2,7 +2,7 @@
   "name": "aria-api",
   "version": "0.7.0",
   "description": "Access ARIA information from JavaScript",
-  "main": "index.js",
+  "module": "index.js",
   "keywords": [
     "aria",
     "accessibility",

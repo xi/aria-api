@@ -1,18 +1,4 @@
-var query = require('./lib/query.js');
-var name = require('./lib/name.js');
-var atree = require('./lib/atree.js');
-
-module.exports = {
-	getRole: query.getRole,
-	getAttribute: query.getAttribute,
-	getName: name.getName,
-	getDescription: name.getDescription,
-
-	matches: query.matches,
-	querySelector: query.querySelector,
-	querySelectorAll: query.querySelectorAll,
-	closest: query.closest,
-
-	getParentNode: atree.getParentNode,
-	getChildNodes: atree.getChildNodes,
-};
+export { getParentNode, getChildNodes } from './lib/atree.js';
+export { getRole, getAttribute } from './lib/attrs.js';
+export { matches, querySelector, querySelectorAll, closest } from './lib/query.js';
+export { getName, getDescription } from './lib/name.js';
