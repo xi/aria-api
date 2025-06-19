@@ -26,6 +26,30 @@ describe('wpt', () => {
 		'fallback role w/ region with no label',
 		'form without label',
 		'region without label',
+		'role-map-region-nameless',
+		'role-map-region-aria-label-empty',
+		'role-map-region-aria-label-whitespace',
+		'role-map-region-aria-labelledby-non-existing',
+		'role-map-region-aria-labelledby-empty',
+		'role-map-region-aria-labelledby-whitespace',
+		'role-map-region-title-empty',
+		'role-map-region-title-whitespace',
+		'el-img-empty-alt-aria-label',
+		'el-img-empty-alt-aria-labelledby',
+		'el-aside-in-section-aria-label-empty',
+		'el-aside-in-section-aria-label-whitespace',
+		'el-aside-in-section-aria-labelledby-non-existing',
+		'el-aside-in-section-aria-labelledby-empty',
+		'el-aside-in-section-aria-labelledby-whitespace',
+		'el-aside-in-section-title-empty',
+		'el-aside-in-section-title-whitespace',
+		'el-section-aria-label-empty',
+		'el-section-aria-label-whitespace',
+		'el-section-aria-labelledby-non-existing',
+		'el-section-aria-labelledby-empty',
+		'el-section-aria-labelledby-whitespace',
+		'el-section-title-empty',
+		'el-section-title-whitespace',
 
 		// role conflicts
 		'focusable heading role none with tabindex=-1',
@@ -74,6 +98,11 @@ describe('wpt', () => {
 		// weird combobox
 		'checkbox label with embedded combobox (span)',
 		'checkbox label with embedded combobox (div)',
+
+		// no way to get counter in JS
+		'button with alt counter on ::before',
+		'heading with alt counter on ::before',
+		'link with alt counter on ::before',
 
 		// hidden not directly referenced
 		'button\'s hidden referenced name (display:none) supercedes aria-label',

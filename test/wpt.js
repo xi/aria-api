@@ -1,732 +1,11 @@
 window.wpt = window.wpt || {};
 window.wpt["accname"] = [
 	{
-		"filename": "description_test_case_666-manual.html",
-		"title": "Description test case 666",
-		"html": "<p>This test examines the ARIA properties for Description test case 666.</p>\n    <div>\n    <img id=\"test\" aria-describedby=\"ID1\" src=\"test.png\">\n  </div>\n  <div id=\"ID1\" role=\"presentation\">foo</div>",
-		"selector": "#test",
-		"description": "foo"
-	},
-	{
-		"filename": "name_test_case_756-manual.html",
-		"title": "Name test case 756",
-		"html": "<p>This test examines the ARIA properties for Name test case 756.</p>\n    <style>\n    label:before { content:\"fancy \"; }\n  </style>\n  <label for=\"test\">fruit</label>\n  <input type=\"file\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "fancy fruit"
-	},
-	{
-		"filename": "name_radio-label-embedded-combobox-manual.html",
-		"title": "Name radio-label-embedded-combobox",
-		"html": "<p>This test examines the ARIA properties for Name radio-label-embedded-combobox.</p>\n    <input type=\"radio\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <div role=\"combobox\">\n      <div role=\"textbox\"></div>\n      <ul role=\"listbox\" style=\"list-style-type: none;\">\n        <li role=\"option\" aria-selected=\"true\">1</li>\n    <li role=\"option\">2</li>\n    <li role=\"option\">3</li>\n      </ul>\n    </div>\n    times.\n  </label>",
-		"selector": "#test",
-		"name": "Flash the screen 1 times."
-	},
-	{
-		"filename": "description_test_case_one_valid_reference-manual.html",
-		"title": "Description test case one valid reference",
-		"html": "<p>This test examines the ARIA properties for Description test case one valid reference.</p>\n    <img src=\"foo.jpg\" id=\"test\" alt=\"test\" aria-describedby=\"t1 t2 t3\">\n  <div id=\"t2\">foo</div>",
-		"selector": "#test",
-		"description": "foo"
-	},
-	{
-		"filename": "name_test_case_754-manual.html",
-		"title": "Name test case 754",
-		"html": "<p>This test examines the ARIA properties for Name test case 754.</p>\n    <style>\n    label:before { content:\"fancy \"; }\n  </style>\n  <label for=\"test\">fruit</label>\n  <input type=\"checkbox\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "fancy fruit"
-	},
-	{
-		"filename": "name_test_case_659-manual.html",
-		"title": "Name test case 659",
-		"html": "<p>This test examines the ARIA properties for Name test case 659.</p>\n    <style type=\"text/css\">\n    label:before { content: \"foo\"; }\n    label:after { content: \"baz\"; }\n  </style>\n  <form>\n    <label for=\"test\" title=\"bar\"><input id=\"test\" type=\"text\" name=\"test\" title=\"buz\"></label>\n  </form>",
-		"selector": "#test",
-		"name": "foo bar baz"
-	},
-	{
-		"filename": "name_file-label-embedded-spinbutton-manual.html",
-		"title": "Name file-label-embedded-spinbutton",
-		"html": "<p>This test examines the ARIA properties for Name file-label-embedded-spinbutton.</p>\n    <input type=\"file\" id=\"test\" />\n  <label for=\"test\">foo <input role=\"spinbutton\" type=\"number\" value=\"5\" min=\"1\" max=\"10\" aria-valuenow=\"5\" aria-valuemin=\"1\" aria-valuemax=\"10\"> baz\n  </label>",
-		"selector": "#test",
-		"name": "foo 5 baz"
-	},
-	{
-		"filename": "description_test_case_664-manual.html",
-		"title": "Description test case 664",
-		"html": "<p>This test examines the ARIA properties for Description test case 664.</p>\n    <div>\n    <img id=\"test\" aria-describedby=\"ID1\" src=\"test.png\">\n  </div>\n  <div id=\"ID1\">foo</div>",
-		"selector": "#test",
-		"description": "foo"
-	},
-	{
-		"filename": "name_from_content_of_labelledby_elements_one_of_which_is_hidden-manual.html",
-		"title": "Name from content of labelledby elements one of which is hidden",
-		"html": "<p>This test examines the ARIA properties for Name from content of labelledby elements one of which is hidden.</p>\n    <style>\n    .hidden { display: none; }\n  </style>\n  <div>\n    <input id=\"test\" type=\"text\" aria-labelledby=\"lbl1 lbl2\" aria-describedby=\"descId\" />\n    <span>\n      <span aria-hidden=\"true\" id=\"lbl1\">Important</span>\n      <span class=\"hidden\">\n        <span aria-hidden=\"true\" id=\"lbl2\">stuff</span>\n      </span>\n    </span>\n  </div>\n  <div class=\"hidden\">\n    <div id=\"descId\">\n      <span aria-hidden=\"true\"><i> Hello, </i></span>\n      <span>My</span> name is\n      <div><img src=\"file.jpg\" title=\"Bryan\" alt=\"\" role=\"presentation\" /></div>\n      <span role=\"presentation\" aria-label=\"Eli\">\n        <span aria-label=\"Garaventa\">Zambino</span>\n      </span>\n      <span>the weird.</span>\n      (QED)\n      <span class=\"hidden\"><i><b>and don't you forget it.</b></i></span>\n      <table>\n        <tr>\n          <td>Where</td>\n          <td style=\"visibility:hidden;\"><div>in</div></td>\n          <td><div style=\"display:none;\">the world</div></td>\n          <td>are my marbles?</td>\n        </tr>\n      </table>\n    </div>\n  </div>",
-		"selector": "#test",
-		"name": "Important stuff"
-	},
-	{
-		"filename": "name_file-label-embedded-menu-manual.html",
-		"title": "Name file-label-embedded-menu",
-		"html": "<p>This test examines the ARIA properties for Name file-label-embedded-menu.</p>\n    <input type=\"file\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <span role=\"menu\">\n      <span role=\"menuitem\" aria-selected=\"true\">1</span>\n      <span role=\"menuitem\" hidden>2</span>\n      <span role=\"menuitem\" hidden>3</span>\n    </span>\n    times.\n  </label>",
-		"selector": "#test",
-		"name": "Flash the screen times."
-	},
-	{
-		"filename": "name_test_case_757-manual.html",
-		"title": "Name test case 757",
-		"html": "<p>This test examines the ARIA properties for Name test case 757.</p>\n    <style>\n    label:before { content:\"fancy \"; }\n  </style>\n  <label for=\"test\">fruit</label>\n  <input type=\"image\" src=\"foo.jpg\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "fancy fruit"
-	},
-	{
-		"filename": "name_test_case_602-manual.html",
-		"title": "Name test case 602",
-		"html": "<p>This test examines the ARIA properties for Name test case 602.</p>\n    <div id=\"test\" role=\"button\" title=\"Tag\" style=\"outline:medium solid black; width:2em; height:1em;\">\n  </div>",
-		"selector": "#test",
-		"name": "Tag"
-	},
-	{
-		"filename": "name_test_case_738-manual.html",
-		"title": "Name test case 738",
-		"html": "<p>This test examines the ARIA properties for Name test case 738.</p>\n    <label for=\"test\">\n    crazy\n    <div role=\"spinbutton\" aria-valuetext=\"Monday\" aria-valuemin=\"1\" aria-valuemax=\"7\" aria-valuenow=\"4\">\n    </div>\n  </label>\n  <input type=\"password\" value=\"baz\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "crazy Monday"
-	},
-	{
-		"filename": "name_test_case_733-manual.html",
-		"title": "Name test case 733",
-		"html": "<p>This test examines the ARIA properties for Name test case 733.</p>\n    <label for=\"test\">\n    crazy\n    <select name=\"member\" size=\"1\" role=\"menu\" tabindex=\"0\">\n      <option role=\"menuitem\" value=\"beard\" selected=\"true\">clown</option>\n      <option role=\"menuitem\" value=\"scuba\">rich</option>\n    </select>\n  </label>\n  <input type=\"password\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "crazy"
-	},
-	{
-		"filename": "name_test_case_600-manual.html",
-		"title": "Name test case 600",
-		"html": "<p>This test examines the ARIA properties for Name test case 600.</p>\n    <div id=\"test\">Div with text</div>",
-		"selector": "#test",
-		"name": ""
-	},
-	{
-		"filename": "name_test_case_562-manual.html",
-		"title": "Name test case 562",
-		"html": "<p>This test examines the ARIA properties for Name test case 562.</p>\n    <input type=\"text\" value=\"peanuts\" id=\"ID1\">\n  <input type=\"text\" value=\"popcorn\" id=\"ID2\">\n  <input type=\"text\" value=\"apple jacks\" id=\"ID3\">\n  <img aria-labelledby=\"ID1 ID2 ID3\" id=\"test\" src=\"foo.jpg\"/>",
-		"selector": "#test",
-		"name": "peanuts popcorn apple jacks"
-	},
-	{
-		"filename": "name_test_case_731-manual.html",
-		"title": "Name test case 731",
-		"html": "<p>This test examines the ARIA properties for Name test case 731.</p>\n    <label for=\"test\">\n    foo\n    <input type=\"text\" value=\"David\"/>\n  </label>\n  <input type=\"image\" id=\"test\" src=\"foo.jpg\"/>",
-		"selector": "#test",
-		"name": "foo David"
-	},
-	{
-		"filename": "name_test_case_606-manual.html",
-		"title": "Name test case 606",
-		"html": "<p>This test examines the ARIA properties for Name test case 606.</p>\n    <a href=\"test.html\" id=\"test\" aria-labelledby=\"test ID1\" aria-label=\"Tag\"></a>\n  <p id=\"ID1\">foo</p>",
-		"selector": "#test",
-		"name": "Tag foo"
-	},
-	{
-		"filename": "name_radio-label-embedded-select-manual.html",
-		"title": "Name radio-label-embedded-select",
-		"html": "<p>This test examines the ARIA properties for Name radio-label-embedded-select.</p>\n    <input type=\"radio\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <select size=\"1\">\n      <option selected=\"selected\">1</option>\n      <option>2</option>\n      <option>3</option>\n    </select>\n    times.\n  </label>",
-		"selector": "#test",
-		"name": "Flash the screen 1 times."
-	},
-	{
-		"filename": "name_password-label-embedded-select-manual.html",
-		"title": "Name password-label-embedded-select",
-		"html": "<p>This test examines the ARIA properties for Name password-label-embedded-select.</p>\n    <input type=\"password\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <select size=\"1\">\n      <option selected=\"selected\">1</option>\n      <option>2</option>\n      <option>3</option>\n    </select>\n    times.\n  </label>",
-		"selector": "#test",
-		"name": "Flash the screen 1 times."
-	},
-	{
-		"filename": "name_password-title-manual.html",
-		"title": "Name password-title",
-		"html": "<p>This test examines the ARIA properties for Name password-title.</p>\n    <input type=\"password\" id=\"test\" title=\"foo\" />",
-		"selector": "#test",
-		"name": "foo"
-	},
-	{
-		"filename": "name_test_case_749-manual.html",
-		"title": "Name test case 749",
-		"html": "<p>This test examines the ARIA properties for Name test case 749.</p>\n    <input type=\"checkbox\" id=\"test\" title=\"crazy\"/>",
-		"selector": "#test",
-		"name": "crazy"
-	},
-	{
-		"filename": "name_test_case_726-manual.html",
-		"title": "Name test case 726",
-		"html": "<p>This test examines the ARIA properties for Name test case 726.</p>\n    <label for=\"test\">States:</label>\n  <input type=\"image\" id=\"test\" src=\"foo.jpg\"/>",
-		"selector": "#test",
-		"name": "States:"
-	},
-	{
-		"filename": "name_radio-label-embedded-spinbutton-manual.html",
-		"title": "Name radio-label-embedded-spinbutton",
-		"html": "<p>This test examines the ARIA properties for Name radio-label-embedded-spinbutton.</p>\n    <input type=\"radio\" id=\"test\" />\n  <label for=\"test\">foo <input role=\"spinbutton\"  type=\"number\" value=\"5\" min=\"1\" max=\"10\" aria-valuenow=\"5\" aria-valuemin=\"1\" aria-valuemax=\"10\"> baz\n  </label>",
-		"selector": "#test",
-		"name": "foo 5 baz"
-	},
-	{
-		"filename": "name_test_case_551-manual.html",
-		"title": "Name test case 551",
-		"html": "<p>This test examines the ARIA properties for Name test case 551.</p>\n    <input type=\"text\" id=\"test\" title=\"crazy\" value=\"baz\"/>",
-		"selector": "#test",
-		"name": "crazy"
-	},
-	{
-		"filename": "name_test_case_543-manual.html",
-		"title": "Name test case 543",
-		"html": "<p>This test examines the ARIA properties for Name test case 543.</p>\n    <input type=\"reset\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "Reset"
-	},
-	{
-		"filename": "name_from_content_of_labelledby_element-manual.html",
-		"title": "Name from content of labelledby element",
-		"html": "<p>This test examines the ARIA properties for Name from content of labelledby element.</p>\n    <style>\n    .hidden { display: none; }\n  </style>\n  <input id=\"test\" type=\"text\" aria-labelledby=\"lblId\" />\n  <div id=\"lblId\" >\n    <span aria-hidden=\"true\"><i> Hello, </i></span>\n    <span>My</span> name is\n    <div><img src=\"file.jpg\" title=\"Bryan\" alt=\"\" role=\"presentation\" /></div>\n    <span role=\"presentation\" aria-label=\"Eli\">\n      <span aria-label=\"Garaventa\">Zambino</span>\n    </span>\n    <span>the weird.</span>\n    (QED)\n    <span class=\"hidden\"><i><b>and don't you forget it.</b></i></span>\n    <table>\n      <tr>\n        <td>Where</td>\n        <td style=\"visibility:hidden;\"><div>in</div></td>\n        <td><div style=\"display:none;\">the world</div></td>\n        <td>are my marbles?</td>\n      </tr>\n    </table>\n  </div>",
-		"selector": "#test",
-		"name": "My name is Eli the weird. (QED) Where are my marbles?"
-	},
-	{
-		"filename": "name_test_case_544-manual.html",
-		"title": "Name test case 544",
-		"html": "<p>This test examines the ARIA properties for Name test case 544.</p>\n    <input type=\"button\" id=\"test\" value=\"foo\"/>",
-		"selector": "#test",
-		"name": "foo"
-	},
-	{
-		"filename": "name_test_case_619-manual.html",
-		"title": "Name test case 619",
-		"html": "<p>This test examines the ARIA properties for Name test case 619.</p>\n    <input type=\"password\" id=\"test\">\n  <label for=\"test\">foo<input type=\"text\" value=\"bar\">baz</label>",
-		"selector": "#test",
-		"name": "foo bar baz"
-	},
-	{
-		"filename": "name_test_case_612-manual.html",
-		"title": "Name test case 612",
-		"html": "<p>This test examines the ARIA properties for Name test case 612.</p>\n    <input type=\"password\" id=\"test\">\n  <label for=\"test\">foo</label>",
-		"selector": "#test",
-		"name": "foo"
-	},
-	{
-		"filename": "name_test_case_762-manual.html",
-		"title": "Name test case 762",
-		"html": "<p>This test examines the ARIA properties for Name test case 762.</p>\n    <style>\n    label:after { content:\" fruit\"; }\n  </style>\n  <label for=\"test\">fancy</label>\n  <input type=\"image\" src=\"foo.jpg\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "fancy fruit"
-	},
-	{
-		"filename": "name_test_case_721-manual.html",
-		"title": "Name test case 721",
-		"html": "<p>This test examines the ARIA properties for Name test case 721.</p>\n    <label for=\"test\">States:</label>\n  <input type=\"password\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "States:"
-	},
-	{
-		"filename": "name_test_case_563-manual.html",
-		"title": "Name test case 563",
-		"html": "<p>This test examines the ARIA properties for Name test case 563.</p>\n    <input type=\"text\" value=\"peanuts\" id=\"ID1\">\n  <img id=\"test\" aria-label=\"l\" aria-labelledby=\"test ID1\" src=\"foo.jpg\"/>",
-		"selector": "#test",
-		"name": "l peanuts"
-	},
-	{
-		"filename": "name_file-label-embedded-combobox-manual.html",
-		"title": "Name file-label-embedded-combobox",
-		"html": "<p>This test examines the ARIA properties for Name file-label-embedded-combobox.</p>\n    <input type=\"file\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <div role=\"combobox\">\n      <div role=\"textbox\"></div>\n      <ul role=\"listbox\" style=\"list-style-type: none;\">\n        <li role=\"option\" aria-selected=\"true\">1 </li>\n    <li role=\"option\">2 </li>\n    <li role=\"option\">3 </li>\n      </ul>\n    </div>\n    times.\n  </label>",
-		"selector": "#test",
-		"name": "Flash the screen 1 times."
-	},
-	{
-		"filename": "name_test_case_737-manual.html",
-		"title": "Name test case 737",
-		"html": "<p>This test examines the ARIA properties for Name test case 737.</p>\n    <label for=\"test\">\n    crazy\n    <select name=\"member\" size=\"1\" role=\"menu\" tabindex=\"0\">\n      <option role=\"menuitem\" value=\"beard\" selected=\"true\">clown</option>\n      <option role=\"menuitem\" value=\"scuba\">rich</option>\n    </select>\n  </label>\n  <input type=\"image\" id=\"test\" src=\"foo.jpg\"/>",
-		"selector": "#test",
-		"name": "crazy"
-	},
-	{
-		"filename": "name_test_case_758-manual.html",
-		"title": "Name test case 758",
-		"html": "<p>This test examines the ARIA properties for Name test case 758.</p>\n    <style>\n    label:after { content:\" fruit\"; }\n  </style>\n  <label for=\"test\">fancy</label>\n  <input type=\"password\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "fancy fruit"
-	},
-	{
-		"filename": "name_file-label-owned-combobox-owned-listbox-manual.html",
-		"title": "Name file-label-owned-combobox-owned-listbox",
-		"html": "<p>This test examines the ARIA properties for Name file-label-owned-combobox-owned-listbox.</p>\n    <input type=\"file\" id=\"test\" />\n  <label for=\"test\">Flash <span aria-owns=\"id1\">the screen</span> times.</label>\n  <div>\n    <div id=\"id1\" role=\"combobox\" aria-owns=\"id2\">\n      <div role=\"textbox\"></div>\n    </div>\n  </div>\n  <div>\n    <ul id=\"id2\" role=\"listbox\" style=\"list-style-type: none;\">\n      <li role=\"option\" >1 </li>\n      <li role=\"option\" aria-selected=\"true\">2 </li>\n      <li role=\"option\">3 </li>\n    </ul>\n  </div>",
-		"selector": "#test",
-		"name": "Flash the screen 2 times."
-	},
-	{
-		"filename": "name_test_case_548-manual.html",
-		"title": "Name test case 548",
-		"html": "<p>This test examines the ARIA properties for Name test case 548.</p>\n    <label for=\"test\">\n  crazy\n    <select name=\"member\" size=\"1\" role=\"menu\" tabindex=\"0\">\n      <option role=\"menuitem\" value=\"beard\" selected=\"true\">clown</option>\n      <option role=\"menuitem\" value=\"scuba\">rich</option>\n    </select>\n  </label>\n  <input type=\"text\" id=\"test\" value=\"baz\"/>",
-		"selector": "#test",
-		"name": "crazy"
-	},
-	{
-		"filename": "name_test_case_740-manual.html",
-		"title": "Name test case 740",
-		"html": "<p>This test examines the ARIA properties for Name test case 740.</p>\n    <label for=\"test\">\n    crazy\n    <div role=\"spinbutton\" aria-valuetext=\"Monday\" aria-valuemin=\"1\" aria-valuemax=\"7\" aria-valuenow=\"4\">\n    </div>\n  </label>\n  <input type=\"radio\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "crazy Monday"
-	},
-	{
-		"filename": "name_test_case_611-manual.html",
-		"title": "Name test case 611",
-		"html": "<p>This test examines the ARIA properties for Name test case 611.</p>\n    <input id=\"test\" type=\"text\"/>\n  <label for=\"test\">foo</label>",
-		"selector": "#test",
-		"name": "foo"
-	},
-	{
-		"filename": "name_from_content-manual.html",
-		"title": "Name from content",
-		"html": "<p>This test examines the ARIA properties for Name from content.</p>\n    <style>\n    .hidden { display: none; }\n  </style>\n  <div id=\"test\" role=\"link\" tabindex=\"0\">\n    <span aria-hidden=\"true\"><i> Hello, </i></span>\n    <span>My</span> name is\n    <div><img src=\"file.jpg\" title=\"Bryan\" alt=\"\" role=\"presentation\" /></div>\n    <span role=\"presentation\" aria-label=\"Eli\">\n      <span aria-label=\"Garaventa\">Zambino</span>\n    </span>\n    <span>the weird.</span>\n    (QED)\n    <span class=\"hidden\"><i><b>and don't you forget it.</b></i></span>\n    <table>\n      <tr>\n        <td>Where</td>\n        <td style=\"visibility:hidden;\"><div>in</div></td>\n        <td><div style=\"display:none;\">the world</div></td>\n        <td>are my marbles?</td>\n      </tr>\n    </table>\n  </div>",
-		"selector": "#test",
-		"name": "My name is Eli the weird. (QED) Where are my marbles?"
-	},
-	{
-		"filename": "name_checkbox-title-manual.html",
-		"title": "Name checkbox-title",
-		"html": "<p>This test examines the ARIA properties for Name checkbox-title.</p>\n    <input type=\"checkbox\" id=\"test\" title=\"foo\" />",
-		"selector": "#test",
-		"name": "foo"
-	},
-	{
-		"filename": "name_test_case_621-manual.html",
-		"title": "Name test case 621",
-		"html": "<p>This test examines the ARIA properties for Name test case 621.</p>\n    <input type=\"file\" id=\"test\">\n  <label for=\"test\">foo <input type=\"text\" value=\"bar\"> baz</label>",
-		"selector": "#test",
-		"name": "foo bar baz"
-	},
-	{
-		"filename": "description_test_case_772-manual.html",
-		"title": "Description test case 772",
-		"html": "<p>This test examines the ARIA properties for Description test case 772.</p>\n    <img src=\"foo.jpg\" id=\"test\" alt=\"test\" aria-describedby=\"t1\">\n  <div id=\"t1\">foo</div>",
-		"selector": "#test",
-		"description": "foo"
-	},
-	{
-		"filename": "description_test_case_665-manual.html",
-		"title": "Description test case 665",
-		"html": "<p>This test examines the ARIA properties for Description test case 665.</p>\n    <div>\n    <img id=\"test\" aria-describedby=\"ID1\" src=\"test.png\">\n  </div>\n  <div id=\"ID1\" style=\"display:none\">foo</div>",
-		"selector": "#test",
-		"description": "foo"
-	},
-	{
-		"filename": "name_test_case_546-manual.html",
-		"title": "Name test case 546",
-		"html": "<p>This test examines the ARIA properties for Name test case 546.</p>\n    <label for=\"test\">States:</label>\n  <input type=\"text\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "States:"
-	},
-	{
-		"filename": "description_1.0_combobox-focusable-manual.html",
-		"title": "Description 1.0 combobox-focusable",
-		"html": "<p>This test examines the ARIA properties for Description 1.0 combobox-focusable.</p>\n    <div id=\"test\" role=\"combobox\" tabindex=\"0\" title=\"Choose your language.\">\n    <span> English </span>\n  </div>",
-		"selector": "#test",
-		"description": ""
-	},
-	{
-		"filename": "name_test_case_739-manual.html",
-		"title": "Name test case 739",
-		"html": "<p>This test examines the ARIA properties for Name test case 739.</p>\n    <label for=\"test\">\n    crazy\n    <div role=\"spinbutton\" aria-valuetext=\"Monday\" aria-valuemin=\"1\" aria-valuemax=\"7\" aria-valuenow=\"4\">\n    </div>\n  </label>\n  <input type=\"checkbox\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "crazy Monday"
-	},
-	{
-		"filename": "name_radio-label-embedded-menu-manual.html",
-		"title": "Name radio-label-embedded-menu",
-		"html": "<p>This test examines the ARIA properties for Name radio-label-embedded-menu.</p>\n    <input type=\"radio\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <span role=\"menu\">\n      <span role=\"menuitem\" aria-selected=\"true\">1</span>\n      <span role=\"menuitem\" hidden>2</span>\n      <span role=\"menuitem\" hidden>3</span>\n    </span>\n    times.\n  </label>",
-		"selector": "#test",
-		"name": "Flash the screen times."
-	},
-	{
-		"filename": "name_test_case_558-manual.html",
-		"title": "Name test case 558",
-		"html": "<p>This test examines the ARIA properties for Name test case 558.</p>\n    <input type=\"text\" value=\"peanuts\" id=\"test\">\n  <img aria-labelledby=\"test\" src=\"foo.jpg\"/>",
-		"selector": "#test",
-		"name": ""
-	},
-	{
-		"filename": "name_link-mixed-content-manual.html",
-		"title": "Name link-mixed-content",
-		"html": "<p>This test examines the ARIA properties for Name link-mixed-content.</p>\n    <style>\n    .hidden { display: none; }\n  </style>\n  <div id=\"test\" role=\"link\" tabindex=\"0\">\n    <span aria-hidden=\"true\"><i> Hello, </i></span>\n    <span>My</span> name is\n    <div><img src=\"file.jpg\" title=\"Bryan\" alt=\"\" role=\"presentation\" /></div>\n    <span role=\"presentation\" aria-label=\"Eli\"><span aria-label=\"Garaventa\">Zambino</span></span>\n    <span>the weird.</span>\n    (QED)\n    <span class=\"hidden\"><i><b>and don't you forget it.</b></i></span>\n  </div>",
-		"selector": "#test",
-		"name": "My name is Eli the weird. (QED)"
-	},
-	{
-		"filename": "name_test_case_561-manual.html",
-		"title": "Name test case 561",
-		"html": "<p>This test examines the ARIA properties for Name test case 561.</p>\n    <img id=\"test\" aria-labelledby=\"test\" aria-label=\"1\" src=\"foo.jpg\"/>",
-		"selector": "#test",
-		"name": "1"
-	},
-	{
-		"filename": "name_radio-title-manual.html",
-		"title": "Name radio-title",
-		"html": "<p>This test examines the ARIA properties for Name radio-title.</p>\n    <input type=\"radio\" id=\"test\" title=\"foo\" />",
-		"selector": "#test",
-		"name": "foo"
-	},
-	{
-		"filename": "name_test_case_744-manual.html",
-		"title": "Name test case 744",
-		"html": "<p>This test examines the ARIA properties for Name test case 744.</p>\n    <label for=\"test\">\n    crazy\n    <div role=\"spinbutton\" aria-valuemin=\"1\" aria-valuemax=\"7\" aria-valuenow=\"4\">\n    </div>\n  </label>\n  <input type=\"checkbox\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "crazy 4"
-	},
-	{
-		"filename": "name_checkbox-label-embedded-textbox-manual.html",
-		"title": "Name checkbox-label-embedded-textbox",
-		"html": "<p>This test examines the ARIA properties for Name checkbox-label-embedded-textbox.</p>\n    <input type=\"checkbox\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <div role=\"textbox\" contenteditable>1</div>\n    times.\n  </label>",
-		"selector": "#test",
-		"name": "Flash the screen 1 times."
-	},
-	{
-		"filename": "name_test_case_730-manual.html",
-		"title": "Name test case 730",
-		"html": "<p>This test examines the ARIA properties for Name test case 730.</p>\n    <label for=\"test\">\n    foo\n    <input type=\"text\" value=\"David\"/>\n  </label>\n  <input type=\"file\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "foo David"
-	},
-	{
-		"filename": "name_test_case_751-manual.html",
-		"title": "Name test case 751",
-		"html": "<p>This test examines the ARIA properties for Name test case 751.</p>\n    <input type=\"file\" id=\"test\" title=\"crazy\"/>",
-		"selector": "#test",
-		"name": "crazy"
-	},
-	{
-		"filename": "name_file-label-inline-block-styles-manual.html",
-		"title": "Name file-label-inline-block-styles",
-		"html": "<p>This test examines the ARIA properties for Name file-label-inline-block-styles.</p>\n    <style>\n    label:before { content: \"This\"; display: block; }\n    label:after { content: \".\"; }\n  </style>\n  <label for=\"test\">is a test</label>\n  <input type=\"text\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "This is a test."
-	},
-	{
-		"filename": "description_link-with-label-manual.html",
-		"title": "Description link-with-label",
-		"html": "<p>This test examines the ARIA properties for Description link-with-label.</p>\n    <a id=\"test\" href=\"#\" aria-label=\"California\" title=\"San Francisco\" >United States</a>",
-		"selector": "#test",
-		"description": "San Francisco"
-	},
-	{
-		"filename": "name_file-label-embedded-select-manual.html",
-		"title": "Name file-label-embedded-select",
-		"html": "<p>This test examines the ARIA properties for Name file-label-embedded-select.</p>\n    <input type=\"file\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <select size=\"1\">\n      <option selected=\"selected\">1</option>\n      <option>2</option>\n      <option>3</option>\n    </select>\n    times.\n  </label>",
-		"selector": "#test",
-		"name": "Flash the screen 1 times."
-	},
-	{
-		"filename": "name_test_case_734-manual.html",
-		"title": "Name test case 734",
-		"html": "<p>This test examines the ARIA properties for Name test case 734.</p>\n    <label for=\"test\">\n    crazy\n    <select name=\"member\" size=\"1\" role=\"menu\" tabindex=\"0\">\n      <option role=\"menuitem\" value=\"beard\" selected=\"true\">clown</option>\n      <option role=\"menuitem\" value=\"scuba\">rich</option>\n    </select>\n  </label>\n  <input type=\"checkbox\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "crazy"
-	},
-	{
-		"filename": "name_test_case_605-manual.html",
-		"title": "Name test case 605",
-		"html": "<p>This test examines the ARIA properties for Name test case 605.</p>\n    <a href=\"test.html\" id=\"test\" aria-labelledby=\"ID1\" aria-label=\"Tag\">foo</a>\n  <p id=\"ID1\">bar</p>",
-		"selector": "#test",
-		"name": "bar"
-	},
-	{
-		"filename": "name_test_case_566-manual.html",
-		"title": "Name test case 566",
-		"html": "<p>This test examines the ARIA properties for Name test case 566.</p>\n    <input type=\"text\" value=\"peanuts\" id=\"ID1\">\n  <input type=\"text\" value=\"popcorn\" id=\"ID2\">\n  <input type=\"text\" value=\"apple jacks\" id=\"ID3\">\n  <img id=\"test\" aria-label=\"\" aria-labelledby=\"test ID1 ID2 ID3\" alt=\"\" title=\"t\" src=\"foo.jpg\"/>",
-		"selector": "#test",
-		"name": "t peanuts popcorn apple jacks"
-	},
-	{
-		"filename": "name_text-label-embedded-spinbutton-manual.html",
-		"title": "Name text-label-embedded-spinbutton",
-		"html": "<p>This test examines the ARIA properties for Name text-label-embedded-spinbutton.</p>\n    <input type=\"text\" id=\"test\" />\n  <label for=\"test\">foo <input role=\"spinbutton\" type=\"number\" value=\"5\" min=\"1\" max=\"10\" aria-valuenow=\"5\" aria-valuemin=\"1\" aria-valuemax=\"10\"> baz\n  </label>",
-		"selector": "#test",
-		"name": "foo 5 baz"
-	},
-	{
-		"filename": "name_test_case_759-manual.html",
-		"title": "Name test case 759",
-		"html": "<p>This test examines the ARIA properties for Name test case 759.</p>\n    <style>\n    label:after { content:\" fruit\"; }\n  </style>\n  <label for=\"test\">fancy</label>\n  <input type=\"checkbox\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "fancy fruit"
-	},
-	{
-		"filename": "name_image-title-manual.html",
-		"title": "Name image-title",
-		"html": "<p>This test examines the ARIA properties for Name image-title.</p>\n    <input type=\"image\" src=\"test.png\" id=\"test\" title=\"foo\" />",
-		"selector": "#test",
-		"name": "foo"
-	},
-	{
-		"filename": "name_text-label-embedded-combobox-manual.html",
-		"title": "Name text-label-embedded-combobox",
-		"html": "<p>This test examines the ARIA properties for Name text-label-embedded-combobox.</p>\n    <input type=\"text\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <div role=\"combobox\">\n      <div role=\"textbox\"></div>\n      <ul role=\"listbox\" style=\"list-style-type: none;\">\n        <li role=\"option\" aria-selected=\"true\">1</li>\n    <li role=\"option\">2</li>\n    <li role=\"option\">3</li>\n      </ul>\n    </div>\n    times.\n  </label>",
-		"selector": "#test",
-		"name": "Flash the screen 1 times."
-	},
-	{
-		"filename": "name_test_case_608-manual.html",
-		"title": "Name test case 608",
-		"html": "<p>This test examines the ARIA properties for Name test case 608.</p>\n    <a href=\"test.html\" id=\"test\" title=\"Tag\"></a>",
-		"selector": "#test",
-		"name": "Tag"
-	},
-	{
-		"filename": "name_1.0_combobox-focusable-alternative-manual.html",
-		"title": "Name 1.0 combobox-focusable-alternative",
-		"html": "<p>This test examines the ARIA properties for Name 1.0 combobox-focusable-alternative.</p>\n    <input id=\"test\" role=\"combobox\" type=\"text\" title=\"Choose your language\" value=\"English\">",
-		"selector": "#test",
-		"name": "Choose your language"
-	},
-	{
-		"filename": "name_file-title-manual.html",
-		"title": "Name file-title",
-		"html": "<p>This test examines the ARIA properties for Name file-title.</p>\n    <input type=\"file\" id=\"test\" title=\"foo\" />",
-		"selector": "#test",
-		"name": "foo"
-	},
-	{
 		"filename": "name_test_case_615-manual.html",
 		"title": "Name test case 615",
 		"html": "<p>This test examines the ARIA properties for Name test case 615.</p>\n    <input type=\"file\" id=\"test\">\n  <label for=\"test\">foo</label>",
 		"selector": "#test",
 		"name": "foo"
-	},
-	{
-		"filename": "name_text-label-embedded-slider-manual.html",
-		"title": "Name text-label-embedded-slider",
-		"html": "<p>This test examines the ARIA properties for Name text-label-embedded-slider.</p>\n    <input type=\"text\" id=\"test\" />\n  <label for=\"test\">foo <input role=\"slider\" type=\"range\" value=\"5\" min=\"1\" max=\"10\" aria-valuenow=\"5\" aria-valuemin=\"1\" aria-valuemax=\"10\"> baz\n  </label>",
-		"selector": "#test",
-		"name": "foo 5 baz"
-	},
-	{
-		"filename": "name_test_case_596-manual.html",
-		"title": "Name test case 596",
-		"html": "<p>This test examines the ARIA properties for Name test case 596.</p>\n    <div id=\"test\" aria-labelledby=\"ID1\">foo</div>\n  <span id=\"ID1\">bar</span>",
-		"selector": "#test",
-		"name": "bar"
-	},
-	{
-		"filename": "description_test_case_broken_reference-manual.html",
-		"title": "Description test case broken reference",
-		"html": "<p>This test examines the ARIA properties for Description test case broken reference.</p>\n    <img src=\"foo.jpg\" id=\"test\" alt=\"test\" aria-describedby=\"t1\">",
-		"selector": "#test",
-		"description": ""
-	},
-	{
-		"filename": "name_file-label-embedded-slider-manual.html",
-		"title": "Name file-label-embedded-slider",
-		"html": "<p>This test examines the ARIA properties for Name file-label-embedded-slider.</p>\n    <input type=\"file\" id=\"test\" />\n  <label for=\"test\">foo <input role=\"slider\" type=\"range\" value=\"5\" min=\"1\" max=\"10\" aria-valuenow=\"5\" aria-valuemin=\"1\" aria-valuemax=\"10\"> baz\n  </label>",
-		"selector": "#test",
-		"name": "foo 5 baz"
-	},
-	{
-		"filename": "name_file-label-owned-combobox-manual.html",
-		"title": "Name file-label-owned-combobox",
-		"html": "<p>This test examines the ARIA properties for Name file-label-owned-combobox.</p>\n    <input type=\"file\" id=\"test\" />\n  <label for=\"test\">Flash <span aria-owns=\"id1\">the screen</span> times.</label>\n  <div id=\"id1\">\n    <div role=\"combobox\">\n      <div role=\"textbox\"></div>\n      <ul role=\"listbox\" style=\"list-style-type: none;\">\n        <li role=\"option\" aria-selected=\"true\">1 </li>\n    <li role=\"option\">2 </li>\n    <li role=\"option\">3 </li>\n      </ul>\n    </div>\n  </div>",
-		"selector": "#test",
-		"name": "Flash the screen 1 times."
-	},
-	{
-		"filename": "name_password-label-embedded-menu-manual.html",
-		"title": "Name password-label-embedded-menu",
-		"html": "<p>This test examines the ARIA properties for Name password-label-embedded-menu.</p>\n    <input type=\"password\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <span role=\"menu\">\n      <span role=\"menuitem\" aria-selected=\"true\">1</span>\n      <span role=\"menuitem\" hidden>2</span>\n      <span role=\"menuitem\" hidden>3</span>\n    </span>\n    times.\n  </label>",
-		"selector": "#test",
-		"name": "Flash the screen times."
-	},
-	{
-		"filename": "name_checkbox-label-embedded-combobox-manual.html",
-		"title": "Name checkbox-label-embedded-combobox",
-		"html": "<p>This test examines the ARIA properties for Name checkbox-label-embedded-combobox.</p>\n    <input type=\"checkbox\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <div role=\"combobox\">\n      <div role=\"textbox\"></div>\n      <ul role=\"listbox\" style=\"list-style-type: none;\">\n        <li role=\"option\" aria-selected=\"true\">1</li>\n    <li role=\"option\">2</li>\n    <li role=\"option\">3</li>\n      </ul>\n    </div>\n    times.\n  </label>",
-		"selector": "#test",
-		"name": "Flash the screen 1 times."
-	},
-	{
-		"filename": "name_password-label-embedded-combobox-manual.html",
-		"title": "Name password-label-embedded-combobox",
-		"html": "<p>This test examines the ARIA properties for Name password-label-embedded-combobox.</p>\n    <input type=\"password\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <div role=\"combobox\">\n      <div role=\"textbox\"></div>\n      <ul role=\"listbox\" style=\"list-style-type: none;\">\n        <li role=\"option\" aria-selected=\"true\">1</li>\n    <li role=\"option\">2</li>\n    <li role=\"option\">3</li>\n      </ul>\n    </div>\n    times.\n  </label>",
-		"selector": "#test",
-		"name": "Flash the screen 1 times."
-	},
-	{
-		"filename": "name_test_case_539-manual.html",
-		"title": "Name test case 539",
-		"html": "<p>This test examines the ARIA properties for Name test case 539.</p>\n    <input type=\"button\" aria-label=\"Rich\" id=\"test\">",
-		"selector": "#test",
-		"name": "Rich"
-	},
-	{
-		"filename": "name_test_case_616-manual.html",
-		"title": "Name test case 616",
-		"html": "<p>This test examines the ARIA properties for Name test case 616.</p>\n    <input type=\"image\" id=\"test\">\n  <label for=\"test\">foo</label>",
-		"selector": "#test",
-		"name": "foo"
-	},
-	{
-		"filename": "name_test_case_559-manual.html",
-		"title": "Name test case 559",
-		"html": "<p>This test examines the ARIA properties for Name test case 559.</p>\n    <img id=\"test\" aria-labelledby=\"test\" src=\"foo.jpg\"/>",
-		"selector": "#test",
-		"name": ""
-	},
-	{
-		"filename": "name_test_case_760-manual.html",
-		"title": "Name test case 760",
-		"html": "<p>This test examines the ARIA properties for Name test case 760.</p>\n    <style>\n    label:after { content:\" fruit\"; }\n  </style>\n  <label for=\"test\">fancy</label>\n  <input type=\"radio\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "fancy fruit"
-	},
-	{
-		"filename": "name_test_case_748-manual.html",
-		"title": "Name test case 748",
-		"html": "<p>This test examines the ARIA properties for Name test case 748.</p>\n    <input type=\"password\" id=\"test\" title=\"crazy\" value=\"baz\"/>",
-		"selector": "#test",
-		"name": "crazy"
-	},
-	{
-		"filename": "name_test_case_607-manual.html",
-		"title": "Name test case 607",
-		"html": "<p>This test examines the ARIA properties for Name test case 607.</p>\n    <a href=\"test.html\" id=\"test\">ABC</a>",
-		"selector": "#test",
-		"name": "ABC"
-	},
-	{
-		"filename": "name_test_case_564-manual.html",
-		"title": "Name test case 564",
-		"html": "<p>This test examines the ARIA properties for Name test case 564.</p>\n    <input type=\"text\" value=\"peanuts\" id=\"ID1\">\n  <input type=\"text\" value=\"popcorn\" id=\"ID2\">\n  <img id=\"test\" aria-label=\"l\" aria-labelledby=\"test ID1 ID2\" src=\"foo.jpg\"/>",
-		"selector": "#test",
-		"name": "l peanuts popcorn"
-	},
-	{
-		"filename": "name_test_case_752-manual.html",
-		"title": "Name test case 752",
-		"html": "<p>This test examines the ARIA properties for Name test case 752.</p>\n    <input type=\"image\" src=\"foo.jpg\" id=\"test\" title=\"crazy\"/>",
-		"selector": "#test",
-		"name": "crazy"
-	},
-	{
-		"filename": "name_test_case_728-manual.html",
-		"title": "Name test case 728",
-		"html": "<p>This test examines the ARIA properties for Name test case 728.</p>\n    <label for=\"test\">\n    foo\n    <input type=\"text\" value=\"David\"/>\n  </label>\n  <input type=\"checkbox\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "foo David"
-	},
-	{
-		"filename": "name_checkbox-label-embedded-listbox-manual.html",
-		"title": "Name checkbox-label-embedded-listbox",
-		"html": "<p>This test examines the ARIA properties for Name checkbox-label-embedded-listbox.</p>\n    <input type=\"checkbox\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <ul role=\"listbox\" style=\"list-style-type: none;\">\n      <li role=\"option\" aria-selected=\"true\">1</li>\n      <li role=\"option\">2</li>\n      <li role=\"option\">3</li>\n    </ul>\n    times.\n  </label>",
-		"selector": "#test",
-		"name": "Flash the screen 1 times."
-	},
-	{
-		"filename": "name_password-label-embedded-slider-manual.html",
-		"title": "Name password-label-embedded-slider",
-		"html": "<p>This test examines the ARIA properties for Name password-label-embedded-slider.</p>\n    <input type=\"password\" id=\"test\" />\n  <label for=\"test\">foo <input role=\"slider\" type=\"range\" value=\"5\" min=\"1\" max=\"10\" aria-valuenow=\"5\" aria-valuemin=\"1\" aria-valuemax=\"10\"> baz\n  </label>",
-		"selector": "#test",
-		"name": "foo 5 baz"
-	},
-	{
-		"filename": "name_test_case_553-manual.html",
-		"title": "Name test case 553",
-		"html": "<p>This test examines the ARIA properties for Name test case 553.</p>\n    <style type=\"text/css\">\n    [data-after]:after { content: attr(data-after); }\n  </style>\n  <label for=\"test\" data-after=\"test content\"></label>\n  <input type=\"text\" id=\"test\">",
-		"selector": "#test",
-		"name": "test content"
-	},
-	{
-		"filename": "name_password-label-embedded-spinbutton-manual.html",
-		"title": "Name password-label-embedded-spinbutton",
-		"html": "<p>This test examines the ARIA properties for Name password-label-embedded-spinbutton.</p>\n    <input type=\"password\" id=\"test\" />\n  <label for=\"test\">foo <input role=\"spinbutton\" type=\"number\" value=\"5\" min=\"1\" max=\"10\" aria-valuenow=\"5\" aria-valuemin=\"1\" aria-valuemax=\"10\"> baz\n  </label>",
-		"selector": "#test",
-		"name": "foo 5 baz"
-	},
-	{
-		"filename": "name_test_case_609-manual.html",
-		"title": "Name test case 609",
-		"html": "<p>This test examines the ARIA properties for Name test case 609.</p>\n    <input id=\"test\" type=\"text\" aria-labelledby=\"ID1 ID2 ID3\">\n  <p id=\"ID1\">foo</p>\n  <p id=\"ID2\">bar</p>\n  <p id=\"ID3\">baz</p>",
-		"selector": "#test",
-		"name": "foo bar baz"
-	},
-	{
-		"filename": "name_test_case_745-manual.html",
-		"title": "Name test case 745",
-		"html": "<p>This test examines the ARIA properties for Name test case 745.</p>\n    <label for=\"test\">\n    crazy\n    <div role=\"spinbutton\" aria-valuemin=\"1\" aria-valuemax=\"7\" aria-valuenow=\"4\">\n    </div>\n  </label>\n  <input type=\"radio\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "crazy 4"
-	},
-	{
-		"filename": "name_test_case_541-manual.html",
-		"title": "Name test case 541",
-		"html": "<p>This test examines the ARIA properties for Name test case 541.</p>\n    <div id=\"ID1\">Rich's button</div>\n  <input type=\"button\" aria-label=\"bar\" aria-labelledby=\"ID1\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "Rich's button"
-	},
-	{
-		"filename": "name_test_case_736-manual.html",
-		"title": "Name test case 736",
-		"html": "<p>This test examines the ARIA properties for Name test case 736.</p>\n    <label for=\"test\">\n    crazy\n    <select name=\"member\" size=\"1\" role=\"menu\" tabindex=\"0\">\n      <option role=\"menuitem\" value=\"beard\" selected=\"true\">clown</option>\n      <option role=\"menuitem\" value=\"scuba\">rich</option>\n    </select>\n  </label>\n  <input type=\"file\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "crazy"
-	},
-	{
-		"filename": "name_checkbox-label-multiple-label-alternative-manual.html",
-		"title": "Name checkbox-label-multiple-label-alternative",
-		"html": "<p>This test examines the ARIA properties for Name checkbox-label-multiple-label-alternative.</p>\n    <label for=\"test\">a test</label>\n  <label>This <input type=\"checkbox\" id=\"test\" /> is</label>",
-		"selector": "#test",
-		"name": "a test This is"
-	},
-	{
-		"filename": "name_test_case_610-manual.html",
-		"title": "Name test case 610",
-		"html": "<p>This test examines the ARIA properties for Name test case 610.</p>\n    <input id=\"test\" type=\"text\" aria-label=\"bar\" aria-labelledby=\"ID1 test\">\n  <div id=\"ID1\">foo</div>",
-		"selector": "#test",
-		"name": "foo bar"
-	},
-	{
-		"filename": "name_test_case_540-manual.html",
-		"title": "Name test case 540",
-		"html": "<p>This test examines the ARIA properties for Name test case 540.</p>\n    <div id=\"ID1\">Rich's button</div>\n  <input type=\"button\" aria-labelledby=\"ID1\" id=\"test\">",
-		"selector": "#test",
-		"name": "Rich's button"
-	},
-	{
-		"filename": "name_checkbox-label-embedded-spinbutton-manual.html",
-		"title": "Name checkbox-label-embedded-spinbutton",
-		"html": "<p>This test examines the ARIA properties for Name checkbox-label-embedded-spinbutton.</p>\n    <input type=\"checkbox\" id=\"test\" />\n  <label for=\"test\">foo <input role=\"spinbutton\" type=\"number\" value=\"5\" min=\"1\" max=\"10\" aria-valuenow=\"5\" aria-valuemin=\"1\" aria-valuemax=\"10\"> baz\n  </label>",
-		"selector": "#test",
-		"name": "foo 5 baz"
-	},
-	{
-		"filename": "description_title-same-element-manual.html",
-		"title": "Description title-same-element",
-		"html": "<p>This test examines the ARIA properties for Description title-same-element.</p>\n    <div><input aria-label=\"Name\" id=\"test\" title=\"Title\" aria-describedby=\"ID1\" type=\"text\"></div>\n  <div id=\"ID1\">Description</div>",
-		"selector": "#test",
-		"description": "Description"
-	},
-	{
-		"filename": "name_test_case_603-manual.html",
-		"title": "Name test case 603",
-		"html": "<p>This test examines the ARIA properties for Name test case 603.</p>\n    <div id=\"ID1\">foo</div>\n  <a id=\"test\" href=\"test.html\" aria-labelledby=\"ID1\">bar</a>",
-		"selector": "#test",
-		"name": "foo"
-	},
-	{
-		"filename": "name_test_case_597-manual.html",
-		"title": "Name test case 597",
-		"html": "<p>This test examines the ARIA properties for Name test case 597.</p>\n    <div id=\"test\" aria-label=\"Tag\">foo</div>",
-		"selector": "#test",
-		"name": "Tag"
-	},
-	{
-		"filename": "name_test_case_727-manual.html",
-		"title": "Name test case 727",
-		"html": "<p>This test examines the ARIA properties for Name test case 727.</p>\n    <label for=\"test\">\n    foo\n    <input type=\"text\" value=\"David\"/>\n  </label>\n  <input type=\"password\" id=\"test\" value=\"baz\"/>",
-		"selector": "#test",
-		"name": "foo David"
 	},
 	{
 		"filename": "description_test_case_838-manual.html",
@@ -736,79 +15,30 @@ window.wpt["accname"] = [
 		"description": "foo"
 	},
 	{
-		"filename": "name_test_case_660-manual.html",
-		"title": "Name test case 660",
-		"html": "<p>This test examines the ARIA properties for Name test case 660.</p>\n    <style type=\"text/css\">\n    label:before { content: \"foo\"; }\n    label:after { content: \"baz\"; }\n  </style>\n  <form>\n    <label for=\"test\" title=\"bar\"><input id=\"test\" type=\"password\" name=\"test\" title=\"buz\"></label>\n  </form>",
+		"filename": "name_test_case_724-manual.html",
+		"title": "Name test case 724",
+		"html": "<p>This test examines the ARIA properties for Name test case 724.</p>\n    <label for=\"test\">States:</label>\n  <input type=\"radio\" id=\"test\"/>",
 		"selector": "#test",
-		"name": "foo bar baz"
+		"name": "States:"
 	},
 	{
-		"filename": "name_test_case_663a-manual.html",
-		"title": "Name test case 663a",
-		"html": "<p>This test examines the ARIA properties for Name test case 663a.</p>\n    <style type=\"text/css\">\n    label:before { content: \"foo\"; }\n    label:after { content: \"baz\"; }\n  </style>\n  <form>\n    <label for=\"test\"><input id=\"test\" type=\"image\" src=\"foo.jpg\" name=\"test\" title=\"bar\"></label>\n  </form>",
-		"selector": "#test",
-		"name": "foo baz"
-	},
-	{
-		"filename": "description_from_content_of_describedby_element-manual.html",
-		"title": "Description from content of describedby element",
-		"html": "<p>This test examines the ARIA properties for Description from content of describedby element.</p>\n    <style>\n    .hidden { display: none; }\n  </style>\n  <input id=\"test\" type=\"text\" aria-label=\"Important stuff\" aria-describedby=\"descId\" />\n  <div>\n    <div id=\"descId\">\n      <span aria-hidden=\"true\"><i> Hello, </i></span>\n      <span>My</span> name is\n      <div><img src=\"file.jpg\" title=\"Bryan\" alt=\"\" role=\"presentation\" /></div>\n      <span role=\"presentation\" aria-label=\"Eli\">\n        <span aria-label=\"Garaventa\">Zambino</span>\n      </span>\n      <span>the weird.</span>\n      (QED)\n      <span class=\"hidden\"><i><b>and don't you forget it.</b></i></span>\n      <table>\n        <tr>\n          <td>Where</td>\n          <td style=\"visibility:hidden;\"><div>in</div></td>\n          <td><div style=\"display:none;\">the world</div></td>\n          <td>are my marbles?</td>\n        </tr>\n      </table>\n    </div>\n  </div>",
-		"selector": "#test",
-		"description": "My name is Eli the weird. (QED) Where are my marbles?"
-	},
-	{
-		"filename": "name_test_case_545-manual.html",
-		"title": "Name test case 545",
-		"html": "<p>This test examines the ARIA properties for Name test case 545.</p>\n    <input src=\"baz.html\" type=\"image\" id=\"test\" alt=\"foo\"/>",
+		"filename": "name_test_case_544-manual.html",
+		"title": "Name test case 544",
+		"html": "<p>This test examines the ARIA properties for Name test case 544.</p>\n    <input type=\"button\" id=\"test\" value=\"foo\"/>",
 		"selector": "#test",
 		"name": "foo"
 	},
 	{
-		"filename": "name_test_case_547-manual.html",
-		"title": "Name test case 547",
-		"html": "<p>This test examines the ARIA properties for Name test case 547.</p>\n    <label for=\"test\">\n  foo\n  <input type=\"text\" value=\"David\"/>\n  </label>\n  <input type=\"text\" id=\"test\" value=\"baz\"/>",
+		"filename": "name_heading-combobox-focusable-alternative-manual.html",
+		"title": "Name  heading-combobox-focusable-alternative",
+		"html": "<p>This test examines the ARIA properties for Name  heading-combobox-focusable-alternative.</p>\n    <h2 id=\"test\">\n  Country of origin:\n  <input role=\"combobox\" type=\"text\" title=\"Choose your country.\" value=\"United States\">\n  </h2>",
 		"selector": "#test",
-		"name": "foo David"
+		"name": "Country of origin: United States"
 	},
 	{
-		"filename": "name_test_case_617-manual.html",
-		"title": "Name test case 617",
-		"html": "<p>This test examines the ARIA properties for Name test case 617.</p>\n    <input type=\"checkbox\" id=\"test\">\n  <label for=\"test\">foo<input type=\"text\" value=\"bar\">baz</label>",
-		"selector": "#test",
-		"name": "foo bar baz"
-	},
-	{
-		"filename": "name_test_case_662-manual.html",
-		"title": "Name test case 662",
-		"html": "<p>This test examines the ARIA properties for Name test case 662.</p>\n    <style type=\"text/css\">\n    label:before { content: \"foo\"; }\n    label:after { content: \"baz\"; }\n  </style>\n  <form>\n    <label for=\"test\"><input id=\"test\" type=\"radio\" name=\"test\" title=\" bar \"></label>\n  </form>",
-		"selector": "#test",
-		"name": "foo baz"
-	},
-	{
-		"filename": "name_test_case_761-manual.html",
-		"title": "Name test case 761",
-		"html": "<p>This test examines the ARIA properties for Name test case 761.</p>\n    <style>\n    label:after { content:\" fruit\"; }\n  </style>\n  <label for=\"test\">fancy</label>\n  <input type=\"file\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "fancy fruit"
-	},
-	{
-		"filename": "name_link-with-label-manual.html",
-		"title": "Name link-with-label",
-		"html": "<p>This test examines the ARIA properties for Name link-with-label.</p>\n    <a id=\"test\" href=\"#\" aria-label=\"California\" title=\"San Francisco\" >United States</a>",
-		"selector": "#test",
-		"name": "California"
-	},
-	{
-		"filename": "name_checkbox-label-multiple-label-manual.html",
-		"title": "Name checkbox-label-multiple-label",
-		"html": "<p>This test examines the ARIA properties for Name checkbox-label-multiple-label.</p>\n    <label>This <input type=\"checkbox\" id=\"test\" /> is</label>\n  <label for=\"test\">a test</label>",
-		"selector": "#test",
-		"name": "This is a test"
-	},
-	{
-		"filename": "name_test_case_614-manual.html",
-		"title": "Name test case 614",
-		"html": "<p>This test examines the ARIA properties for Name test case 614.</p>\n    <input type=\"radio\" id=\"test\">\n  <label for=\"test\">foo</label>",
+		"filename": "name_image-title-manual.html",
+		"title": "Name image-title",
+		"html": "<p>This test examines the ARIA properties for Name image-title.</p>\n    <input type=\"image\" src=\"test.png\" id=\"test\" title=\"foo\" />",
 		"selector": "#test",
 		"name": "foo"
 	},
@@ -820,214 +50,18 @@ window.wpt["accname"] = [
 		"name": "crazy 4"
 	},
 	{
-		"filename": "name_test_case_735-manual.html",
-		"title": "Name test case 735",
-		"html": "<p>This test examines the ARIA properties for Name test case 735.</p>\n    <label for=\"test\">\n    crazy\n    <select name=\"member\" size=\"1\" role=\"menu\" tabindex=\"0\">\n      <option role=\"menuitem\" value=\"beard\" selected=\"true\">clown</option>\n      <option role=\"menuitem\" value=\"scuba\">rich</option>\n    </select>\n  </label>\n  <input type=\"radio\" id=\"test\"/>",
+		"filename": "name_test_case_736-manual.html",
+		"title": "Name test case 736",
+		"html": "<p>This test examines the ARIA properties for Name test case 736.</p>\n    <label for=\"test\">\n    crazy\n    <select name=\"member\" size=\"1\" role=\"menu\" tabindex=\"0\">\n      <option role=\"menuitem\" value=\"beard\" selected=\"true\">clown</option>\n      <option role=\"menuitem\" value=\"scuba\">rich</option>\n    </select>\n  </label>\n  <input type=\"file\" id=\"test\"/>",
 		"selector": "#test",
 		"name": "crazy"
 	},
 	{
-		"filename": "name_checkbox-label-embedded-slider-manual.html",
-		"title": "Name checkbox-label-embedded-slider",
-		"html": "<p>This test examines the ARIA properties for Name checkbox-label-embedded-slider.</p>\n    <input type=\"checkbox\" id=\"test\" />\n  <label for=\"test\">foo <input role=\"slider\" type=\"range\" value=\"5\" min=\"1\" max=\"10\" aria-valuenow=\"5\" aria-valuemin=\"1\" aria-valuemax=\"10\"> baz\n  </label>",
+		"filename": "name_from_content_of_labelledby_elements_one_of_which_is_hidden-manual.html",
+		"title": "Name from content of labelledby elements one of which is hidden",
+		"html": "<p>This test examines the ARIA properties for Name from content of labelledby elements one of which is hidden.</p>\n    <style>\n    .hidden { display: none; }\n  </style>\n  <div>\n    <input id=\"test\" type=\"text\" aria-labelledby=\"lbl1 lbl2\" aria-describedby=\"descId\" />\n    <span>\n      <span aria-hidden=\"true\" id=\"lbl1\">Important</span>\n      <span class=\"hidden\">\n        <span aria-hidden=\"true\" id=\"lbl2\">stuff</span>\n      </span>\n    </span>\n  </div>\n  <div class=\"hidden\">\n    <div id=\"descId\">\n      <span aria-hidden=\"true\"><i> Hello, </i></span>\n      <span>My</span> name is\n      <div><img src=\"file.jpg\" title=\"Bryan\" alt=\"\" role=\"presentation\" /></div>\n      <span role=\"presentation\" aria-label=\"Eli\">\n        <span aria-label=\"Garaventa\">Zambino</span>\n      </span>\n      <span>the weird.</span>\n      (QED)\n      <span class=\"hidden\"><i><b>and don't you forget it.</b></i></span>\n      <table>\n        <tr>\n          <td>Where</td>\n          <td style=\"visibility:hidden;\"><div>in</div></td>\n          <td><div style=\"display:none;\">the world</div></td>\n          <td>are my marbles?</td>\n        </tr>\n      </table>\n    </div>\n  </div>",
 		"selector": "#test",
-		"name": "foo 5 baz"
-	},
-	{
-		"filename": "name_test_case_729-manual.html",
-		"title": "Name test case 729",
-		"html": "<p>This test examines the ARIA properties for Name test case 729.</p>\n    <label for=\"test\">\n    foo\n    <input type=\"text\" value=\"David\"/>\n  </label>\n  <input type=\"radio\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "foo David"
-	},
-	{
-		"filename": "description_test_case_557-manual.html",
-		"title": "Description test case 557",
-		"html": "<p>This test examines the ARIA properties for Description test case 557.</p>\n    <img id=\"test\" src=\"foo.jpg\" aria-label=\"1\" alt=\"a\" title=\"t\"/>",
-		"selector": "#test",
-		"description": "t"
-	},
-	{
-		"filename": "name_test_case_750-manual.html",
-		"title": "Name test case 750",
-		"html": "<p>This test examines the ARIA properties for Name test case 750.</p>\n    <input type=\"radio\" id=\"test\" title=\"crazy\"/>",
-		"selector": "#test",
-		"name": "crazy"
-	},
-	{
-		"filename": "name_text-label-embedded-select-manual.html",
-		"title": "Name text-label-embedded-select",
-		"html": "<p>This test examines the ARIA properties for Name text-label-embedded-select.</p>\n    <input type=\"text\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <select size=\"1\">\n      <option selected=\"selected\">1</option>\n      <option>2</option>\n      <option>3</option>\n    </select>\n    times.\n  </label>",
-		"selector": "#test",
-		"name": "Flash the screen 1 times."
-	},
-	{
-		"filename": "name_test_case_599-manual.html",
-		"title": "Name test case 599",
-		"html": "<p>This test examines the ARIA properties for Name test case 599.</p>\n    <div id=\"test\" aria-labelledby=\"ID0 ID1\" aria-label=\"Tag\">foo</div>\n  <span id=\"ID0\">bar</span>\n  <span id=\"ID1\">baz</span>",
-		"selector": "#test",
-		"name": "bar baz"
-	},
-	{
-		"filename": "name_test_case_723-manual.html",
-		"title": "Name test case 723",
-		"html": "<p>This test examines the ARIA properties for Name test case 723.</p>\n    <label for=\"test\">States:</label>\n  <input type=\"checkbox\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "States:"
-	},
-	{
-		"filename": "name_radio-label-embedded-slider-manual.html",
-		"title": "Name radio-label-embedded-slider",
-		"html": "<p>This test examines the ARIA properties for Name radio-label-embedded-slider.</p>\n    <input type=\"radio\" id=\"test\" />\n  <label for=\"test\">foo <input role=\"slider\" type=\"range\" value=\"5\" min=\"1\" max=\"10\" aria-valuenow=\"5\" aria-valuemin=\"1\" aria-valuemax=\"10\"> baz\n  </label>",
-		"selector": "#test",
-		"name": "foo 5 baz"
-	},
-	{
-		"filename": "name_text-title-manual.html",
-		"title": "Name text-title",
-		"html": "<p>This test examines the ARIA properties for Name text-title.</p>\n    <input type=\"text\" id=\"test\" title=\"foo\" />",
-		"selector": "#test",
-		"name": "foo"
-	},
-	{
-		"filename": "name_test_case_556-manual.html",
-		"title": "Name test case 556",
-		"html": "<p>This test examines the ARIA properties for Name test case 556.</p>\n    <img id=\"test\" src=\"foo.jpg\" aria-label=\"1\"/>",
-		"selector": "#test",
-		"name": "1"
-	},
-	{
-		"filename": "name_test_case_620-manual.html",
-		"title": "Name test case 620",
-		"html": "<p>This test examines the ARIA properties for Name test case 620.</p>\n    <input type=\"radio\" id=\"test\">\n  <label for=\"test\">foo<input type=\"text\" value=\"bar\">baz</label>",
-		"selector": "#test",
-		"name": "foo bar baz"
-	},
-	{
-		"filename": "name_test_case_725-manual.html",
-		"title": "Name test case 725",
-		"html": "<p>This test examines the ARIA properties for Name test case 725.</p>\n    <label for=\"test\">File:</label>\n  <input type=\"file\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "File:"
-	},
-	{
-		"filename": "name_test_case_613-manual.html",
-		"title": "Name test case 613",
-		"html": "<p>This test examines the ARIA properties for Name test case 613.</p>\n    <input type=\"checkbox\" id=\"test\">\n  <label for=\"test\">foo</label></body>",
-		"selector": "#test",
-		"name": "foo"
-	},
-	{
-		"filename": "description_test_case_773-manual.html",
-		"title": "Description test case 773",
-		"html": "<p>This test examines the ARIA properties for Description test case 773.</p>\n    <img src=\"foo.jpg\" id=\"test\" alt=\"test\" aria-describedby=\"t1\">\n  <div id=\"t1\" style=\"display:none\">foo</div>",
-		"selector": "#test",
-		"description": "foo"
-	},
-	{
-		"filename": "name_test_case_742-manual.html",
-		"title": "Name test case 742",
-		"html": "<p>This test examines the ARIA properties for Name test case 742.</p>\n    <label for=\"test\">\n    crazy\n    <div role=\"spinbutton\" aria-valuetext=\"Monday\" aria-valuemin=\"1\" aria-valuemax=\"7\" aria-valuenow=\"4\">\n    </div>\n  </label>\n  <input type=\"image\" src=\"foo.jpg\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "crazy Monday"
-	},
-	{
-		"filename": "name_file-label-inline-hidden-elements-manual.html",
-		"title": "Name file-label-inline-hidden-elements",
-		"html": "<p>This test examines the ARIA properties for Name file-label-inline-hidden-elements.</p>\n    <style>\n    .hidden { display: none; }\n  </style>\n  <input type=\"file\" id=\"test\" />\n  <label for=\"test\">\n    <span class=\"hidden\">1</span><span>2</span>\n    <span style=\"visibility: hidden;\">3</span><span>4</span>\n    <span hidden>5</span><span>6</span>\n    <span aria-hidden=\"true\">7</span><span>8</span>\n    <span aria-hidden=\"false\" class=\"hidden\">9</span><span>10</span>\n  </label>",
-		"selector": "#test",
-		"name": "2 4 6 8 10"
-	},
-	{
-		"filename": "name_test_case_604-manual.html",
-		"title": "Name test case 604",
-		"html": "<p>This test examines the ARIA properties for Name test case 604.</p>\n    <a id=\"test\" href=\"test.html\" aria-label=\"Tag\">ABC</a>",
-		"selector": "#test",
-		"name": "Tag"
-	},
-	{
-		"filename": "name_from_content_of_label-manual.html",
-		"title": "Name from content of label",
-		"html": "<p>This test examines the ARIA properties for Name from content of label.</p>\n    <style>\n    .hidden { display: none; }\n  </style>\n  <input type=\"text\" id=\"test\" />\n  <label for=\"test\" id=\"label\">\n    <span aria-hidden=\"true\"><i> Hello, </i></span>\n    <span>My</span> name is\n    <div><img src=\"file.jpg\" title=\"Bryan\" alt=\"\" role=\"presentation\" /></div>\n    <span role=\"presentation\" aria-label=\"Eli\">\n      <span aria-label=\"Garaventa\">Zambino</span>\n   </span>\n   <span>the weird.</span>\n   (QED)\n   <span class=\"hidden\"><i><b>and don't you forget it.</b></i></span>\n   <table>\n     <tr>\n       <td>Where</td>\n       <td style=\"visibility:hidden;\"><div>in</div></td>\n       <td><div style=\"display:none;\">the world</div></td>\n       <td>are my marbles?</td>\n    </tr>\n   </table>\n  </label>",
-		"selector": "#test",
-		"name": "My name is Eli the weird. (QED) Where are my marbles?"
-	},
-	{
-		"filename": "name_test_case_557-manual.html",
-		"title": "Name test case 557",
-		"html": "<p>This test examines the ARIA properties for Name test case 557.</p>\n    <img id=\"test\" src=\"foo.jpg\" aria-label=\"1\" alt=\"a\" title=\"t\"/>",
-		"selector": "#test",
-		"name": "1"
-	},
-	{
-		"filename": "name_1.0_combobox-focusable-manual.html",
-		"title": "Name 1.0 combobox-focusable",
-		"html": "<p>This test examines the ARIA properties for Name 1.0 combobox-focusable.</p>\n    <div id=\"test\" role=\"combobox\" tabindex=\"0\" title=\"Choose your language.\">\n    <span> English </span>\n  </div>",
-		"selector": "#test",
-		"name": "Choose your language."
-	},
-	{
-		"filename": "name_checkbox-label-embedded-menu-manual.html",
-		"title": "Name checkbox-label-embedded-menu",
-		"html": "<p>This test examines the ARIA properties for Name checkbox-label-embedded-menu.</p>\n    <input type=\"checkbox\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <span role=\"menu\">\n      <span role=\"menuitem\" aria-selected=\"true\">1</span>\n        <span role=\"menuitem\" hidden>2</span>\n    <span role=\"menuitem\" hidden>3</span>\n      </span>\n      times.\n  </label>",
-		"selector": "#test",
-		"name": "Flash the screen times."
-	},
-	{
-		"filename": "name_heading-combobox-focusable-alternative-manual.html",
-		"title": "Name  heading-combobox-focusable-alternative",
-		"html": "<p>This test examines the ARIA properties for Name  heading-combobox-focusable-alternative.</p>\n    <h2 id=\"test\">\n  Country of origin:\n  <input role=\"combobox\" type=\"text\" title=\"Choose your country.\" value=\"United States\">\n  </h2>",
-		"selector": "#test",
-		"name": "Country of origin: United States"
-	},
-	{
-		"filename": "name_test_case_753-manual.html",
-		"title": "Name test case 753",
-		"html": "<p>This test examines the ARIA properties for Name test case 753.</p>\n    <style>\n    label:before { content:\"fancy \"; }\n  </style>\n  <label for=\"test\">fruit</label>\n  <input type=\"password\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "fancy fruit"
-	},
-	{
-		"filename": "name_text-label-embedded-menu-manual.html",
-		"title": "Name text-label-embedded-menu",
-		"html": "<p>This test examines the ARIA properties for Name text-label-embedded-menu.</p>\n    <input type=\"text\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <span role=\"menu\">\n      <span role=\"menuitem\" aria-selected=\"true\">1</span>\n      <span role=\"menuitem\" hidden>2</span>\n      <span role=\"menuitem\" hidden>3</span>\n    </span>\n    times.\n  </label>",
-		"selector": "#test",
-		"name": "Flash the screen times."
-	},
-	{
-		"filename": "name_file-label-inline-block-elements-manual.html",
-		"title": "Name file-label-inline-block-elements",
-		"html": "<p>This test examines the ARIA properties for Name file-label-inline-block-elements.</p>\n    <input type=\"file\" id=\"test\" />\n  <label for=\"test\">W<i>h<b>a</b></i>t<br>is<div>your<div>name<b>?</b></div></div></label>",
-		"selector": "#test",
-		"name": "What is your name?"
-	},
-	{
-		"filename": "name_test_case_724-manual.html",
-		"title": "Name test case 724",
-		"html": "<p>This test examines the ARIA properties for Name test case 724.</p>\n    <label for=\"test\">States:</label>\n  <input type=\"radio\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "States:"
-	},
-	{
-		"filename": "name_test_case_741-manual.html",
-		"title": "Name test case 741",
-		"html": "<p>This test examines the ARIA properties for Name test case 741.</p>\n    <label for=\"test\">\n    crazy\n    <div role=\"spinbutton\" aria-valuetext=\"Monday\" aria-valuemin=\"1\" aria-valuemax=\"7\" aria-valuenow=\"4\">\n    </div>\n  </label>\n  <input type=\"file\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "crazy Monday"
-	},
-	{
-		"filename": "name_test_case_746-manual.html",
-		"title": "Name test case 746",
-		"html": "<p>This test examines the ARIA properties for Name test case 746.</p>\n    <label for=\"test\">\n    crazy\n    <div role=\"spinbutton\" aria-valuemin=\"1\" aria-valuemax=\"7\" aria-valuenow=\"4\">\n    </div>\n  </label>\n  <input type=\"file\" id=\"test\"/>",
-		"selector": "#test",
-		"name": "crazy 4"
-	},
-	{
-		"filename": "name_test_case_598-manual.html",
-		"title": "Name test case 598",
-		"html": "<p>This test examines the ARIA properties for Name test case 598.</p>\n    <div id=\"test\" aria-labelledby=\"ID1\" aria-label=\"Tag\">foo</div>\n  <span id=\"ID1\">bar</span>",
-		"selector": "#test",
-		"name": "bar"
+		"name": "Important stuff"
 	},
 	{
 		"filename": "name_test_case_560-manual.html",
@@ -1037,6 +71,111 @@ window.wpt["accname"] = [
 		"name": ""
 	},
 	{
+		"filename": "name_test_case_756-manual.html",
+		"title": "Name test case 756",
+		"html": "<p>This test examines the ARIA properties for Name test case 756.</p>\n    <style>\n    label:before { content:\"fancy \"; }\n  </style>\n  <label for=\"test\">fruit</label>\n  <input type=\"file\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "fancy fruit"
+	},
+	{
+		"filename": "description_title-same-element-manual.html",
+		"title": "Description title-same-element",
+		"html": "<p>This test examines the ARIA properties for Description title-same-element.</p>\n    <div><input aria-label=\"Name\" id=\"test\" title=\"Title\" aria-describedby=\"ID1\" type=\"text\"></div>\n  <div id=\"ID1\">Description</div>",
+		"selector": "#test",
+		"description": "Description"
+	},
+	{
+		"filename": "name_test_case_608-manual.html",
+		"title": "Name test case 608",
+		"html": "<p>This test examines the ARIA properties for Name test case 608.</p>\n    <a href=\"test.html\" id=\"test\" title=\"Tag\"></a>",
+		"selector": "#test",
+		"name": "Tag"
+	},
+	{
+		"filename": "name_checkbox-label-embedded-slider-manual.html",
+		"title": "Name checkbox-label-embedded-slider",
+		"html": "<p>This test examines the ARIA properties for Name checkbox-label-embedded-slider.</p>\n    <input type=\"checkbox\" id=\"test\" />\n  <label for=\"test\">foo <input role=\"slider\" type=\"range\" value=\"5\" min=\"1\" max=\"10\" aria-valuenow=\"5\" aria-valuemin=\"1\" aria-valuemax=\"10\"> baz\n  </label>",
+		"selector": "#test",
+		"name": "foo 5 baz"
+	},
+	{
+		"filename": "name_file-label-embedded-slider-manual.html",
+		"title": "Name file-label-embedded-slider",
+		"html": "<p>This test examines the ARIA properties for Name file-label-embedded-slider.</p>\n    <input type=\"file\" id=\"test\" />\n  <label for=\"test\">foo <input role=\"slider\" type=\"range\" value=\"5\" min=\"1\" max=\"10\" aria-valuenow=\"5\" aria-valuemin=\"1\" aria-valuemax=\"10\"> baz\n  </label>",
+		"selector": "#test",
+		"name": "foo 5 baz"
+	},
+	{
+		"filename": "name_test_case_613-manual.html",
+		"title": "Name test case 613",
+		"html": "<p>This test examines the ARIA properties for Name test case 613.</p>\n    <input type=\"checkbox\" id=\"test\">\n  <label for=\"test\">foo</label></body>",
+		"selector": "#test",
+		"name": "foo"
+	},
+	{
+		"filename": "name_radio-title-manual.html",
+		"title": "Name radio-title",
+		"html": "<p>This test examines the ARIA properties for Name radio-title.</p>\n    <input type=\"radio\" id=\"test\" title=\"foo\" />",
+		"selector": "#test",
+		"name": "foo"
+	},
+	{
+		"filename": "name_test_case_737-manual.html",
+		"title": "Name test case 737",
+		"html": "<p>This test examines the ARIA properties for Name test case 737.</p>\n    <label for=\"test\">\n    crazy\n    <select name=\"member\" size=\"1\" role=\"menu\" tabindex=\"0\">\n      <option role=\"menuitem\" value=\"beard\" selected=\"true\">clown</option>\n      <option role=\"menuitem\" value=\"scuba\">rich</option>\n    </select>\n  </label>\n  <input type=\"image\" id=\"test\" src=\"foo.jpg\"/>",
+		"selector": "#test",
+		"name": "crazy"
+	},
+	{
+		"filename": "name_test_case_557-manual.html",
+		"title": "Name test case 557",
+		"html": "<p>This test examines the ARIA properties for Name test case 557.</p>\n    <img id=\"test\" src=\"foo.jpg\" aria-label=\"1\" alt=\"a\" title=\"t\"/>",
+		"selector": "#test",
+		"name": "1"
+	},
+	{
+		"filename": "name_test_case_748-manual.html",
+		"title": "Name test case 748",
+		"html": "<p>This test examines the ARIA properties for Name test case 748.</p>\n    <input type=\"password\" id=\"test\" title=\"crazy\" value=\"baz\"/>",
+		"selector": "#test",
+		"name": "crazy"
+	},
+	{
+		"filename": "name_test_case_738-manual.html",
+		"title": "Name test case 738",
+		"html": "<p>This test examines the ARIA properties for Name test case 738.</p>\n    <label for=\"test\">\n    crazy\n    <div role=\"spinbutton\" aria-valuetext=\"Monday\" aria-valuemin=\"1\" aria-valuemax=\"7\" aria-valuenow=\"4\">\n    </div>\n  </label>\n  <input type=\"password\" value=\"baz\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "crazy Monday"
+	},
+	{
+		"filename": "name_checkbox-label-embedded-spinbutton-manual.html",
+		"title": "Name checkbox-label-embedded-spinbutton",
+		"html": "<p>This test examines the ARIA properties for Name checkbox-label-embedded-spinbutton.</p>\n    <input type=\"checkbox\" id=\"test\" />\n  <label for=\"test\">foo <input role=\"spinbutton\" type=\"number\" value=\"5\" min=\"1\" max=\"10\" aria-valuenow=\"5\" aria-valuemin=\"1\" aria-valuemax=\"10\"> baz\n  </label>",
+		"selector": "#test",
+		"name": "foo 5 baz"
+	},
+	{
+		"filename": "name_file-label-owned-combobox-manual.html",
+		"title": "Name file-label-owned-combobox",
+		"html": "<p>This test examines the ARIA properties for Name file-label-owned-combobox.</p>\n    <input type=\"file\" id=\"test\" />\n  <label for=\"test\">Flash <span aria-owns=\"id1\">the screen</span> times.</label>\n  <div id=\"id1\">\n    <div role=\"combobox\">\n      <div role=\"textbox\"></div>\n      <ul role=\"listbox\" style=\"list-style-type: none;\">\n        <li role=\"option\" aria-selected=\"true\">1 </li>\n    <li role=\"option\">2 </li>\n    <li role=\"option\">3 </li>\n      </ul>\n    </div>\n  </div>",
+		"selector": "#test",
+		"name": "Flash the screen 1 times."
+	},
+	{
+		"filename": "name_test_case_733-manual.html",
+		"title": "Name test case 733",
+		"html": "<p>This test examines the ARIA properties for Name test case 733.</p>\n    <label for=\"test\">\n    crazy\n    <select name=\"member\" size=\"1\" role=\"menu\" tabindex=\"0\">\n      <option role=\"menuitem\" value=\"beard\" selected=\"true\">clown</option>\n      <option role=\"menuitem\" value=\"scuba\">rich</option>\n    </select>\n  </label>\n  <input type=\"password\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "crazy"
+	},
+	{
+		"filename": "name_test_case_759-manual.html",
+		"title": "Name test case 759",
+		"html": "<p>This test examines the ARIA properties for Name test case 759.</p>\n    <style>\n    label:after { content:\" fruit\"; }\n  </style>\n  <label for=\"test\">fancy</label>\n  <input type=\"checkbox\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "fancy fruit"
+	},
+	{
 		"filename": "name_test_case_552-manual.html",
 		"title": "Name test case 552",
 		"html": "<p>This test examines the ARIA properties for Name test case 552.</p>\n    <style>\n    label:before { content:\"fancy \"; }\n  </style>\n  <label for=\"test\">fruit</label>\n  <input type=\"text\" id=\"test\"/>",
@@ -1044,11 +183,46 @@ window.wpt["accname"] = [
 		"name": "fancy fruit"
 	},
 	{
-		"filename": "description_test_case_774-manual.html",
-		"title": "Description test case 774",
-		"html": "<p>This test examines the ARIA properties for Description test case 774.</p>\n    <img src=\"foo.jpg\" id=\"test\" alt=\"test\" aria-describedby=\"t1\">\n  <span id=\"t1\" role=\"presentation\">foo</span>",
+		"filename": "name_test_case_600-manual.html",
+		"title": "Name test case 600",
+		"html": "<p>This test examines the ARIA properties for Name test case 600.</p>\n    <div id=\"test\">Div with text</div>",
+		"selector": "#test",
+		"name": ""
+	},
+	{
+		"filename": "name_test_case_750-manual.html",
+		"title": "Name test case 750",
+		"html": "<p>This test examines the ARIA properties for Name test case 750.</p>\n    <input type=\"radio\" id=\"test\" title=\"crazy\"/>",
+		"selector": "#test",
+		"name": "crazy"
+	},
+	{
+		"filename": "name_test_case_556-manual.html",
+		"title": "Name test case 556",
+		"html": "<p>This test examines the ARIA properties for Name test case 556.</p>\n    <img id=\"test\" src=\"foo.jpg\" aria-label=\"1\"/>",
+		"selector": "#test",
+		"name": "1"
+	},
+	{
+		"filename": "name_test_case_610-manual.html",
+		"title": "Name test case 610",
+		"html": "<p>This test examines the ARIA properties for Name test case 610.</p>\n    <input id=\"test\" type=\"text\" aria-label=\"bar\" aria-labelledby=\"ID1 test\">\n  <div id=\"ID1\">foo</div>",
+		"selector": "#test",
+		"name": "foo bar"
+	},
+	{
+		"filename": "description_test_case_772-manual.html",
+		"title": "Description test case 772",
+		"html": "<p>This test examines the ARIA properties for Description test case 772.</p>\n    <img src=\"foo.jpg\" id=\"test\" alt=\"test\" aria-describedby=\"t1\">\n  <div id=\"t1\">foo</div>",
 		"selector": "#test",
 		"description": "foo"
+	},
+	{
+		"filename": "name_test_case_621-manual.html",
+		"title": "Name test case 621",
+		"html": "<p>This test examines the ARIA properties for Name test case 621.</p>\n    <input type=\"file\" id=\"test\">\n  <label for=\"test\">foo <input type=\"text\" value=\"bar\"> baz</label>",
+		"selector": "#test",
+		"name": "foo bar baz"
 	},
 	{
 		"filename": "name_test_case_618-manual.html",
@@ -1058,30 +232,44 @@ window.wpt["accname"] = [
 		"name": "foo bar baz"
 	},
 	{
-		"filename": "name_test_case_661-manual.html",
-		"title": "Name test case 661",
-		"html": "<p>This test examines the ARIA properties for Name test case 661.</p>\n    <style type=\"text/css\">\n    label:before { content: \"foo\"; }\n    label:after { content: \"baz\"; }\n  </style>\n  <form>\n    <label for=\"test\"><input id=\"test\" type=\"checkbox\" name=\"test\" title=\" bar \"></label>\n  </form>",
+		"filename": "name_test_case_604-manual.html",
+		"title": "Name test case 604",
+		"html": "<p>This test examines the ARIA properties for Name test case 604.</p>\n    <a id=\"test\" href=\"test.html\" aria-label=\"Tag\">ABC</a>",
 		"selector": "#test",
-		"name": "foo baz"
+		"name": "Tag"
 	},
 	{
-		"filename": "name_test_case_565-manual.html",
-		"title": "Name test case 565",
-		"html": "<p>This test examines the ARIA properties for Name test case 565.</p>\n    <input type=\"text\" value=\"peanuts\" id=\"ID1\">\n  <input type=\"text\" value=\"popcorn\" id=\"ID2\">\n  <input type=\"text\" value=\"apple jacks\" id=\"ID3\">\n  <img id=\"test\" aria-label=\"l\" aria-labelledby=\"test ID1 ID2 ID3\" alt= \"a\" title=\"t\" src=\"foo.jpg\"/>",
+		"filename": "name_test_case_731-manual.html",
+		"title": "Name test case 731",
+		"html": "<p>This test examines the ARIA properties for Name test case 731.</p>\n    <label for=\"test\">\n    foo\n    <input type=\"text\" value=\"David\"/>\n  </label>\n  <input type=\"image\" id=\"test\" src=\"foo.jpg\"/>",
 		"selector": "#test",
-		"name": "l peanuts popcorn apple jacks"
+		"name": "foo David"
 	},
 	{
-		"filename": "name_checkbox-label-embedded-select-manual.html",
-		"title": "Name checkbox-label-embedded-select",
-		"html": "<p>This test examines the ARIA properties for Name checkbox-label-embedded-select.</p>\n    <input type=\"checkbox\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <select size=\"1\">\n      <option selected=\"selected\">1</option>\n      <option>2</option>\n      <option>3</option>\n    </select>\n    times.\n  </label>",
+		"filename": "name_test_case_563-manual.html",
+		"title": "Name test case 563",
+		"html": "<p>This test examines the ARIA properties for Name test case 563.</p>\n    <input type=\"text\" value=\"peanuts\" id=\"ID1\">\n  <img id=\"test\" aria-label=\"l\" aria-labelledby=\"test ID1\" src=\"foo.jpg\"/>",
 		"selector": "#test",
-		"name": "Flash the screen 1 times."
+		"name": "l peanuts"
 	},
 	{
-		"filename": "name_test_case_747-manual.html",
-		"title": "Name test case 747",
-		"html": "<p>This test examines the ARIA properties for Name test case 747.</p>\n    <label for=\"test\">\n    crazy\n    <div role=\"spinbutton\" aria-valuemin=\"1\" aria-valuemax=\"7\" aria-valuenow=\"4\">\n    </div>\n  </label>\n  <input type=\"image\" src=\"foo.jpg\" id=\"test\"/>",
+		"filename": "name_test_case_739-manual.html",
+		"title": "Name test case 739",
+		"html": "<p>This test examines the ARIA properties for Name test case 739.</p>\n    <label for=\"test\">\n    crazy\n    <div role=\"spinbutton\" aria-valuetext=\"Monday\" aria-valuemin=\"1\" aria-valuemax=\"7\" aria-valuenow=\"4\">\n    </div>\n  </label>\n  <input type=\"checkbox\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "crazy Monday"
+	},
+	{
+		"filename": "name_test_case_614-manual.html",
+		"title": "Name test case 614",
+		"html": "<p>This test examines the ARIA properties for Name test case 614.</p>\n    <input type=\"radio\" id=\"test\">\n  <label for=\"test\">foo</label>",
+		"selector": "#test",
+		"name": "foo"
+	},
+	{
+		"filename": "name_test_case_745-manual.html",
+		"title": "Name test case 745",
+		"html": "<p>This test examines the ARIA properties for Name test case 745.</p>\n    <label for=\"test\">\n    crazy\n    <div role=\"spinbutton\" aria-valuemin=\"1\" aria-valuemax=\"7\" aria-valuenow=\"4\">\n    </div>\n  </label>\n  <input type=\"radio\" id=\"test\"/>",
 		"selector": "#test",
 		"name": "crazy 4"
 	},
@@ -1093,18 +281,102 @@ window.wpt["accname"] = [
 		"name": "fancy fruit"
 	},
 	{
-		"filename": "name_test_case_550-manual.html",
-		"title": "Name test case 550",
-		"html": "<p>This test examines the ARIA properties for Name test case 550.</p>\n    <label for=\"test\">\n    crazy\n    <div role=\"spinbutton\" aria-valuemin=\"1\" aria-valuemax=\"7\" aria-valuenow=\"4\">\n    </div>\n  </label>\n  <input type=\"text\" id=\"test\" value=\"baz\"/>",
+		"filename": "name_checkbox-label-embedded-listbox-manual.html",
+		"title": "Name checkbox-label-embedded-listbox",
+		"html": "<p>This test examines the ARIA properties for Name checkbox-label-embedded-listbox.</p>\n    <input type=\"checkbox\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <ul role=\"listbox\" style=\"list-style-type: none;\">\n      <li role=\"option\" aria-selected=\"true\">1</li>\n      <li role=\"option\">2</li>\n      <li role=\"option\">3</li>\n    </ul>\n    times.\n  </label>",
 		"selector": "#test",
-		"name": "crazy 4"
+		"name": "Flash the screen 1 times."
 	},
 	{
-		"filename": "name_test_case_549-manual.html",
-		"title": "Name test case 549",
-		"html": "<p>This test examines the ARIA properties for Name test case 549.</p>\n    <label for=\"test\">\n    crazy\n     <div role=\"spinbutton\" aria-valuetext=\"Monday\" aria-valuemin=\"1\" aria-valuemax=\"7\" aria-valuenow=\"4\">\n     </div>\n  </label>\n  <input type=\"text\" id=\"test\" value=\"baz\"/>",
+		"filename": "name_file-label-inline-block-elements-manual.html",
+		"title": "Name file-label-inline-block-elements",
+		"html": "<p>This test examines the ARIA properties for Name file-label-inline-block-elements.</p>\n    <input type=\"file\" id=\"test\" />\n  <label for=\"test\">W<i>h<b>a</b></i>t<br>is<div>your<div>name<b>?</b></div></div></label>",
 		"selector": "#test",
-		"name": "crazy Monday"
+		"name": "What is your name?"
+	},
+	{
+		"filename": "description_test_case_665-manual.html",
+		"title": "Description test case 665",
+		"html": "<p>This test examines the ARIA properties for Description test case 665.</p>\n    <div>\n    <img id=\"test\" aria-describedby=\"ID1\" src=\"test.png\">\n  </div>\n  <div id=\"ID1\" style=\"display:none\">foo</div>",
+		"selector": "#test",
+		"description": "foo"
+	},
+	{
+		"filename": "name_checkbox-label-embedded-menu-manual.html",
+		"title": "Name checkbox-label-embedded-menu",
+		"html": "<p>This test examines the ARIA properties for Name checkbox-label-embedded-menu.</p>\n    <input type=\"checkbox\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <span role=\"menu\">\n      <span role=\"menuitem\" aria-selected=\"true\">1</span>\n        <span role=\"menuitem\" hidden>2</span>\n    <span role=\"menuitem\" hidden>3</span>\n      </span>\n      times.\n  </label>",
+		"selector": "#test",
+		"name": "Flash the screen times."
+	},
+	{
+		"filename": "name_password-label-embedded-combobox-manual.html",
+		"title": "Name password-label-embedded-combobox",
+		"html": "<p>This test examines the ARIA properties for Name password-label-embedded-combobox.</p>\n    <input type=\"password\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <div role=\"combobox\">\n      <div role=\"textbox\"></div>\n      <ul role=\"listbox\" style=\"list-style-type: none;\">\n        <li role=\"option\" aria-selected=\"true\">1</li>\n    <li role=\"option\">2</li>\n    <li role=\"option\">3</li>\n      </ul>\n    </div>\n    times.\n  </label>",
+		"selector": "#test",
+		"name": "Flash the screen 1 times."
+	},
+	{
+		"filename": "name_test_case_761-manual.html",
+		"title": "Name test case 761",
+		"html": "<p>This test examines the ARIA properties for Name test case 761.</p>\n    <style>\n    label:after { content:\" fruit\"; }\n  </style>\n  <label for=\"test\">fancy</label>\n  <input type=\"file\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "fancy fruit"
+	},
+	{
+		"filename": "name_password-label-embedded-select-manual.html",
+		"title": "Name password-label-embedded-select",
+		"html": "<p>This test examines the ARIA properties for Name password-label-embedded-select.</p>\n    <input type=\"password\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <select size=\"1\">\n      <option selected=\"selected\">1</option>\n      <option>2</option>\n      <option>3</option>\n    </select>\n    times.\n  </label>",
+		"selector": "#test",
+		"name": "Flash the screen 1 times."
+	},
+	{
+		"filename": "name_from_content_of_label-manual.html",
+		"title": "Name from content of label",
+		"html": "<p>This test examines the ARIA properties for Name from content of label.</p>\n    <style>\n    .hidden { display: none; }\n  </style>\n  <input type=\"text\" id=\"test\" />\n  <label for=\"test\" id=\"label\">\n    <span aria-hidden=\"true\"><i> Hello, </i></span>\n    <span>My</span> name is\n    <div><img src=\"file.jpg\" title=\"Bryan\" alt=\"\" role=\"presentation\" /></div>\n    <span role=\"presentation\" aria-label=\"Eli\">\n      <span aria-label=\"Garaventa\">Zambino</span>\n   </span>\n   <span>the weird.</span>\n   (QED)\n   <span class=\"hidden\"><i><b>and don't you forget it.</b></i></span>\n   <table>\n     <tr>\n       <td>Where</td>\n       <td style=\"visibility:hidden;\"><div>in</div></td>\n       <td><div style=\"display:none;\">the world</div></td>\n       <td>are my marbles?</td>\n    </tr>\n   </table>\n  </label>",
+		"selector": "#test",
+		"name": "My name is Eli the weird. (QED) Where are my marbles?"
+	},
+	{
+		"filename": "name_password-label-embedded-slider-manual.html",
+		"title": "Name password-label-embedded-slider",
+		"html": "<p>This test examines the ARIA properties for Name password-label-embedded-slider.</p>\n    <input type=\"password\" id=\"test\" />\n  <label for=\"test\">foo <input role=\"slider\" type=\"range\" value=\"5\" min=\"1\" max=\"10\" aria-valuenow=\"5\" aria-valuemin=\"1\" aria-valuemax=\"10\"> baz\n  </label>",
+		"selector": "#test",
+		"name": "foo 5 baz"
+	},
+	{
+		"filename": "name_test_case_611-manual.html",
+		"title": "Name test case 611",
+		"html": "<p>This test examines the ARIA properties for Name test case 611.</p>\n    <input id=\"test\" type=\"text\"/>\n  <label for=\"test\">foo</label>",
+		"selector": "#test",
+		"name": "foo"
+	},
+	{
+		"filename": "name_test_case_561-manual.html",
+		"title": "Name test case 561",
+		"html": "<p>This test examines the ARIA properties for Name test case 561.</p>\n    <img id=\"test\" aria-labelledby=\"test\" aria-label=\"1\" src=\"foo.jpg\"/>",
+		"selector": "#test",
+		"name": "1"
+	},
+	{
+		"filename": "name_checkbox-label-embedded-textbox-manual.html",
+		"title": "Name checkbox-label-embedded-textbox",
+		"html": "<p>This test examines the ARIA properties for Name checkbox-label-embedded-textbox.</p>\n    <input type=\"checkbox\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <div role=\"textbox\" contenteditable>1</div>\n    times.\n  </label>",
+		"selector": "#test",
+		"name": "Flash the screen 1 times."
+	},
+	{
+		"filename": "name_test_case_661-manual.html",
+		"title": "Name test case 661",
+		"html": "<p>This test examines the ARIA properties for Name test case 661.</p>\n    <style type=\"text/css\">\n    label:before { content: \"foo\"; }\n    label:after { content: \"baz\"; }\n  </style>\n  <form>\n    <label for=\"test\"><input id=\"test\" type=\"checkbox\" name=\"test\" title=\" bar \"></label>\n  </form>",
+		"selector": "#test",
+		"name": "foo baz"
+	},
+	{
+		"filename": "name_file-label-embedded-combobox-manual.html",
+		"title": "Name file-label-embedded-combobox",
+		"html": "<p>This test examines the ARIA properties for Name file-label-embedded-combobox.</p>\n    <input type=\"file\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <div role=\"combobox\">\n      <div role=\"textbox\"></div>\n      <ul role=\"listbox\" style=\"list-style-type: none;\">\n        <li role=\"option\" aria-selected=\"true\">1 </li>\n    <li role=\"option\">2 </li>\n    <li role=\"option\">3 </li>\n      </ul>\n    </div>\n    times.\n  </label>",
+		"selector": "#test",
+		"name": "Flash the screen 1 times."
 	},
 	{
 		"filename": "name_test_case_601-manual.html",
@@ -1114,39 +386,737 @@ window.wpt["accname"] = [
 		"name": "foo"
 	},
 	{
-		"filename": "comp_tooltip.html",
-		"title": "Name Comp: Tooltip",
-		"html": "<style type=\"text/css\"></style><p>Tests the <a href=\"https://w3c.github.io/accname/#comp_tooltip\">#comp_tooltip</a> portions of the AccName <em>Name Computation</em> algorithm.</p>\n\n<a href=\"#\" title=\"title\" data-expectedlabel=\"title\" data-testname=\"link with img with tooltip label\" class=\"ex\"><img alt=\"\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\"></a>\n<a href=\"#\" title=\"title\" data-expectedlabel=\"title\" data-testname=\"link with text with tooltip label and no contents\" class=\"ex\"></a>\n<a href=\"#\" title=\"title\" data-expectedlabel=\"contents\" data-testname=\"link with text with tooltip label and contents\" class=\"ex\">contents</a>\n<div title=\"title\" role=\"group\" data-expectedlabel=\"title\" data-testname=\"div with text with tooltip label\" class=\"ex\">contents</div><!-- Note: group role disallows nameFrom:contents -->\n<img title=\"title\" data-expectedlabel=\"title\" data-testname=\"img with tooltip label without alt\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n<img title=\"title\" data-expectedlabel=\"title\" alt=\"\" data-testname=\"img with tooltip label with empty alt\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n<img title=\"title\" data-expectedlabel=\"alt\" alt=\"alt\" data-testname=\"img with tooltip label with alt\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n<img data-expectedlabel=\"alt\" alt=\"alt\" data-testname=\"img with tooltip label without title\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n\n<select title=\"title\" data-expectedlabel=\"title\" data-testname=\"select with tooltip label\" class=\"ex\">\n  <option value=\"\" disabled selected>select options</option>\n  <option value=\"1\">option 1</option>\n  <option value=\"2\">option 2</option>\n  <option value=\"3\">option 3</option>\n</select>\n\n\n<!-- TODO: Move these: https://github.com/web-platform-tests/interop-accessibility/issues/78 -->\n<button title=\"title\" data-expectedlabel=\"contents\" data-testname=\"button with tooltip label\" class=\"ex\">contents</button>\n<input type=\"checkbox\" title=\"title\" data-expectedlabel=\"title\" data-testname=\"checkbox input with tooltip label\" class=\"ex\">\n<input type=\"radio\" title=\"title\" data-expectedlabel=\"title\" data-testname=\"radio input with tooltip label\" class=\"ex\">\n\n<!-- TODO: Move these: https://github.com/web-platform-tests/interop-accessibility/issues/78 -->\n<!-- https://w3c.github.io/html-aam/#input-type-text-input-type-password-input-type-number-input-type-search-input-type-tel-input-type-email-input-type-url-and-textarea-element-accessible-name-computation -->\n<input type=\"text\" title=\"title\" data-expectedlabel=\"title\" placeholder=\"placeholder\" data-testname=\"text input with placeholder and tooltip label\" class=\"ex\">\n<input type=\"password\" title=\"title\" data-expectedlabel=\"title\" placeholder=\"placeholder\" data-testname=\"password input with placeholder and tooltip label\" class=\"ex\">\n<input type=\"number\" title=\"title\" data-expectedlabel=\"title\" placeholder=\"placeholder\" data-testname=\"number input with placeholder and tooltip label\" class=\"ex\">\n<input type=\"search\" title=\"title\" data-expectedlabel=\"title\" placeholder=\"placeholder\" data-testname=\"search input with placeholder and tooltip label\" class=\"ex\">\n<input type=\"tel\" title=\"title\" data-expectedlabel=\"title\" placeholder=\"placeholder\" data-testname=\"tel input with placeholder and tooltip label\" class=\"ex\">\n<input type=\"email\" title=\"title\" data-expectedlabel=\"title\" placeholder=\"placeholder\" data-testname=\"email input with placeholder and tooltip label\" class=\"ex\">\n<input type=\"url\" title=\"title\" data-expectedlabel=\"title\" placeholder=\"placeholder\" data-testname=\"url input with placeholder and tooltip label\" class=\"ex\">\n<textarea title=\"title\" data-expectedlabel=\"title\" placeholder=\"placeholder\" data-testname=\"textarea with placeholder and tooltip label\" class=\"ex\"></textarea>\n\n<!-- TODO: Move these: https://github.com/web-platform-tests/interop-accessibility/issues/78 -->\n<!-- https://w3c.github.io/html-aam/#text-level-element-accessible-name-computation -->\n<abbr title=\"Web Platform Tests\" data-expectedlabel=\"Web Platform Tests\" data-testname=\"abbr with tooltip label\" class=\"ex\">WPT</abbr>\n<!-- kbd test disabled: see resolution at https://github.com/web-platform-tests/interop-accessibility/issues/131 -->\n<!-- <kbd title=\"Control + Option\" data-expectedlabel=\"Control + Option\" data-testname=\"kbd with tooltip label\" class=\"ex\">CTRL + OPT</kbd> -->\n\n<!-- TODO: Move these: https://github.com/web-platform-tests/interop-accessibility/issues/78 -->\n<!-- https://w3c.github.io/html-aam/#summary-element-accessible-name-computation -->\n<details>\n  <summary title=\"title\" data-expectedlabel=\"contents\" data-testname=\"summary with tooltip label and contents\" class=\"ex\">contents</summary>\n  details\n</details>\n\n<!-- TODO: Move these: https://github.com/web-platform-tests/interop-accessibility/issues/78 -->\n<!-- https://w3c.github.io/html-aam/#iframe-element-accessible-name-computation -->\n<iframe title=\"title\" data-expectedlabel=\"title\" data-testname=\"iframe with tooltip label\" width=\"20px\" height=\"20px\" class=\"ex\"></iframe>",
-		"selector": ".ex"
+		"filename": "name_radio-label-embedded-slider-manual.html",
+		"title": "Name radio-label-embedded-slider",
+		"html": "<p>This test examines the ARIA properties for Name radio-label-embedded-slider.</p>\n    <input type=\"radio\" id=\"test\" />\n  <label for=\"test\">foo <input role=\"slider\" type=\"range\" value=\"5\" min=\"1\" max=\"10\" aria-valuenow=\"5\" aria-valuemin=\"1\" aria-valuemax=\"10\"> baz\n  </label>",
+		"selector": "#test",
+		"name": "foo 5 baz"
 	},
 	{
-		"filename": "comp_hidden_not_referenced.html",
-		"title": "Name Comp: Hidden Not Referenced",
-		"html": "<style type=\"text/css\"></style><p>Tests the <a href=\"https://w3c.github.io/accname/#comp_hidden_not_referenced\">#comp_hidden_not_referenced</a> portions of the AccName <em>Name Computation</em> algorithm.</p>\n\n<button\n  class=\"ex\"\n  data-expectedlabel=\"visible to all users\"\n  data-testname=\"button containing a rendered, unreferenced element that is aria-hidden=true, an unreferenced element with the hidden host language attribute, and an unreferenced element that is unconditionally rendered\"\n>\n  <span aria-hidden=\"true\">hidden,</span>\n  <span hidden>hidden from all users,</span>\n  <span>visible to all users</span>\n</button>\n\n<button\n  class=\"ex\"\n  data-expectedlabel=\"hidden but referenced,\"\n  data-testname=\"button labelled by element that is aria-hidden=true\"\n  aria-labelledby=\"button-label-2\"\n>\n  <span aria-hidden=\"true\" id=\"button-label-2\">hidden but referenced,</span>\n  <span hidden>hidden from all users,</span>\n  <span>visible to all users</span>\n</button>\n\n<button\n  class=\"ex\"\n  data-expectedlabel=\"hidden from all users but referenced,\"\n  data-testname=\"button labelled by element with the hidden host language attribute\"\n  aria-labelledby=\"button-label-3\"\n>\n  <span aria-hidden=\"true\">hidden,</span>\n  <span hidden id=\"button-label-3\">hidden from all users but referenced,</span>\n  <span>visible to all users</span>\n</button>\n\n<a\n  class=\"ex\"\n  data-testname=\"link labelled by elements with assorted visibility and a11y tree exposure\"\n  data-expectedlabel=\"visible to all users, hidden but referenced, hidden from all users but referenced\"\n  href=\"#\"\n  aria-labelledby=\"link-label-1a link-label-1b link-label-1c\"\n>\n  <span id=\"link-label-1a\">\n    <span>visible to all users,</span>\n    <span aria-hidden=\"true\">hidden,</span>\n  </span>\n  <span aria-hidden=\"true\" id=\"link-label-1b\">hidden but referenced,</span>\n  <span hidden id=\"link-label-1c\">hidden from all users but referenced</span>\n</a>\n\n<h2\n  class=\"ex\"\n  data-testname=\"heading with name from content, containing element that is visibility:hidden with nested content that is visibility:visible\"\n  data-expectedlabel=\"visible to all users, un-hidden for all users\"\n>\n  visible to all users,\n  <span style=\"visibility: hidden;\">\n    hidden from all users,\n    <span style=\"visibility: visible;\">un-hidden for all users</span>\n  </span>\n</h2>\n\n<!-- TODO: Test cases once https://github.com/w3c/aria/issues/1256 resolved: -->\n<!--       - button labelled by an element that is aria-hidden=true which contains a nested child that is aria-hidden=false -->\n<!--       - button labelled by an element that is aria-hidden=false which belongs to a parent that is aria-hidden=true -->\n<!--       - heading with name from content, containing rendered content that is aria-hidden=true with nested, rendered content that is aria-hidden=false -->\n<!--       - heading with name from content, containing element with the hidden host language attribute with nested content that is aria-hidden=false -->\n\n<!-- TODO: New test case?\n<!--       What is the expectation for a details element when it\u2019s given an -->\n<!--       explicit role that allows name from contents (e.g., `comment`) -->\n<!--       but is also not in the open state, and therefore has contents -->\n<!--       that are both not rendered and excluded from the a11y tree. -->",
-		"selector": ".ex"
+		"filename": "name_password-label-embedded-spinbutton-manual.html",
+		"title": "Name password-label-embedded-spinbutton",
+		"html": "<p>This test examines the ARIA properties for Name password-label-embedded-spinbutton.</p>\n    <input type=\"password\" id=\"test\" />\n  <label for=\"test\">foo <input role=\"spinbutton\" type=\"number\" value=\"5\" min=\"1\" max=\"10\" aria-valuenow=\"5\" aria-valuemin=\"1\" aria-valuemax=\"10\"> baz\n  </label>",
+		"selector": "#test",
+		"name": "foo 5 baz"
 	},
 	{
-		"filename": "comp_label.html",
-		"title": "Name Comp: Label",
-		"html": "<style type=\"text/css\"></style><h1>AccName: Label Tests</h1>\n<p>Tests the <a href=\"https://w3c.github.io/accname/#comp_label\">#comp_label</a> portions of the AccName <em>Name Computation</em> algorithm.</p>\n\n<!-- https://www.w3.org/TR/wai-aria/#namefromauthor -->\n\n<!-- Embedded controls tested in ./comp_embedded_control.html -->\n\n<h2>Elements with roles that support aria-label use</h2>\n<!-- https://www.w3.org/TR/wai-aria/#namefromauthor -->\n\n<div role=\"alert\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with alert role\" class=\"ex\">x</div>\n<div role=\"alertdialog\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with alertdialog role\" class=\"ex\">x</div>\n<div role=\"application\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with application role\" class=\"ex\">x</div>\n<div role=\"article\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with article role\" class=\"ex\">x</div>\n<!-- associationlist and related removed pending: https://github.com/w3c/aria/issues/1662 -->\n<div role=\"banner\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with banner role\" class=\"ex\">x</div>\n<div role=\"blockquote\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with blockquote role\" class=\"ex\">x</div>\n<div role=\"button\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with button role\" class=\"ex\">x</div>\n<div role=\"cell\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with cell role\" class=\"ex\">x</div>\n<div role=\"checkbox\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with checkbox role\" class=\"ex\">x</div>\n<div role=\"columnheader\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with columnheader role\" class=\"ex\">x</div>\n<div role=\"combobox\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with combobox role\" class=\"ex\">x</div>\n<div role=\"complementary\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with complementary role\" class=\"ex\">x</div>\n<div role=\"contentinfo\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with contentinfo role\" class=\"ex\">x</div>\n<div role=\"dialog\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with dialog role\" class=\"ex\">x</div>\n<div role=\"directory\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with directory role\" class=\"ex\">x</div>\n<div role=\"document\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with document role\" class=\"ex\">x</div>\n<div role=\"feed\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with feed role\" class=\"ex\">x</div>\n<div role=\"figure\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with figure role\" class=\"ex\">x</div>\n<div role=\"form\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with form role\" class=\"ex\">x</div>\n<div role=\"grid\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with grid role\" class=\"ex\">x</div>\n<div role=\"gridcell\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with gridcell role\" class=\"ex\">x</div>\n<div role=\"group\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with group role\" class=\"ex\">x</div>\n<div role=\"heading\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with heading role\" class=\"ex\">x</div>\n<div role=\"img\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with img role\" class=\"ex\">x</div>\n<div role=\"link\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with link role\" class=\"ex\">x</div>\n<div role=\"list\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with list role\" class=\"ex\">x</div>\n<div role=\"listbox\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with listbox role\" class=\"ex\">x</div>\n<div role=\"listitem\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with listitem role\" class=\"ex\">x</div>\n<!-- listitemkey and listitemvalue pending: https://github.com/w3c/aria/issues/1662 -->\n<div role=\"log\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with log role\" class=\"ex\">x</div>\n<div role=\"main\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with main role\" class=\"ex\">x</div>\n<div role=\"marquee\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with marquee role\" class=\"ex\">x</div>\n<div role=\"math\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with math role\" class=\"ex\">x</div>\n<div role=\"menu\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with menu role\" class=\"ex\">x</div>\n<div role=\"menubar\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with menubar role\" class=\"ex\">x</div>\n<div role=\"menuitem\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with menuitem role\" class=\"ex\">x</div>\n<div role=\"menuitemcheckbox\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with menuitemcheckbox role\" class=\"ex\">x</div>\n<div role=\"menuitemradio\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with menuitemradio role\" class=\"ex\">x</div>\n<div role=\"meter\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with meter role\" class=\"ex\">x</div>\n<div role=\"navigation\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with navigation role\" class=\"ex\">x</div>\n<div role=\"note\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with note role\" class=\"ex\">x</div>\n<div role=\"option\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with option role\" class=\"ex\">x</div>\n<div role=\"progressbar\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with progressbar role\" class=\"ex\">x</div>\n<div role=\"radio\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with radio role\" class=\"ex\">x</div>\n<div role=\"radiogroup\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with radiogroup role\" class=\"ex\">x</div>\n<div role=\"region\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with region role\" class=\"ex\">x</div>\n<div role=\"row\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with row role\" class=\"ex\">x</div>\n<div role=\"rowgroup\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with rowgroup role\" class=\"ex\">x</div>\n<div role=\"rowheader\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with rowheader role\" class=\"ex\">x</div>\n<div role=\"scrollbar\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with scrollbar role\" class=\"ex\">x</div>\n<div role=\"search\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with search role\" class=\"ex\">x</div>\n<div role=\"searchbox\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with searchbox role\" class=\"ex\">x</div>\n<div role=\"separator\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with separator role\" class=\"ex\">x</div>\n<div role=\"slider\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with slider role\" class=\"ex\">x</div>\n<div role=\"spinbutton\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with spinbutton role\" class=\"ex\">x</div>\n<div role=\"status\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with status role\" class=\"ex\">x</div>\n<div role=\"switch\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with switch role\" class=\"ex\">x</div>\n<div role=\"tab\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with tab role\" class=\"ex\">x</div>\n<div role=\"table\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with table role\" class=\"ex\">x</div>\n<div role=\"tablist\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with tablist role\" class=\"ex\">x</div>\n<div role=\"tabpanel\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with tabpanel role\" class=\"ex\">x</div>\n<div role=\"textbox\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with textbox role\" class=\"ex\">x</div>\n<div role=\"timer\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with timer role\" class=\"ex\">x</div>\n<div role=\"toolbar\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with toolbar role\" class=\"ex\">x</div>\n<div role=\"tooltip\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with tooltip role\" class=\"ex\">x</div>\n<div role=\"tree\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with tree role\" class=\"ex\">x</div>\n<div role=\"treegrid\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with treegrid role\" class=\"ex\">x</div>\n<div role=\"treeitem\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with treeitem role\" class=\"ex\">x</div>\n\n<h2>HTML elements that support aria-label</h2>\n<!-- aria-label permitted on \"all elements of the base markup\" with exceptions: https://w3c.github.io/aria/#aria-label -->\n\n<a href=\"\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on link element\" class=\"ex\">x</a>\n<article aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on article element\" class=\"ex\">x</article>\n<aside aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on aside element\" class=\"ex\">x</aside>\n<blockquote aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on blockquote element\" class=\"ex\">x</blockquote>\n<button aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on button element\" class=\"ex\">x</button>\n<dl aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on dl element\" class=\"ex\">\n  <!-- dt/dd pending listitemkey and listitemvalue roles: https://github.com/w3c/aria/issues/1662 -->\n  <!-- Currently these map to `term` and `definition` for which name is prohibited. -->\n  <!-- Using aria-label here would be an authoring error, however whether there is a user agent requirement to ignore the author provided role is still pending https://github.com/w3c/accname/issues/240 -->\n  <!-- See \"Priorities of Constituencies\" https://www.w3.org/TR/design-principles/#priority-of-constituencies -->\n  <dt>x</dt>\n  <dd>x</dd>\n</dl>\n<footer aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on footer element\" class=\"ex\">x</footer>\n<fieldset aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on fieldset element\" class=\"ex\">x</fieldset>\n<figure aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on figure element\" class=\"ex\">x</figure>\n<form action=\"\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on form element\" class=\"ex\">x</form>\n<header aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on header element\" class=\"ex\">x</header>\n<h1 aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on h1 element\" class=\"ex\">x</h1>\n<h2 aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on h2 element\" class=\"ex\">x</h2>\n<h3 aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on h3 element\" class=\"ex\">x</h3>\n<h4 aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on h4 element\" class=\"ex\">x</h4>\n<h5 aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on h5 element\" class=\"ex\">x</h5>\n<h6 aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on h6 element\" class=\"ex\">x</h6>\n<hr aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on hr element\" class=\"ex\" />\n<img alt=\"\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on img element\" class=\"ex\" />\n<input type=\"checkbox\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on input type checkbox element\" class=\"ex\"/>\n<input type=\"radio\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on input type radio element\" class=\"ex\" />\n<input type=\"search\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on input type search element\" class=\"ex\" />\n<input type=\"text\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on input type text element\" class=\"ex\" />\n<li aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on listitem element\" class=\"ex\">x</li>\n<main aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on main element\" class=\"ex\">x</main>\n<math aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on math element\" class=\"ex\">x</math>\n<meter aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on meter element\" class=\"ex\">x</meter>\n<nav aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on nav element\" class=\"ex\">x</nav>\n<ol aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on list (ordered) element\" class=\"ex\">x</ol>\n<section aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on section element\" class=\"ex\">x</section>\n<select aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on select element\" class=\"ex\">x</select>\n<select>\n  <option aria-label=\"label\" value=\"foo\" data-expectedlabel=\"label\" data-testname=\"label valid on option element\" class=\"ex\">x</option>\n</select>\n<table aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on table element\" class=\"ex\">\n  <thead aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on thead element\" class=\"ex\">\n    <tr>\n      <th scope=\"col\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on th element with the scope of col\" class=\"ex\">x</th>\n      <th scope=\"row\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on th (scope row) element\" class=\"ex\">x</th>\n    </tr>\n  </thead>\n  <tbody aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on tbody element\" class=\"ex\">\n    <tr aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on tr element\" class=\"ex\">\n      <td aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on td element\" class=\"ex\">x</td>\n      <td>x</td>\n    </tr>\n  </tbody>\n    <tfoot aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on tfoot element\" class=\"ex\">\n      <tr>\n        <td>x</td>\n        <td>x</td>\n      </tr>\n    </tfoot>\n</table>\n<textarea aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on textarea element\" class=\"ex\">x</textarea>\n<ul aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on list (unordered) element\" class=\"ex\">x</ul>\n\n<h2>Name computation precedence tests</h2>\n<!-- Name computation: https://w3c.github.io/accname/#computation-steps -->\n\n<!-- Step 2A: Hidden Not Referenced supercedes 2D: AriaLabel, also see wpt/accname/name/comp_hidden_not_referenced.html -->\n<button aria-labelledby=\"span1\" aria-label=\"foo\" data-expectedlabel=\"label\" data-testname=\"button's hidden referenced name (display:none) supercedes aria-label\" class=\"ex\">\n  <span id=\"span1\" style=\"display:none;\">\n    <span id=\"span2\" style=\"display:none;\">label</span>\n  </span>\nx\n</button>\n\n<button aria-labelledby=\"span3\" aria-label=\"foo\" data-expectedlabel=\"label\" data-testname=\"button's hidden referenced name (visibility:hidden) supercedes aria-label\" class=\"ex\">\n  <span id=\"span3\" style=\"visibility:hidden;\">\n    <span id=\"span4\" style=\"visibility:hidden;\">label</span>\n  </span>\n  x\n</button>\n\n<button aria-labelledby=\"span5\" aria-label=\"foo\" data-expectedlabel=\"foo\" data-testname=\"button's hidden referenced name (visibility:hidden) with hidden aria-labelledby traversal falls back to aria-label\" class=\"ex\">\n  <span id=\"span5\">\n    <span id=\"span6\" style=\"visibility:hidden;\">label</span>\n  </span>\n  x\n</button>\n\n<!-- Step 2B: LabelledBy supercedes 2D: AriaLabel, also see wpt/accname/name/comp_labelledby.html -->\n<a href=\"#\" aria-labelledby=\"span7\" aria-label=\"foo\" data-expectedlabel=\"label\" data-testname=\"link's aria-labelledby name supercedes aria-label\" class=\"ex\">x</a>\n<span id=\"span7\">label</span>\n\n<!-- Step 2C: Embedded Control labelling supercedes 2D: AriaLabel, see wpt/accname/name/comp_embedded_control.html -->\n\n<!-- Step 2E: Host Language Label is superceded by 2D: AriaLabel, also see wpt/accname/name/comp_host_language_label.html -->\n<img alt=\"alt\" aria-label=\"foo\" data-expectedlabel=\"foo\" data-testname=\"img's aria-label supercedes alt attribute\" class=\"ex\" />\n\n<svg aria-label=\"foo\" data-expectedlabel=\"foo\" data-testname=\"svg's aria-label supercedes title tag\" class=\"ex\">\n  <circle cx=\"5\" cy=\"5\" r=\"4\">\n    <title>circle</title>\n  </circle>\n</svg>\n\n<label for=\"input1\">label</label>\n<input type=\"text\" id=\"input1\" aria-label=\"foo\" data-expectedlabel=\"foo\" data-testname=\"input with label for association is superceded by aria-label\" class=\"ex\" />\n\n<!-- Step 2F: Name From Content is superceded by 2D: AriaLabel, also see wpt/accname/name/comp_name_from_content.html -->\n<button aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"button name from contents is superceded by aria-label\" class=\"ex\">x</button>\n\n<!-- Step 2G: Text Node is superceded by 2D: AriaLabel, also see wpt/accname/name/comp_text_node.html -->\n<h1 aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"h1 text is superceded by aria-label\" class=\"ex\">x</h1>\n\n<!-- Step 2H: Recursive Name from Content, see wpt/accname/name/comp_name_from_content.html  -->\n\n<!-- Step 2I: Tooltip is superceded by 2D: AriaLabel, also see wpt/accname/name/comp_tooltip.html -->\n<button aria-label=\"label\" title=\"foo\" data-expectedlabel=\"label\" data-testname=\"button with title is superceded by aria-label\" class=\"ex\">x</button>\n\n<h2>Empty/whitespace aria-label tests</h2>\n<!--\n- AccName computation links to the following definition of \"Whitespace\": https://infra.spec.whatwg.org/#ascii-whitespace\n- Generally, if the current node has an aria-label attribute whose value is not the empty string (including when trimmed of whitespace), return the value of aria-label.\n\nNote: PR for computedLabel whitespace trimming in aria-utils.js: https://github.com/web-platform-tests/wpt/pull/42407/files#diff-6870d82f11ff11cf7c7b544756cecfdac2046acbfe2fbb0640e6d415fbf99916\n\n-->\n\n<textarea aria-label=\"label  \" data-expectedlabel=\"label\" data-testname=\"textarea's name with trailing whitespace in aria-label is valid\" class=\"ex\">x</textarea>\n<a href=\"#\" aria-label=\"     label\" data-expectedlabel=\"label\" data-testname=\"link's name with leading whitespace in aria-label is valid\" class=\"ex\">x</a>\n<button aria-label=\"\u2800\" data-expectedlabel=\"\u2800\" data-testname=\"button with blank braille pattern has name as such (not treated as whitespace per Unicode standard)\" class=\"ex\">my button</button>\n<div role=\"alert\" aria-label=\"\nalert message\" data-expectedlabel=\"alert message\" data-testname=\"div with role alert and carriage return in aria-label is valid\" class=\"ex\">x</div>\n<a href=\"#\" aria-label=\"  label\" data-expectedlabel=\"label\" data-testname=\"link's name with tab in aria-label is valid\" class=\"ex\">x</a>\n<button aria-label=\"\flabel\" data-expectedlabel=\"label\" data-testname=\"button with leading form feed control character in aria-label is valid\" class=\"ex\">my button</button>\n<nav aria-label=\"label&nbsp;\" data-expectedlabel=\"label&nbsp;\" data-testname=\"nav with trailing nbsp char aria-label is valid (nbsp is preserved in name)\" class=\"ex\">x</nav>\n<button aria-label=\"&nbsp;label\" data-expectedlabel=\"&nbsp;label\" data-testname=\"button with leading nbsp char in aria-label is valid (and uses aria-label)\" class=\"ex\">my button</button>\n\n<button aria-label=\"\" data-testname=\"button with empty aria-label does not use aria-label as name\" data-expectedlabel=\"my button\" class=\"ex\">my button</button>\n<textarea aria-label=\"  \" title=\"title\" data-testname=\"textarea with tab character as aria-label does not use aria-label as name\" data-expectedlabel=\"title\" class=\"ex\">textarea contents</textarea>\n<button aria-label=\"\n\" data-testname=\"button with carriage return as aria-label does not use aria-label as name\" data-expectedlabel=\"my button\" class=\"ex\">my button</button>\n<button aria-label=\"      \" data-testname=\"button with space characters as aria-label does not use aria-label as name\" data-expectedlabel=\"my button\" class=\"ex\">my button</button>",
-		"selector": ".ex"
+		"filename": "description_test_case_broken_reference-manual.html",
+		"title": "Description test case broken reference",
+		"html": "<p>This test examines the ARIA properties for Description test case broken reference.</p>\n    <img src=\"foo.jpg\" id=\"test\" alt=\"test\" aria-describedby=\"t1\">",
+		"selector": "#test",
+		"description": ""
 	},
 	{
-		"filename": "comp_name_from_content.html",
-		"title": "Name Comp: Name From Content",
-		"html": "<style type=\"text/css\">\n\n     /*\n\n      Since the AccName spec is in flux about whitespace joiners, and the implementations don't match,\n      normalize the whitespace (with extra leading/trailing) space.\n\n      No point in having the same in-flux spec change cause failures the remaining unrelated tests.\n\n      See more here:\n      https://github.com/w3c/accname/issues/205\n      https://github.com/w3c/accname/projects/1#card-42288231\n\n    */\n\n    .simple-before::before {\n      content: \" before \"; /* [sic] leading and trailing space */\n      margin:0 0.1em;\n    }\n    .simple-after::after {\n      content: \" after \"; /* [sic] leading and trailing space */\n      margin:0 0.1em;\n    }\n    .no-space::before, .no-space::after {\n      content: \"nospace\"; /* [sic] Unlike the others, NO extra leading/trailing space here. */\n    }\n    .simple-before:dir(rtl)::before {\n      content: \" \u0645\u0646 \u0642\u0628\u0644 \"; /* [sic] leading and trailing space */\n    }\n    .simple-after:dir(rtl)::after {\n      content: \" \u0628\u0639\u062f \"; /* [sic] leading and trailing space */\n    }\n    .fallback-before::before {\n      content: \" before \"; /* [sic] leading and trailing space */\n      content: \" before \" / \" alt-before \"; /* Override the previous line for engines that support the Alternative Text syntax. */\n    }\n    .fallback-after::after {\n      content: \" after \"; /* [sic] leading and trailing space */\n      content: \" after \" / \" alt-after \"; /* Override the previous line for engines that support the Alternative Text syntax. */\n    }\n    .fallback-before-empty::before {\n      content: \"before\"  / \"\";\n    }\n    .fallback-before-image-empty::before {\n      content: \"before \" url(/images/blue.png) / \"\";\n    }\n    .fallback-before-mixed::before {\n      content: \" before \"; /* [sic] leading and trailing space */\n      content: \" before \" / \" start \" attr(data-alt-text-before) \" end \"; /* Override the previous line for engines that support the Alternative Text syntax. */\n    }\n    .fallback-after-mixed::after {\n      content: \" after \"; /* [sic] leading and trailing space */\n      content: \" after \" / \" start \" attr(data-alt-text-after) \" end \"; /* Override the previous line for engines that support the Alternative Text syntax. */\n    }\n    .block > span {\n      display: block;\n      margin: 0 0.1em;\n    }\n    .iblock > span {\n      display: inline-block;\n      margin: 0 0.1em;\n    }\n\n  </style><p>Tests the <a href=\"https://w3c.github.io/accname/#comp_name_from_content\">#comp_name_from_content</a> portions of the AccName <em>Name Computation</em> algorithm.</p>\n\n<p>This series of tests exercises the button, heading, and link elements, because each have different characteristics worthy of testing in each of the name computation algorithm scenarios:</p>\n<ul>\n  <li>button is a leaf node with sub-level elements presentational.</li>\n  <li>heading is block level, and can contain sub-level interactives like links.</li>\n  <li>link (a[href]) is an interactive inline element that can include non-presentational descendants.</li>\n</ul>\n\n<h1>ARIA roles, inline</h1>\n<span tabindex=\"0\" role=\"button\" data-expectedlabel=\"label\" data-testname=\"aria button name from content, inline\" class=\"ex\">label</span><br>\n<span tabindex=\"0\" role=\"heading\" data-expectedlabel=\"label\" data-testname=\"aria heading name from content, inline\" class=\"ex\">label</span><br>\n<span tabindex=\"0\" role=\"link\" data-expectedlabel=\"label\" data-testname=\"aria link name from content, inline\" class=\"ex\">label</span><br>\n<br>\n\n<h1>ARIA roles, block</h1>\n<div tabindex=\"0\" role=\"button\" data-expectedlabel=\"label\" data-testname=\"aria button name from content, block\" class=\"ex\">label</div>\n<div tabindex=\"0\" role=\"heading\" data-expectedlabel=\"label\" data-testname=\"aria heading name from content, block\" class=\"ex\">label</div>\n<div tabindex=\"0\" role=\"link\" data-expectedlabel=\"label\" data-testname=\"aria link name from content, block\" class=\"ex\">label</div>\n<br>\n\n<h1>simple</h1>\n<button data-expectedlabel=\"label\" data-testname=\"button name from content\" class=\"ex\">label</button><br>\n<h3 data-expectedlabel=\"label\" data-testname=\"heading name from content\" class=\"ex\">label</h3>\n<a href=\"#\" data-expectedlabel=\"label\" data-testname=\"link name from content\" class=\"ex\">label</a><br>\n<br>\n\n<h1>simple with ::before</h1>\n<button data-expectedlabel=\"before label\" data-testname=\"button name from content with ::before\" class=\"ex simple-before\">label</button><br>\n<h3 data-expectedlabel=\"before label\" data-testname=\"heading name from content with ::before\" class=\"ex simple-before\">label</h3>\n<a href=\"#\" data-expectedlabel=\"before label\" data-testname=\"link name from content with ::before\" class=\"ex simple-before\">label</a><br>\n<br>\n\n<h1>simple with ::after</h1>\n<button data-expectedlabel=\"label after\" data-testname=\"button name from content with ::after\" class=\"ex simple-after\">label</button><br>\n<h3 data-expectedlabel=\"label after\" data-testname=\"heading name from content with ::after\" class=\"ex simple-after\">label</h3>\n<a href=\"#\" data-expectedlabel=\"label after\" data-testname=\"link name from content with ::after\" class=\"ex simple-after\">label</a><br>\n<br>\n\n<h1>simple with ::before and ::after</h1>\n<button data-expectedlabel=\"before label after\" data-testname=\"button name from content with ::before and ::after\" class=\"ex simple-before simple-after\">label</button><br>\n<h3 data-expectedlabel=\"before label after\" data-testname=\"heading name from content with ::before and ::after\" class=\"ex simple-before simple-after\">label</h3>\n<a href=\"#\" data-expectedlabel=\"before label after\" data-testname=\"link name from content with ::before and ::after\" class=\"ex simple-before simple-after\">label</a><br>\n<br>\n\n<h1>no space joiners ::before and ::after</h1>\n<button data-expectedlabel=\"nospacelabelnospace\" data-testname=\"button name from content no space joiners ::before and ::after\" class=\"ex no-space\">label</button><br>\n<h3 data-expectedlabel=\"nospacelabelnospace\" data-testname=\"heading name from content no space joiners ::before and ::after\" class=\"ex no-space\">label</h3>\n<a href=\"#\" data-expectedlabel=\"nospacelabelnospace\" data-testname=\"link name from content no space joiners ::before and ::after\" class=\"ex no-space\">label</a><br>\n<br>\n\n<h1>Arabic right-to-left (RTL) with ::before and ::after</h1>\n<div dir=\"rtl\" lang=\"ar\">\n  <button data-expectedlabel=\"\u0645\u0646 \u0642\u0628\u0644 \u0627\u0633\u0645 \u0628\u0639\u062f\" data-testname=\"button name from content with ::before and ::after in rtl\" class=\"ex simple-before simple-after\">\u0627\u0633\u0645</button><br>\n  <h3 data-expectedlabel=\"\u0645\u0646 \u0642\u0628\u0644 \u0627\u0633\u0645 \u0628\u0639\u062f\" data-testname=\"heading name from content with ::before and ::after in rtl\" class=\"ex simple-before simple-after\">\u0627\u0633\u0645</h3>\n  <a href=\"#\" data-expectedlabel=\"\u0645\u0646 \u0642\u0628\u0644 \u0627\u0633\u0645 \u0628\u0639\u062f\" data-testname=\"link name from content with ::before and ::after in rtl\" class=\"ex simple-before simple-after\">\u0627\u0633\u0645</a><br>\n</div>\n<br>\n\n<h1><a href=\"https://drafts.csswg.org/css-content/#alt\">Alternative Text for  CSS content (previously `alt:`)</a> in pseudo-elements</h1>\n<p>rendered text should be \"before label after\"</p>\n<p>accessibility label should be \"alt-before label alt-after\"</p>\n<button data-expectedlabel=\"alt-before label alt-after\" data-testname=\"button name from fallback content with ::before and ::after\" class=\"ex fallback-before fallback-after\">label</button><br>\n<h3 data-expectedlabel=\"alt-before label alt-after\" data-testname=\"heading name from fallback content with ::before and ::after\" class=\"ex fallback-before fallback-after\">label</h3>\n<a href=\"#\" data-expectedlabel=\"alt-before label alt-after\" data-testname=\"link name from fallback content with ::before and ::after\" class=\"ex fallback-before fallback-after\">label</a><br>\n<br>\n\n<h1><a href=\"https://drafts.csswg.org/css-content/#alt\">Mixed Alternative Text (attr() and strings) for  CSS content (previously `alt:`)</a> in pseudo-elements</h1>\n<p>rendered text should be \"before label after\"</p>\n<p>accessibility label should be \"start alt-before end label start alt-after end\"</p>\n<button data-alt-text-before=\"alt-before\" data-alt-text-after=\"alt-after\" data-expectedlabel=\"start alt-before end label start alt-after end\" data-testname=\"button name from fallback content mixing attr() and strings with ::before and ::after\" class=\"ex fallback-before-mixed fallback-after-mixed\">label</button><br>\n<h3 data-alt-text-before=\"alt-before\" data-alt-text-after=\"alt-after\" data-expectedlabel=\"start alt-before end label start alt-after end\" data-testname=\"heading name from fallback content mixing attr() and strings with ::before and ::after\" class=\"ex fallback-before-mixed fallback-after-mixed\">label</h3>\n<a href=\"#\" data-alt-text-before=\"alt-before\" data-alt-text-after=\"alt-after\" data-expectedlabel=\"start alt-before end label start alt-after end\" data-testname=\"link name from fallback content mixing attr() and strings with ::before and ::after\" class=\"ex fallback-before-mixed fallback-after-mixed\">label</a><br>\n<br>\n\n<h1>Empty alternative text for CSS content in pseudo-elements when applied to primitive appearance form controls</h1>\n<p><input data-expectedlabel=\"\" data-testname=\"primitive radio input with ::before containing empty alternative text\" class=\"ex fallback-before-empty\" type=radio style=appearance:none>\n<p><input data-expectedlabel=\"\" data-testname=\"primitive radio input with ::before containing empty alternative text for an image\" class=\"ex fallback-before-image-empty\" type=radio style=appearance:none>\n\n<h1>simple w/ for each child</h1>\n<button data-expectedlabel=\"one two three\" data-testname=\"button name from content for each child\" class=\"ex\"><span>one</span> <span>two</span> <span>three</span></button><br>\n<h3 data-expectedlabel=\"one two three\" data-testname=\"heading name from content for each child\" class=\"ex\"><span>one</span> <span>two</span> <span>three</span></h3>\n<a href=\"#\" data-expectedlabel=\"one two three\" data-testname=\"link name from content for each child\" class=\"ex\"><span>one</span> <span>two</span> <span>three</span></a><br>\n<br>\n\n<h1>simple for each child with image</h1>\n<button data-expectedlabel=\"one two three\" data-testname=\"button name from content for each child including image\" class=\"ex\"><span>one</span> <img alt=\"two\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\"> <span>three</span></button><br>\n<h3 data-expectedlabel=\"one two three\" data-testname=\"heading name from content for each child including image\" class=\"ex\"><span>one</span> <img alt=\"two\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\"> <span>three</span></h3>\n<a href=\"#\" data-expectedlabel=\"one two three\" data-testname=\"link name from content for each child including image\" class=\"ex\"><span>one</span> <img alt=\"two\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\"> <span>three</span></a><br>\n<br>\n\n\n<h1>simple for each child with extra nesting containing image</h1>\n<button data-expectedlabel=\"one two three four\" data-testname=\"button name from content for each child including nested image\" class=\"ex\"><span>one</span> <span>two <img alt=\"three\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\"></span> <span>four</span></button><br>\n<h3 data-expectedlabel=\"one two three four\" data-testname=\"heading name from content for each child including nested image\" class=\"ex\"><span>one</span> <span>two <img alt=\"three\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\"></span> <span>four</span></h3>\n<a href=\"#\" data-expectedlabel=\"one two three four\" data-testname=\"link name from content for each child including nested image\" class=\"ex\"><span>one</span> <span>two <img alt=\"three\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\"></span> <span>four</span></a><br>\n<br>\n\n<h1>heading with nested button with nested image</h1>\n<h3 data-expectedlabel=\"heading button image button heading\" data-testname=\"heading name from content for each child including nested button with nested image\" class=\"ex\">\n  heading\n  <button>\n    button\n    <img alt=\"image\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n    button\n  </button>\n  heading\n</h3>\n\n<h1>heading with nested link with nested image</h1>\n<h3 data-expectedlabel=\"heading link image link heading\" data-testname=\"heading name from content for each child including nested link with nested image\" class=\"ex\">\n  heading\n  <a href=\"#\">\n    link\n    <img alt=\"image\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n    link\n  </a>\n  heading\n</h3>\n\n<h1>heading with nested link with nested image using aria-label</h1>\n<h3 data-expectedlabel=\"heading link aria-label heading\" data-testname=\"heading name from content for each child including nested link using aria-label with nested image\" class=\"ex\">\n  heading\n  <a href=\"#\" aria-label=\"link aria-label\"><!-- should skip the other link text -->\n    ignored link text\n    <img id=\"nested_image_label_1\" alt=\"ignored image alt\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n    ignored link text\n  </a>\n  heading\n</h3>\n\n<h1>heading with nested link with nested image using aria-labelledby</h1>\n<h3 data-expectedlabel=\"heading image heading\" data-testname=\"heading name from content for each child including nested link using aria-labelledby with nested image\" class=\"ex\">\n  heading\n  <a href=\"#\" aria-labelledby=\"nested_image_label1\"><!-- should skip the other link text -->\n    ignored link text\n    <img id=\"nested_image_label1\" alt=\"image\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n    ignored link text\n  </a>\n  heading\n</h3>\n\n<h1>heading with two nested links referencing image using aria-labelledby</h1>\n<h3 data-expectedlabel=\"image link2 link3\" data-testname=\"heading name from content for each child including two nested links using aria-labelledby with nested image\" class=\"ex\">\n  <a href=\"#\" aria-labelledby=\"nested_image_label2\">\n    link1<!-- this text is skipped because of aria-labelledby -->\n  </a>\n  <a href=\"#\" data-expectedlabel=\"link2 image link3\" data-testname=\"link name from content for each child including nested image (referenced elsewhere via labelledby)\" class=\"ex\">\n    link2\n    <img id=\"nested_image_label2\" alt=\"image\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n    <!-- image skipped in this link (when computing heading text) because it was already referenced by the first link within this heading label recursion cycle. -->\n    <!-- but image not skipped when computing the text of the link itself since it has not been referenced in that context -->\n    link3\n  </a>\n</h3>\n\n\n<!-- Note: The following test is out of line with the spec, but matching two out of three implementations at the time of writing, and spec changes are expeected. -->\n<!-- See details in https://github.com/w3c/accname/issues/205 -->\n<!-- Final spec resolution will be addressed in AccName Whitespace Project: https://github.com/w3c/accname/projects/1#card-42288231 -->\n<h1>simple w/ for each child (w/o spaces and display:inline)</h1>\n<button data-expectedlabel=\"onetwothree\" data-testname=\"button name from content for each child (no space, inline)\" class=\"ex\"><span>one</span><span>two</span><span>three</span></button><br>\n<h3 data-expectedlabel=\"onetwothree\" data-testname=\"heading name from content for each child (no space, inline)\" class=\"ex\"><span>one</span><span>two</span><span>three</span></h3>\n<a href=\"#\" data-expectedlabel=\"onetwothree\" data-testname=\"link name from content for each child (no space, inline)\" class=\"ex\"><span>one</span><span>two</span><span>three</span></a><br>\n<br>\n\n<h1>simple w/ for each child (w/o spaces and display:block)</h1>\n<button data-expectedlabel=\"one two three\" data-testname=\"button name from content for each child (no space, display:block)\" class=\"ex block\"><span>one</span><span>two</span><span>three</span></button><br>\n<h3 data-expectedlabel=\"one two three\" data-testname=\"heading name from content for each child (no space, display:block)\" class=\"ex block\"><span>one</span><span>two</span><span>three</span></h3>\n<a href=\"#\" data-expectedlabel=\"one two three\" data-testname=\"link name from content for each child (no space, display:block)\" class=\"ex block\"><span>one</span><span>two</span><span>three</span></a><br>\n<br>\n\n<h1>simple w/ for each child (w/o spaces and display:inline block)</h1>\n<button data-expectedlabel=\"one two three\" data-testname=\"button name from content for each child (no space, display:inline-block)\" class=\"ex iblock\"><span>one</span><span>two</span><span>three</span></button><br>\n<h3 data-expectedlabel=\"one two three\" data-testname=\"heading name from content for each child (no space, display:inline-block)\" class=\"ex iblock\"><span>one</span><span>two</span><span>three</span></h3>\n<a href=\"#\" data-expectedlabel=\"one two three\" data-testname=\"link name from content for each child (no space, display:inline-block)\" class=\"ex iblock\"><span>one</span><span>two</span><span>three</span></a><br>\n<br>\n\n<h1 data-expectedlabel=\"Call us\" data-testname=\"heading name from content with text-transform:none\" class=\"ex\" style=\"text-transform:none;\">Call us</h1>\n<h1 data-expectedlabel=\"CALL US\" data-testname=\"heading name from content with text-transform:uppercase\" class=\"ex\" style=\"text-transform:uppercase;\">Call us</h1>\n<h1 data-expectedlabel=\"Call Us\" data-testname=\"heading name from content with text-transform:capitalize\" class=\"ex\" style=\"text-transform:capitalize;\">Call us</h1>\n<h1 data-expectedlabel=\"call us\" data-testname=\"heading name from content with text-transform:lowercase\" class=\"ex\" style=\"text-transform:lowercase;\">Call us</h1>",
-		"selector": ".ex"
+		"filename": "name_test_case_597-manual.html",
+		"title": "Name test case 597",
+		"html": "<p>This test examines the ARIA properties for Name test case 597.</p>\n    <div id=\"test\" aria-label=\"Tag\">foo</div>",
+		"selector": "#test",
+		"name": "Tag"
+	},
+	{
+		"filename": "name_checkbox-label-multiple-label-manual.html",
+		"title": "Name checkbox-label-multiple-label",
+		"html": "<p>This test examines the ARIA properties for Name checkbox-label-multiple-label.</p>\n    <label>This <input type=\"checkbox\" id=\"test\" /> is</label>\n  <label for=\"test\">a test</label>",
+		"selector": "#test",
+		"name": "This is a test"
+	},
+	{
+		"filename": "description_1.0_combobox-focusable-manual.html",
+		"title": "Description 1.0 combobox-focusable",
+		"html": "<p>This test examines the ARIA properties for Description 1.0 combobox-focusable.</p>\n    <div id=\"test\" role=\"combobox\" tabindex=\"0\" title=\"Choose your language.\">\n    <span> English </span>\n  </div>",
+		"selector": "#test",
+		"description": ""
+	},
+	{
+		"filename": "name_test_case_734-manual.html",
+		"title": "Name test case 734",
+		"html": "<p>This test examines the ARIA properties for Name test case 734.</p>\n    <label for=\"test\">\n    crazy\n    <select name=\"member\" size=\"1\" role=\"menu\" tabindex=\"0\">\n      <option role=\"menuitem\" value=\"beard\" selected=\"true\">clown</option>\n      <option role=\"menuitem\" value=\"scuba\">rich</option>\n    </select>\n  </label>\n  <input type=\"checkbox\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "crazy"
+	},
+	{
+		"filename": "name_1.0_combobox-focusable-manual.html",
+		"title": "Name 1.0 combobox-focusable",
+		"html": "<p>This test examines the ARIA properties for Name 1.0 combobox-focusable.</p>\n    <div id=\"test\" role=\"combobox\" tabindex=\"0\" title=\"Choose your language.\">\n    <span> English </span>\n  </div>",
+		"selector": "#test",
+		"name": "Choose your language."
+	},
+	{
+		"filename": "name_radio-label-embedded-menu-manual.html",
+		"title": "Name radio-label-embedded-menu",
+		"html": "<p>This test examines the ARIA properties for Name radio-label-embedded-menu.</p>\n    <input type=\"radio\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <span role=\"menu\">\n      <span role=\"menuitem\" aria-selected=\"true\">1</span>\n      <span role=\"menuitem\" hidden>2</span>\n      <span role=\"menuitem\" hidden>3</span>\n    </span>\n    times.\n  </label>",
+		"selector": "#test",
+		"name": "Flash the screen times."
+	},
+	{
+		"filename": "name_test_case_747-manual.html",
+		"title": "Name test case 747",
+		"html": "<p>This test examines the ARIA properties for Name test case 747.</p>\n    <label for=\"test\">\n    crazy\n    <div role=\"spinbutton\" aria-valuemin=\"1\" aria-valuemax=\"7\" aria-valuenow=\"4\">\n    </div>\n  </label>\n  <input type=\"image\" src=\"foo.jpg\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "crazy 4"
+	},
+	{
+		"filename": "name_test_case_616-manual.html",
+		"title": "Name test case 616",
+		"html": "<p>This test examines the ARIA properties for Name test case 616.</p>\n    <input type=\"image\" id=\"test\">\n  <label for=\"test\">foo</label>",
+		"selector": "#test",
+		"name": "foo"
+	},
+	{
+		"filename": "name_password-label-embedded-menu-manual.html",
+		"title": "Name password-label-embedded-menu",
+		"html": "<p>This test examines the ARIA properties for Name password-label-embedded-menu.</p>\n    <input type=\"password\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <span role=\"menu\">\n      <span role=\"menuitem\" aria-selected=\"true\">1</span>\n      <span role=\"menuitem\" hidden>2</span>\n      <span role=\"menuitem\" hidden>3</span>\n    </span>\n    times.\n  </label>",
+		"selector": "#test",
+		"name": "Flash the screen times."
+	},
+	{
+		"filename": "description_test_case_557-manual.html",
+		"title": "Description test case 557",
+		"html": "<p>This test examines the ARIA properties for Description test case 557.</p>\n    <img id=\"test\" src=\"foo.jpg\" aria-label=\"1\" alt=\"a\" title=\"t\"/>",
+		"selector": "#test",
+		"description": "t"
+	},
+	{
+		"filename": "name_test_case_598-manual.html",
+		"title": "Name test case 598",
+		"html": "<p>This test examines the ARIA properties for Name test case 598.</p>\n    <div id=\"test\" aria-labelledby=\"ID1\" aria-label=\"Tag\">foo</div>\n  <span id=\"ID1\">bar</span>",
+		"selector": "#test",
+		"name": "bar"
+	},
+	{
+		"filename": "name_test_case_602-manual.html",
+		"title": "Name test case 602",
+		"html": "<p>This test examines the ARIA properties for Name test case 602.</p>\n    <div id=\"test\" role=\"button\" title=\"Tag\" style=\"outline:medium solid black; width:2em; height:1em;\">\n  </div>",
+		"selector": "#test",
+		"name": "Tag"
+	},
+	{
+		"filename": "name_test_case_725-manual.html",
+		"title": "Name test case 725",
+		"html": "<p>This test examines the ARIA properties for Name test case 725.</p>\n    <label for=\"test\">File:</label>\n  <input type=\"file\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "File:"
+	},
+	{
+		"filename": "name_test_case_562-manual.html",
+		"title": "Name test case 562",
+		"html": "<p>This test examines the ARIA properties for Name test case 562.</p>\n    <input type=\"text\" value=\"peanuts\" id=\"ID1\">\n  <input type=\"text\" value=\"popcorn\" id=\"ID2\">\n  <input type=\"text\" value=\"apple jacks\" id=\"ID3\">\n  <img aria-labelledby=\"ID1 ID2 ID3\" id=\"test\" src=\"foo.jpg\"/>",
+		"selector": "#test",
+		"name": "peanuts popcorn apple jacks"
+	},
+	{
+		"filename": "name_test_case_599-manual.html",
+		"title": "Name test case 599",
+		"html": "<p>This test examines the ARIA properties for Name test case 599.</p>\n    <div id=\"test\" aria-labelledby=\"ID0 ID1\" aria-label=\"Tag\">foo</div>\n  <span id=\"ID0\">bar</span>\n  <span id=\"ID1\">baz</span>",
+		"selector": "#test",
+		"name": "bar baz"
+	},
+	{
+		"filename": "name_file-label-inline-hidden-elements-manual.html",
+		"title": "Name file-label-inline-hidden-elements",
+		"html": "<p>This test examines the ARIA properties for Name file-label-inline-hidden-elements.</p>\n    <style>\n    .hidden { display: none; }\n  </style>\n  <input type=\"file\" id=\"test\" />\n  <label for=\"test\">\n    <span class=\"hidden\">1</span><span>2</span>\n    <span style=\"visibility: hidden;\">3</span><span>4</span>\n    <span hidden>5</span><span>6</span>\n    <span aria-hidden=\"true\">7</span><span>8</span>\n    <span aria-hidden=\"false\" class=\"hidden\">9</span><span>10</span>\n  </label>",
+		"selector": "#test",
+		"name": "2 4 6 8 10"
+	},
+	{
+		"filename": "name_text-title-manual.html",
+		"title": "Name text-title",
+		"html": "<p>This test examines the ARIA properties for Name text-title.</p>\n    <input type=\"text\" id=\"test\" title=\"foo\" />",
+		"selector": "#test",
+		"name": "foo"
+	},
+	{
+		"filename": "name_link-with-label-manual.html",
+		"title": "Name link-with-label",
+		"html": "<p>This test examines the ARIA properties for Name link-with-label.</p>\n    <a id=\"test\" href=\"#\" aria-label=\"California\" title=\"San Francisco\" >United States</a>",
+		"selector": "#test",
+		"name": "California"
+	},
+	{
+		"filename": "name_test_case_605-manual.html",
+		"title": "Name test case 605",
+		"html": "<p>This test examines the ARIA properties for Name test case 605.</p>\n    <a href=\"test.html\" id=\"test\" aria-labelledby=\"ID1\" aria-label=\"Tag\">foo</a>\n  <p id=\"ID1\">bar</p>",
+		"selector": "#test",
+		"name": "bar"
+	},
+	{
+		"filename": "name_test_case_551-manual.html",
+		"title": "Name test case 551",
+		"html": "<p>This test examines the ARIA properties for Name test case 551.</p>\n    <input type=\"text\" id=\"test\" title=\"crazy\" value=\"baz\"/>",
+		"selector": "#test",
+		"name": "crazy"
+	},
+	{
+		"filename": "description_link-with-label-manual.html",
+		"title": "Description link-with-label",
+		"html": "<p>This test examines the ARIA properties for Description link-with-label.</p>\n    <a id=\"test\" href=\"#\" aria-label=\"California\" title=\"San Francisco\" >United States</a>",
+		"selector": "#test",
+		"description": "San Francisco"
+	},
+	{
+		"filename": "name_test_case_730-manual.html",
+		"title": "Name test case 730",
+		"html": "<p>This test examines the ARIA properties for Name test case 730.</p>\n    <label for=\"test\">\n    foo\n    <input type=\"text\" value=\"David\"/>\n  </label>\n  <input type=\"file\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "foo David"
+	},
+	{
+		"filename": "name_radio-label-embedded-select-manual.html",
+		"title": "Name radio-label-embedded-select",
+		"html": "<p>This test examines the ARIA properties for Name radio-label-embedded-select.</p>\n    <input type=\"radio\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <select size=\"1\">\n      <option selected=\"selected\">1</option>\n      <option>2</option>\n      <option>3</option>\n    </select>\n    times.\n  </label>",
+		"selector": "#test",
+		"name": "Flash the screen 1 times."
+	},
+	{
+		"filename": "name_checkbox-label-multiple-label-alternative-manual.html",
+		"title": "Name checkbox-label-multiple-label-alternative",
+		"html": "<p>This test examines the ARIA properties for Name checkbox-label-multiple-label-alternative.</p>\n    <label for=\"test\">a test</label>\n  <label>This <input type=\"checkbox\" id=\"test\" /> is</label>",
+		"selector": "#test",
+		"name": "a test This is"
+	},
+	{
+		"filename": "name_test_case_762-manual.html",
+		"title": "Name test case 762",
+		"html": "<p>This test examines the ARIA properties for Name test case 762.</p>\n    <style>\n    label:after { content:\" fruit\"; }\n  </style>\n  <label for=\"test\">fancy</label>\n  <input type=\"image\" src=\"foo.jpg\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "fancy fruit"
+	},
+	{
+		"filename": "name_test_case_619-manual.html",
+		"title": "Name test case 619",
+		"html": "<p>This test examines the ARIA properties for Name test case 619.</p>\n    <input type=\"password\" id=\"test\">\n  <label for=\"test\">foo<input type=\"text\" value=\"bar\">baz</label>",
+		"selector": "#test",
+		"name": "foo bar baz"
+	},
+	{
+		"filename": "name_radio-label-embedded-combobox-manual.html",
+		"title": "Name radio-label-embedded-combobox",
+		"html": "<p>This test examines the ARIA properties for Name radio-label-embedded-combobox.</p>\n    <input type=\"radio\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <div role=\"combobox\">\n      <div role=\"textbox\"></div>\n      <ul role=\"listbox\" style=\"list-style-type: none;\">\n        <li role=\"option\" aria-selected=\"true\">1</li>\n    <li role=\"option\">2</li>\n    <li role=\"option\">3</li>\n      </ul>\n    </div>\n    times.\n  </label>",
+		"selector": "#test",
+		"name": "Flash the screen 1 times."
+	},
+	{
+		"filename": "name_test_case_558-manual.html",
+		"title": "Name test case 558",
+		"html": "<p>This test examines the ARIA properties for Name test case 558.</p>\n    <input type=\"text\" value=\"peanuts\" id=\"test\">\n  <img aria-labelledby=\"test\" src=\"foo.jpg\"/>",
+		"selector": "#test",
+		"name": ""
+	},
+	{
+		"filename": "name_test_case_565-manual.html",
+		"title": "Name test case 565",
+		"html": "<p>This test examines the ARIA properties for Name test case 565.</p>\n    <input type=\"text\" value=\"peanuts\" id=\"ID1\">\n  <input type=\"text\" value=\"popcorn\" id=\"ID2\">\n  <input type=\"text\" value=\"apple jacks\" id=\"ID3\">\n  <img id=\"test\" aria-label=\"l\" aria-labelledby=\"test ID1 ID2 ID3\" alt= \"a\" title=\"t\" src=\"foo.jpg\"/>",
+		"selector": "#test",
+		"name": "l peanuts popcorn apple jacks"
+	},
+	{
+		"filename": "name_checkbox-label-embedded-combobox-manual.html",
+		"title": "Name checkbox-label-embedded-combobox",
+		"html": "<p>This test examines the ARIA properties for Name checkbox-label-embedded-combobox.</p>\n    <input type=\"checkbox\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <div role=\"combobox\">\n      <div role=\"textbox\"></div>\n      <ul role=\"listbox\" style=\"list-style-type: none;\">\n        <li role=\"option\" aria-selected=\"true\">1</li>\n    <li role=\"option\">2</li>\n    <li role=\"option\">3</li>\n      </ul>\n    </div>\n    times.\n  </label>",
+		"selector": "#test",
+		"name": "Flash the screen 1 times."
+	},
+	{
+		"filename": "name_link-mixed-content-manual.html",
+		"title": "Name link-mixed-content",
+		"html": "<p>This test examines the ARIA properties for Name link-mixed-content.</p>\n    <style>\n    .hidden { display: none; }\n  </style>\n  <div id=\"test\" role=\"link\" tabindex=\"0\">\n    <span aria-hidden=\"true\"><i> Hello, </i></span>\n    <span>My</span> name is\n    <div><img src=\"file.jpg\" title=\"Bryan\" alt=\"\" role=\"presentation\" /></div>\n    <span role=\"presentation\" aria-label=\"Eli\"><span aria-label=\"Garaventa\">Zambino</span></span>\n    <span>the weird.</span>\n    (QED)\n    <span class=\"hidden\"><i><b>and don't you forget it.</b></i></span>\n  </div>",
+		"selector": "#test",
+		"name": "My name is Eli the weird. (QED)"
+	},
+	{
+		"filename": "name_text-label-embedded-slider-manual.html",
+		"title": "Name text-label-embedded-slider",
+		"html": "<p>This test examines the ARIA properties for Name text-label-embedded-slider.</p>\n    <input type=\"text\" id=\"test\" />\n  <label for=\"test\">foo <input role=\"slider\" type=\"range\" value=\"5\" min=\"1\" max=\"10\" aria-valuenow=\"5\" aria-valuemin=\"1\" aria-valuemax=\"10\"> baz\n  </label>",
+		"selector": "#test",
+		"name": "foo 5 baz"
+	},
+	{
+		"filename": "name_test_case_728-manual.html",
+		"title": "Name test case 728",
+		"html": "<p>This test examines the ARIA properties for Name test case 728.</p>\n    <label for=\"test\">\n    foo\n    <input type=\"text\" value=\"David\"/>\n  </label>\n  <input type=\"checkbox\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "foo David"
+	},
+	{
+		"filename": "name_password-title-manual.html",
+		"title": "Name password-title",
+		"html": "<p>This test examines the ARIA properties for Name password-title.</p>\n    <input type=\"password\" id=\"test\" title=\"foo\" />",
+		"selector": "#test",
+		"name": "foo"
+	},
+	{
+		"filename": "description_test_case_666-manual.html",
+		"title": "Description test case 666",
+		"html": "<p>This test examines the ARIA properties for Description test case 666.</p>\n    <div>\n    <img id=\"test\" aria-describedby=\"ID1\" src=\"test.png\">\n  </div>\n  <div id=\"ID1\" role=\"presentation\">foo</div>",
+		"selector": "#test",
+		"description": "foo"
+	},
+	{
+		"filename": "name_test_case_723-manual.html",
+		"title": "Name test case 723",
+		"html": "<p>This test examines the ARIA properties for Name test case 723.</p>\n    <label for=\"test\">States:</label>\n  <input type=\"checkbox\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "States:"
+	},
+	{
+		"filename": "name_test_case_735-manual.html",
+		"title": "Name test case 735",
+		"html": "<p>This test examines the ARIA properties for Name test case 735.</p>\n    <label for=\"test\">\n    crazy\n    <select name=\"member\" size=\"1\" role=\"menu\" tabindex=\"0\">\n      <option role=\"menuitem\" value=\"beard\" selected=\"true\">clown</option>\n      <option role=\"menuitem\" value=\"scuba\">rich</option>\n    </select>\n  </label>\n  <input type=\"radio\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "crazy"
+	},
+	{
+		"filename": "name_test_case_744-manual.html",
+		"title": "Name test case 744",
+		"html": "<p>This test examines the ARIA properties for Name test case 744.</p>\n    <label for=\"test\">\n    crazy\n    <div role=\"spinbutton\" aria-valuemin=\"1\" aria-valuemax=\"7\" aria-valuenow=\"4\">\n    </div>\n  </label>\n  <input type=\"checkbox\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "crazy 4"
+	},
+	{
+		"filename": "name_file-title-manual.html",
+		"title": "Name file-title",
+		"html": "<p>This test examines the ARIA properties for Name file-title.</p>\n    <input type=\"file\" id=\"test\" title=\"foo\" />",
+		"selector": "#test",
+		"name": "foo"
+	},
+	{
+		"filename": "name_text-label-embedded-combobox-manual.html",
+		"title": "Name text-label-embedded-combobox",
+		"html": "<p>This test examines the ARIA properties for Name text-label-embedded-combobox.</p>\n    <input type=\"text\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <div role=\"combobox\">\n      <div role=\"textbox\"></div>\n      <ul role=\"listbox\" style=\"list-style-type: none;\">\n        <li role=\"option\" aria-selected=\"true\">1</li>\n    <li role=\"option\">2</li>\n    <li role=\"option\">3</li>\n      </ul>\n    </div>\n    times.\n  </label>",
+		"selector": "#test",
+		"name": "Flash the screen 1 times."
+	},
+	{
+		"filename": "name_test_case_559-manual.html",
+		"title": "Name test case 559",
+		"html": "<p>This test examines the ARIA properties for Name test case 559.</p>\n    <img id=\"test\" aria-labelledby=\"test\" src=\"foo.jpg\"/>",
+		"selector": "#test",
+		"name": ""
+	},
+	{
+		"filename": "name_1.0_combobox-focusable-alternative-manual.html",
+		"title": "Name 1.0 combobox-focusable-alternative",
+		"html": "<p>This test examines the ARIA properties for Name 1.0 combobox-focusable-alternative.</p>\n    <input id=\"test\" role=\"combobox\" type=\"text\" title=\"Choose your language\" value=\"English\">",
+		"selector": "#test",
+		"name": "Choose your language"
+	},
+	{
+		"filename": "name_text-label-embedded-spinbutton-manual.html",
+		"title": "Name text-label-embedded-spinbutton",
+		"html": "<p>This test examines the ARIA properties for Name text-label-embedded-spinbutton.</p>\n    <input type=\"text\" id=\"test\" />\n  <label for=\"test\">foo <input role=\"spinbutton\" type=\"number\" value=\"5\" min=\"1\" max=\"10\" aria-valuenow=\"5\" aria-valuemin=\"1\" aria-valuemax=\"10\"> baz\n  </label>",
+		"selector": "#test",
+		"name": "foo 5 baz"
+	},
+	{
+		"filename": "name_test_case_620-manual.html",
+		"title": "Name test case 620",
+		"html": "<p>This test examines the ARIA properties for Name test case 620.</p>\n    <input type=\"radio\" id=\"test\">\n  <label for=\"test\">foo<input type=\"text\" value=\"bar\">baz</label>",
+		"selector": "#test",
+		"name": "foo bar baz"
+	},
+	{
+		"filename": "name_test_case_721-manual.html",
+		"title": "Name test case 721",
+		"html": "<p>This test examines the ARIA properties for Name test case 721.</p>\n    <label for=\"test\">States:</label>\n  <input type=\"password\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "States:"
+	},
+	{
+		"filename": "name_test_case_727-manual.html",
+		"title": "Name test case 727",
+		"html": "<p>This test examines the ARIA properties for Name test case 727.</p>\n    <label for=\"test\">\n    foo\n    <input type=\"text\" value=\"David\"/>\n  </label>\n  <input type=\"password\" id=\"test\" value=\"baz\"/>",
+		"selector": "#test",
+		"name": "foo David"
+	},
+	{
+		"filename": "name_test_case_543-manual.html",
+		"title": "Name test case 543",
+		"html": "<p>This test examines the ARIA properties for Name test case 543.</p>\n    <input type=\"reset\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "Reset"
+	},
+	{
+		"filename": "description_test_case_774-manual.html",
+		"title": "Description test case 774",
+		"html": "<p>This test examines the ARIA properties for Description test case 774.</p>\n    <img src=\"foo.jpg\" id=\"test\" alt=\"test\" aria-describedby=\"t1\">\n  <span id=\"t1\" role=\"presentation\">foo</span>",
+		"selector": "#test",
+		"description": "foo"
+	},
+	{
+		"filename": "name_test_case_603-manual.html",
+		"title": "Name test case 603",
+		"html": "<p>This test examines the ARIA properties for Name test case 603.</p>\n    <div id=\"ID1\">foo</div>\n  <a id=\"test\" href=\"test.html\" aria-labelledby=\"ID1\">bar</a>",
+		"selector": "#test",
+		"name": "foo"
+	},
+	{
+		"filename": "name_test_case_753-manual.html",
+		"title": "Name test case 753",
+		"html": "<p>This test examines the ARIA properties for Name test case 753.</p>\n    <style>\n    label:before { content:\"fancy \"; }\n  </style>\n  <label for=\"test\">fruit</label>\n  <input type=\"password\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "fancy fruit"
+	},
+	{
+		"filename": "name_test_case_659-manual.html",
+		"title": "Name test case 659",
+		"html": "<p>This test examines the ARIA properties for Name test case 659.</p>\n    <style type=\"text/css\">\n    label:before { content: \"foo\"; }\n    label:after { content: \"baz\"; }\n  </style>\n  <form>\n    <label for=\"test\" title=\"bar\"><input id=\"test\" type=\"text\" name=\"test\" title=\"buz\"></label>\n  </form>",
+		"selector": "#test",
+		"name": "foo bar baz"
+	},
+	{
+		"filename": "name_test_case_662-manual.html",
+		"title": "Name test case 662",
+		"html": "<p>This test examines the ARIA properties for Name test case 662.</p>\n    <style type=\"text/css\">\n    label:before { content: \"foo\"; }\n    label:after { content: \"baz\"; }\n  </style>\n  <form>\n    <label for=\"test\"><input id=\"test\" type=\"radio\" name=\"test\" title=\" bar \"></label>\n  </form>",
+		"selector": "#test",
+		"name": "foo baz"
+	},
+	{
+		"filename": "name_file-label-embedded-spinbutton-manual.html",
+		"title": "Name file-label-embedded-spinbutton",
+		"html": "<p>This test examines the ARIA properties for Name file-label-embedded-spinbutton.</p>\n    <input type=\"file\" id=\"test\" />\n  <label for=\"test\">foo <input role=\"spinbutton\" type=\"number\" value=\"5\" min=\"1\" max=\"10\" aria-valuenow=\"5\" aria-valuemin=\"1\" aria-valuemax=\"10\"> baz\n  </label>",
+		"selector": "#test",
+		"name": "foo 5 baz"
+	},
+	{
+		"filename": "name_test_case_607-manual.html",
+		"title": "Name test case 607",
+		"html": "<p>This test examines the ARIA properties for Name test case 607.</p>\n    <a href=\"test.html\" id=\"test\">ABC</a>",
+		"selector": "#test",
+		"name": "ABC"
+	},
+	{
+		"filename": "name_file-label-embedded-select-manual.html",
+		"title": "Name file-label-embedded-select",
+		"html": "<p>This test examines the ARIA properties for Name file-label-embedded-select.</p>\n    <input type=\"file\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <select size=\"1\">\n      <option selected=\"selected\">1</option>\n      <option>2</option>\n      <option>3</option>\n    </select>\n    times.\n  </label>",
+		"selector": "#test",
+		"name": "Flash the screen 1 times."
+	},
+	{
+		"filename": "name_test_case_663a-manual.html",
+		"title": "Name test case 663a",
+		"html": "<p>This test examines the ARIA properties for Name test case 663a.</p>\n    <style type=\"text/css\">\n    label:before { content: \"foo\"; }\n    label:after { content: \"baz\"; }\n  </style>\n  <form>\n    <label for=\"test\"><input id=\"test\" type=\"image\" src=\"foo.jpg\" name=\"test\" title=\"bar\"></label>\n  </form>",
+		"selector": "#test",
+		"name": "foo baz"
+	},
+	{
+		"filename": "name_test_case_606-manual.html",
+		"title": "Name test case 606",
+		"html": "<p>This test examines the ARIA properties for Name test case 606.</p>\n    <a href=\"test.html\" id=\"test\" aria-labelledby=\"test ID1\" aria-label=\"Tag\"></a>\n  <p id=\"ID1\">foo</p>",
+		"selector": "#test",
+		"name": "Tag foo"
+	},
+	{
+		"filename": "name_test_case_545-manual.html",
+		"title": "Name test case 545",
+		"html": "<p>This test examines the ARIA properties for Name test case 545.</p>\n    <input src=\"baz.html\" type=\"image\" id=\"test\" alt=\"foo\"/>",
+		"selector": "#test",
+		"name": "foo"
+	},
+	{
+		"filename": "name_test_case_549-manual.html",
+		"title": "Name test case 549",
+		"html": "<p>This test examines the ARIA properties for Name test case 549.</p>\n    <label for=\"test\">\n    crazy\n     <div role=\"spinbutton\" aria-valuetext=\"Monday\" aria-valuemin=\"1\" aria-valuemax=\"7\" aria-valuenow=\"4\">\n     </div>\n  </label>\n  <input type=\"text\" id=\"test\" value=\"baz\"/>",
+		"selector": "#test",
+		"name": "crazy Monday"
+	},
+	{
+		"filename": "name_test_case_726-manual.html",
+		"title": "Name test case 726",
+		"html": "<p>This test examines the ARIA properties for Name test case 726.</p>\n    <label for=\"test\">States:</label>\n  <input type=\"image\" id=\"test\" src=\"foo.jpg\"/>",
+		"selector": "#test",
+		"name": "States:"
+	},
+	{
+		"filename": "name_test_case_749-manual.html",
+		"title": "Name test case 749",
+		"html": "<p>This test examines the ARIA properties for Name test case 749.</p>\n    <input type=\"checkbox\" id=\"test\" title=\"crazy\"/>",
+		"selector": "#test",
+		"name": "crazy"
+	},
+	{
+		"filename": "name_test_case_757-manual.html",
+		"title": "Name test case 757",
+		"html": "<p>This test examines the ARIA properties for Name test case 757.</p>\n    <style>\n    label:before { content:\"fancy \"; }\n  </style>\n  <label for=\"test\">fruit</label>\n  <input type=\"image\" src=\"foo.jpg\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "fancy fruit"
+	},
+	{
+		"filename": "name_test_case_546-manual.html",
+		"title": "Name test case 546",
+		"html": "<p>This test examines the ARIA properties for Name test case 546.</p>\n    <label for=\"test\">States:</label>\n  <input type=\"text\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "States:"
+	},
+	{
+		"filename": "name_test_case_740-manual.html",
+		"title": "Name test case 740",
+		"html": "<p>This test examines the ARIA properties for Name test case 740.</p>\n    <label for=\"test\">\n    crazy\n    <div role=\"spinbutton\" aria-valuetext=\"Monday\" aria-valuemin=\"1\" aria-valuemax=\"7\" aria-valuenow=\"4\">\n    </div>\n  </label>\n  <input type=\"radio\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "crazy Monday"
+	},
+	{
+		"filename": "name_test_case_742-manual.html",
+		"title": "Name test case 742",
+		"html": "<p>This test examines the ARIA properties for Name test case 742.</p>\n    <label for=\"test\">\n    crazy\n    <div role=\"spinbutton\" aria-valuetext=\"Monday\" aria-valuemin=\"1\" aria-valuemax=\"7\" aria-valuenow=\"4\">\n    </div>\n  </label>\n  <input type=\"image\" src=\"foo.jpg\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "crazy Monday"
+	},
+	{
+		"filename": "name_test_case_754-manual.html",
+		"title": "Name test case 754",
+		"html": "<p>This test examines the ARIA properties for Name test case 754.</p>\n    <style>\n    label:before { content:\"fancy \"; }\n  </style>\n  <label for=\"test\">fruit</label>\n  <input type=\"checkbox\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "fancy fruit"
+	},
+	{
+		"filename": "description_from_content_of_describedby_element-manual.html",
+		"title": "Description from content of describedby element",
+		"html": "<p>This test examines the ARIA properties for Description from content of describedby element.</p>\n    <style>\n    .hidden { display: none; }\n  </style>\n  <input id=\"test\" type=\"text\" aria-label=\"Important stuff\" aria-describedby=\"descId\" />\n  <div>\n    <div id=\"descId\">\n      <span aria-hidden=\"true\"><i> Hello, </i></span>\n      <span>My</span> name is\n      <div><img src=\"file.jpg\" title=\"Bryan\" alt=\"\" role=\"presentation\" /></div>\n      <span role=\"presentation\" aria-label=\"Eli\">\n        <span aria-label=\"Garaventa\">Zambino</span>\n      </span>\n      <span>the weird.</span>\n      (QED)\n      <span class=\"hidden\"><i><b>and don't you forget it.</b></i></span>\n      <table>\n        <tr>\n          <td>Where</td>\n          <td style=\"visibility:hidden;\"><div>in</div></td>\n          <td><div style=\"display:none;\">the world</div></td>\n          <td>are my marbles?</td>\n        </tr>\n      </table>\n    </div>\n  </div>",
+		"selector": "#test",
+		"description": "My name is Eli the weird. (QED) Where are my marbles?"
+	},
+	{
+		"filename": "name_test_case_612-manual.html",
+		"title": "Name test case 612",
+		"html": "<p>This test examines the ARIA properties for Name test case 612.</p>\n    <input type=\"password\" id=\"test\">\n  <label for=\"test\">foo</label>",
+		"selector": "#test",
+		"name": "foo"
+	},
+	{
+		"filename": "name_test_case_596-manual.html",
+		"title": "Name test case 596",
+		"html": "<p>This test examines the ARIA properties for Name test case 596.</p>\n    <div id=\"test\" aria-labelledby=\"ID1\">foo</div>\n  <span id=\"ID1\">bar</span>",
+		"selector": "#test",
+		"name": "bar"
+	},
+	{
+		"filename": "name_file-label-inline-block-styles-manual.html",
+		"title": "Name file-label-inline-block-styles",
+		"html": "<p>This test examines the ARIA properties for Name file-label-inline-block-styles.</p>\n    <style>\n    label:before { content: \"This\"; display: block; }\n    label:after { content: \".\"; }\n  </style>\n  <label for=\"test\">is a test</label>\n  <input type=\"text\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "This is a test."
+	},
+	{
+		"filename": "name_test_case_741-manual.html",
+		"title": "Name test case 741",
+		"html": "<p>This test examines the ARIA properties for Name test case 741.</p>\n    <label for=\"test\">\n    crazy\n    <div role=\"spinbutton\" aria-valuetext=\"Monday\" aria-valuemin=\"1\" aria-valuemax=\"7\" aria-valuenow=\"4\">\n    </div>\n  </label>\n  <input type=\"file\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "crazy Monday"
+	},
+	{
+		"filename": "name_test_case_550-manual.html",
+		"title": "Name test case 550",
+		"html": "<p>This test examines the ARIA properties for Name test case 550.</p>\n    <label for=\"test\">\n    crazy\n    <div role=\"spinbutton\" aria-valuemin=\"1\" aria-valuemax=\"7\" aria-valuenow=\"4\">\n    </div>\n  </label>\n  <input type=\"text\" id=\"test\" value=\"baz\"/>",
+		"selector": "#test",
+		"name": "crazy 4"
+	},
+	{
+		"filename": "name_test_case_746-manual.html",
+		"title": "Name test case 746",
+		"html": "<p>This test examines the ARIA properties for Name test case 746.</p>\n    <label for=\"test\">\n    crazy\n    <div role=\"spinbutton\" aria-valuemin=\"1\" aria-valuemax=\"7\" aria-valuenow=\"4\">\n    </div>\n  </label>\n  <input type=\"file\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "crazy 4"
+	},
+	{
+		"filename": "name_test_case_617-manual.html",
+		"title": "Name test case 617",
+		"html": "<p>This test examines the ARIA properties for Name test case 617.</p>\n    <input type=\"checkbox\" id=\"test\">\n  <label for=\"test\">foo<input type=\"text\" value=\"bar\">baz</label>",
+		"selector": "#test",
+		"name": "foo bar baz"
+	},
+	{
+		"filename": "name_from_content-manual.html",
+		"title": "Name from content",
+		"html": "<p>This test examines the ARIA properties for Name from content.</p>\n    <style>\n    .hidden { display: none; }\n  </style>\n  <div id=\"test\" role=\"link\" tabindex=\"0\">\n    <span aria-hidden=\"true\"><i> Hello, </i></span>\n    <span>My</span> name is\n    <div><img src=\"file.jpg\" title=\"Bryan\" alt=\"\" role=\"presentation\" /></div>\n    <span role=\"presentation\" aria-label=\"Eli\">\n      <span aria-label=\"Garaventa\">Zambino</span>\n    </span>\n    <span>the weird.</span>\n    (QED)\n    <span class=\"hidden\"><i><b>and don't you forget it.</b></i></span>\n    <table>\n      <tr>\n        <td>Where</td>\n        <td style=\"visibility:hidden;\"><div>in</div></td>\n        <td><div style=\"display:none;\">the world</div></td>\n        <td>are my marbles?</td>\n      </tr>\n    </table>\n  </div>",
+		"selector": "#test",
+		"name": "My name is Eli the weird. (QED) Where are my marbles?"
+	},
+	{
+		"filename": "name_test_case_547-manual.html",
+		"title": "Name test case 547",
+		"html": "<p>This test examines the ARIA properties for Name test case 547.</p>\n    <label for=\"test\">\n  foo\n  <input type=\"text\" value=\"David\"/>\n  </label>\n  <input type=\"text\" id=\"test\" value=\"baz\"/>",
+		"selector": "#test",
+		"name": "foo David"
+	},
+	{
+		"filename": "name_test_case_540-manual.html",
+		"title": "Name test case 540",
+		"html": "<p>This test examines the ARIA properties for Name test case 540.</p>\n    <div id=\"ID1\">Rich's button</div>\n  <input type=\"button\" aria-labelledby=\"ID1\" id=\"test\">",
+		"selector": "#test",
+		"name": "Rich's button"
+	},
+	{
+		"filename": "name_file-label-owned-combobox-owned-listbox-manual.html",
+		"title": "Name file-label-owned-combobox-owned-listbox",
+		"html": "<p>This test examines the ARIA properties for Name file-label-owned-combobox-owned-listbox.</p>\n    <input type=\"file\" id=\"test\" />\n  <label for=\"test\">Flash <span aria-owns=\"id1\">the screen</span> times.</label>\n  <div>\n    <div id=\"id1\" role=\"combobox\" aria-owns=\"id2\">\n      <div role=\"textbox\"></div>\n    </div>\n  </div>\n  <div>\n    <ul id=\"id2\" role=\"listbox\" style=\"list-style-type: none;\">\n      <li role=\"option\" >1 </li>\n      <li role=\"option\" aria-selected=\"true\">2 </li>\n      <li role=\"option\">3 </li>\n    </ul>\n  </div>",
+		"selector": "#test",
+		"name": "Flash the screen 2 times."
+	},
+	{
+		"filename": "description_test_case_773-manual.html",
+		"title": "Description test case 773",
+		"html": "<p>This test examines the ARIA properties for Description test case 773.</p>\n    <img src=\"foo.jpg\" id=\"test\" alt=\"test\" aria-describedby=\"t1\">\n  <div id=\"t1\" style=\"display:none\">foo</div>",
+		"selector": "#test",
+		"description": "foo"
+	},
+	{
+		"filename": "name_test_case_541-manual.html",
+		"title": "Name test case 541",
+		"html": "<p>This test examines the ARIA properties for Name test case 541.</p>\n    <div id=\"ID1\">Rich's button</div>\n  <input type=\"button\" aria-label=\"bar\" aria-labelledby=\"ID1\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "Rich's button"
+	},
+	{
+		"filename": "name_test_case_729-manual.html",
+		"title": "Name test case 729",
+		"html": "<p>This test examines the ARIA properties for Name test case 729.</p>\n    <label for=\"test\">\n    foo\n    <input type=\"text\" value=\"David\"/>\n  </label>\n  <input type=\"radio\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "foo David"
+	},
+	{
+		"filename": "name_test_case_548-manual.html",
+		"title": "Name test case 548",
+		"html": "<p>This test examines the ARIA properties for Name test case 548.</p>\n    <label for=\"test\">\n  crazy\n    <select name=\"member\" size=\"1\" role=\"menu\" tabindex=\"0\">\n      <option role=\"menuitem\" value=\"beard\" selected=\"true\">clown</option>\n      <option role=\"menuitem\" value=\"scuba\">rich</option>\n    </select>\n  </label>\n  <input type=\"text\" id=\"test\" value=\"baz\"/>",
+		"selector": "#test",
+		"name": "crazy"
+	},
+	{
+		"filename": "name_test_case_760-manual.html",
+		"title": "Name test case 760",
+		"html": "<p>This test examines the ARIA properties for Name test case 760.</p>\n    <style>\n    label:after { content:\" fruit\"; }\n  </style>\n  <label for=\"test\">fancy</label>\n  <input type=\"radio\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "fancy fruit"
+	},
+	{
+		"filename": "name_test_case_609-manual.html",
+		"title": "Name test case 609",
+		"html": "<p>This test examines the ARIA properties for Name test case 609.</p>\n    <input id=\"test\" type=\"text\" aria-labelledby=\"ID1 ID2 ID3\">\n  <p id=\"ID1\">foo</p>\n  <p id=\"ID2\">bar</p>\n  <p id=\"ID3\">baz</p>",
+		"selector": "#test",
+		"name": "foo bar baz"
+	},
+	{
+		"filename": "name_test_case_758-manual.html",
+		"title": "Name test case 758",
+		"html": "<p>This test examines the ARIA properties for Name test case 758.</p>\n    <style>\n    label:after { content:\" fruit\"; }\n  </style>\n  <label for=\"test\">fancy</label>\n  <input type=\"password\" id=\"test\"/>",
+		"selector": "#test",
+		"name": "fancy fruit"
+	},
+	{
+		"filename": "description_test_case_664-manual.html",
+		"title": "Description test case 664",
+		"html": "<p>This test examines the ARIA properties for Description test case 664.</p>\n    <div>\n    <img id=\"test\" aria-describedby=\"ID1\" src=\"test.png\">\n  </div>\n  <div id=\"ID1\">foo</div>",
+		"selector": "#test",
+		"description": "foo"
+	},
+	{
+		"filename": "name_test_case_564-manual.html",
+		"title": "Name test case 564",
+		"html": "<p>This test examines the ARIA properties for Name test case 564.</p>\n    <input type=\"text\" value=\"peanuts\" id=\"ID1\">\n  <input type=\"text\" value=\"popcorn\" id=\"ID2\">\n  <img id=\"test\" aria-label=\"l\" aria-labelledby=\"test ID1 ID2\" src=\"foo.jpg\"/>",
+		"selector": "#test",
+		"name": "l peanuts popcorn"
+	},
+	{
+		"filename": "name_from_content_of_labelledby_element-manual.html",
+		"title": "Name from content of labelledby element",
+		"html": "<p>This test examines the ARIA properties for Name from content of labelledby element.</p>\n    <style>\n    .hidden { display: none; }\n  </style>\n  <input id=\"test\" type=\"text\" aria-labelledby=\"lblId\" />\n  <div id=\"lblId\" >\n    <span aria-hidden=\"true\"><i> Hello, </i></span>\n    <span>My</span> name is\n    <div><img src=\"file.jpg\" title=\"Bryan\" alt=\"\" role=\"presentation\" /></div>\n    <span role=\"presentation\" aria-label=\"Eli\">\n      <span aria-label=\"Garaventa\">Zambino</span>\n    </span>\n    <span>the weird.</span>\n    (QED)\n    <span class=\"hidden\"><i><b>and don't you forget it.</b></i></span>\n    <table>\n      <tr>\n        <td>Where</td>\n        <td style=\"visibility:hidden;\"><div>in</div></td>\n        <td><div style=\"display:none;\">the world</div></td>\n        <td>are my marbles?</td>\n      </tr>\n    </table>\n  </div>",
+		"selector": "#test",
+		"name": "My name is Eli the weird. (QED) Where are my marbles?"
+	},
+	{
+		"filename": "name_test_case_553-manual.html",
+		"title": "Name test case 553",
+		"html": "<p>This test examines the ARIA properties for Name test case 553.</p>\n    <style type=\"text/css\">\n    [data-after]:after { content: attr(data-after); }\n  </style>\n  <label for=\"test\" data-after=\"test content\"></label>\n  <input type=\"text\" id=\"test\">",
+		"selector": "#test",
+		"name": "test content"
+	},
+	{
+		"filename": "name_text-label-embedded-menu-manual.html",
+		"title": "Name text-label-embedded-menu",
+		"html": "<p>This test examines the ARIA properties for Name text-label-embedded-menu.</p>\n    <input type=\"text\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <span role=\"menu\">\n      <span role=\"menuitem\" aria-selected=\"true\">1</span>\n      <span role=\"menuitem\" hidden>2</span>\n      <span role=\"menuitem\" hidden>3</span>\n    </span>\n    times.\n  </label>",
+		"selector": "#test",
+		"name": "Flash the screen times."
+	},
+	{
+		"filename": "name_checkbox-title-manual.html",
+		"title": "Name checkbox-title",
+		"html": "<p>This test examines the ARIA properties for Name checkbox-title.</p>\n    <input type=\"checkbox\" id=\"test\" title=\"foo\" />",
+		"selector": "#test",
+		"name": "foo"
+	},
+	{
+		"filename": "name_test_case_751-manual.html",
+		"title": "Name test case 751",
+		"html": "<p>This test examines the ARIA properties for Name test case 751.</p>\n    <input type=\"file\" id=\"test\" title=\"crazy\"/>",
+		"selector": "#test",
+		"name": "crazy"
+	},
+	{
+		"filename": "name_file-label-embedded-menu-manual.html",
+		"title": "Name file-label-embedded-menu",
+		"html": "<p>This test examines the ARIA properties for Name file-label-embedded-menu.</p>\n    <input type=\"file\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <span role=\"menu\">\n      <span role=\"menuitem\" aria-selected=\"true\">1</span>\n      <span role=\"menuitem\" hidden>2</span>\n      <span role=\"menuitem\" hidden>3</span>\n    </span>\n    times.\n  </label>",
+		"selector": "#test",
+		"name": "Flash the screen times."
+	},
+	{
+		"filename": "name_test_case_539-manual.html",
+		"title": "Name test case 539",
+		"html": "<p>This test examines the ARIA properties for Name test case 539.</p>\n    <input type=\"button\" aria-label=\"Rich\" id=\"test\">",
+		"selector": "#test",
+		"name": "Rich"
+	},
+	{
+		"filename": "name_test_case_566-manual.html",
+		"title": "Name test case 566",
+		"html": "<p>This test examines the ARIA properties for Name test case 566.</p>\n    <input type=\"text\" value=\"peanuts\" id=\"ID1\">\n  <input type=\"text\" value=\"popcorn\" id=\"ID2\">\n  <input type=\"text\" value=\"apple jacks\" id=\"ID3\">\n  <img id=\"test\" aria-label=\"\" aria-labelledby=\"test ID1 ID2 ID3\" alt=\"\" title=\"t\" src=\"foo.jpg\"/>",
+		"selector": "#test",
+		"name": "t peanuts popcorn apple jacks"
+	},
+	{
+		"filename": "name_radio-label-embedded-spinbutton-manual.html",
+		"title": "Name radio-label-embedded-spinbutton",
+		"html": "<p>This test examines the ARIA properties for Name radio-label-embedded-spinbutton.</p>\n    <input type=\"radio\" id=\"test\" />\n  <label for=\"test\">foo <input role=\"spinbutton\"  type=\"number\" value=\"5\" min=\"1\" max=\"10\" aria-valuenow=\"5\" aria-valuemin=\"1\" aria-valuemax=\"10\"> baz\n  </label>",
+		"selector": "#test",
+		"name": "foo 5 baz"
+	},
+	{
+		"filename": "name_checkbox-label-embedded-select-manual.html",
+		"title": "Name checkbox-label-embedded-select",
+		"html": "<p>This test examines the ARIA properties for Name checkbox-label-embedded-select.</p>\n    <input type=\"checkbox\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <select size=\"1\">\n      <option selected=\"selected\">1</option>\n      <option>2</option>\n      <option>3</option>\n    </select>\n    times.\n  </label>",
+		"selector": "#test",
+		"name": "Flash the screen 1 times."
+	},
+	{
+		"filename": "name_test_case_752-manual.html",
+		"title": "Name test case 752",
+		"html": "<p>This test examines the ARIA properties for Name test case 752.</p>\n    <input type=\"image\" src=\"foo.jpg\" id=\"test\" title=\"crazy\"/>",
+		"selector": "#test",
+		"name": "crazy"
+	},
+	{
+		"filename": "name_text-label-embedded-select-manual.html",
+		"title": "Name text-label-embedded-select",
+		"html": "<p>This test examines the ARIA properties for Name text-label-embedded-select.</p>\n    <input type=\"text\" id=\"test\" />\n  <label for=\"test\">Flash the screen\n    <select size=\"1\">\n      <option selected=\"selected\">1</option>\n      <option>2</option>\n      <option>3</option>\n    </select>\n    times.\n  </label>",
+		"selector": "#test",
+		"name": "Flash the screen 1 times."
+	},
+	{
+		"filename": "name_test_case_660-manual.html",
+		"title": "Name test case 660",
+		"html": "<p>This test examines the ARIA properties for Name test case 660.</p>\n    <style type=\"text/css\">\n    label:before { content: \"foo\"; }\n    label:after { content: \"baz\"; }\n  </style>\n  <form>\n    <label for=\"test\" title=\"bar\"><input id=\"test\" type=\"password\" name=\"test\" title=\"buz\"></label>\n  </form>",
+		"selector": "#test",
+		"name": "foo bar baz"
+	},
+	{
+		"filename": "description_test_case_one_valid_reference-manual.html",
+		"title": "Description test case one valid reference",
+		"html": "<p>This test examines the ARIA properties for Description test case one valid reference.</p>\n    <img src=\"foo.jpg\" id=\"test\" alt=\"test\" aria-describedby=\"t1 t2 t3\">\n  <div id=\"t2\">foo</div>",
+		"selector": "#test",
+		"description": "foo"
 	},
 	{
 		"filename": "comp_labelledby_hidden_nodes.html",
 		"title": "Name Comp: Labelledby & Hidden Nodes",
 		"html": "<style type=\"text/css\"></style><p>Tests hidden node name computation as part of the <a href=\"https://w3c.github.io/accname/#comp_labelledby\">#comp_labelledby</a> portion of the AccName <em>Name Computation</em> algorithm.</p>\n\n<!--\n\n  These tests verify browser conformance with the following note as part of accName computation Step 2B:\n\n  \"The result of LabelledBy Recursion in combination with Hidden Not Referenced means\n  that user agents MUST include all nodes in the subtree as part of\n  the accessible name or accessible description, when the node referenced\n  by aria-labelledby or aria-describedby is hidden.\"\n\n-->\n\n<h2>Testing with <code>display:none</code></h2>\n\n    <button aria-labelledby=\"a11\" data-expectedlabel=\"foo bar\" data-testname=\"button with aria-labelledby using display:none hidden span (with nested span)\" class=\"ex\">x</button>\n    <span id=\"a11\" style=\"display: none;\">\n        foo\n        <span id=\"a12\">bar</span>\n    </span>\n\n    <button aria-labelledby=\"a21\" data-expectedlabel=\"foo bar baz\" data-testname=\"button with aria-labelledby using display:none hidden span (with nested spans, depth 2)\" class=\"ex\">x</button>\n    <span id=\"a21\" style=\"display: none;\">\n        foo\n        <span id=\"a22\">\n            bar\n            <span id=\"a23\">baz</span>\n        </span>\n    </span>\n\n    <button aria-labelledby=\"a31\" data-expectedlabel=\"foo\" data-testname=\"button with aria-labelledby using span without display:none (with nested display:none spans, depth 2)\" class=\"ex\">x</button>\n    <span id=\"a31\">\n        foo\n        <span id=\"a32\" style=\"display: none;\">\n            bar\n            <span id=\"a33\">baz</span>\n        </span>\n    </span>\n\n    <button aria-labelledby=\"a41\" data-expectedlabel=\"foo bar baz\" data-testname=\"button with aria-labelledby using display:none hidden span (with nested sibling spans)\" class=\"ex\">x</button>\n    <span id=\"a41\" style=\"display: none;\">\n        foo\n        <span id=\"a42\">bar</span>\n        <span id=\"a43\">baz</span>\n    </span>\n\n    <button aria-labelledby=\"a51\" data-expectedlabel=\"foo\" data-testname=\"button with aria-labelledby using span without display:none (with nested display:none sibling spans)\" class=\"ex\">x</button>\n    <span id=\"a51\">\n        foo\n        <span id=\"a52\" style=\"display: none;\">bar</span>\n        <span id=\"a53\" style=\"display: none;\">baz</span>\n    </span>\n\n    <button aria-labelledby=\"a61\" data-expectedlabel=\"foo bar baz\" data-testname=\"button with aria-labelledby using span with display:none (with nested display:inline sibling spans)\" class=\"ex\">x</button>\n    <span id=\"a61\" style=\"display: none;\">\n        foo\n        <span id=\"a62\" style=\"display: inline;\">bar</span>\n        <span id=\"a63\" style=\"display: inline;\">baz</span>\n    </span>\n\n<h2>Testing with <code>visibility:hidden</code></h2>\n\n    <button aria-labelledby=\"b11\" data-expectedlabel=\"foo bar\" data-testname=\"button with aria-labelledby using visibility:hidden span (with nested span)\" class=\"ex\">x</button>\n    <span id=\"b11\" style=\"visibility: hidden;\">\n        foo\n        <span id=\"b12\">bar</span>\n    </span>\n\n    <button aria-labelledby=\"b21\" data-expectedlabel=\"foo bar baz\" data-testname=\"button with aria-labelledby using visibility:hidden span (with nested spans, depth 2)\" class=\"ex\">x</button>\n    <span id=\"b21\" style=\"visibility: hidden;\">\n        foo\n        <span id=\"b22\">\n            bar\n            <span id=\"b23\">baz</span>\n        </span>\n    </span>\n\n    <button aria-labelledby=\"b31\" data-expectedlabel=\"foo\" data-testname=\"button with aria-labelledby using span without visibility:hidden (with nested visibility:hidden spans, depth 2)\" class=\"ex\">x</button>\n    <span id=\"b31\">\n        foo\n        <span id=\"b32\" style=\"visibility: hidden;\">\n            bar\n            <span id=\"b33\">baz</span>\n        </span>\n    </span>\n\n    <button aria-labelledby=\"b41\" data-expectedlabel=\"foo bar baz\" data-testname=\"button with aria-labelledby using visibility:hidden hidden span (with nested sibling spans)\" class=\"ex\">x</button>\n    <span id=\"b41\" style=\"visibility: hidden;\">\n        foo\n        <span id=\"b42\">bar</span>\n        <span id=\"b43\">baz</span>\n    </span>\n\n    <button aria-labelledby=\"b51\" data-expectedlabel=\"foo\" data-testname=\"button with aria-labelledby using span without visibility:hidden (with nested visibility:hidden sibling spans)\" class=\"ex\">x</button>\n    <span id=\"b51\">\n        foo\n        <span id=\"b52\" style=\"visibility: hidden;\">bar</span>\n        <span id=\"b53\" style=\"visibility: hidden;\">baz</span>\n    </span>\n\n    <button aria-labelledby=\"b61\" data-expectedlabel=\"foo bar baz\" data-testname=\"button with aria-labelledby using span with visibility:hidden (with nested visibility:visible sibling spans)\" class=\"ex\">x</button>\n    <span id=\"b61\" style=\"visibility: hidden;\">\n        foo\n        <span id=\"b62\" style=\"visibility: visible;\">bar</span>\n        <span id=\"b63\" style=\"visibility: visible;\">baz</span>\n    </span>\n\n<h2>Testing with <code>visibility:collapse</code></h2>\n\n    <button aria-labelledby=\"c11\" data-expectedlabel=\"foo bar\" data-testname=\"button with aria-labelledby using visibility:collapse span (with nested span)\" class=\"ex\">x</button>\n    <span id=\"c11\" style=\"visibility: collapse;\">\n        foo\n        <span id=\"c12\">bar</span>\n    </span>\n\n    <button aria-labelledby=\"c21\" data-expectedlabel=\"foo bar baz\" data-testname=\"button with aria-labelledby using visibility:collapse span (with nested spans, depth 2)\" class=\"ex\">x</button>\n    <span id=\"c21\" style=\"visibility: collapse;\">\n        foo\n        <span id=\"c22\">\n            bar\n            <span id=\"c23\">baz</span>\n        </span>\n    </span>\n\n    <button aria-labelledby=\"c31\" data-expectedlabel=\"foo bar baz\" data-testname=\"button with aria-labelledby using span without visibility:collapse (with nested visibility:visible spans, depth 2)\" class=\"ex\">x</button>\n    <span id=\"c31\">\n        foo\n        <span id=\"c32\" style=\"visibility: visible;\">\n            bar\n            <span id=\"c33\" style=\"visibility: visible;\">baz</span>\n        </span>\n    </span>\n\n    <button aria-labelledby=\"c41\" data-expectedlabel=\"foo bar baz\" data-testname=\"button with aria-labelledby using visibility:collapse span (with nested sibling spans)\" class=\"ex\">x</button>\n    <span id=\"c41\" style=\"visibility: collapse;\">\n        foo\n        <span id=\"c42\">bar</span>\n        <span id=\"c43\">baz</span>\n    </span>\n\n    <button aria-labelledby=\"c51\" data-expectedlabel=\"foo\" data-testname=\"button with aria-labelledby using span without visibility:collapse (with nested visibility:collapse sibling spans)\" class=\"ex\">x</button>\n    <span id=\"c51\">\n        foo\n        <span id=\"c52\" style=\"visibility: collapse;\">bar</span>\n        <span id=\"c53\" style=\"visibility: collapse;\">baz</span>\n    </span>\n\n    <button aria-labelledby=\"c61\" data-expectedlabel=\"foo bar baz\" data-testname=\"button with aria-labelledby using span with visibility:collapse (with nested visible sibling spans)\" class=\"ex\">x</button>\n    <span id=\"c61\" style=\"visibility: collapse;\">\n        foo\n        <span id=\"c62\" style=\"visibility: visible;\">bar</span>\n        <span id=\"c63\" style=\"visibility: visible;\">baz</span>\n    </span>\n\n<h2>Testing with <code>aria-hidden</code></h2>\n\n    <button aria-labelledby=\"d11\" data-expectedlabel=\"foo bar\" data-testname=\"button with aria-labelledby using aria-hidden span (with nested span)\" class=\"ex\">x</button>\n    <span id=\"d11\" aria-hidden=\"true\">\n        foo\n        <span id=\"d12\">bar</span>\n    </span>\n\n    <button aria-labelledby=\"d21\" data-expectedlabel=\"foo bar baz\" data-testname=\"button with aria-labelledby using aria-hidden span (with nested spans, depth 2)\" class=\"ex\">x</button>\n    <span id=\"d21\" aria-hidden=\"true\">\n        foo\n        <span id=\"d22\">\n            bar\n            <span id=\"d23\">baz</span>\n        </span>\n    </span>\n\n    <button aria-labelledby=\"d31\" data-expectedlabel=\"foo\" data-testname=\"button with aria-labelledby using span without aria-hidden (with nested aria-hidden spans, depth 2)\" class=\"ex\">x</button>\n    <span id=\"d31\">\n        foo\n        <span id=\"d32\" aria-hidden=\"true\">\n            bar\n            <span id=\"d33\">baz</span>\n        </span>\n    </span>\n\n    <button aria-labelledby=\"d41\" data-expectedlabel=\"foo bar baz\" data-testname=\"button with aria-labelledby using aria-hidden hidden span (with nested sibling spans)\" class=\"ex\">x</button>\n    <span id=\"d41\" aria-hidden=\"true\">\n        foo\n        <span id=\"d42\">bar</span>\n        <span id=\"d43\">baz</span>\n    </span>\n\n<h2>Testing with <code>hidden</code> attribute</h2>\n\n    <button aria-labelledby=\"e11\" data-expectedlabel=\"foo bar\" data-testname=\"button with aria-labelledby using HTML5 hidden span (with nested span)\" class=\"ex\">x</button>\n    <span id=\"e11\" hidden>\n        foo\n        <span id=\"e12\">bar</span>\n    </span>\n\n    <button aria-labelledby=\"e21\" data-expectedlabel=\"foo bar baz\" data-testname=\"button with aria-labelledby using HTML5 hidden span (with nested spans, depth 2)\" class=\"ex\">x</button>\n    <span id=\"e21\" hidden>\n        foo\n        <span id=\"e22\">\n            bar\n            <span id=\"e23\">baz</span>\n        </span>\n    </span>\n\n    <button aria-labelledby=\"e31\" data-expectedlabel=\"foo\" data-testname=\"button with aria-labelledby using span without HTML5 hidden (with nested HTML5 hidden spans, depth 2)\" class=\"ex\">x</button>\n    <span id=\"e31\">\n        foo\n        <span id=\"e32\" hidden>\n            bar\n            <span id=\"e33\">baz</span>\n        </span>\n    </span>\n\n    <button aria-labelledby=\"e41\" data-expectedlabel=\"foo bar baz\" data-testname=\"button with aria-labelledby using HTML5 hidden span (with nested hidden sibling spans)\" class=\"ex\">x</button>\n    <span id=\"e41\" hidden>\n        foo\n        <span id=\"e42\">bar</span>\n        <span id=\"e43\">baz</span>\n    </span>\n\n    <button aria-labelledby=\"e51\" data-expectedlabel=\"foo\" data-testname=\"button with aria-labelledby using span without HTML5 hidden (with nested hidden sibling spans)\" class=\"ex\">x</button>\n    <span id=\"e51\">\n        foo\n        <span id=\"e52\" hidden>bar</span>\n        <span id=\"e53\" hidden>baz</span>\n    </span>",
-		"selector": ".ex"
-	},
-	{
-		"filename": "comp_labelledby.html",
-		"title": "Name Comp: Labelledby",
-		"html": "<style type=\"text/css\"></style><p>Tests the <a href=\"https://w3c.github.io/accname/#comp_labelledby\">#comp_labelledby</a> portions of the AccName <em>Name Computation</em> algorithm.</p>\n\n<!--\n\n  Some overlap with other aria-labelledby tests in:\n  - /accname/name/comp_label.html (aria-labelledby / aria-label fallback, etc.)\n  - /accname/name/comp_name_from_content.html\n  - /accname/name/shadowdom/*\n\n-->\n\n<div role=\"group\" aria-labelledby=\"h\" class=\"ex\" data-expectedlabel=\"first heading\" data-testname=\"div group explicitly labelledby heading\">\n  <h2 id=\"h\">first heading</h2>\n  <p>text inside div group</p>\n</div>\n\n<div role=\"group\" aria-label=\"self label\" id=\"g2\" aria-labelledby=\"g2 h2\" class=\"ex\" data-expectedlabel=\"self label + first heading\" data-testname=\"div group explicitly labelledby self and heading\">\n  <h2 id=\"h2\">+ first heading</h2>\n  <p>text inside div group</p>\n</div>\n\n<nav aria-labelledby=\"s1 s2 s3 s4\" class=\"ex\" data-expectedlabel=\"verify spaces between foreach\" data-testname=\"nav with verified spaces appended between each of IDREFS\">\n  <span id=\"s1\">verify</span><span id=\"s2\">spaces</span><span>FAIL IF INCLUDED</span><span id=\"s3\">between</span><span id=\"s4\">foreach</span>\n</nav>\n\n<!--\n\n  BLOCKED on https://github.com/w3c/accname/issues/209\n\n  Once that's resolved, it may be worthwhile to add a new ./comp_labelledby_recursion.html file,\n  so that the implementation diffs rolling in don't penalize this Interop 2024 test.\n\n  All remaining cases of https://w3c.github.io/accname/#comp_labelledby\n  - comp_labelledby_reset\n  - comp_labelledby_foreach\n  - comp_labelledby_set_current\n  - comp_labelledby_recursion\n  - comp_labelledby_append\n  - comp_labelledby_return\n\n-->",
 		"selector": ".ex"
 	},
 	{
@@ -1156,19 +1126,92 @@ window.wpt["accname"] = [
 		"selector": ".ex"
 	},
 	{
+		"filename": "comp_labelledby.html",
+		"title": "Name Comp: Labelledby",
+		"html": "<style type=\"text/css\"></style><p>Tests the <a href=\"https://w3c.github.io/accname/#comp_labelledby\">#comp_labelledby</a> portions of the AccName <em>Name Computation</em> algorithm.</p>\n\n<!--\n\n  Some overlap with other aria-labelledby tests in:\n  - /accname/name/comp_label.html (aria-labelledby / aria-label fallback, etc.)\n  - /accname/name/comp_name_from_content.html\n  - /accname/name/shadowdom/*\n\n-->\n<h2>Tests for <code>aria-labelledby</code></h2>\n\n<div role=\"group\" aria-labelledby=\"h\" class=\"ex\" data-expectedlabel=\"first heading\" data-testname=\"div group explicitly labelledby heading\">\n  <h2 id=\"h\">first heading</h2>\n  <p>text inside div group</p>\n</div>\n\n<div role=\"group\" aria-label=\"self label\" id=\"g2\" aria-labelledby=\"g2 h2\" class=\"ex\" data-expectedlabel=\"self label + first heading\" data-testname=\"div group explicitly labelledby self and heading\">\n  <h2 id=\"h2\">+ first heading</h2>\n  <p>text inside div group</p>\n</div>\n\n<nav aria-labelledby=\"s1 s2 s3 s4\" class=\"ex\" data-expectedlabel=\"verify spaces between foreach\" data-testname=\"nav with verified spaces appended between each of IDREFS\">\n  <span id=\"s1\">verify</span><span id=\"s2\">spaces</span><span>FAIL IF INCLUDED</span><span id=\"s3\">between</span><span id=\"s4\">foreach</span>\n</nav>\n\n\n<!-- Removed tests to be merged back in (or this PR reverted) after Interop 2024 completed on Feb 6, 2025. -->\n\n<h2>Tests for <code>aria-labeledby</code> (non-standard spelling)</h2>\n\n<span id=\"n1\">first label</span>\n<span id=\"n2\">second label</span>\n\n<h2>Tests for precedence: <code>aria-labelledby</code> vs. <code>aria-labeledby</code> (non-standard spelling)</h2>\n<!-- The \"aria-labelledby\" spelling should take precedence over \"aria-labeledby\" for accname -->\n\n<a href=\"#\" aria-labelledby=\"n1\" aria-labeledby=\"n2\" class=\"ex\" data-expectedlabel=\"first label\" data-testname=\"link labelled by aria-labelledby supercedes aria-labeledby (non-standard spelling)\">x</a>\n<button aria-labelledby=\"n1\" aria-labeledby=\"n2\" class=\"ex\" data-expectedlabel=\"first label\" data-testname=\"button labelled by aria-labelledby supercedes aria-labeledby (non-standard spelling)\">x</button>\n<div role=\"group\" aria-labelledby=\"n1\" aria-labeledby=\"n2\" class=\"ex\" data-expectedlabel=\"first label\" data-testname=\"div labelled by aria-labelledby supercedes aria-labeledby (non-standard spelling)\">x</div>\n\n<a href=\"#\" aria-labeledby=\"n1\" aria-labelledby=\"n2\" class=\"ex\" data-expectedlabel=\"second label\" data-testname=\"link labelled by [aria-labeledby][aria-labelledby]\">x</a>\n<button aria-labeledby=\"n1\" aria-labelledby=\"n2\" class=\"ex\" data-expectedlabel=\"second label\" data-testname=\"button labelled by [aria-labeledby][aria-labelledby]\">x</button>\n<div role=\"group\" aria-labeledby=\"n1\" aria-labelledby=\"n2\" class=\"ex\" data-expectedlabel=\"second label\" data-testname=\"div labelled by [aria-labeledby][aria-labelledby]\">x</div>\n\n<h2>Tests for name precedence with <code>aria-labeledby</code> (non-standard spelling)</h2>\n<!-- Name computation: https://w3c.github.io/accname/#computation-steps -->\n\n<!-- Step 2H: Recursive Name from Content, see wpt/accname/name/comp_name_from_content.html  -->\n<h3>\n  <a href=\"#\" aria-labeledby=\"nested_image_label2\">\n    link1<!-- this text is skipped because of aria-labeledby -->\n  </a>\n  <a href=\"#\" data-expectedlabel=\"link2 image link3\" data-testname=\"link name from content for each child including nested image (referenced elsewhere via labeledby)\" class=\"ex\">\n    link2\n    <img id=\"nested_image_label2\" alt=\"image\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n    <!-- image skipped in this link (when computing heading text) because it was already referenced by the first link within this heading label recursion cycle. -->\n    <!-- but image not skipped when computing the text of the link itself since it has not been referenced in that context -->\n    link3\n  </a>\n</h3>\n\n<!--\n\n  BLOCKED on https://github.com/w3c/accname/issues/209\n\n  Once that's resolved, it may be worthwhile to add a new ./comp_labelledby_recursion.html file,\n  so that the implementation diffs rolling in don't penalize this Interop 2024 test.\n\n  All remaining cases of https://w3c.github.io/accname/#comp_labelledby\n  - comp_labelledby_reset\n  - comp_labelledby_foreach\n  - comp_labelledby_set_current\n  - comp_labelledby_recursion\n  - comp_labelledby_append\n  - comp_labelledby_return\n\n-->",
+		"selector": ".ex"
+	},
+	{
+		"filename": "comp_label.html",
+		"title": "Name Comp: Label",
+		"html": "<style type=\"text/css\"></style><h1>AccName: Label Tests</h1>\n<p>Tests the <a href=\"https://w3c.github.io/accname/#comp_label\">#comp_label</a> portions of the AccName <em>Name Computation</em> algorithm.</p>\n\n<!-- https://www.w3.org/TR/wai-aria/#namefromauthor -->\n\n<!-- Embedded controls tested in ./comp_embedded_control.html -->\n\n<h2>Elements with roles that support aria-label use</h2>\n<!-- https://www.w3.org/TR/wai-aria/#namefromauthor -->\n\n<div role=\"alert\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with alert role\" class=\"ex\">x</div>\n<div role=\"alertdialog\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with alertdialog role\" class=\"ex\">x</div>\n<div role=\"application\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with application role\" class=\"ex\">x</div>\n<div role=\"article\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with article role\" class=\"ex\">x</div>\n<!-- associationlist and related removed pending: https://github.com/w3c/aria/issues/1662 -->\n<div role=\"banner\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with banner role\" class=\"ex\">x</div>\n<div role=\"blockquote\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with blockquote role\" class=\"ex\">x</div>\n<div role=\"button\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with button role\" class=\"ex\">x</div>\n<div role=\"cell\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with cell role\" class=\"ex\">x</div>\n<div role=\"checkbox\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with checkbox role\" class=\"ex\">x</div>\n<div role=\"columnheader\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with columnheader role\" class=\"ex\">x</div>\n<div role=\"combobox\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with combobox role\" class=\"ex\">x</div>\n<div role=\"complementary\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with complementary role\" class=\"ex\">x</div>\n<div role=\"contentinfo\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with contentinfo role\" class=\"ex\">x</div>\n<div role=\"dialog\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with dialog role\" class=\"ex\">x</div>\n<div role=\"directory\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with directory role\" class=\"ex\">x</div>\n<div role=\"document\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with document role\" class=\"ex\">x</div>\n<div role=\"feed\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with feed role\" class=\"ex\">x</div>\n<div role=\"figure\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with figure role\" class=\"ex\">x</div>\n<div role=\"form\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with form role\" class=\"ex\">x</div>\n<div role=\"grid\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with grid role\" class=\"ex\">x</div>\n<div role=\"gridcell\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with gridcell role\" class=\"ex\">x</div>\n<div role=\"group\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with group role\" class=\"ex\">x</div>\n<div role=\"heading\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with heading role\" class=\"ex\">x</div>\n<div role=\"img\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with img role\" class=\"ex\">x</div>\n<div role=\"link\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with link role\" class=\"ex\">x</div>\n<div role=\"list\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with list role\" class=\"ex\">x</div>\n<div role=\"listbox\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with listbox role\" class=\"ex\">x</div>\n<div role=\"listitem\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with listitem role\" class=\"ex\">x</div>\n<!-- listitemkey and listitemvalue pending: https://github.com/w3c/aria/issues/1662 -->\n<div role=\"log\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with log role\" class=\"ex\">x</div>\n<div role=\"main\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with main role\" class=\"ex\">x</div>\n<div role=\"marquee\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with marquee role\" class=\"ex\">x</div>\n<div role=\"math\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with math role\" class=\"ex\">x</div>\n<div role=\"menu\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with menu role\" class=\"ex\">x</div>\n<div role=\"menubar\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with menubar role\" class=\"ex\">x</div>\n<div role=\"menuitem\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with menuitem role\" class=\"ex\">x</div>\n<div role=\"menuitemcheckbox\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with menuitemcheckbox role\" class=\"ex\">x</div>\n<div role=\"menuitemradio\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with menuitemradio role\" class=\"ex\">x</div>\n<div role=\"meter\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with meter role\" class=\"ex\">x</div>\n<div role=\"navigation\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with navigation role\" class=\"ex\">x</div>\n<div role=\"note\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with note role\" class=\"ex\">x</div>\n<div role=\"option\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with option role\" class=\"ex\">x</div>\n<div role=\"progressbar\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with progressbar role\" class=\"ex\">x</div>\n<div role=\"radio\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with radio role\" class=\"ex\">x</div>\n<div role=\"radiogroup\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with radiogroup role\" class=\"ex\">x</div>\n<div role=\"region\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with region role\" class=\"ex\">x</div>\n<div role=\"row\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with row role\" class=\"ex\">x</div>\n<div role=\"rowgroup\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with rowgroup role\" class=\"ex\">x</div>\n<div role=\"rowheader\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with rowheader role\" class=\"ex\">x</div>\n<div role=\"scrollbar\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with scrollbar role\" class=\"ex\">x</div>\n<div role=\"search\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with search role\" class=\"ex\">x</div>\n<div role=\"searchbox\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with searchbox role\" class=\"ex\">x</div>\n<div role=\"separator\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with separator role\" class=\"ex\">x</div>\n<div role=\"slider\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with slider role\" class=\"ex\">x</div>\n<div role=\"spinbutton\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with spinbutton role\" class=\"ex\">x</div>\n<div role=\"status\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with status role\" class=\"ex\">x</div>\n<div role=\"switch\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with switch role\" class=\"ex\">x</div>\n<div role=\"tab\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with tab role\" class=\"ex\">x</div>\n<div role=\"table\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with table role\" class=\"ex\">x</div>\n<div role=\"tablist\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with tablist role\" class=\"ex\">x</div>\n<div role=\"tabpanel\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with tabpanel role\" class=\"ex\">x</div>\n<div role=\"textbox\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with textbox role\" class=\"ex\">x</div>\n<div role=\"timer\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with timer role\" class=\"ex\">x</div>\n<div role=\"toolbar\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with toolbar role\" class=\"ex\">x</div>\n<div role=\"tooltip\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with tooltip role\" class=\"ex\">x</div>\n<div role=\"tree\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with tree role\" class=\"ex\">x</div>\n<div role=\"treegrid\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with treegrid role\" class=\"ex\">x</div>\n<div role=\"treeitem\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on div with treeitem role\" class=\"ex\">x</div>\n\n<h2>HTML elements that support aria-label</h2>\n<!-- aria-label permitted on \"all elements of the base markup\" with exceptions: https://w3c.github.io/aria/#aria-label -->\n\n<a href=\"\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on link element\" class=\"ex\">x</a>\n<article aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on article element\" class=\"ex\">x</article>\n<aside aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on aside element\" class=\"ex\">x</aside>\n<blockquote aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on blockquote element\" class=\"ex\">x</blockquote>\n<button aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on button element\" class=\"ex\">x</button>\n<dl aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on dl element\" class=\"ex\">\n  <!-- dt/dd pending listitemkey and listitemvalue roles: https://github.com/w3c/aria/issues/1662 -->\n  <!-- Currently these map to `term` and `definition` for which name is prohibited. -->\n  <!-- Using aria-label here would be an authoring error, however whether there is a user agent requirement to ignore the author provided role is still pending https://github.com/w3c/accname/issues/240 -->\n  <!-- See \"Priorities of Constituencies\" https://www.w3.org/TR/design-principles/#priority-of-constituencies -->\n  <dt>x</dt>\n  <dd>x</dd>\n</dl>\n<footer aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on footer element\" class=\"ex\">x</footer>\n<fieldset aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on fieldset element\" class=\"ex\">x</fieldset>\n<figure aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on figure element\" class=\"ex\">x</figure>\n<form action=\"\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on form element\" class=\"ex\">x</form>\n<header aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on header element\" class=\"ex\">x</header>\n<h1 aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on h1 element\" class=\"ex\">x</h1>\n<h2 aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on h2 element\" class=\"ex\">x</h2>\n<h3 aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on h3 element\" class=\"ex\">x</h3>\n<h4 aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on h4 element\" class=\"ex\">x</h4>\n<h5 aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on h5 element\" class=\"ex\">x</h5>\n<h6 aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on h6 element\" class=\"ex\">x</h6>\n<hr aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on hr element\" class=\"ex\" />\n<img alt=\"\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on img element\" class=\"ex\" />\n<input type=\"checkbox\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on input type checkbox element\" class=\"ex\"/>\n<input type=\"radio\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on input type radio element\" class=\"ex\" />\n<input type=\"search\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on input type search element\" class=\"ex\" />\n<input type=\"text\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on input type text element\" class=\"ex\" />\n<li aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on listitem element\" class=\"ex\">x</li>\n<main aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on main element\" class=\"ex\">x</main>\n<math aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on math element\" class=\"ex\">x</math>\n<meter aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on meter element\" class=\"ex\">x</meter>\n<nav aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on nav element\" class=\"ex\">x</nav>\n<ol aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on list (ordered) element\" class=\"ex\">x</ol>\n<section aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on section element\" class=\"ex\">x</section>\n<select aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on select element\" class=\"ex\">x</select>\n<select>\n  <option aria-label=\"label\" value=\"foo\" data-expectedlabel=\"label\" data-testname=\"label valid on option element\" class=\"ex\">x</option>\n</select>\n<table aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on table element\" class=\"ex\">\n  <thead aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on thead element\" class=\"ex\">\n    <tr>\n      <th scope=\"col\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on th element with the scope of col\" class=\"ex\">x</th>\n      <th scope=\"row\" aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on th (scope row) element\" class=\"ex\">x</th>\n    </tr>\n  </thead>\n  <tbody aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on tbody element\" class=\"ex\">\n    <tr aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on tr element\" class=\"ex\">\n      <td aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on td element\" class=\"ex\">x</td>\n      <td>x</td>\n    </tr>\n  </tbody>\n    <tfoot aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on tfoot element\" class=\"ex\">\n      <tr>\n        <td>x</td>\n        <td>x</td>\n      </tr>\n    </tfoot>\n</table>\n<textarea aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on textarea element\" class=\"ex\">x</textarea>\n<ul aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"label valid on list (unordered) element\" class=\"ex\">x</ul>\n\n<h2>Name computation precedence tests</h2>\n<!-- Name computation: https://w3c.github.io/accname/#computation-steps -->\n\n<!-- Step 2A: Hidden Not Referenced supercedes 2D: AriaLabel, also see wpt/accname/name/comp_hidden_not_referenced.html -->\n<button aria-labelledby=\"span1\" aria-label=\"foo\" data-expectedlabel=\"label\" data-testname=\"button's hidden referenced name (display:none) supercedes aria-label\" class=\"ex\">\n  <span id=\"span1\" style=\"display:none;\">\n    <span id=\"span2\" style=\"display:none;\">label</span>\n  </span>\nx\n</button>\n\n<button aria-labelledby=\"span3\" aria-label=\"foo\" data-expectedlabel=\"label\" data-testname=\"button's hidden referenced name (visibility:hidden) supercedes aria-label\" class=\"ex\">\n  <span id=\"span3\" style=\"visibility:hidden;\">\n    <span id=\"span4\" style=\"visibility:hidden;\">label</span>\n  </span>\n  x\n</button>\n\n<button aria-labelledby=\"span5\" aria-label=\"foo\" data-expectedlabel=\"foo\" data-testname=\"button's hidden referenced name (visibility:hidden) with hidden aria-labelledby traversal falls back to aria-label\" class=\"ex\">\n  <span id=\"span5\">\n    <span id=\"span6\" style=\"visibility:hidden;\">label</span>\n  </span>\n  x\n</button>\n\n<!-- Step 2B: LabelledBy supercedes 2D: AriaLabel, also see wpt/accname/name/comp_labelledby.html -->\n<a href=\"#\" aria-labelledby=\"span7\" aria-label=\"foo\" data-expectedlabel=\"label\" data-testname=\"link's aria-labelledby name supercedes aria-label\" class=\"ex\">x</a>\n<span id=\"span7\">label</span>\n\n<!-- Step 2C: Embedded Control labelling supercedes 2D: AriaLabel, see wpt/accname/name/comp_embedded_control.html -->\n\n<!-- Step 2E: Host Language Label is superceded by 2D: AriaLabel, also see wpt/accname/name/comp_host_language_label.html -->\n<img alt=\"alt\" aria-label=\"foo\" data-expectedlabel=\"foo\" data-testname=\"img's aria-label supercedes alt attribute\" class=\"ex\" />\n\n<svg aria-label=\"foo\" data-expectedlabel=\"foo\" data-testname=\"svg's aria-label supercedes title tag\" class=\"ex\">\n  <circle cx=\"5\" cy=\"5\" r=\"4\">\n    <title>circle</title>\n  </circle>\n</svg>\n\n<label for=\"input1\">label</label>\n<input type=\"text\" id=\"input1\" aria-label=\"foo\" data-expectedlabel=\"foo\" data-testname=\"input with label for association is superceded by aria-label\" class=\"ex\" />\n\n<!-- Step 2F: Name From Content is superceded by 2D: AriaLabel, also see wpt/accname/name/comp_name_from_content.html -->\n<button aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"button name from contents is superceded by aria-label\" class=\"ex\">x</button>\n\n<!-- Step 2G: Text Node is superceded by 2D: AriaLabel, also see wpt/accname/name/comp_text_node.html -->\n<h1 aria-label=\"label\" data-expectedlabel=\"label\" data-testname=\"h1 text is superceded by aria-label\" class=\"ex\">x</h1>\n\n<!-- Step 2H: Recursive Name from Content, see wpt/accname/name/comp_name_from_content.html  -->\n\n<!-- Step 2I: Tooltip is superceded by 2D: AriaLabel, also see wpt/accname/name/comp_tooltip.html -->\n<button aria-label=\"label\" title=\"foo\" data-expectedlabel=\"label\" data-testname=\"button with title is superceded by aria-label\" class=\"ex\">x</button>\n\n<h2>Empty/whitespace aria-label tests</h2>\n<!--\n- AccName computation links to the following definition of \"Whitespace\": https://infra.spec.whatwg.org/#ascii-whitespace\n- Generally, if the current node has an aria-label attribute whose value is not the empty string (including when trimmed of whitespace), return the value of aria-label.\n\nNote: PR for computedLabel whitespace trimming in aria-utils.js: https://github.com/web-platform-tests/wpt/pull/42407/files#diff-6870d82f11ff11cf7c7b544756cecfdac2046acbfe2fbb0640e6d415fbf99916\n\n-->\n\n<textarea aria-label=\"label  \" data-expectedlabel=\"label\" data-testname=\"textarea's name with trailing whitespace in aria-label is valid\" class=\"ex\">x</textarea>\n<a href=\"#\" aria-label=\"     label\" data-expectedlabel=\"label\" data-testname=\"link's name with leading whitespace in aria-label is valid\" class=\"ex\">x</a>\n<button aria-label=\"\u2800\" data-expectedlabel=\"\u2800\" data-testname=\"button with blank braille pattern has name as such (not treated as whitespace per Unicode standard)\" class=\"ex\">my button</button>\n<div role=\"alert\" aria-label=\"\nalert message\" data-expectedlabel=\"alert message\" data-testname=\"div with role alert and carriage return in aria-label is valid\" class=\"ex\">x</div>\n<a href=\"#\" aria-label=\"  label\" data-expectedlabel=\"label\" data-testname=\"link's name with tab in aria-label is valid\" class=\"ex\">x</a>\n<button aria-label=\"\flabel\" data-expectedlabel=\"label\" data-testname=\"button with leading form feed control character in aria-label is valid\" class=\"ex\">my button</button>\n<nav aria-label=\"label&nbsp;\" data-expectedlabel=\"label&nbsp;\" data-testname=\"nav with trailing nbsp char aria-label is valid (nbsp is preserved in name)\" class=\"ex\">x</nav>\n<button aria-label=\"&nbsp;label\" data-expectedlabel=\"&nbsp;label\" data-testname=\"button with leading nbsp char in aria-label is valid (and uses aria-label)\" class=\"ex\">my button</button>\n\n<button aria-label=\"\" data-testname=\"button with empty aria-label does not use aria-label as name\" data-expectedlabel=\"my button\" class=\"ex\">my button</button>\n<textarea aria-label=\"  \" title=\"title\" data-testname=\"textarea with tab character as aria-label does not use aria-label as name\" data-expectedlabel=\"title\" class=\"ex\">textarea contents</textarea>\n<button aria-label=\"\n\" data-testname=\"button with carriage return as aria-label does not use aria-label as name\" data-expectedlabel=\"my button\" class=\"ex\">my button</button>\n<button aria-label=\"      \" data-testname=\"button with space characters as aria-label does not use aria-label as name\" data-expectedlabel=\"my button\" class=\"ex\">my button</button>",
+		"selector": ".ex"
+	},
+	{
+		"filename": "comp_host_language_label.html",
+		"title": "Name Comp: Host Language Label",
+		"html": "<style type=\"text/css\"></style><h1>AccName: Host Language Label Tests</h1>\n<p>Tests the <a href=\"https://w3c.github.io/accname/#comp_host_language_label\">#comp_host_language_label</a> portions of the AccName <em>Name Computation</em> algorithm.</p>\n\n<h2>HTML input with value, alt, etc.</h2>\n<input type=\"button\" value=\"button label\" data-expectedlabel=\"button label\" data-testname=\"html: input[type=button]\" class=\"ex\">\n<input type=\"image\" alt=\"image input label\" data-expectedlabel=\"image input label\" data-testname=\"html: input[type=image]\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n<input type=\"reset\" value=\"reset label\" data-expectedlabel=\"reset label\" data-testname=\"html: input[type=reset]\" class=\"ex\">\n<input type=\"submit\" value=\"submit label\" data-expectedlabel=\"submit label\" data-testname=\"html: input[type=submit]\" class=\"ex\">\n\n\n<h2>HTML input label/for</h2>\n<!-- above: input[type=button] -->\n<label for=\"cb\">checkbox label</label><input id=\"cb\" type=\"checkbox\" data-expectedlabel=\"checkbox label\" data-testname=\"html: label[for] input[type=checkbox]\" class=\"ex\"><br>\n<label for=\"cbv\">checkbox label with non-empty value</label><input id=\"cbv\" type=\"checkbox\" data-expectedlabel=\"checkbox label with non-empty value\" data-testname=\"html: label[for] input[type=checkbox][value='test']\" class=\"ex\" value=\"test\"><br>\n<label for=\"cbc\">checkbox label checked</label><input id=\"cbc\" type=\"checkbox\" data-expectedlabel=\"checkbox label checked\" data-testname=\"html: label[for] input[type=checkbox][checked]\" class=\"ex\" checked><br>\n<label for=\"cbcv\">checkbox label checked with non-empty value</label><input id=\"cbcv\" type=\"checkbox\" data-expectedlabel=\"checkbox label checked with non-empty value\" data-testname=\"html: label[for] input[type=checkbox][checked][value='test']\" class=\"ex\" value=\"test\" checked><br>\n<label for=\"co\">color label</label><input id=\"co\" type=\"color\" data-expectedlabel=\"color label\" data-testname=\"html: label[for] input[type=color]\" class=\"ex\"><br>\n<label for=\"cov\">color label with non-empty value</label><input id=\"cov\" type=\"color\" data-expectedlabel=\"color label with non-empty value\" data-testname=\"html: label[for] input[type=color][value='#999999']\" class=\"ex\" value=\"#999999\"><br>\n<label for=\"da\">date label</label><input id=\"da\" type=\"date\" data-expectedlabel=\"date label\" data-testname=\"html: label[for] input[type=date]\" class=\"ex\"><br>\n<label for=\"dav\">date label with non-empty value</label><input id=\"dav\" type=\"date\" data-expectedlabel=\"date label with non-empty value\" data-testname=\"html: label[for] input[type=date][value='2025-01-01']\" class=\"ex\" value=\"2025-01-01\"><br>\n<label for=\"dtl\">datetime-local label</label><input id=\"dtl\" type=\"date\" data-expectedlabel=\"datetime-local label\" data-testname=\"html: label[for] input[type=datetime-local]\" class=\"ex\"><br>\n<label for=\"dtlv\">datetime-local label with non-empty value</label><input id=\"dtlv\" type=\"date\" data-expectedlabel=\"datetime-local label with non-empty value\" data-testname=\"html: label[for] input[type=datetime-local][value='2025-01-01T00:01']\" class=\"ex\" value=\"2025-01-01T00:01\"><br>\n<label for=\"em\">email label</label><input id=\"em\" type=\"email\" data-expectedlabel=\"email label\" data-testname=\"html: label[for] input[type=email]\" class=\"ex\"><br>\n<label for=\"emv\">email label with non-empty value</label><input id=\"emv\" type=\"email\" data-expectedlabel=\"email label with non-empty value\" data-testname=\"html: label[for] input[type=email][value='test@test.com']\" class=\"ex\" value=\"test@test.com\"><br>\n\n<!-- todo: results for input[type=file] currently differ in all engines -->\n<!--\n<label for=\"fi\">file label</label><input id=\"fi\" type=\"file\" data-expectedlabel=\"file label\" data-testname=\"html: label[for] input[type=file]\" class=\"ex\"><br>\n-->\n\n<!-- skipped: input[type=hidden] for/id n/a -->\n<!-- above: input[type=image] -->\n<label for=\"mo\">month label</label><input id=\"mo\" type=\"month\" data-expectedlabel=\"month label\" data-testname=\"html: label[for] input[type=month]\" class=\"ex\"><br>\n<label for=\"mov\">month label with non-empty value</label><input id=\"mov\" type=\"month\" data-expectedlabel=\"month label with non-empty value\" data-testname=\"html: label[for] input[type=month][value='2025-01']\" class=\"ex\" value=\"2025-01\"><br>\n<label for=\"n\">number label</label><input id=\"n\" type=\"number\" data-expectedlabel=\"number label\" data-testname=\"html: label[for] input[type=number]\" class=\"ex\"><br>\n<label for=\"nv\">number label with non-empty value</label><input id=\"nv\" type=\"number\" data-expectedlabel=\"number label with non-empty value\" data-testname=\"html: label[for] input[type=number][value=2025]\" class=\"ex\" value=\"2025\"><br>\n<label for=\"pw\">password label</label><input id=\"pw\" type=\"password\" data-expectedlabel=\"password label\" data-testname=\"html: label[for] input[type=password]\" class=\"ex\"><br>\n<label for=\"pwv\">password label with non-empty value</label><input id=\"pwv\" type=\"password\" data-expectedlabel=\"password label with non-empty value\" data-testname=\"html: label[for] input[type=password][value='test']\" class=\"ex\" value=\"test\"><br>\n<label for=\"ra\">radio label</label><input id=\"ra\" type=\"radio\" data-expectedlabel=\"radio label\" data-testname=\"html: label[for] input[type=radio]\" class=\"ex\"><br>\n<label for=\"rav\">radio label with non-empty value</label><input id=\"rav\" type=\"radio\" data-expectedlabel=\"radio label with non-empty value\" data-testname=\"html: label[for] input[type=radio][value='test']\" class=\"ex\" value=\"test\"><br>\n<label for=\"rng\">range label</label><input id=\"rng\" type=\"range\" data-expectedlabel=\"range label\" data-testname=\"html: label[for] input[type=range]\" class=\"ex\"><br>\n<label for=\"rngv\">range label with non-empty value</label><input id=\"rngv\" type=\"range\" data-expectedlabel=\"range label with non-empty value\" data-testname=\"html: label[for] input[type=range][min=0][max=10][value=5]\" class=\"ex\" min=\"0\" max=\"10\" value=\"5\"><br>\n<!-- input[type=reset] above -->\n<label for=\"search\">search label</label><input id=\"search\" type=\"search\" data-expectedlabel=\"search label\" data-testname=\"html: label[for] input[type=search]\" class=\"ex\"><br>\n<label for=\"searchv\">search label with non-empty value</label><input id=\"searchv\" type=\"search\" data-expectedlabel=\"search label with non-empty value\" data-testname=\"html: label[for] input[type=search][value='test']\" class=\"ex\" value=\"test\"><br>\n<!-- input[type=submit] above -->\n<label for=\"tel\">tel label</label><input id=\"tel\" type=\"tel\" data-expectedlabel=\"tel label\" data-testname=\"html: label[for] input[type=tel]\" class=\"ex\"><br>\n<label for=\"telv\">tel label with non-empty value</label><input id=\"telv\" type=\"tel\" data-expectedlabel=\"tel label with non-empty value\" data-testname=\"html: label[for] input[type=tel][value='123-45-678']\" class=\"ex\" value=\"123-45-678\"><br>\n<label for=\"t\">textfield label</label><input id=\"t\" type=\"text\" data-expectedlabel=\"textfield label\" data-testname=\"html: label[for] input[type=text]\" class=\"ex\"><br>\n<label for=\"tv\">textfield label with non-empty value</label><input id=\"tv\" type=\"text\" data-expectedlabel=\"textfield label with non-empty value\" data-testname=\"html: label[for] input[type=text][value='test']\" class=\"ex\" value=\"test\"><br>\n<label for=\"time\">time label</label><input id=\"time\" type=\"time\" data-expectedlabel=\"time label\" data-testname=\"html: label[for] input[type=time]\" class=\"ex\"><br>\n<label for=\"timev\">time label with non-empty value</label><input id=\"timev\" type=\"time\" data-expectedlabel=\"time label with non-empty value\" data-testname=\"html: label[for] input[type=time][value='00:01']\" class=\"ex\" value=\"00:01\"><br>\n<label for=\"url\">url label</label><input id=\"url\" type=\"url\" data-expectedlabel=\"url label\" data-testname=\"html: label[for] input[type=url]\" class=\"ex\"><br>\n<label for=\"urlv\">url label with non-empty value</label><input id=\"urlv\" type=\"url\" data-expectedlabel=\"url label with non-empty value\" data-testname=\"html: label[for] input[type=url][value='https://www.w3.org']\" class=\"ex\" value=\"https://www.w3.org\"><br>\n<label for=\"week\">week label</label><input id=\"week\" type=\"week\" data-expectedlabel=\"week label\" data-testname=\"html: label[for] input[type=week]\" class=\"ex\"><br>\n<label for=\"weekv\">week label with non-empty value</label><input id=\"weekv\" type=\"week\" data-expectedlabel=\"week label with non-empty value\" data-testname=\"html: label[for] input[type=week][value='2025-W01']\" class=\"ex\" value=\"2025-W01\"><br>\n\n\n<h2>HTML input label encapsulation</h2>\n<!-- above: input[type=button] -->\n<label><input type=\"checkbox\" data-expectedlabel=\"checkbox label\" data-testname=\"html: label input[type=checkbox] encapsulation\" class=\"ex\">checkbox label</label><br>\n<label><input type=\"checkbox\" data-expectedlabel=\"checkbox label with non-empty value\" data-testname=\"html: label input[type=checkbox][value='test'] encapsulation\" class=\"ex\" value=\"test\">checkbox label with non-empty value</label><br>\n<label><input type=\"checkbox\" data-expectedlabel=\"checkbox label checked\" data-testname=\"html: label input[type=checkbox][checked] encapsulation\" class=\"ex\" checked>checkbox label checked</label><br>\n<label><input type=\"checkbox\" data-expectedlabel=\"checkbox label checked with non-empty value\" data-testname=\"html: label input[type=checkbox][value='test'][checked] encapsulation\" class=\"ex\" value=\"test\" checked>checkbox label checked with non-empty value</label><br>\n<label><input type=\"color\" data-expectedlabel=\"color label\" data-testname=\"html: label input[type=color] encapsulation\" class=\"ex\">color label</label><br>\n<label><input type=\"color\" data-expectedlabel=\"color label with non-empty value\" data-testname=\"html: label input[type=color][value='#999999'] encapsulation\" class=\"ex\" value=\"#999999\">color label with non-empty value</label><br>\n<label><input type=\"date\" data-expectedlabel=\"date label\" data-testname=\"html: label input[type=date] encapsulation\" class=\"ex\">date label</label><br>\n<label><input type=\"date\" data-expectedlabel=\"date label with non-empty value\" data-testname=\"html: label input[type=date][value='2025-01-01'] encapsulation\" class=\"ex\" value=\"2025-01-01\">date label with non-empty value</label><br>\n<label><input type=\"datetime-local\" data-expectedlabel=\"datetime-local label\" data-testname=\"html: label input[type=datetime-local] encapsulation\" class=\"ex\">datetime-local label</label><br>\n<label><input type=\"datetime-local\" data-expectedlabel=\"datetime-local label with non-empty value\" data-testname=\"html: label input[type=datetime-local][value='2025-01-01T00:01'] encapsulation\" class=\"ex\" value=\"2025-01-01T00:01\">datetime-local label with non-empty value</label><br>\n<label><input type=\"email\" data-expectedlabel=\"email label\" data-testname=\"html: label input[type=email] encapsulation\" class=\"ex\">email label</label><br>\n<label><input type=\"email\" data-expectedlabel=\"email label with non-empty value\" data-testname=\"html: label input[type=email][value='test@test.com'] encapsulation\" class=\"ex\" value=\"test@test.com\">email label with non-empty value</label><br>\n\n<!-- todo: results for input[type=file] currently differ in all engines -->\n<!--\n<label><input type=\"file\" data-expectedlabel=\"file label\" data-testname=\"html: label input[type=file] encapsulation\" class=\"ex\">file label</label><br>\n-->\n\n<!-- skipped: input[type=hidden] n/a -->\n<!-- above: input[type=image] -->\n<label><input type=\"month\" data-expectedlabel=\"month label\" data-testname=\"html: label input[type=month] encapsulation\" class=\"ex\">month label</label><br>\n<label><input type=\"month\" data-expectedlabel=\"month label with non-empty value\" data-testname=\"html: label input[type=month][value='2025-01'] encapsulation\" class=\"ex\" value=\"2025-01\">month label with non-empty value</label><br>\n<label><input type=\"number\" data-expectedlabel=\"number label\" data-testname=\"html: label input[type=number] encapsulation\" class=\"ex\">number label</label><br>\n<label><input type=\"number\" data-expectedlabel=\"number label with non-empty value\" data-testname=\"html: label input[type=number][value=1] encapsulation\" class=\"ex\" value=\"1\">number label with non-empty value</label><br>\n<label><input type=\"password\" data-expectedlabel=\"password label\" data-testname=\"html: label input[type=password] encapsulation\" class=\"ex\">password label</label><br>\n<label><input type=\"password\" data-expectedlabel=\"password label with non-empty value\" data-testname=\"html: label input[type=password][value='test'] encapsulation\" class=\"ex\" value=\"test\">password label with non-empty value</label><br>\n<label><input type=\"radio\" data-expectedlabel=\"radio label\" data-testname=\"html: label input[type=radio] encapsulation\" class=\"ex\">radio label</label><br>\n<label><input type=\"radio\" data-expectedlabel=\"radio label with non-empty value\" data-testname=\"html: label input[type=radio][value='test'] encapsulation\" class=\"ex\" value=\"test\">radio label with non-empty value</label><br>\n<label><input type=\"range\" data-expectedlabel=\"range label\" data-testname=\"html: label input[type=range] encapsulation\" class=\"ex\">range label</label><br>\n<label><input type=\"range\" data-expectedlabel=\"range label with non-empty value\" data-testname=\"html: label input[type=range][value='5'][min='0'][max='10'] encapsulation\" class=\"ex\" min=\"0\" max=\"10\" value=\"5\">range label with non-empty value</label><br>\n<!-- above: input[type=reset] -->\n<label><input type=\"search\" data-expectedlabel=\"search label\" data-testname=\"html: label input[type=search] encapsulation\" class=\"ex\">search label</label><br>\n<label><input type=\"search\" data-expectedlabel=\"search label with non-empty value\" data-testname=\"html: label input[type=search][value='test'] encapsulation\" class=\"ex\" value=\"test\">search label with non-empty value</label><br>\n<!-- above: input[type=submit] -->\n<label><input type=\"tel\" data-expectedlabel=\"tel label\" data-testname=\"html: label input[type=tel] encapsulation\" class=\"ex\">tel label</label><br>\n<label><input type=\"tel\" data-expectedlabel=\"tel label with non-empty value\" data-testname=\"html: label input[type=tel][value='123-45-678'] encapsulation\" class=\"ex\" value=\"123-45-678\">tel label with non-empty value</label><br>\n<label><input type=\"text\" data-expectedlabel=\"textfield label\" data-testname=\"html: label[for] input[type=text] encapsulation\" class=\"ex\">textfield label</label><br>\n<label><input type=\"text\" data-expectedlabel=\"textfield label with non-empty value\" data-testname=\"html: label[for] input[type=text][value='test'] encapsulation\" class=\"ex\" value=\"test\">textfield label with non-empty value</label><br>\n<label><input type=\"time\" data-expectedlabel=\"time label\" data-testname=\"html: label input[type=time] encapsulation\" class=\"ex\">time label</label><br>\n<label><input type=\"time\" data-expectedlabel=\"time label with non-empty value\" data-testname=\"html: label input[type=time][value='00:01'] encapsulation\" class=\"ex\" value=\"00:01\">time label with non-empty value</label><br>\n<label><input type=\"url\" data-expectedlabel=\"url label\" data-testname=\"html: label input[type=url] encapsulation\" class=\"ex\">url label</label><br>\n<label><input type=\"url\" data-expectedlabel=\"url label with non-empty value\" data-testname=\"html: label input[type=url][value='https://www.w3.org'] encapsulation\" class=\"ex\" value=\"https://www.w3.org\">url label with non-empty value</label><br>\n<label><input type=\"week\" data-expectedlabel=\"week label\" data-testname=\"html: label input[type=week] encapsulation\" class=\"ex\">week label</label><br>\n<label><input type=\"week\" data-expectedlabel=\"week label with non-empty value\" data-testname=\"html: label input[type=week][value='2025-W01'] encapsulation\" class=\"ex\" value=\"2025-W01\">week label with non-empty value</label><br>\n\n\n<!-- skipped: skip textarea for v1 since all engines fail in different ways. need to verify label/textarea is expected. -->\n<!--\n<h2>HTML textarea</h2>\n<label for=\"ta\">textarea label</label><textarea data-expectedlabel=\"textarea label\" data-testname=\"html: label[for] textarea\" class=\"ex\"></textarea><br>\n<label for=\"ta\">textarea label<textarea data-expectedlabel=\"textarea label\" data-testname=\"html: textarea encapsulation\" class=\"ex\"></textarea></label><br>\n-->\n\n\n<h2>HTML select</h2>\n<!-- todo: select for/id -->\n<label for=\"select\">select label</label>\n<select id=\"select\" data-expectedlabel=\"select label\" data-testname=\"html: select for/id\" class=\"ex\">\n  <option>foo</option>\n</select>\n<br>\n<!-- select encapsulation -->\n<label>\n  select label\n  <select data-expectedlabel=\"select label\" data-testname=\"html: select encapsulation\" class=\"ex\">\n    <option>foo</option>\n  </select>\n</label><br>\n<!-- todo: select labeled by selected option. All engines currently fail in different ways. Not sure which is correct. -->\n<!--\n<select data-expectedlabel=\"select label\" data-testname=\"html: select w/selected option\" class=\"ex\">\n  <option>foo</option>\n  <option selected>select label</option>\n  <option>bar</option>\n</select>\n<br>\n-->\n\n\n<h2>HTML img/picture</h2>\n<!-- skipped: img:not([alt]) -->\n<!-- skipped: img[alt=\"\"] -->\n<img alt=\"image label\" data-expectedlabel=\"image label\" data-testname=\"html: img[alt] (non-empty)\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n<picture>\n  <source srcset=\"#\">\n  <img alt=\"picture label\" data-expectedlabel=\"picture label\" data-testname=\"html: picture > img[alt] (non-empty)\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n</picture>\n<!-- elsewhere: image map area alt -> ./fragile/area-alt.html -->\n\n<img alt=\" \" data-expectedlabel=\"\" data-testname=\"img[alt] with single space character as name\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n<img alt=\"  \" data-expectedlabel=\"\" data-testname=\"img[alt] with single tab as name\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n<img alt=\"\n\" data-expectedlabel=\"\" data-testname=\"img[alt] with new line as name\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n<img alt=\"  \" data-expectedlabel=\"\" data-testname=\"img[alt] with single space character and tab as name\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n<img alt=\"\f\" data-expectedlabel=\"\" data-testname=\"img[alt] with form feed as name\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n<img alt=\"foo bar\" data-expectedlabel=\"foo bar\" data-testname=\"img[alt] with interior single tab in the name\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n<img alt=\"foo\nbar\" data-expectedlabel=\"foo bar\" data-testname=\"img[alt] with interior new line in the name\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n<img alt=\"foo   bar\" data-expectedlabel=\"foo bar\" data-testname=\"img[alt] with interior single space and tab in the name\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n<img alt=\"foo \fbar\" data-expectedlabel=\"foo bar\" data-testname=\"img[alt] with interior form feed in the name\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n\n<h2>HTML fieldset/legend</h2>\n<fieldset data-expectedlabel=\"fieldset legend label\" data-testname=\"html: fieldset > legend\" class=\"ex\">\n  <legend>fieldset legend label</legend>\n  <input type=\"text\"><br>\n</fieldset>\n\n\n<h2>HTML table/caption</h2>\n<table data-expectedlabel=\"table caption label\" data-testname=\"html: table > caption\" class=\"ex\">\n  <caption>table caption label</caption>\n  <tr><th>a</th><th>b</th><th>c</th></tr>\n  <tr><th>1</th><td>2</td><td>3</td></tr>\n</table>\n\n\n<!-- HTML-AAM: https://www.w3.org/TR/html-aam-1.0/#input-type-text-input-type-password-input-type-number-input-type-search-input-type-tel-input-type-email-input-type-url-and-textarea-element-accessible-name-computation -->\n<h2>HTML input with multiple label/for</h2>\n<label for=\"multi-label\">textfield label 1</label>\n<label for=\"multi-label\">textfield label 2</label>\n<input id=\"multi-label\" type=\"text\" data-expectedlabel=\"textfield label 1 textfield label 2\" data-testname=\"html: multiple label elements[for]\" class=\"ex\">\n\n\n\n<!-- SVG: -> /svg-aam/name/ -->\n\n\n<!-- todo: Ruby? -->\n<!-- todo: MathML? -->\n<!-- todo: does HTML input[placeholder=\"foo\"] count as a host language labeling mechanism? -->",
+		"selector": ".ex"
+	},
+	{
 		"filename": "comp_embedded_control.html",
 		"title": "Name Comp: Embedded Control",
 		"html": "<style type=\"text/css\"></style><p>Tests the <a href=\"https://w3c.github.io/accname/#comp_embedded_control\">#comp_embedded_control</a> portions of the AccName <em>Name Computation</em> algorithm.</p>\n\n<!-- Textfield (textbox) -->\n<label>\n  <input type=\"checkbox\" data-expectedlabel=\"Flash the screen 3 times\" data-testname=\"checkbox label with embedded textfield\" class=\"ex\">\n  Flash the screen\n  <input value=\"3\" aria-label=\"number of times\" data-expectedlabel=\"number of times\" data-testname=\"label of embedded textfield inside checkbox label\" class=\"ex\"> times\n</label>\n<br><br>\n\n<!-- HTML select:not([size]) element renders as menu button (on Mac) or single-row listbox (on Windows/Linux) -->\n<label>\n  <input type=\"checkbox\" data-expectedlabel=\"Flash the screen 3 times\" data-testname=\"checkbox label with embedded select:not([size])\" class=\"ex\">\n  Flash the screen\n  <select aria-label=\"number of times\" data-expectedlabel=\"number of times\" data-testname=\"label of embedded select:not([size]) inside checkbox label\" class=\"ex\">\n    <option value=\"1\">1</option>\n    <option value=\"2\">2</option>\n    <option value=\"3\" selected>3</option>\n    <option value=\"4\">4</option>\n    <option value=\"5\">5</option>\n  </select>\n  times\n</label>\n<br><br>\n\n<!-- HTML select[size] element renders as multi-row listbox -->\n<label>\n  <input type=\"checkbox\" data-expectedlabel=\"Flash the screen 3 times\" data-testname=\"checkbox label with embedded select[size]\" class=\"ex\">\n  Flash the screen\n  <select size=5 aria-label=\"number of times\" data-expectedlabel=\"number of times\" data-testname=\"label of embedded select[size] inside checkbox label\" class=\"ex\">\n    <option value=\"1\">1</option>\n    <option value=\"2\">2</option>\n    <option value=\"3\" selected>3</option>\n    <option value=\"4\">4</option>\n    <option value=\"5\">5</option>\n  </select>\n  times\n</label>\n<br><br>\n\n<!-- ARIA combobox examples (not interactive) -->\n<label>\n  <input type=\"checkbox\" data-expectedlabel=\"Flash the screen 3 times\" data-testname=\"checkbox label with embedded combobox (input[type=text])\" class=\"ex\">\n  Flash the screen\n  <input role=\"combobox\" value=\"3\" aria-label=\"number of times\" data-expectedlabel=\"number of times\" data-testname=\"label of embedded combobox (input[type=text]) inside checkbox label\" class=\"ex\"> times\n</label>\n<br><br>\n<label>\n  <input type=\"checkbox\" data-expectedlabel=\"Flash the screen 3 times\" data-testname=\"checkbox label with embedded combobox (span)\" class=\"ex\">\n  Flash the screen\n  <span role=\"combobox\" tabindex=\"0\" aria-label=\"number of times\" data-expectedlabel=\"number of times\" data-testname=\"label of embedded combobox (span) inside checkbox label\" class=\"ex\">3</span> times\n</label>\n<br><br>\n<label>\n  <input type=\"checkbox\" data-expectedlabel=\"Flash the screen 3 times\" data-testname=\"checkbox label with embedded combobox (div)\" class=\"ex\">\n  Flash the screen\n  <div style=\"display: inline-block;\" role=\"combobox\" tabindex=\"0\" aria-label=\"number of times\" data-expectedlabel=\"number of times\" data-testname=\"label of embedded combobox (div) inside checkbox label\" class=\"ex\">3</div> times\n</label>\n<br><br>\n<!-- Todo: we may want another combobox example using aria-activedescendant? -->\n\n\n<!-- ARIA listbox examples (not interactive) -->\n<label>\n  <input type=\"checkbox\" data-expectedlabel=\"Flash the screen 3 times\" data-testname=\"checkbox label with embedded listbox>option[aria-selected=true]\" class=\"ex\">\n  Flash the screen\n  <ul role=\"listbox\" aria-label=\"number of times\" data-expectedlabel=\"number of times\" data-testname=\"label of embedded listbox>option[aria-selected=true] inside checkbox label\" class=\"ex\" style=\"padding:0; list-style:none; border: solid 1px gray; width: 15em; display: inline-block;\">\n    <li role=\"option\" tabindex=\"-1\" style=\"padding:0.2em 0.8em; list-style:none;\">1</li>\n    <li role=\"option\" tabindex=\"-1\" style=\"padding:0.2em 0.8em; list-style:none;\">2</li>\n    <li role=\"option\" tabindex=\"0\" aria-selected=\"true\" style=\"padding:0.2em 0.8em; list-style:none; color: white; background-color: #555;\">3</li>\n    <li role=\"option\" tabindex=\"-1\" style=\"padding:0.2em 0.8em; list-style:none;\">4</li>\n    <li role=\"option\" tabindex=\"-1\" style=\"padding:0.2em 0.8em; list-style:none;\">5</li>\n  </ul> times\n</label>\n<br><br>\n\n\n<!-- Ranges: HTML native and ARIA sliders and steppers (valuetext, valuenow, host language specific) -->\n<label>\n  <input type=\"checkbox\" data-expectedlabel=\"Flash the screen 3 times\" data-testname=\"checkbox label with embedded input[type=range]\" class=\"ex\">\n  Flash the screen\n  <input type =\"range\" min=\"1\" max=\"5\" value=\"3\" step=\"1\" aria-label=\"number of times\" data-expectedlabel=\"number of times\" data-testname=\"label of embedded input[type=range] inside checkbox label\" class=\"ex\"> times\n</label>\n<br><br>\n<label>\n  <input type=\"checkbox\" data-expectedlabel=\"Flash the screen 3 times\" data-testname=\"checkbox label with embedded input[type=number]\" class=\"ex\">\n  Flash the screen\n  <input type =\"number\" min=\"1\" max=\"5\" value=\"3\" step=\"1\" aria-label=\"number of times\" data-expectedlabel=\"number of times\" data-testname=\"label of embedded input[type=number] inside checkbox label\" class=\"ex\"> times\n</label>\n<br><br>\n<label>\n  <input type=\"checkbox\" data-expectedlabel=\"Flash the screen 3 times\" data-testname=\"checkbox label with embedded ARIA slider (aria-valuenow)\" class=\"ex\">\n  Flash the screen\n  <span tabindex=\"0\" role=\"slider\" aria-valuemin=\"1\" aria-valuemax=\"5\" aria-valuenow=\"3\" aria-label=\"number of times\" data-expectedlabel=\"number of times\" data-testname=\"label of embedded ARIA slider (aria-valuenow) inside checkbox label\" class=\"ex\">3.0</span> times\n</label>\n<br><br>\n<label>\n  <input type=\"checkbox\" data-expectedlabel=\"Flash the screen 3 times\" data-testname=\"checkbox label with embedded ARIA slider (aria-valuetext)\" class=\"ex\">\n  Flash the screen\n  <span tabindex=\"0\" role=\"slider\" aria-valuemin=\"1.0\" aria-valuemax=\"5.0\" aria-valuenow=\"3.0\" aria-valuetext=\"3\" aria-label=\"number of times\" data-expectedlabel=\"number of times\" data-testname=\"label of embedded ARIA slider (aria-valuetext) inside checkbox label\" class=\"ex\">3.0</span> times\n</label>\n<br><br>\n<label>\n  <input type=\"checkbox\" data-expectedlabel=\"Flash the screen 3 times\" data-testname=\"checkbox label with embedded ARIA spinbutton (aria-valuenow)\" class=\"ex\">\n  Flash the screen\n  <span tabindex=\"0\" role=\"spinbutton\" aria-valuemin=\"1\" aria-valuemax=\"5\" aria-valuenow=\"3\" aria-label=\"number of times\" data-expectedlabel=\"number of times\" data-testname=\"label of embedded ARIA spinbutton (aria-valuenow) inside checkbox label\" class=\"ex\">3.0</span> times\n</label>\n<br><br>\n<label>\n  <input type=\"checkbox\" data-expectedlabel=\"Flash the screen 3 times\" data-testname=\"checkbox label with embedded ARIA spinbutton (aria-valuetext)\" class=\"ex\">\n  Flash the screen\n  <span tabindex=\"0\" role=\"spinbutton\" aria-valuemin=\"1.0\" aria-valuemax=\"5.0\" aria-valuenow=\"3.0\" aria-valuetext=\"3\" aria-label=\"number of times\" data-expectedlabel=\"number of times\" data-testname=\"label of embedded ARIA spinbutton (aria-valuetext) inside checkbox label\" class=\"ex\">3.0</span> times\n</label>\n<br><br>",
 		"selector": ".ex"
 	},
 	{
-		"filename": "comp_host_language_label.html",
-		"title": "Name Comp: Host Language Label",
-		"html": "<style type=\"text/css\"></style><h1>AccName: Host Language Label Tests</h1>\n<p>Tests the <a href=\"https://w3c.github.io/accname/#comp_host_language_label\">#comp_host_language_label</a> portions of the AccName <em>Name Computation</em> algorithm.</p>\n\n<h2>HTML input with value, alt, etc.</h2>\n<input type=\"button\" value=\"button label\" data-expectedlabel=\"button label\" data-testname=\"html: input[type=button]\" class=\"ex\">\n<input type=\"image\" alt=\"image input label\" data-expectedlabel=\"image input label\" data-testname=\"html: input[type=image]\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n<input type=\"reset\" value=\"reset label\" data-expectedlabel=\"reset label\" data-testname=\"html: input[type=reset]\" class=\"ex\">\n<input type=\"submit\" value=\"submit label\" data-expectedlabel=\"submit label\" data-testname=\"html: input[type=submit]\" class=\"ex\">\n\n\n<h2>HTML input label/for</h2>\n<!-- above: input[type=button] -->\n<label for=\"cb\">checkbox label</label><input id=\"cb\" type=\"checkbox\" data-expectedlabel=\"checkbox label\" data-testname=\"html: label[for] input[type=checkbox]\" class=\"ex\"><br>\n<label for=\"cbv\">checkbox label with non-empty value</label><input id=\"cbv\" type=\"checkbox\" data-expectedlabel=\"checkbox label with non-empty value\" data-testname=\"html: label[for] input[type=checkbox][value='test']\" class=\"ex\" value=\"test\"><br>\n<label for=\"cbc\">checkbox label checked</label><input id=\"cbc\" type=\"checkbox\" data-expectedlabel=\"checkbox label checked\" data-testname=\"html: label[for] input[type=checkbox][checked]\" class=\"ex\" checked><br>\n<label for=\"cbcv\">checkbox label checked with non-empty value</label><input id=\"cbcv\" type=\"checkbox\" data-expectedlabel=\"checkbox label checked with non-empty value\" data-testname=\"html: label[for] input[type=checkbox][checked][value='test']\" class=\"ex\" value=\"test\" checked><br>\n<label for=\"co\">color label</label><input id=\"co\" type=\"color\" data-expectedlabel=\"color label\" data-testname=\"html: label[for] input[type=color]\" class=\"ex\"><br>\n<label for=\"cov\">color label with non-empty value</label><input id=\"cov\" type=\"color\" data-expectedlabel=\"color label with non-empty value\" data-testname=\"html: label[for] input[type=color][value='#999999']\" class=\"ex\" value=\"#999999\"><br>\n<label for=\"da\">date label</label><input id=\"da\" type=\"date\" data-expectedlabel=\"date label\" data-testname=\"html: label[for] input[type=date]\" class=\"ex\"><br>\n<label for=\"dav\">date label with non-empty value</label><input id=\"dav\" type=\"date\" data-expectedlabel=\"date label with non-empty value\" data-testname=\"html: label[for] input[type=date][value='2025-01-01']\" class=\"ex\" value=\"2025-01-01\"><br>\n<label for=\"dtl\">datetime-local label</label><input id=\"dtl\" type=\"date\" data-expectedlabel=\"datetime-local label\" data-testname=\"html: label[for] input[type=datetime-local]\" class=\"ex\"><br>\n<label for=\"dtlv\">datetime-local label with non-empty value</label><input id=\"dtlv\" type=\"date\" data-expectedlabel=\"datetime-local label with non-empty value\" data-testname=\"html: label[for] input[type=datetime-local][value='2025-01-01T00:01']\" class=\"ex\" value=\"2025-01-01T00:01\"><br>\n<label for=\"em\">email label</label><input id=\"em\" type=\"email\" data-expectedlabel=\"email label\" data-testname=\"html: label[for] input[type=email]\" class=\"ex\"><br>\n<label for=\"emv\">email label with non-empty value</label><input id=\"emv\" type=\"email\" data-expectedlabel=\"email label with non-empty value\" data-testname=\"html: label[for] input[type=email][value='test@test.com']\" class=\"ex\" value=\"test@test.com\"><br>\n\n<!-- todo: results for input[type=file] currently differ in all engines -->\n<!--\n<label for=\"fi\">file label</label><input id=\"fi\" type=\"file\" data-expectedlabel=\"file label\" data-testname=\"html: label[for] input[type=file]\" class=\"ex\"><br>\n-->\n\n<!-- skipped: input[type=hidden] for/id n/a -->\n<!-- above: input[type=image] -->\n<label for=\"mo\">month label</label><input id=\"mo\" type=\"month\" data-expectedlabel=\"month label\" data-testname=\"html: label[for] input[type=month]\" class=\"ex\"><br>\n<label for=\"mov\">month label with non-empty value</label><input id=\"mov\" type=\"month\" data-expectedlabel=\"month label with non-empty value\" data-testname=\"html: label[for] input[type=month][value='2025-01']\" class=\"ex\" value=\"2025-01\"><br>\n<label for=\"n\">number label</label><input id=\"n\" type=\"number\" data-expectedlabel=\"number label\" data-testname=\"html: label[for] input[type=number]\" class=\"ex\"><br>\n<label for=\"nv\">number label with non-empty value</label><input id=\"nv\" type=\"number\" data-expectedlabel=\"number label with non-empty value\" data-testname=\"html: label[for] input[type=number][value=2025]\" class=\"ex\" value=\"2025\"><br>\n<label for=\"pw\">password label</label><input id=\"pw\" type=\"password\" data-expectedlabel=\"password label\" data-testname=\"html: label[for] input[type=password]\" class=\"ex\"><br>\n<label for=\"pwv\">password label with non-empty value</label><input id=\"pwv\" type=\"password\" data-expectedlabel=\"password label with non-empty value\" data-testname=\"html: label[for] input[type=password][value='test']\" class=\"ex\" value=\"test\"><br>\n<label for=\"ra\">radio label</label><input id=\"ra\" type=\"radio\" data-expectedlabel=\"radio label\" data-testname=\"html: label[for] input[type=radio]\" class=\"ex\"><br>\n<label for=\"rav\">radio label with non-empty value</label><input id=\"rav\" type=\"radio\" data-expectedlabel=\"radio label with non-empty value\" data-testname=\"html: label[for] input[type=radio][value='test']\" class=\"ex\" value=\"test\"><br>\n<label for=\"rng\">range label</label><input id=\"rng\" type=\"range\" data-expectedlabel=\"range label\" data-testname=\"html: label[for] input[type=range]\" class=\"ex\"><br>\n<label for=\"rngv\">range label with non-empty value</label><input id=\"rngv\" type=\"range\" data-expectedlabel=\"range label with non-empty value\" data-testname=\"html: label[for] input[type=range][min=0][max=10][value=5]\" class=\"ex\" min=\"0\" max=\"10\" value=\"5\"><br>\n<!-- input[type=reset] above -->\n<label for=\"search\">search label</label><input id=\"search\" type=\"search\" data-expectedlabel=\"search label\" data-testname=\"html: label[for] input[type=search]\" class=\"ex\"><br>\n<label for=\"searchv\">search label with non-empty value</label><input id=\"searchv\" type=\"search\" data-expectedlabel=\"search label with non-empty value\" data-testname=\"html: label[for] input[type=search][value='test']\" class=\"ex\" value=\"test\"><br>\n<!-- input[type=submit] above -->\n<label for=\"tel\">tel label</label><input id=\"tel\" type=\"tel\" data-expectedlabel=\"tel label\" data-testname=\"html: label[for] input[type=tel]\" class=\"ex\"><br>\n<label for=\"telv\">tel label with non-empty value</label><input id=\"telv\" type=\"tel\" data-expectedlabel=\"tel label with non-empty value\" data-testname=\"html: label[for] input[type=tel][value='123-45-678']\" class=\"ex\" value=\"123-45-678\"><br>\n<label for=\"t\">textfield label</label><input id=\"t\" type=\"text\" data-expectedlabel=\"textfield label\" data-testname=\"html: label[for] input[type=text]\" class=\"ex\"><br>\n<label for=\"tv\">textfield label with non-empty value</label><input id=\"tv\" type=\"text\" data-expectedlabel=\"textfield label with non-empty value\" data-testname=\"html: label[for] input[type=text][value='test']\" class=\"ex\" value=\"test\"><br>\n<label for=\"time\">time label</label><input id=\"time\" type=\"time\" data-expectedlabel=\"time label\" data-testname=\"html: label[for] input[type=time]\" class=\"ex\"><br>\n<label for=\"timev\">time label with non-empty value</label><input id=\"timev\" type=\"time\" data-expectedlabel=\"time label with non-empty value\" data-testname=\"html: label[for] input[type=time][value='00:01']\" class=\"ex\" value=\"00:01\"><br>\n<label for=\"url\">url label</label><input id=\"url\" type=\"url\" data-expectedlabel=\"url label\" data-testname=\"html: label[for] input[type=url]\" class=\"ex\"><br>\n<label for=\"urlv\">url label with non-empty value</label><input id=\"urlv\" type=\"url\" data-expectedlabel=\"url label with non-empty value\" data-testname=\"html: label[for] input[type=url][value='https://www.w3.org']\" class=\"ex\" value=\"https://www.w3.org\"><br>\n<label for=\"week\">week label</label><input id=\"week\" type=\"week\" data-expectedlabel=\"week label\" data-testname=\"html: label[for] input[type=week]\" class=\"ex\"><br>\n<label for=\"weekv\">week label with non-empty value</label><input id=\"weekv\" type=\"week\" data-expectedlabel=\"week label with non-empty value\" data-testname=\"html: label[for] input[type=week][value='2025-W01']\" class=\"ex\" value=\"2025-W01\"><br>\n\n\n<h2>HTML input label encapsulation</h2>\n<!-- above: input[type=button] -->\n<label><input type=\"checkbox\" data-expectedlabel=\"checkbox label\" data-testname=\"html: label input[type=checkbox] encapsulation\" class=\"ex\">checkbox label</label><br>\n<label><input type=\"checkbox\" data-expectedlabel=\"checkbox label with non-empty value\" data-testname=\"html: label input[type=checkbox][value='test'] encapsulation\" class=\"ex\" value=\"test\">checkbox label with non-empty value</label><br>\n<label><input type=\"checkbox\" data-expectedlabel=\"checkbox label checked\" data-testname=\"html: label input[type=checkbox][checked] encapsulation\" class=\"ex\" checked>checkbox label checked</label><br>\n<label><input type=\"checkbox\" data-expectedlabel=\"checkbox label checked with non-empty value\" data-testname=\"html: label input[type=checkbox][value='test'][checked] encapsulation\" class=\"ex\" value=\"test\" checked>checkbox label checked with non-empty value</label><br>\n<label><input type=\"color\" data-expectedlabel=\"color label\" data-testname=\"html: label input[type=color] encapsulation\" class=\"ex\">color label</label><br>\n<label><input type=\"color\" data-expectedlabel=\"color label with non-empty value\" data-testname=\"html: label input[type=color][value='#999999'] encapsulation\" class=\"ex\" value=\"#999999\">color label with non-empty value</label><br>\n<label><input type=\"date\" data-expectedlabel=\"date label\" data-testname=\"html: label input[type=date] encapsulation\" class=\"ex\">date label</label><br>\n<label><input type=\"date\" data-expectedlabel=\"date label with non-empty value\" data-testname=\"html: label input[type=date][value='2025-01-01'] encapsulation\" class=\"ex\" value=\"2025-01-01\">date label with non-empty value</label><br>\n<label><input type=\"datetime-local\" data-expectedlabel=\"datetime-local label\" data-testname=\"html: label input[type=datetime-local] encapsulation\" class=\"ex\">datetime-local label</label><br>\n<label><input type=\"datetime-local\" data-expectedlabel=\"datetime-local label with non-empty value\" data-testname=\"html: label input[type=datetime-local][value='2025-01-01T00:01'] encapsulation\" class=\"ex\" value=\"2025-01-01T00:01\">datetime-local label with non-empty value</label><br>\n<label><input type=\"email\" data-expectedlabel=\"email label\" data-testname=\"html: label input[type=email] encapsulation\" class=\"ex\">email label</label><br>\n<label><input type=\"email\" data-expectedlabel=\"email label with non-empty value\" data-testname=\"html: label input[type=email][value='test@test.com'] encapsulation\" class=\"ex\" value=\"test@test.com\">email label with non-empty value</label><br>\n\n<!-- todo: results for input[type=file] currently differ in all engines -->\n<!--\n<label><input type=\"file\" data-expectedlabel=\"file label\" data-testname=\"html: label input[type=file] encapsulation\" class=\"ex\">file label</label><br>\n-->\n\n<!-- skipped: input[type=hidden] n/a -->\n<!-- above: input[type=image] -->\n<label><input type=\"month\" data-expectedlabel=\"month label\" data-testname=\"html: label input[type=month] encapsulation\" class=\"ex\">month label</label><br>\n<label><input type=\"month\" data-expectedlabel=\"month label with non-empty value\" data-testname=\"html: label input[type=month][value='2025-01'] encapsulation\" class=\"ex\" value=\"2025-01\">month label with non-empty value</label><br>\n<label><input type=\"number\" data-expectedlabel=\"number label\" data-testname=\"html: label input[type=number] encapsulation\" class=\"ex\">number label</label><br>\n<label><input type=\"number\" data-expectedlabel=\"number label with non-empty value\" data-testname=\"html: label input[type=number][value=1] encapsulation\" class=\"ex\" value=\"1\">number label with non-empty value</label><br>\n<label><input type=\"password\" data-expectedlabel=\"password label\" data-testname=\"html: label input[type=password] encapsulation\" class=\"ex\">password label</label><br>\n<label><input type=\"password\" data-expectedlabel=\"password label with non-empty value\" data-testname=\"html: label input[type=password][value='test'] encapsulation\" class=\"ex\" value=\"test\">password label with non-empty value</label><br>\n<label><input type=\"radio\" data-expectedlabel=\"radio label\" data-testname=\"html: label input[type=radio] encapsulation\" class=\"ex\">radio label</label><br>\n<label><input type=\"radio\" data-expectedlabel=\"radio label with non-empty value\" data-testname=\"html: label input[type=radio][value='test'] encapsulation\" class=\"ex\" value=\"test\">radio label with non-empty value</label><br>\n<label><input type=\"range\" data-expectedlabel=\"range label\" data-testname=\"html: label input[type=range] encapsulation\" class=\"ex\">range label</label><br>\n<label><input type=\"range\" data-expectedlabel=\"range label with non-empty value\" data-testname=\"html: label input[type=range][value='5'][min='0'][max='10'] encapsulation\" class=\"ex\" min=\"0\" max=\"10\" value=\"5\">range label with non-empty value</label><br>\n<!-- above: input[type=reset] -->\n<label><input type=\"search\" data-expectedlabel=\"search label\" data-testname=\"html: label input[type=search] encapsulation\" class=\"ex\">search label</label><br>\n<label><input type=\"search\" data-expectedlabel=\"search label with non-empty value\" data-testname=\"html: label input[type=search][value='test'] encapsulation\" class=\"ex\" value=\"test\">search label with non-empty value</label><br>\n<!-- above: input[type=submit] -->\n<label><input type=\"tel\" data-expectedlabel=\"tel label\" data-testname=\"html: label input[type=tel] encapsulation\" class=\"ex\">tel label</label><br>\n<label><input type=\"tel\" data-expectedlabel=\"tel label with non-empty value\" data-testname=\"html: label input[type=tel][value='123-45-678'] encapsulation\" class=\"ex\" value=\"123-45-678\">tel label with non-empty value</label><br>\n<label><input type=\"text\" data-expectedlabel=\"textfield label\" data-testname=\"html: label[for] input[type=text] encapsulation\" class=\"ex\">textfield label</label><br>\n<label><input type=\"text\" data-expectedlabel=\"textfield label with non-empty value\" data-testname=\"html: label[for] input[type=text][value='test'] encapsulation\" class=\"ex\" value=\"test\">textfield label with non-empty value</label><br>\n<label><input type=\"time\" data-expectedlabel=\"time label\" data-testname=\"html: label input[type=time] encapsulation\" class=\"ex\">time label</label><br>\n<label><input type=\"time\" data-expectedlabel=\"time label with non-empty value\" data-testname=\"html: label input[type=time][value='00:01'] encapsulation\" class=\"ex\" value=\"00:01\">time label with non-empty value</label><br>\n<label><input type=\"url\" data-expectedlabel=\"url label\" data-testname=\"html: label input[type=url] encapsulation\" class=\"ex\">url label</label><br>\n<label><input type=\"url\" data-expectedlabel=\"url label with non-empty value\" data-testname=\"html: label input[type=url][value='https://www.w3.org'] encapsulation\" class=\"ex\" value=\"https://www.w3.org\">url label with non-empty value</label><br>\n<label><input type=\"week\" data-expectedlabel=\"week label\" data-testname=\"html: label input[type=week] encapsulation\" class=\"ex\">week label</label><br>\n<label><input type=\"week\" data-expectedlabel=\"week label with non-empty value\" data-testname=\"html: label input[type=week][value='2025-W01'] encapsulation\" class=\"ex\" value=\"2025-W01\">week label with non-empty value</label><br>\n\n\n<!-- skipped: skip textarea for v1 since all engines fail in different ways. need to verify label/textarea is expected. -->\n<!--\n<h2>HTML textarea</h2>\n<label for=\"ta\">textarea label</label><textarea data-expectedlabel=\"textarea label\" data-testname=\"html: label[for] textarea\" class=\"ex\"></textarea><br>\n<label for=\"ta\">textarea label<textarea data-expectedlabel=\"textarea label\" data-testname=\"html: textarea encapsulation\" class=\"ex\"></textarea></label><br>\n-->\n\n\n<h2>HTML select</h2>\n<!-- todo: select for/id -->\n<label for=\"select\">select label</label>\n<select id=\"select\" data-expectedlabel=\"select label\" data-testname=\"html: select for/id\" class=\"ex\">\n  <option>foo</option>\n</select>\n<br>\n<!-- select encapsulation -->\n<label>\n  select label\n  <select data-expectedlabel=\"select label\" data-testname=\"html: select encapsulation\" class=\"ex\">\n    <option>foo</option>\n  </select>\n</label><br>\n<!-- todo: select labeled by selected option. All engines currently fail in different ways. Not sure which is correct. -->\n<!--\n<select data-expectedlabel=\"select label\" data-testname=\"html: select w/selected option\" class=\"ex\">\n  <option>foo</option>\n  <option selected>select label</option>\n  <option>bar</option>\n</select>\n<br>\n-->\n\n\n<h2>HTML img/picture</h2>\n<!-- skipped: img:not([alt]) -->\n<!-- skipped: img[alt=\"\"] -->\n<img alt=\"image label\" data-expectedlabel=\"image label\" data-testname=\"html: img[alt] (non-empty)\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n<picture>\n  <source srcset=\"#\">\n  <img alt=\"picture label\" data-expectedlabel=\"picture label\" data-testname=\"html: picture > img[alt] (non-empty)\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n</picture>\n<!-- elsewhere: image map area alt -> ./fragile/area-alt.html -->\n\n\n<h2>HTML fieldset/legend</h2>\n<fieldset data-expectedlabel=\"fieldset legend label\" data-testname=\"html: fieldset > legend\" class=\"ex\">\n  <legend>fieldset legend label</legend>\n  <input type=\"text\"><br>\n</fieldset>\n\n\n<h2>HTML table/caption</h2>\n<table data-expectedlabel=\"table caption label\" data-testname=\"html: table > caption\" class=\"ex\">\n  <caption>table caption label</caption>\n  <tr><th>a</th><th>b</th><th>c</th></tr>\n  <tr><th>1</th><td>2</td><td>3</td></tr>\n</table>\n\n\n<!-- SVG: -> /svg-aam/name/ -->\n\n\n<!-- todo: Ruby? -->\n<!-- todo: MathML? -->\n<!-- todo: does HTML input[placeholder=\"foo\"] count as a host language labeling mechanism? -->",
+		"filename": "comp_hidden_not_referenced.html",
+		"title": "Name Comp: Hidden Not Referenced",
+		"html": "<style type=\"text/css\"></style><p>Tests the <a href=\"https://w3c.github.io/accname/#comp_hidden_not_referenced\">#comp_hidden_not_referenced</a> portions of the AccName <em>Name Computation</em> algorithm.</p>\n\n<button\n  class=\"ex\"\n  data-expectedlabel=\"visible to all users\"\n  data-testname=\"button containing a rendered, unreferenced element that is aria-hidden=true, an unreferenced element with the hidden host language attribute, and an unreferenced element that is unconditionally rendered\"\n>\n  <span aria-hidden=\"true\">hidden,</span>\n  <span hidden>hidden from all users,</span>\n  <span>visible to all users</span>\n</button>\n\n<button\n  class=\"ex\"\n  data-expectedlabel=\"hidden but referenced,\"\n  data-testname=\"button labelled by element that is aria-hidden=true\"\n  aria-labelledby=\"button-label-2\"\n>\n  <span aria-hidden=\"true\" id=\"button-label-2\">hidden but referenced,</span>\n  <span hidden>hidden from all users,</span>\n  <span>visible to all users</span>\n</button>\n\n<button\n  class=\"ex\"\n  data-expectedlabel=\"hidden from all users but referenced,\"\n  data-testname=\"button labelled by element with the hidden host language attribute\"\n  aria-labelledby=\"button-label-3\"\n>\n  <span aria-hidden=\"true\">hidden,</span>\n  <span hidden id=\"button-label-3\">hidden from all users but referenced,</span>\n  <span>visible to all users</span>\n</button>\n\n<a\n  class=\"ex\"\n  data-testname=\"link labelled by elements with assorted visibility and a11y tree exposure\"\n  data-expectedlabel=\"visible to all users, hidden but referenced, hidden from all users but referenced\"\n  href=\"#\"\n  aria-labelledby=\"link-label-1a link-label-1b link-label-1c\"\n>\n  <span id=\"link-label-1a\">\n    <span>visible to all users,</span>\n    <span aria-hidden=\"true\">hidden,</span>\n  </span>\n  <span aria-hidden=\"true\" id=\"link-label-1b\">hidden but referenced,</span>\n  <span hidden id=\"link-label-1c\">hidden from all users but referenced</span>\n</a>\n\n<h2\n  class=\"ex\"\n  data-testname=\"heading with name from content, containing element that is visibility:hidden with nested content that is visibility:visible\"\n  data-expectedlabel=\"visible to all users, un-hidden for all users\"\n>\n  visible to all users,\n  <span style=\"visibility: hidden;\">\n    hidden from all users,\n    <span style=\"visibility: visible;\">un-hidden for all users</span>\n  </span>\n</h2>\n\n<!-- TODO: Test cases once https://github.com/w3c/aria/issues/1256 resolved: -->\n<!--       - button labelled by an element that is aria-hidden=true which contains a nested child that is aria-hidden=false -->\n<!--       - button labelled by an element that is aria-hidden=false which belongs to a parent that is aria-hidden=true -->\n<!--       - heading with name from content, containing rendered content that is aria-hidden=true with nested, rendered content that is aria-hidden=false -->\n<!--       - heading with name from content, containing element with the hidden host language attribute with nested content that is aria-hidden=false -->\n\n<!-- TODO: New test case?\n<!--       What is the expectation for a details element when it\u2019s given an -->\n<!--       explicit role that allows name from contents (e.g., `comment`) -->\n<!--       but is also not in the open state, and therefore has contents -->\n<!--       that are both not rendered and excluded from the a11y tree. -->",
+		"selector": ".ex"
+	},
+	{
+		"filename": "comp_name_from_content.html",
+		"title": "Name Comp: Name From Content",
+		"html": "<style type=\"text/css\">\n\n     /*\n\n      Since the AccName spec is in flux about whitespace joiners, and the implementations don't match,\n      normalize the whitespace (with extra leading/trailing) space.\n\n      No point in having the same in-flux spec change cause failures the remaining unrelated tests.\n\n      See more here:\n      https://github.com/w3c/accname/issues/205\n      https://github.com/w3c/accname/projects/1#card-42288231\n\n    */\n\n    .alt-counter::before {\n      counter-set: cnt 5051;\n      content: \"\" / counter(cnt);\n    }\n    .simple-before::before {\n      content: \" before \"; /* [sic] leading and trailing space */\n      margin:0 0.1em;\n    }\n    .simple-after::after {\n      content: \" after \"; /* [sic] leading and trailing space */\n      margin:0 0.1em;\n    }\n    .no-space::before, .no-space::after {\n      content: \"nospace\"; /* [sic] Unlike the others, NO extra leading/trailing space here. */\n    }\n    .simple-before:dir(rtl)::before {\n      content: \" \u0645\u0646 \u0642\u0628\u0644 \"; /* [sic] leading and trailing space */\n    }\n    .simple-after:dir(rtl)::after {\n      content: \" \u0628\u0639\u062f \"; /* [sic] leading and trailing space */\n    }\n    .fallback-before::before {\n      content: \" before \"; /* [sic] leading and trailing space */\n      content: \" before \" / \" alt-before \"; /* Override the previous line for engines that support the Alternative Text syntax. */\n    }\n    .fallback-after::after {\n      content: \" after \"; /* [sic] leading and trailing space */\n      content: \" after \" / \" alt-after \"; /* Override the previous line for engines that support the Alternative Text syntax. */\n    }\n    .fallback-before-empty::before {\n      content: \"before\"  / \"\";\n    }\n    .fallback-before-image-empty::before {\n      content: \"before \" url(/images/blue.png) / \"\";\n    }\n    .fallback-before-mixed::before {\n      content: \" before \"; /* [sic] leading and trailing space */\n      content: \" before \" / \" start \" attr(data-alt-text-before) \" end \"; /* Override the previous line for engines that support the Alternative Text syntax. */\n    }\n    .fallback-after-mixed::after {\n      content: \" after \"; /* [sic] leading and trailing space */\n      content: \" after \" / \" start \" attr(data-alt-text-after) \" end \"; /* Override the previous line for engines that support the Alternative Text syntax. */\n    }\n    .block > span {\n      display: block;\n      margin: 0 0.1em;\n    }\n    .iblock > span {\n      display: inline-block;\n      margin: 0 0.1em;\n    }\n\n  </style><p>Tests the <a href=\"https://w3c.github.io/accname/#comp_name_from_content\">#comp_name_from_content</a> portions of the AccName <em>Name Computation</em> algorithm.</p>\n\n<p>This series of tests exercises the button, heading, and link elements, because each have different characteristics worthy of testing in each of the name computation algorithm scenarios:</p>\n<ul>\n  <li>button is a leaf node with sub-level elements presentational.</li>\n  <li>heading is block level, and can contain sub-level interactives like links.</li>\n  <li>link (a[href]) is an interactive inline element that can include non-presentational descendants.</li>\n</ul>\n\n<h1>ARIA roles, inline</h1>\n<span tabindex=\"0\" role=\"button\" data-expectedlabel=\"label\" data-testname=\"aria button name from content, inline\" class=\"ex\">label</span><br>\n<span tabindex=\"0\" role=\"heading\" data-expectedlabel=\"label\" data-testname=\"aria heading name from content, inline\" class=\"ex\">label</span><br>\n<span tabindex=\"0\" role=\"link\" data-expectedlabel=\"label\" data-testname=\"aria link name from content, inline\" class=\"ex\">label</span><br>\n<br>\n\n<h1>ARIA roles, block</h1>\n<div tabindex=\"0\" role=\"button\" data-expectedlabel=\"label\" data-testname=\"aria button name from content, block\" class=\"ex\">label</div>\n<div tabindex=\"0\" role=\"heading\" data-expectedlabel=\"label\" data-testname=\"aria heading name from content, block\" class=\"ex\">label</div>\n<div tabindex=\"0\" role=\"link\" data-expectedlabel=\"label\" data-testname=\"aria link name from content, block\" class=\"ex\">label</div>\n<br>\n\n<h1>simple</h1>\n<button data-expectedlabel=\"label\" data-testname=\"button name from content\" class=\"ex\">label</button><br>\n<h3 data-expectedlabel=\"label\" data-testname=\"heading name from content\" class=\"ex\">label</h3>\n<a href=\"#\" data-expectedlabel=\"label\" data-testname=\"link name from content\" class=\"ex\">label</a><br>\n<br>\n\n<h1>alt counter with ::before</h1>\n<button data-expectedlabel=\"5051 label\" data-testname=\"button with alt counter on ::before\" class=\"ex alt-counter\">label</button><br>\n<h3 data-expectedlabel=\"5051 label\" data-testname=\"heading with alt counter on ::before\" class=\"ex alt-counter\">label</h3>\n<a href=\"#\" data-expectedlabel=\"5051 label\" data-testname=\"link with alt counter on ::before\" class=\"ex alt-counter\">label</a><br>\n<br>\n\n<h1>simple with ::before</h1>\n<button data-expectedlabel=\"before label\" data-testname=\"button name from content with ::before\" class=\"ex simple-before\">label</button><br>\n<h3 data-expectedlabel=\"before label\" data-testname=\"heading name from content with ::before\" class=\"ex simple-before\">label</h3>\n<a href=\"#\" data-expectedlabel=\"before label\" data-testname=\"link name from content with ::before\" class=\"ex simple-before\">label</a><br>\n<br>\n\n<h1>simple with ::after</h1>\n<button data-expectedlabel=\"label after\" data-testname=\"button name from content with ::after\" class=\"ex simple-after\">label</button><br>\n<h3 data-expectedlabel=\"label after\" data-testname=\"heading name from content with ::after\" class=\"ex simple-after\">label</h3>\n<a href=\"#\" data-expectedlabel=\"label after\" data-testname=\"link name from content with ::after\" class=\"ex simple-after\">label</a><br>\n<br>\n\n<h1>simple with ::before and ::after</h1>\n<button data-expectedlabel=\"before label after\" data-testname=\"button name from content with ::before and ::after\" class=\"ex simple-before simple-after\">label</button><br>\n<h3 data-expectedlabel=\"before label after\" data-testname=\"heading name from content with ::before and ::after\" class=\"ex simple-before simple-after\">label</h3>\n<a href=\"#\" data-expectedlabel=\"before label after\" data-testname=\"link name from content with ::before and ::after\" class=\"ex simple-before simple-after\">label</a><br>\n<br>\n\n<h1>no space joiners ::before and ::after</h1>\n<button data-expectedlabel=\"nospacelabelnospace\" data-testname=\"button name from content no space joiners ::before and ::after\" class=\"ex no-space\">label</button><br>\n<h3 data-expectedlabel=\"nospacelabelnospace\" data-testname=\"heading name from content no space joiners ::before and ::after\" class=\"ex no-space\">label</h3>\n<a href=\"#\" data-expectedlabel=\"nospacelabelnospace\" data-testname=\"link name from content no space joiners ::before and ::after\" class=\"ex no-space\">label</a><br>\n<br>\n\n<h1>Arabic right-to-left (RTL) with ::before and ::after</h1>\n<div dir=\"rtl\" lang=\"ar\">\n  <button data-expectedlabel=\"\u0645\u0646 \u0642\u0628\u0644 \u0627\u0633\u0645 \u0628\u0639\u062f\" data-testname=\"button name from content with ::before and ::after in rtl\" class=\"ex simple-before simple-after\">\u0627\u0633\u0645</button><br>\n  <h3 data-expectedlabel=\"\u0645\u0646 \u0642\u0628\u0644 \u0627\u0633\u0645 \u0628\u0639\u062f\" data-testname=\"heading name from content with ::before and ::after in rtl\" class=\"ex simple-before simple-after\">\u0627\u0633\u0645</h3>\n  <a href=\"#\" data-expectedlabel=\"\u0645\u0646 \u0642\u0628\u0644 \u0627\u0633\u0645 \u0628\u0639\u062f\" data-testname=\"link name from content with ::before and ::after in rtl\" class=\"ex simple-before simple-after\">\u0627\u0633\u0645</a><br>\n</div>\n<br>\n\n<h1><a href=\"https://drafts.csswg.org/css-content/#alt\">Alternative Text for  CSS content (previously `alt:`)</a> in pseudo-elements</h1>\n<p>rendered text should be \"before label after\"</p>\n<p>accessibility label should be \"alt-before label alt-after\"</p>\n<button data-expectedlabel=\"alt-before label alt-after\" data-testname=\"button name from fallback content with ::before and ::after\" class=\"ex fallback-before fallback-after\">label</button><br>\n<h3 data-expectedlabel=\"alt-before label alt-after\" data-testname=\"heading name from fallback content with ::before and ::after\" class=\"ex fallback-before fallback-after\">label</h3>\n<a href=\"#\" data-expectedlabel=\"alt-before label alt-after\" data-testname=\"link name from fallback content with ::before and ::after\" class=\"ex fallback-before fallback-after\">label</a><br>\n<br>\n\n<h1><a href=\"https://drafts.csswg.org/css-content/#alt\">Mixed Alternative Text (attr() and strings) for  CSS content (previously `alt:`)</a> in pseudo-elements</h1>\n<p>rendered text should be \"before label after\"</p>\n<p>accessibility label should be \"start alt-before end label start alt-after end\"</p>\n<button data-alt-text-before=\"alt-before\" data-alt-text-after=\"alt-after\" data-expectedlabel=\"start alt-before end label start alt-after end\" data-testname=\"button name from fallback content mixing attr() and strings with ::before and ::after\" class=\"ex fallback-before-mixed fallback-after-mixed\">label</button><br>\n<h3 data-alt-text-before=\"alt-before\" data-alt-text-after=\"alt-after\" data-expectedlabel=\"start alt-before end label start alt-after end\" data-testname=\"heading name from fallback content mixing attr() and strings with ::before and ::after\" class=\"ex fallback-before-mixed fallback-after-mixed\">label</h3>\n<a href=\"#\" data-alt-text-before=\"alt-before\" data-alt-text-after=\"alt-after\" data-expectedlabel=\"start alt-before end label start alt-after end\" data-testname=\"link name from fallback content mixing attr() and strings with ::before and ::after\" class=\"ex fallback-before-mixed fallback-after-mixed\">label</a><br>\n<br>\n\n<h1>Empty alternative text for CSS content in pseudo-elements when applied to primitive appearance form controls</h1>\n<p><input data-expectedlabel=\"\" data-testname=\"primitive radio input with ::before containing empty alternative text\" class=\"ex fallback-before-empty\" type=radio style=appearance:none>\n<p><input data-expectedlabel=\"\" data-testname=\"primitive radio input with ::before containing empty alternative text for an image\" class=\"ex fallback-before-image-empty\" type=radio style=appearance:none>\n\n<h1>simple w/ for each child</h1>\n<button data-expectedlabel=\"one two three\" data-testname=\"button name from content for each child\" class=\"ex\"><span>one</span> <span>two</span> <span>three</span></button><br>\n<h3 data-expectedlabel=\"one two three\" data-testname=\"heading name from content for each child\" class=\"ex\"><span>one</span> <span>two</span> <span>three</span></h3>\n<a href=\"#\" data-expectedlabel=\"one two three\" data-testname=\"link name from content for each child\" class=\"ex\"><span>one</span> <span>two</span> <span>three</span></a><br>\n<br>\n\n<h1>simple for each child with image</h1>\n<button data-expectedlabel=\"one two three\" data-testname=\"button name from content for each child including image\" class=\"ex\"><span>one</span> <img alt=\"two\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\"> <span>three</span></button><br>\n<h3 data-expectedlabel=\"one two three\" data-testname=\"heading name from content for each child including image\" class=\"ex\"><span>one</span> <img alt=\"two\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\"> <span>three</span></h3>\n<a href=\"#\" data-expectedlabel=\"one two three\" data-testname=\"link name from content for each child including image\" class=\"ex\"><span>one</span> <img alt=\"two\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\"> <span>three</span></a><br>\n<br>\n\n\n<h1>simple for each child with extra nesting containing image</h1>\n<button data-expectedlabel=\"one two three four\" data-testname=\"button name from content for each child including nested image\" class=\"ex\"><span>one</span> <span>two <img alt=\"three\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\"></span> <span>four</span></button><br>\n<h3 data-expectedlabel=\"one two three four\" data-testname=\"heading name from content for each child including nested image\" class=\"ex\"><span>one</span> <span>two <img alt=\"three\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\"></span> <span>four</span></h3>\n<a href=\"#\" data-expectedlabel=\"one two three four\" data-testname=\"link name from content for each child including nested image\" class=\"ex\"><span>one</span> <span>two <img alt=\"three\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\"></span> <span>four</span></a><br>\n<br>\n\n<h1>heading with nested button with nested image</h1>\n<h3 data-expectedlabel=\"heading button image button heading\" data-testname=\"heading name from content for each child including nested button with nested image\" class=\"ex\">\n  heading\n  <button>\n    button\n    <img alt=\"image\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n    button\n  </button>\n  heading\n</h3>\n\n<h1>heading with nested link with nested image</h1>\n<h3 data-expectedlabel=\"heading link image link heading\" data-testname=\"heading name from content for each child including nested link with nested image\" class=\"ex\">\n  heading\n  <a href=\"#\">\n    link\n    <img alt=\"image\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n    link\n  </a>\n  heading\n</h3>\n\n<h1>heading with nested link with nested image using aria-label</h1>\n<h3 data-expectedlabel=\"heading link aria-label heading\" data-testname=\"heading name from content for each child including nested link using aria-label with nested image\" class=\"ex\">\n  heading\n  <a href=\"#\" aria-label=\"link aria-label\"><!-- should skip the other link text -->\n    ignored link text\n    <img id=\"nested_image_label_1\" alt=\"ignored image alt\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n    ignored link text\n  </a>\n  heading\n</h3>\n\n<h1>heading with nested link with nested image using aria-labelledby</h1>\n<h3 data-expectedlabel=\"heading image heading\" data-testname=\"heading name from content for each child including nested link using aria-labelledby with nested image\" class=\"ex\">\n  heading\n  <a href=\"#\" aria-labelledby=\"nested_image_label1\"><!-- should skip the other link text -->\n    ignored link text\n    <img id=\"nested_image_label1\" alt=\"image\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n    ignored link text\n  </a>\n  heading\n</h3>\n\n<h1>heading with two nested links referencing image using aria-labelledby</h1>\n<h3 data-expectedlabel=\"image link2 link3\" data-testname=\"heading name from content for each child including two nested links using aria-labelledby with nested image\" class=\"ex\">\n  <a href=\"#\" aria-labelledby=\"nested_image_label2\">\n    link1<!-- this text is skipped because of aria-labelledby -->\n  </a>\n  <a href=\"#\" data-expectedlabel=\"link2 image link3\" data-testname=\"link name from content for each child including nested image (referenced elsewhere via labelledby)\" class=\"ex\">\n    link2\n    <img id=\"nested_image_label2\" alt=\"image\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n    <!-- image skipped in this link (when computing heading text) because it was already referenced by the first link within this heading label recursion cycle. -->\n    <!-- but image not skipped when computing the text of the link itself since it has not been referenced in that context -->\n    link3\n  </a>\n</h3>\n\n\n<!-- Note: The following test is out of line with the spec, but matching two out of three implementations at the time of writing, and spec changes are expeected. -->\n<!-- See details in https://github.com/w3c/accname/issues/205 -->\n<!-- Final spec resolution will be addressed in AccName Whitespace Project: https://github.com/w3c/accname/projects/1#card-42288231 -->\n<h1>simple w/ for each child (w/o spaces and display:inline)</h1>\n<button data-expectedlabel=\"onetwothree\" data-testname=\"button name from content for each child (no space, inline)\" class=\"ex\"><span>one</span><span>two</span><span>three</span></button><br>\n<h3 data-expectedlabel=\"onetwothree\" data-testname=\"heading name from content for each child (no space, inline)\" class=\"ex\"><span>one</span><span>two</span><span>three</span></h3>\n<a href=\"#\" data-expectedlabel=\"onetwothree\" data-testname=\"link name from content for each child (no space, inline)\" class=\"ex\"><span>one</span><span>two</span><span>three</span></a><br>\n<br>\n\n<h1>simple w/ for each child (w/o spaces and display:block)</h1>\n<button data-expectedlabel=\"one two three\" data-testname=\"button name from content for each child (no space, display:block)\" class=\"ex block\"><span>one</span><span>two</span><span>three</span></button><br>\n<h3 data-expectedlabel=\"one two three\" data-testname=\"heading name from content for each child (no space, display:block)\" class=\"ex block\"><span>one</span><span>two</span><span>three</span></h3>\n<a href=\"#\" data-expectedlabel=\"one two three\" data-testname=\"link name from content for each child (no space, display:block)\" class=\"ex block\"><span>one</span><span>two</span><span>three</span></a><br>\n<br>\n\n<h1>simple w/ for each child (w/o spaces and display:inline block)</h1>\n<button data-expectedlabel=\"one two three\" data-testname=\"button name from content for each child (no space, display:inline-block)\" class=\"ex iblock\"><span>one</span><span>two</span><span>three</span></button><br>\n<h3 data-expectedlabel=\"one two three\" data-testname=\"heading name from content for each child (no space, display:inline-block)\" class=\"ex iblock\"><span>one</span><span>two</span><span>three</span></h3>\n<a href=\"#\" data-expectedlabel=\"one two three\" data-testname=\"link name from content for each child (no space, display:inline-block)\" class=\"ex iblock\"><span>one</span><span>two</span><span>three</span></a><br>\n<br>\n\n<h1 data-expectedlabel=\"Call us\" data-testname=\"heading name from content with text-transform:none\" class=\"ex\" style=\"text-transform:none;\">Call us</h1>\n<h1 data-expectedlabel=\"CALL US\" data-testname=\"heading name from content with text-transform:uppercase\" class=\"ex\" style=\"text-transform:uppercase;\">Call us</h1>\n<h1 data-expectedlabel=\"Call Us\" data-testname=\"heading name from content with text-transform:capitalize\" class=\"ex\" style=\"text-transform:capitalize;\">Call us</h1>\n<h1 data-expectedlabel=\"call us\" data-testname=\"heading name from content with text-transform:lowercase\" class=\"ex\" style=\"text-transform:lowercase;\">Call us</h1>\n\n<!-- \u201c\u3073\u3087\u3046\u3044\u3093\u306e\u304b\u3093\u3058\u3083\u30b5\u30fc\u30d3\u30b9\u201d means \u201cHospital patient services\u201d -->\n<!-- text-transform:full-size-kana risks changing the heading\u2019s meaning -->\n<!-- by transforming the following words: -->\n<!--   1. \u3073\u3087\u3046\u3044\u3093 (by\u014din = hospital) into \u3073\u3088\u3046\u3044\u3093 (biy\u014din = beauty parlor) -->\n<!--   2. \u304b\u3093\u3058\u3083 (kanja = patient) into \u304b\u3093\u3058\u3084 (kanjiya = [no meaning]) -->\n<h1>heading which visually transforms <span lang=\"ja\">\u3073\u3087\u3046\u3044\u3093</span> (hospital) to\n  <span lang=\"ja\">\u3073\u3088\u3046\u3044\u3093</span> (beauty parlor) using CSS\n  <code>text-transform:full-size-kana</code></h1>\n<h3\n  lang=\"ja\"\n  data-expectedlabel=\"\u3073\u3087\u3046\u3044\u3093\u306e\u304b\u3093\u3058\u3083\u30b5\u30fc\u30d3\u30b9\"\n  data-testname=\"heading name from content with text-transform:full-size-kana\"\n  class=\"ex\"\n  style=\"text-transform:full-size-kana;\"\n>\u3073\u3087\u3046\u3044\u3093\u306e\u304b\u3093\u3058\u3083\u30b5\u30fc\u30d3\u30b9</h3>\n\n<!-- Tests `Name from Each Child` edge case failures with an embedded `term` as a child element role. -->\n<!-- https://w3c.github.io/accname/#comp_name_from_content_for_each_child -->\n\n<h2>Elements with implicit button, heading, link roles containing element with\n  implicit term role</h2>\n<button\n  data-expectedlabel=\"this is an example\"\n  data-testname=\"implicit button name from content containing a dfn element\"\n  class=\"ex iblock\"\n><span>this is an </span><dfn>example</dfn></button>\n<h3\n  data-expectedlabel=\"this is an example\"\n  data-testname=\"implicit heading name from content containing a dfn element\"\n  class=\"ex iblock\"\n><span>this is an </span><dfn>example</dfn></h3>\n<a\n  href=\"#\"\n  data-expectedlabel=\"this is an example\"\n  data-testname=\"implicit link name from content containing a dfn element\"\n  class=\"ex iblock\"\n><span>this is an </span><dfn>example</dfn></a>\n\n<h2>Elements with implicit button, heading, link roles containing element with\n  explicit term role</h2>\n<button\n  data-expectedlabel=\"this is an example\"\n  data-testname=\"implicit button name from content containing an element with explicit term role\"\n  class=\"ex iblock\"\n><span>this is an </span><span role=\"term\">example</span></button>\n<h3\n  data-expectedlabel=\"this is an example\"\n  data-testname=\"implicit heading name from content containing an element with explicit term role\"\n  class=\"ex iblock\"\n><span>this is an </span><span role=\"term\">example</span></h3>\n<a\n  href=\"#\"\n  data-expectedlabel=\"this is an example\"\n  data-testname=\"implicit link name from content containing an element explicit with term role\"\n  class=\"ex iblock\"\n><span>this is an </span><span role=\"term\">example</span></a>\n\n<h2>Elements with explicit button, heading, link roles containing element with\n  implicit term role</h2>\n<div\n  role=\"button\"\n  tabindex=\"0\"\n  data-expectedlabel=\"this is an example\"\n  data-testname=\"explicit button name from content containing a dfn element\"\n  class=\"ex iblock\"\n><span>this is an </span><dfn>example</dfn></div>\n<div\n  role=\"heading\"\n  data-expectedlabel=\"this is an example\"\n  data-testname=\"explicit heading name from content containing a dfn element\"\n  class=\"ex iblock\"\n><span>this is an </span><dfn>example</dfn></div>\n<div\n  role=\"link\"\n  tabindex=\"0\"\n  data-expectedlabel=\"this is an example\"\n  data-testname=\"explicit link name from content containing a dfn element\"\n  class=\"ex iblock\"\n><span>this is an </span><dfn>example</dfn></div>\n\n<h2>Elements with explicit button, heading, link roles containing element with\n  explicit term role</h2>\n<div\n  role=\"button\"\n  tabindex=\"0\"\n  data-expectedlabel=\"this is an example\"\n  data-testname=\"explicit button name from content containing an element explicit with term role\"\n  class=\"ex iblock\"\n><span>this is an </span><span role=\"term\">example</span></div>\n<div\n  role=\"heading\"\n  data-expectedlabel=\"this is an example\"\n  data-testname=\"explicit heading name from content containing an element explicit with term role\"\n  class=\"ex iblock\"\n><span>this is an </span><span role=\"term\">example</span></div>\n<div\n  role=\"link\"\n  tabindex=\"0\"\n  data-expectedlabel=\"this is an example\"\n  data-testname=\"explicit link name from content containing an element explicit with term role\"\n  class=\"ex iblock\"\n><span>this is an </span><span role=\"term\">example</span></div>",
+		"selector": ".ex"
+	},
+	{
+		"filename": "comp_tooltip.html",
+		"title": "Name Comp: Tooltip",
+		"html": "<style type=\"text/css\"></style><p>Tests the <a href=\"https://w3c.github.io/accname/#comp_tooltip\">#comp_tooltip</a> portions of the AccName <em>Name Computation</em> algorithm.</p>\n\n<a href=\"#\" title=\"title\" data-expectedlabel=\"title\" data-testname=\"link with img with tooltip label\" class=\"ex\"><img alt=\"\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\"></a>\n<a href=\"#\" title=\"title\" data-expectedlabel=\"title\" data-testname=\"link with text with tooltip label and no contents\" class=\"ex\"></a>\n<a href=\"#\" title=\"title\" data-expectedlabel=\"contents\" data-testname=\"link with text with tooltip label and contents\" class=\"ex\">contents</a>\n<div title=\"title\" role=\"group\" data-expectedlabel=\"title\" data-testname=\"div with text with tooltip label\" class=\"ex\">contents</div><!-- Note: group role disallows nameFrom:contents -->\n<img title=\"title\" data-expectedlabel=\"title\" data-testname=\"img with tooltip label without alt\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n<img title=\"title\" data-expectedlabel=\"alt\" alt=\"alt\" data-testname=\"img with tooltip label with alt\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n<img data-expectedlabel=\"alt\" alt=\"alt\" data-testname=\"img with tooltip label without title\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n\n<select title=\"title\" data-expectedlabel=\"title\" data-testname=\"select with tooltip label\" class=\"ex\">\n  <option value=\"\" disabled selected>select options</option>\n  <option value=\"1\">option 1</option>\n  <option value=\"2\">option 2</option>\n  <option value=\"3\">option 3</option>\n</select>\n\n\n<!-- TODO: Move these: https://github.com/web-platform-tests/interop-accessibility/issues/78 -->\n<button title=\"title\" data-expectedlabel=\"contents\" data-testname=\"button with tooltip label\" class=\"ex\">contents</button>\n<input type=\"checkbox\" title=\"title\" data-expectedlabel=\"title\" data-testname=\"checkbox input with tooltip label\" class=\"ex\">\n<input type=\"radio\" title=\"title\" data-expectedlabel=\"title\" data-testname=\"radio input with tooltip label\" class=\"ex\">\n\n<!-- TODO: Move these: https://github.com/web-platform-tests/interop-accessibility/issues/78 -->\n<!-- https://w3c.github.io/html-aam/#input-type-text-input-type-password-input-type-number-input-type-search-input-type-tel-input-type-email-input-type-url-and-textarea-element-accessible-name-computation -->\n<input type=\"text\" title=\"title\" data-expectedlabel=\"title\" placeholder=\"placeholder\" data-testname=\"text input with placeholder and tooltip label\" class=\"ex\">\n<input type=\"password\" title=\"title\" data-expectedlabel=\"title\" placeholder=\"placeholder\" data-testname=\"password input with placeholder and tooltip label\" class=\"ex\">\n<input type=\"number\" title=\"title\" data-expectedlabel=\"title\" placeholder=\"placeholder\" data-testname=\"number input with placeholder and tooltip label\" class=\"ex\">\n<input type=\"search\" title=\"title\" data-expectedlabel=\"title\" placeholder=\"placeholder\" data-testname=\"search input with placeholder and tooltip label\" class=\"ex\">\n<input type=\"tel\" title=\"title\" data-expectedlabel=\"title\" placeholder=\"placeholder\" data-testname=\"tel input with placeholder and tooltip label\" class=\"ex\">\n<input type=\"email\" title=\"title\" data-expectedlabel=\"title\" placeholder=\"placeholder\" data-testname=\"email input with placeholder and tooltip label\" class=\"ex\">\n<input type=\"url\" title=\"title\" data-expectedlabel=\"title\" placeholder=\"placeholder\" data-testname=\"url input with placeholder and tooltip label\" class=\"ex\">\n<textarea title=\"title\" data-expectedlabel=\"title\" placeholder=\"placeholder\" data-testname=\"textarea with placeholder and tooltip label\" class=\"ex\"></textarea>\n\n<!-- TODO: Move these: https://github.com/web-platform-tests/interop-accessibility/issues/78 -->\n<!-- https://w3c.github.io/html-aam/#text-level-element-accessible-name-computation -->\n<abbr title=\"Web Platform Tests\" data-expectedlabel=\"Web Platform Tests\" data-testname=\"abbr with tooltip label\" class=\"ex\">WPT</abbr>\n<!-- kbd test disabled: see resolution at https://github.com/web-platform-tests/interop-accessibility/issues/131 -->\n<!-- <kbd title=\"Control + Option\" data-expectedlabel=\"Control + Option\" data-testname=\"kbd with tooltip label\" class=\"ex\">CTRL + OPT</kbd> -->\n\n<!-- TODO: Move these: https://github.com/web-platform-tests/interop-accessibility/issues/78 -->\n<!-- https://w3c.github.io/html-aam/#summary-element-accessible-name-computation -->\n<details>\n  <summary title=\"title\" data-expectedlabel=\"contents\" data-testname=\"summary with tooltip label and contents\" class=\"ex\">contents</summary>\n  details\n</details>\n\n<!-- TODO: Move these: https://github.com/web-platform-tests/interop-accessibility/issues/78 -->\n<!-- https://w3c.github.io/html-aam/#iframe-element-accessible-name-computation -->\n<iframe title=\"title\" data-expectedlabel=\"title\" data-testname=\"iframe with tooltip label\" width=\"20px\" height=\"20px\" class=\"ex\"></iframe>",
+		"selector": ".ex"
+	},
+	{
+		"filename": "comp_labeledby_non_standard.html",
+		"title": "Name Comp: aria-labeledby (non-standard)",
+		"html": "<style type=\"text/css\"></style><p>Tests that the non-standard (misspelled) attribute name <code>aria-labeledby</code> is not supported.</p>\n\n<h2>Tests for <code>aria-labeledby</code></h2>\n\n<div role=\"group\" aria-labeledby=\"h\" class=\"ex\" data-expectedlabel=\"\" data-testname=\"div group with aria-labeledby\">\n  <h2 id=\"h\">first heading</h2>\n  <p>text inside div group</p>\n</div>\n\n<div role=\"group\" aria-label=\"self label\" id=\"g2\" aria-labeledby=\"g2 h2\" class=\"ex\" data-expectedlabel=\"self label\" data-testname=\"div group with aria-label and aria-labeledby\">\n  <h2 id=\"h2\">+ first heading</h2>\n  <p>text inside div group</p>\n</div>\n\n<div role=\"group\" aria-labeledby=\"h2\" aria-labelledby=\"p3\" class=\"ex\" data-expectedlabel=\"text inside div group\" data-testname=\"div group with aria-labeledby and aria-labelledby\">\n  <h2 id=\"h3\">+ first heading</h2>\n  <p id=\"p3\">text inside div group</p>\n</div>",
 		"selector": ".ex"
 	}
 ];
 window.wpt["wai-aria"] = [
+	{
+		"filename": "grid-roles.html",
+		"title": "Grid Role Verification Tests",
+		"html": "<style type=\"text/css\"></style><p>Tests <a href=\"https://w3c.github.io/aria/#grid\">grid</a> and related roles.</p>\n\n  <!-- ARIA table roles tested in ./table-roles.html -->\n\n  <div role=\"grid\" data-testname=\"role is grid\" data-expectedrole=\"grid\" class=\"ex\">\n    <div role=\"row\" data-testname=\"role is row (in grid)\" data-expectedrole=\"row\" class=\"ex\">\n      <span role=\"columnheader\" data-testname=\"role is columnheader (in row, in grid)\" data-expectedrole=\"columnheader\" class=\"ex\">x</span>\n      <span role=\"columnheader\">x</span>\n    </div>\n    <div role=\"row\">\n      <span role=\"rowheader\" data-testname=\"role is rowheader (in row, in grid)\" data-expectedrole=\"rowheader\" class=\"ex\">x</span>\n      <span role=\"gridcell\" data-testname=\"role is gridcell (in row, in grid)\" data-expectedrole=\"gridcell\" class=\"ex\">x</span>\n    </div>\n  </div>\n\n  <div role=\"grid\">\n    <div role=\"rowgroup\" data-testname=\"role is rowgroup (in grid)\" data-expectedrole=\"rowgroup\" class=\"ex\">\n      <div role=\"row\" data-testname=\"role is row (in rowgroup, in grid)\" data-expectedrole=\"row\" class=\"ex\">\n        <span role=\"columnheader\" data-testname=\"role is columnheader (in row, in rowgroup, in grid)\" data-expectedrole=\"columnheader\" class=\"ex\">x</span>\n        <span role=\"columnheader\">x</span>\n        <span role=\"columnheader\">x</span>\n      </div>\n    </div>\n    <div role=\"rowgroup\">\n      <div role=\"row\">\n        <span role=\"rowheader\" data-testname=\"role is rowheader (in row, in rowgroup, in grid)\" data-expectedrole=\"rowheader\" class=\"ex\">x</span>\n        <span role=\"gridcell\" data-testname=\"role is gridcell (in row, in rowgroup, in grid)\" data-expectedrole=\"gridcell\" class=\"ex\">x</span>\n        <span role=\"gridcell\">x</span>\n      </div>\n    </div>\n  </div>",
+		"selector": ".ex"
+	},
+	{
+		"filename": "generic-roles.html",
+		"title": "Generic Role Verification Tests",
+		"html": "<style type=\"text/css\"></style><p>Tests <a href=\"https://w3c.github.io/aria/#generic\">generic</a>.</p>\n\n<p role=\"generic\" data-testname=\"generic role on p element is generic\" class=\"ex-generic\">x</p>",
+		"role": "generic",
+		"selector": ".ex-generic"
+	},
+	{
+		"filename": "abstract-roles.html",
+		"title": "Abstract Role Verification Tests",
+		"html": "<style type=\"text/css\"></style><p>Tests <a href=\"https://w3c.github.io/aria/#abstract_roles\">Abstract Roles</a> and related <a href=\"https://w3c.github.io/aria/#document-handling_author-errors_roles\">9.1 Roles - handling author errors</a></p>\n\n  <nav role=\"command\" data-testname=\"command role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n  <nav role=\"composite\" data-testname=\"composite role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n  <nav role=\"input\" data-testname=\"input role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n  <nav role=\"landmark\" data-testname=\"landmark role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n  <nav role=\"range\" data-testname=\"range role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n  <nav role=\"roletype\" data-testname=\"roletype role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n  <nav role=\"section\" data-testname=\"section role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n  <nav role=\"sectionhead\" data-testname=\"sectionhead role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n  <nav role=\"select\" data-testname=\"select role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n  <nav role=\"structure\" data-testname=\"structure role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n  <nav role=\"widget\" data-testname=\"widget role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n  <nav role=\"window\" data-testname=\"window role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>",
+		"selector": ".ex"
+	},
+	{
+		"filename": "fallback-roles.html",
+		"title": "Fallback Role Verification Tests",
+		"html": "<style type=\"text/css\"></style><p>Tests <a href=\"https://w3c.github.io/aria/#host_general_role\">8.1 Role Attribute</a> role token list selection and <a href=\"https://w3c.github.io/aria/#document-handling_author-errors_roles\">9.1 Roles - handling author errors</a>.</p>\n\n  <!-- known el and two known ARIA 1.0 roles -->\n  <nav role=\"region group\" data-testname=\"fallback role w/ region with no label\" data-expectedrole=\"group\" class=\"ex\">x</nav>\n  <nav role=\"region group\" data-testname=\"fallback role w/ region with label\" aria-label=\"x\" data-expectedrole=\"region\" class=\"ex\">x</nav>\n\n  <!-- known el and known ARIA 1.1 with 1.0 role backup -->\n  <div role=\"switch checkbox\" aria-checked=\"true\" data-testname=\"aria 1.1 switch role w/ fallback to aria 1.0 checkbox role\" aria-label=\"x\" data-expectedrole=\"switch\" class=\"ex\">x</div>\n\n  <!-- known el and invalid role token with valid backup -->\n  <div role=\"foo button\" data-testname=\"div[role=button] ignoring invalid foo role token\" aria-label=\"x\" data-expectedrole=\"button\" class=\"ex\">x</div>\n\n  <!-- unknown el and invalid role token with valid backup -->\n  <unknown role=\"foo button\" data-testname=\"unknown[role=button] ignoring invalid foo role token\" aria-label=\"x\" data-expectedrole=\"button\" class=\"ex\">x</unknown>\n\n  <!-- known el and invalid role(s) -->\n  <button role=\"foo\" data-testname=\"button ignoring single invalid role token\" aria-label=\"x\" data-expectedrole=\"button\" class=\"ex\">x</unknown>\n  <button role=\"foo bar\" data-testname=\"button ignoring multiple invalid role tokens\" aria-label=\"x\" data-expectedrole=\"button\" class=\"ex\">x</unknown>\n\n  <!-- known el with invalid punctuation -->\n  <div role=\"invalid, punctuation, tests, link, button\" data-testname=\"div[role=button] ignoring invalid foo role token including punctuation-contaminated known link role\" aria-label=\"x\" data-expectedrole=\"button\" class=\"ex\">x</div>\n\n\n\n  <!-- extra line breaks here to account for rendering of unicode diacritic etc char glitch tests -->\n\n\n\n  <div role=\"l\u0337\u0357\u030c\u0303\u035d\u0350\u0314\u031a\u0344\u0316\u033b\u0317\u0324\u033a\u031f\u0331\u035a\u0354\u0347\u034d\u0347\u032b\u0328\u0322\u032b\u031c\u0354\u0317\u031f\u0318\u032b\u031f\u0330\u0321\u033c\u0318i\u0335\u035d\u0342\u0358\u030d\u0350\u0314\u030d\u034c\u0310\u0307\u030f\u030e\u0328\u0332\u0321\u032f\u0320\u032e\u0348\u0356\u0325\u032e\u0332\u0353\u0326\u0317\u0317\u0331\u031e\u034d\u0317\u032a\u0359\u0347\u035an\u0336\u0300\u0342\u0343\u030b\u030a\u031c\u0332\u032b\u0347\u032e\u0349\u032c\u035c\u034e\u034e\u0355\u031d\u0331\u0354\u0319\u0328\u0331\u0326\u0327\u0330\u0326\u0320\u0330\u0322\u0323\u031dk\u0337\u0300\u0352\u0306\u0351\u0312\u0305\u0315\u0351\u0313\u0312\u0342\u033d\u0344\u033d\u0309\u0358\u0340\u035d\u0318\u0333\u0355\u0330\u034e\u032e\u0327\u0320\u0327\u0318\u032a\u0327\u0328\u0347\u0355\u0325\u032d\u035c\u033c\u033c\u031c\u0324\u032b\u0328\u0325\u0328\u033c\u0324\u0330\u0326\u0356\u032a \u0337\u0350\u0342\u0301\u035b\u0303\u0341\u030a\u0308\u034c\u0315\u0304\u0343\u031a\u030c\u0302\u035d\u0308\u0307\u0340\u030c\u0344\u0301\u0300\u0344\u030d\u0344\u0307\u0304\u030a\u0360\u0314\u0352\u033e\u033e\u0307\u0301\u0352\u033d\u0342\u033e\u032e\u0326\u0345\u0318\u0353\u032b\u031c\u0355\u0356\u0330\u035c\u0319\u0318\u0345\u0353\u0321\u033c\u034e\u0333\u0339\u0347\u032e\u035cg\u0338\u034b\u0351\u035d\u0311\u0315\u0343\u035b\u0313\u0309\u0314\u0309\u0351\u0307\u0301\u0344\u0309\u0303\u0301\u0311\u030d\u035d\u031b\u0302\u0315\u0312\u0350\u031a\u035b\u0357\u0311\u030f\u0343\u031a\u033e\u034c\u0308\u0305\u0301\u0307\u033a\u0328\u0326\u0323\u0327\u0347\u0348\u0359\u0347\u0327\u0327\u034e\u0355\u0320\u031e\u0333\u0339\u0345\u0327\u0323r\u0336\u030b\u033e\u0340\u0358\u0360\u0301\u0341\u0312\u0340\u0340\u0351\u0358\u030e\u0340\u030c\u031b\u0308\u0300\u030d\u0360\u0302\u030f\u030a\u030e\u0350\u0358\u0352\u0357\u0357\u0340\u0324\u0332\u0318\u032e\u031f\u032d\u0332o\u0334\u030f\u030a\u034b\u0350\u0310\u0346\u0358\u0308\u033f\u0312\u030a\u0304\u0351\u0344\u0314\u034b\u0314\u0303\u0350\u0343\u0313\u0360\u035b\u0358\u0301\u034a\u0309\u0351\u030a\u0314\u0346\u031e\u031d\u0320\u0319\u0327\u032c\u0321\u0322\u0317\u034d\u034d\u0349\u0321\u033a\u0354\u0359\u0322\u032b\u031d\u0330\u032e\u031c\u0329\u035c\u0319\u0345\u0333\u0349\u033b\u033b\u033c\u034du\u0334\u0307\u0308\u0360\u0352\u0331\u032f\u031e\u031e\u031e\u033a\u033c\u0333\u0333\u035a\u031ep\u0336\u035d\u0302\u0310\u030c\u030f\u034c\u0344\u035d\u0357\u033e\u035d\u034c\u033f\u0313\u0358\u0352\u030b\u0306\u0346\u031a\u033e\u035b\u031b\u0310\u0344\u0343\u034b\u0300\u0349\u032e\u0319\u032f\u032e\u0331\u0349\u0316\u035a\u0349\u0329\u0331\u033a\u0329\u0326\u033a\u0348\u032b\u034d\u0354\u0332\u0323\u0317\u031f\u031c \u0336\u030d\u0344\u0357\u0350\u0300\u030a\u030f\u035b\u0303\u0344\u034b\u035d\u0305\u0354\u035a\u0329\u032c\u0348  button\" data-testname=\"div[role=button] ignoring invalid unicode diacritics etc on link and group role tokens\" aria-label=\"x\" data-expectedrole=\"button\" class=\"ex\">x</div>\n\n\n  <!-- known el and known role with whitespace edge cases -->\n  <div role=\" button\" data-testname=\"div[role=button] ignoring tab char\" aria-label=\"x\" data-expectedrole=\"button\" class=\"ex\">x</div>\n  <div role=\"\nbutton\" data-testname=\"div[role=button] ignoring line break\" aria-label=\"x\" data-expectedrole=\"button\" class=\"ex\">x</div>\n  <div role=\"\u2800 button\" data-testname=\"div[role=button] ignoring braille whitespace char\" aria-label=\"x\" data-expectedrole=\"button\" class=\"ex\">x</div>",
+		"selector": ".ex"
+	},
+	{
+		"filename": "region-roles.html",
+		"title": "Region Role Verification Tests",
+		"html": "<style type=\"text/css\"></style><p>Tests <a href=\"https://w3c.github.io/aria/#region\">region</a> and related roles, as well as the \"name from author\" rule in <a href=\"https://w3c.github.io/aria/#document-handling_author-errors_roles\">9.1 Roles - handling author errors</a>.</p>\n\n<!-- no label -->\n<nav role=\"region\" data-testname=\"region without label\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n\n<!-- w/ label -->\n<nav role=\"region\" data-testname=\"region with label\" data-expectedrole=\"region\" aria-label=\"x\" class=\"ex\">x</nav>",
+		"selector": ".ex"
+	},
+	{
+		"filename": "tab-roles.html",
+		"title": "Tab-related Role Verification Tests",
+		"html": "<style type=\"text/css\"></style><p>Tests <a href=\"https://w3c.github.io/aria/#tab\">tab</a> and related roles.</p>\n\n<!--<div> tab with tablist/tab/tabpanel semantics-->\n<div role=\"tablist\" data-testname=\"div role is tablist\" data-expectedrole=\"tablist\" class=\"ex\">\n    <div role=\"tab\" data-testname=\"role is tab (in div tablist)\" data-expectedrole=\"tab\" class=\"ex\">x</div>\n</div>\n<div role=\"tabpanel\" data-testname=\"role is tabpanel (with sibling div tablist)\" data-expectedrole=\"tabpanel\" class=\"ex\"></div>\n\n<!--<div> tabs with tablist/tab/tabpanel semantics, selection, no focus management-->\n<div role=\"tablist\" data-testname=\"div role is tablist (with selection)\" data-expectedrole=\"tablist\" class=\"ex\">\n    <div role=\"tab\" aria-selected=\"true\" data-testname=\"role is tab and tab is selected\" data-expectedrole=\"tab\" class=\"ex\">x</div>\n    <div role=\"tab\" aria-selected=\"false\" data-testname=\"role is tab and tab is not selected\" data-expectedrole=\"tab\" class=\"ex\">y</div>\n</div>\n<div role=\"tabpanel\" data-testname=\"role is tabpanel (faux selected)\" data-expectedrole=\"tabpanel\" class=\"ex\"></div>\n<div role=\"tabpanel\" data-testname=\"role is tabpanel (faux unselected)\" data-expectedrole=\"tabpanel\" class=\"ex\"></div>\n\n<!--<div> tabs with tablist/tab/tabpanel semantics, selection, roving tabindex-->\n<div role=\"tablist\" data-testname=\"div role is tablist (with selection, roving tabindex)\" data-expectedrole=\"tablist\" class=\"ex\">\n    <div role=\"tab\" aria-selected=\"true\" tabindex = \"0\" data-testname=\"role is tab, tab is selected and in tab order\" data-expectedrole=\"tab\" class=\"ex\">x</div>\n    <div role=\"tab\" aria-selected=\"false\" tabindex = \"-1\" data-testname=\"role is tab and tab is not selected, not tabbable\" data-expectedrole=\"tab\" class=\"ex\">y</div>\n    <div role=\"tab\" aria-selected=\"false\" tabindex = \"-1\" data-testname=\"role is tab and tab is not selected, not tabbable (duplicate)\" data-expectedrole=\"tab\" class=\"ex\">z</div>\n</div>\n<div role=\"tabpanel\" data-testname=\"role is tabpanel with selection, roving tabindex\" data-expectedrole=\"tabpanel\" class=\"ex\"></div>\n<div role=\"tabpanel\" data-testname=\"role is tabpanel with selection, roving tabindex (duplicate)\" data-expectedrole=\"tabpanel\" class=\"ex\"></div>\n<div role=\"tabpanel\" data-testname=\"role is tabpanel with selection, roving tabindex (duplicate 2)\" data-expectedrole=\"tabpanel\" class=\"ex\"></div>\n\n<!--<div> tabs with tablist/tab/tabpanel semantics and non-empty tabpanel-->\n<div role=\"tablist\" data-testname=\"div role is tablist (with non-empty tabpanel)\" data-expectedrole=\"tablist\" class=\"ex\">\n    <div role=\"tab\" aria-selected=\"true\" data-testname=\"role is tab and tab is selected (with non-empty tabpanel content)\" data-expectedrole=\"tab\" class=\"ex\">x</div>\n    <div role=\"tab\" aria-selected=\"false\" data-testname=\"role is tab and tab is not selected (with non-empty tabpanel content)\" data-expectedrole=\"tab\" class=\"ex\">y</div>\n</div>\n<div role=\"tabpanel\" data-testname=\"role is tabpanel with selection, non-empty content\" data-expectedrole=\"tabpanel\" class=\"ex\">Tab one's stuff</div>\n<div role=\"tabpanel\" data-testname=\"role is tabpanel with selection, non-empty content (duplicate)\" data-expectedrole=\"tabpanel\" class=\"ex\">Tab two's stuff</div>\n\n<!--<div> tabs with tablist/tab/tabpanel semantics, non-empty tabpanel and aria-controls-->\n<div role=\"tablist\" data-testname=\"div role is tablist (with non-empty tabpanel and aria-controls)\" data-expectedrole=\"tablist\" class=\"ex\">\n    <div role=\"tab\" aria-controls = \"tabpanel1\" aria-selected=\"true\" data-testname=\"role is tab, tab is selected (with aria-controls)\" data-expectedrole=\"tab\" class=\"ex\">x</div>\n    <div role=\"tab\" aria-controls = \"tabpanel2\" aria-selected=\"false\" data-testname=\"role is tab, tab is not selected (with aria-controls)\" data-expectedrole=\"tab\" class=\"ex\">y</div>\n</div>\n<div role=\"tabpanel\" id=\"tabpanel1\" data-testname=\"role is tabpanel with aria-controls and non-empty content\" data-expectedrole=\"tabpanel\" class=\"ex\">Tab one's stuff</div>\n<div role=\"tabpanel\" id=\"tabpanel2\" data-testname=\"role is tabpanel with aria-controls and non-empty content (duplicate)\" data-expectedrole=\"tabpanel\" class=\"ex\">Tab one's stuff</div>\n\n<!--<div> tablist with child <button> that has explicit role=\"tab\"-->\n<div role=\"tablist\" data-testname=\"div role for button parent container is tablist\" data-expectedrole=\"tablist\" class=\"ex\">\n    <button role=\"tab\" data-testname=\"button role is tab (in div tablist)\" data-expectedrole=\"tab\" class=\"ex\">x</div>\n</div>\n\n<!--<ul> tablist with child <divs> that have explicit role=\"tab\"-->\n<ul role=\"tablist\" data-testname=\"ul role is tablist\" data-expectedrole=\"tablist\" class=\"ex\">\n    <li>\n        <div role=\"tab\" aria-selected=\"true\" tabindex = \"0\" data-testname=\"role is tab (within li), tab is selected and in tab order\" data-expectedrole=\"tab\" class=\"ex\">x</div>\n    </li>\n    <li>\n        <div role=\"tab\" aria-selected=\"false\" tabindex = \"-1\" data-testname=\"role is tab (within li), tab is not selected and in tab order\" data-expectedrole=\"tab\" class=\"ex\">y</div>\n    </li>\n</ul>\n<div role=\"tabpanel\" data-testname=\"role is tabpanel as sibling to ul\" data-expectedrole=\"tabpanel\" class=\"ex\">Tab one's stuff</div>\n<div role=\"tabpanel\" data-testname=\"role is tabpanel as sibling to ul (duplicate)\" data-expectedrole=\"tabpanel\" class=\"ex\">Tab two's stuff</div>\n\n<!--<ul> tablist with child <divs> that have explicit role=\"tab\", role=\"none\" on li elements-->\n    <ul role=\"tablist\" data-testname=\"ul role is tablist (child li have role none)\" data-expectedrole=\"tablist\" class=\"ex\">\n        <li role=\"none\">\n            <div role=\"tab\" aria-selected=\"true\" tabindex = \"0\" data-testname=\"role is tab (within li with role none), tab is selected and in tab order\" data-expectedrole=\"tab\" class=\"ex\">x</div>\n        </li>\n        <li role=\"none\">\n            <div role=\"tab\" aria-selected=\"false\" tabindex = \"-1\" data-testname=\"role is tab (within li with role none), tab is not selected and in tab order\" data-expectedrole=\"tab\" class=\"ex\">y</div>\n        </li>\n    </ul>\n    <div role=\"tabpanel\" data-testname=\"role is tabpanel as sibling to ul with child role none li elements\" data-expectedrole=\"tabpanel\" class=\"ex\">Tab one's stuff</div>\n    <div role=\"tabpanel\" data-testname=\"role is tabpanel as sibling to ul with child role none li elements (duplicate)\" data-expectedrole=\"tabpanel\" class=\"ex\">Tab two's stuff</div>",
+		"selector": ".ex"
+	},
 	{
 		"filename": "invalid-roles.html",
 		"title": "Invalid Role Verification Tests",
@@ -1181,6 +1224,18 @@ window.wpt["wai-aria"] = [
 		"html": "<style type=\"text/css\"></style><p>Tests invalid ARIA roles from <a href=\"https://w3c.github.io/aria/#document-handling_author-errors_roles\">9.1 Roles - handling author errors</a>.</p>\n\n<!-- Tests fallback for <nav> when 1/2/3 invalid roles are supplied -->\n<nav role=\"foo\" data-testname=\"nav with invalid role name foo\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n<nav role=\"foo bar\" data-testname=\"nav with two invalid role names\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n<nav role=\"foo bar baz\" data-testname=\"nav with three invalid role names\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n\n<!-- Tests fallback for <button> when 1/2/3 invalid roles are supplied -->\n<button role=\"foo\" data-testname=\"button with invalid role name foo\" data-expectedrole=\"button\" class=\"ex\">x</button>\n<button role=\"foo bar\" data-testname=\"button with two invalid role names\" data-expectedrole=\"button\" class=\"ex\">x</button>\n<button role=\"foo bar baz\" data-testname=\"button with three invalid role names\" data-expectedrole=\"button\" class=\"ex\">x</button>\n\n<!-- Tests fallback for semantically neutral elements when 1/2/3 invalid roles are supplied -->\n<span role=\"foo\" data-testname=\"span with invalid role name foo\" class=\"ex-generic\">x</span>\n<span role=\"foo bar\" data-testname=\"span with two invalid role names\" class=\"ex-generic\">x</span>\n<span role=\"foo bar baz\" data-testname=\"span with three invalid role names\" class=\"ex-generic\">x</span>\n<div role=\"foo\" data-testname=\"div with invalid role name foo\" class=\"ex-generic\">x</div>\n<div role=\"foo bar\" data-testname=\"div with two invalid role names\" class=\"ex-generic\">x</div>\n<div role=\"foo bar baz\" data-testname=\"div with three invalid role names\"class=\"ex-generic\">x</div>\n\n<!-- Whitespace tests with <nav> (including line breaks, tabs, zero-width space, braille space, non-breaking space, standard space) -->\n<nav role=\" \" data-testname=\"nav with empty character as role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n<nav role=\"&#13\" data-testname=\"nav with line break (&#13) character as role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n<nav role=\"&#9\" data-testname=\"nav with tab (&#9) as role (should be treated as whitespace)\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n<nav role=\"&#8203\" data-testname=\"nav with zero-width space as role (should be treated as whitespace)\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n<nav role=\"&#10240\" data-testname=\"nav with braille space (10240) as role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n<nav role=\"&#x2800\" data-testname=\"nav with braille space (x2800) as role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n<nav role=\"&nbsp;\" data-testname=\"nav with non-breaking space (nbsp) as role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n<nav role=\"&#20\" data-testname=\"nav with standard space (nbsp) as role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n\n<!-- Escaped whitespace tests with <span> (including line breaks, tabs, zero-width space, braille space, non-breaking space, standard space) -->\n<span role=\" \" data-testname=\"span with escaped empty character as role\" class=\"ex-generic\">x</span>\n<span role=\"&#13\" data-testname=\"span with escaped line break (&#13) character as role\" class=\"ex-generic\">x</span>\n<span role=\"&#9\" data-testname=\"span with escaped tab (&#9) as role (should be treated as whitespace)\" class=\"ex-generic\">x</span>\n<span role=\"&#8203\" data-testname=\"span with escaped zero-width space as role (should be treated as whitespace)\" class=\"ex-generic\">x</span>\n<span role=\"&#10240\" data-testname=\"span with escaped braille space (10240) as role\" class=\"ex-generic\">x</span>\n<span role=\"&#x2800\" data-testname=\"span with escaped braille space (x2800) as role\" class=\"ex-generic\">x</span>\n<span role=\"&nbsp;\" data-testname=\"span with escaped non-breaking space (nbsp) as role\" class=\"ex-generic\">x</span>\n<span role=\"&#20\" data-testname=\"span with escaped standard space (nbsp) as role\" class=\"ex-generic\">x</span>\n\n<!-- Unescaped whitespace tests with <span> (including line breaks, tabs, zero-width space, braille space, non-breaking space, standard space) -->\n  <span role=\" \" data-testname=\"span with empty character as role\" class=\"ex-generic\">x</span>\n  <span role=\"\n  \" data-testname=\"span with line break (&#13) character as role\" class=\"ex-generic\">x</span>\n  <span role=\"  \" data-testname=\"span with tab (&#9) as role (should be treated as whitespace)\" class=\"ex-generic\">x</span>\n  <span role=\"\u200d\" data-testname=\"span with zero-width space as role (should be treated as whitespace)\" class=\"ex-generic\">x</span>\n  <span role=\"\u2800\" data-testname=\"span with braille space (10240) as role\" class=\"ex-generic\">x</span>\n  <span role=\" \" data-testname=\"span with non-breaking space (nbsp) as role\" class=\"ex-generic\">x</span>\n  <span role=\" \" data-testname=\"span with standard space as role\" class=\"ex-generic\">x</span>\n\n<!-- Diacritics with <a> -->\n<a href=\"#\" role=\"&#771\" data-testname=\"link with role set to tilde diacritic\" data-expectedrole=\"link\" class=\"ex\">x</a>\n<a href=\"#\" role=\"foo&#771\" data-testname=\"link with role foo that has tilde diacritic\" data-expectedrole=\"link\" class=\"ex\">x</a>\n<a href=\"#\" role=\"&#773\" data-testname=\"link with role set to overline diacritic\" data-expectedrole=\"link\" class=\"ex\">x</a>\n<a href=\"#\" role=\"foo&#773\" data-testname=\"link with role foo that has overline diacritic\" data-expectedrole=\"link\" class=\"ex\">x</a>\n<a href=\"#\" role=\"&#813\" data-testname=\"link with role set to circumflex diacritic below\" data-expectedrole=\"link\" class=\"ex\">x</a>\n<a href=\"#\" role=\"foo&#813\" data-testname=\"link with role foo that has circumflex diacritic below\" data-expectedrole=\"link\" class=\"ex\">x</a>\n<a href=\"#\" role=\"button&#771\" data-testname=\"link with role set to button with tilde diacritic\" data-expectedrole=\"link\" class=\"ex\">x</a>\n\n<!-- Diacritics with <div> -->\n<div role=\"&#771\" data-testname=\"div with role set to tilde diacritic\" class=\"ex-generic\">x</div>\n<div role=\"foo&#771\" data-testname=\"div with role foo that has tilde diacritic\" class=\"ex-generic\">x</div>\n<div role=\"button&#771\" data-testname=\"div with role set to button with tilde diacritic\" class=\"ex-generic\">x</div>\n<div role=\"button\u00b4\" data-testname=\"div with role set to button with unescaped tilde diacritic\" class=\"ex-generic\">x</div>\n\n<!-- Zero-width joiners (e.g., ZWJ like emoji variants use) with <button> -->\n<!-- [sic] role=\"\u200d\" should include an invisible ZWJ], and role=\"link\u200d\" ends with an invisible ZWJ. Use caution when editing. -->\n<button role=\"\u200d\" data-testname=\"button with role set to zero-width joiner\" data-expectedrole=\"button\" class=\"ex\">x</button>\n<button role=\"link\u200d\" data-testname=\"button with role set to foo with zero-width joiner\" data-expectedrole=\"button\" class=\"ex\">x</button>\n\n<!-- Non-western chars with <nav> -->\n<nav role=\"\u0398\" data-testname=\"nav with role set to theta (\u0398)\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n<nav role=\"\u0698\" data-testname=\"nav with role set to Persian character (\u0698)\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n<nav role=\"\u0698 \u266e\" data-testname=\"nav with multiple non-latin character roles, Persian character (\u0698) and \u266e\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n<nav role=\"\u6f22\u5b57\" data-testname=\"nav with role set to Japanese kanji\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n\n<!-- Non-western chars with <span> -->\n<span role=\"\u0398\" data-testname=\"span with role set to theta (\u0398)\" class=\"ex-generic\">x</span>\n<span role=\"\u0698\" data-testname=\"span with role set to Persian character (\u0698)\" class=\"ex-generic\">x</span>\n<span role=\"\u0698 \u266e\" data-testname=\"span with multiple non-latin character roles, Persian character (\u0698) and \u266e\" class=\"ex-generic\">x</span>\n<span role=\"\u6f22\u5b57\" data-testname=\"span with role set to Japanese kanji\" class=\"ex-generic\">x</span>\n\n<!-- RTL strings (Hebrew & Arabic) with <nav> -->\n<nav role=\"\u0633\u0644\u0627\u0645\" data-testname=\"nav with role set to Arabic text\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n<nav role=\"\u0633\u0644\u0627\u0645 \u062d\u0628\u064a\u0628\" data-testname=\"nav with multiple role assignments set to Arabic text\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n<nav role=\"\u05e9\u05dc\u05d5\u05dd\" data-testname=\"nav with role set to Hebrew text\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n<nav role=\"\u05e9\u05dc\u05d5\u05dd \u05d7\u05d1\u05e8\" data-testname=\"nav with multiple role assignments set to Hebrew text\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n\n<!-- RTL strings (Hebrew & Arabic) with <div> -->\n<div role=\"\u0633\u0644\u0627\u0645\" data-testname=\"div with role set to Arabic text\" class=\"ex-generic\">x</div>\n<div role=\"\u0633\u0644\u0627\u0645 \u062d\u0628\u064a\u0628\" data-testname=\"div with multiple role assignments set to Arabic text\" class=\"ex-generic\">x</div>\n<div role=\"\u05e9\u05dc\u05d5\u05dd\" data-testname=\"div with role set to Hebrew text\" class=\"ex-generic\">x</div>\n<div role=\"\u05e9\u05dc\u05d5\u05dd \u05d7\u05d1\u05e8\" data-testname=\"div with multiple role assignments set to Hebrew text\" class=\"ex-generic\">x</div>\n\n<!-- Escaped chars, URL-encoded chars with <a> -->\n<a href=\"https://www.apple.com/\" role=\"&amp\" data-testname=\"link with role set to ampersand character\" data-expectedrole=\"link\" class=\"ex\">x</a>\n<a href=\"https://www.apple.com/\" role=\"&lt\" data-testname=\"link with role set to less than angle bracket character\" data-expectedrole=\"link\" class=\"ex\">x</a>\n\n<!-- Escaped chars, URL-encoded chars with <span> -->\n<span role=\"&amp\" data-testname=\"span with role set to ampersand character\" class=\"ex-generic\">x</span>\n<span role=\"&lt\" data-testname=\"span with role set to less than angle bracket character\" class=\"ex-generic\">x</span>\n<span role=\"&\" data-testname=\"span with role set to unescaped ampersand character\" class=\"ex-generic\">x</span>\n<span role=\"<\" data-testname=\"span with role set to unescaped less than angle bracket character\" class=\"ex-generic\">x</span>\n\n<!-- Backslash closing quote and other malformed roles with characters with <nav> -->\n<nav role=\"region\\\" data-testname=\"nav with role set to region followed by backslash\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n<nav role=\"\\region\" data-testname=\"nav with role set to backslash followed by region\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n<nav role=\"re/gion\" data-testname=\"nav with role set to region with backslash after e character\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n\n<!-- Backslash closing quote and other malformed roles with characters with <span> -->\n<span role=\"region\\\" data-testname=\"span with role set to region followed by backslash\" class=\"ex-generic\">x</span>\n<span role=\"\\region\" data-testname=\"span with role set to backslash followed by region\" class=\"ex-generic\">x</span>\n<span role=\"re/gion\" data-testname=\"span with role set to region with forward slash after e character\" class=\"ex-generic\">x</span>",
 		"role": "generic",
 		"selector": ".ex-generic"
+	},
+	{
+		"filename": "tree-roles.html",
+		"title": "Tree related Role Verification Tests",
+		"html": "<style type=\"text/css\"></style><p>Tests <a href=\"https://w3c.github.io/aria/#tree\">tree</a> and related roles.</p>\n\n<ul role=\"tree\" data-testname=\"role is tree\" data-expectedrole=\"tree\" class=\"ex\">\n  <li role=\"treeitem\" data-testname=\"role is treeitem (in tree)\" data-expectedrole=\"treeitem\" class=\"ex\">\n    x\n    <ul role=\"group\" data-testname=\"role is group (in treeitem)\" data-expectedrole=\"group\" class=\"ex\">\n      <li role=\"treeitem\" data-testname=\"role is treeitem (in group, in treeitem)\" data-expectedrole=\"treeitem\" class=\"ex\">x</li>\n      <li role=\"treeitem\">x</li>\n    </ul>\n  </li>\n  <li role=\"treeitem\">x</li>\n</ul>\n\n<table role=\"treegrid\" data-testname=\"role is treegrid\" data-expectedrole=\"treegrid\" class=\"ex\">\n  <tbody>\n    <tr role=\"row\" aria-expanded=\"true\" aria-level=\"1\" aria-posinset=\"1\" aria-setsize=\"2\" data-testname=\"role is row (in treegrid)\" data-expectedrole=\"row\" class=\"ex expander\">\n      <td role=\"gridcell\" data-testname=\"role is gridcell (in row, in treegrid)\" data-expectedrole=\"gridcell\" class=\"ex\">x</td>\n      <td role=\"gridcell\">x</td>\n      <td role=\"gridcell\">x</td>\n    </tr>\n    <tr role=\"row\" aria-level=\"2\" aria-posinset=\"1\" aria-setsize=\"2\">\n      <td role=\"gridcell\">x</td>\n      <td role=\"gridcell\">x</td>\n      <td role=\"gridcell\">x</td>\n    </tr>\n    <tr aria-expanded=\"false\" aria-level=\"2\" aria-posinset=\"2\" aria-setsize=\"2\" role=\"row\" class=\"expander\">\n      <td role=\"gridcell\">x</td>\n      <td role=\"gridcell\">x</td>\n      <td role=\"gridcell\">x</td>\n    </tr>\n    <tr role=\"row\" aria-level=\"3\" aria-posinset=\"1\" aria-setsize=\"1\" class=\"hidden\">\n      <td role=\"gridcell\">x</td>\n      <td role=\"gridcell\">x</td>\n      <td role=\"gridcell\">x</td>\n    </tr>\n    <tr role=\"row\" aria-expanded=\"false\" aria-level=\"1\" aria-posinset=\"2\" aria-setsize=\"2\" class=\"expander\">\n      <td role=\"gridcell\">x</td>\n      <td role=\"gridcell\">x</td>\n      <td role=\"gridcell\">x</td>\n    </tr>\n    <tr role=\"row\" aria-level=\"2\" aria-posinset=\"1\" aria-setsize=\"2\" class=\"hidden\">\n      <td role=\"gridcell\">x</td>\n      <td role=\"gridcell\">x</td>\n      <td role=\"gridcell\">x</td>\n    </tr>\n    <tr role=\"row\" aria-level=\"2\" aria-posinset=\"1\" aria-setsize=\"2\" class=\"hidden\">\n      <td role=\"gridcell\">x</td>\n      <td role=\"gridcell\">x</td>\n      <td role=\"gridcell\">x</td>\n    </tr>\n  </tbody>\n</table>",
+		"selector": ".ex"
+	},
+	{
+		"filename": "contextual-roles.html",
+		"title": "Contextual Role Verification Tests",
+		"html": "<style type=\"text/css\"></style><p>Verifies Required Accessibility Parent Roles from <a href=\"https://w3c.github.io/aria/#scope\">5.2.7 Required Accessibility Parent Role</a></p>\n    <p>Also verifies Allowed Accessibility Child Roles from <a href=\"https://w3c.github.io/aria/#mustContain\">5.2.6 Allowed Accessibility Child Roles</a></p>\n\n<!-- Notes for \"required context\" testing:\n\n    - See Computed Role for more details on role computation when an element lacks required context:\n    https://w3c.github.io/core-aam/#roleMappingComputedRole\n\n    - See ARIA spec for full listing of \"Required Accessibility Parent Role\" for each element:\n    https://w3c.github.io/aria/#scope\n\n    Identified roles with \"Required Context\" excluding abstract roles (e.g., child -> parent):\n\n    - caption -> {figure, grid, table, treegrid}\n    - cell -> row\n    - columnheader -> row\n    - gridcell -> row\n    - listitem -> {list, directory} *Note: directory role is deprecated as of ARIA 1.2\n    - menuitem -> {group, menu, menubar}\n    - menuitemcheckbox -> {group, menu, menubar}\n    - menuitemradio -> {group, menu, menubar}\n    - option -> {group, listbox}\n    - row -> {grid, rowgroup, table, treegrid}\n    - rowgroup -> {grid, table, treegrid}\n    - rowheader -> row\n    - tab -> tablist\n    - treeitem -> {group, tree}\n\n    -->\n\n<!-- Required Context Roles Testing  -->\n\n    <!-- caption -> ./table-roles.html -->\n\n    <!-- cell -> ./table-roles.html -->\n\n    <!-- columnheader -> ./grid-roles.html, ./table-roles.html -->\n\n    <!-- gridcell -> ./grid-roles.html -->\n\n    <!-- listitem -> ./list-roles.html -->\n\n    <!-- menuitem, menuitemcheckbox, menuitemradio -> ./menu-roles.html -->\n\n    <!-- option -> ./listbox-roles.html -->\n\n    <!-- row -> ./grid-roles.html, ./table-roles.html  -->\n\n    <!-- rowgroup -> ./grid-roles.html, ./table-roles.html -->\n\n    <!-- rowheader -> ./grid-roles.html, ./table-roles.html -->\n\n    <!-- tab -> ./tab-roles.html -->\n\n    <!-- treeitem -> ./tree-roles.html -->\n\n<!-- Misc Contextual Role Testing  -->\n\n    <!-- Testing contentinfo role computation when scoped to <main> or not:\n    1. If <footer> is a descendant of <main>, it should become 'generic'\n    2. If <footer> is scoped to <body>, it should be 'contentinfo' as expected\n\n    see: https://w3c.github.io/html-aam/#el-footer-ancestorbody -->\n    <!-- main>footer -> ./roles-contextual.tentative.html -->\n\n    <footer data-testname=\"footer scoped to body element is contentinfo\" data-expectedrole=\"contentinfo\" class=\"ex\">x</footer>\n    <div role=\"contentinfo\" data-testname=\"contentinfo region scoped to body element is contentinfo\" data-expectedrole=\"contentinfo\" class=\"ex\">x</div>",
+		"selector": ".ex"
 	},
 	{
 		"filename": "list-roles.html",
@@ -1202,21 +1257,9 @@ window.wpt["wai-aria"] = [
 		"selector": ".ex-generic"
 	},
 	{
-		"filename": "tab-roles.html",
-		"title": "Tab-related Role Verification Tests",
-		"html": "<style type=\"text/css\"></style><p>Tests <a href=\"https://w3c.github.io/aria/#tab\">tab</a> and related roles.</p>\n\n<!--<div> tab with tablist/tab/tabpanel semantics-->\n<div role=\"tablist\" data-testname=\"div role is tablist\" data-expectedrole=\"tablist\" class=\"ex\">\n    <div role=\"tab\" data-testname=\"role is tab (in div tablist)\" data-expectedrole=\"tab\" class=\"ex\">x</div>\n</div>\n<div role=\"tabpanel\" data-testname=\"role is tabpanel (with sibling div tablist)\" data-expectedrole=\"tabpanel\" class=\"ex\"></div>\n\n<!--<div> tabs with tablist/tab/tabpanel semantics, selection, no focus management-->\n<div role=\"tablist\" data-testname=\"div role is tablist (with selection)\" data-expectedrole=\"tablist\" class=\"ex\">\n    <div role=\"tab\" aria-selected=\"true\" data-testname=\"role is tab and tab is selected\" data-expectedrole=\"tab\" class=\"ex\">x</div>\n    <div role=\"tab\" aria-selected=\"false\" data-testname=\"role is tab and tab is not selected\" data-expectedrole=\"tab\" class=\"ex\">y</div>\n</div>\n<div role=\"tabpanel\" data-testname=\"role is tabpanel (faux selected)\" data-expectedrole=\"tabpanel\" class=\"ex\"></div>\n<div role=\"tabpanel\" data-testname=\"role is tabpanel (faux unselected)\" data-expectedrole=\"tabpanel\" class=\"ex\"></div>\n\n<!--<div> tabs with tablist/tab/tabpanel semantics, selection, roving tabindex-->\n<div role=\"tablist\" data-testname=\"div role is tablist (with selection, roving tabindex)\" data-expectedrole=\"tablist\" class=\"ex\">\n    <div role=\"tab\" aria-selected=\"true\" tabindex = \"0\" data-testname=\"role is tab, tab is selected and in tab order\" data-expectedrole=\"tab\" class=\"ex\">x</div>\n    <div role=\"tab\" aria-selected=\"false\" tabindex = \"-1\" data-testname=\"role is tab and tab is not selected, not tabbable\" data-expectedrole=\"tab\" class=\"ex\">y</div>\n    <div role=\"tab\" aria-selected=\"false\" tabindex = \"-1\" data-testname=\"role is tab and tab is not selected, not tabbable (duplicate)\" data-expectedrole=\"tab\" class=\"ex\">z</div>\n</div>\n<div role=\"tabpanel\" data-testname=\"role is tabpanel with selection, roving tabindex\" data-expectedrole=\"tabpanel\" class=\"ex\"></div>\n<div role=\"tabpanel\" data-testname=\"role is tabpanel with selection, roving tabindex (duplicate)\" data-expectedrole=\"tabpanel\" class=\"ex\"></div>\n<div role=\"tabpanel\" data-testname=\"role is tabpanel with selection, roving tabindex (duplicate 2)\" data-expectedrole=\"tabpanel\" class=\"ex\"></div>\n\n<!--<div> tabs with tablist/tab/tabpanel semantics and non-empty tabpanel-->\n<div role=\"tablist\" data-testname=\"div role is tablist (with non-empty tabpanel)\" data-expectedrole=\"tablist\" class=\"ex\">\n    <div role=\"tab\" aria-selected=\"true\" data-testname=\"role is tab and tab is selected (with non-empty tabpanel content)\" data-expectedrole=\"tab\" class=\"ex\">x</div>\n    <div role=\"tab\" aria-selected=\"false\" data-testname=\"role is tab and tab is not selected (with non-empty tabpanel content)\" data-expectedrole=\"tab\" class=\"ex\">y</div>\n</div>\n<div role=\"tabpanel\" data-testname=\"role is tabpanel with selection, non-empty content\" data-expectedrole=\"tabpanel\" class=\"ex\">Tab one's stuff</div>\n<div role=\"tabpanel\" data-testname=\"role is tabpanel with selection, non-empty content (duplicate)\" data-expectedrole=\"tabpanel\" class=\"ex\">Tab two's stuff</div>\n\n<!--<div> tabs with tablist/tab/tabpanel semantics, non-empty tabpanel and aria-controls-->\n<div role=\"tablist\" data-testname=\"div role is tablist (with non-empty tabpanel and aria-controls)\" data-expectedrole=\"tablist\" class=\"ex\">\n    <div role=\"tab\" aria-controls = \"tabpanel1\" aria-selected=\"true\" data-testname=\"role is tab, tab is selected (with aria-controls)\" data-expectedrole=\"tab\" class=\"ex\">x</div>\n    <div role=\"tab\" aria-controls = \"tabpanel2\" aria-selected=\"false\" data-testname=\"role is tab, tab is not selected (with aria-controls)\" data-expectedrole=\"tab\" class=\"ex\">y</div>\n</div>\n<div role=\"tabpanel\" id=\"tabpanel1\" data-testname=\"role is tabpanel with aria-controls and non-empty content\" data-expectedrole=\"tabpanel\" class=\"ex\">Tab one's stuff</div>\n<div role=\"tabpanel\" id=\"tabpanel2\" data-testname=\"role is tabpanel with aria-controls and non-empty content (duplicate)\" data-expectedrole=\"tabpanel\" class=\"ex\">Tab one's stuff</div>\n\n<!--<div> tablist with child <button> that has explicit role=\"tab\"-->\n<div role=\"tablist\" data-testname=\"div role for button parent container is tablist\" data-expectedrole=\"tablist\" class=\"ex\">\n    <button role=\"tab\" data-testname=\"button role is tab (in div tablist)\" data-expectedrole=\"tab\" class=\"ex\">x</div>\n</div>\n\n<!--<ul> tablist with child <divs> that have explicit role=\"tab\"-->\n<ul role=\"tablist\" data-testname=\"ul role is tablist\" data-expectedrole=\"tablist\" class=\"ex\">\n    <li>\n        <div role=\"tab\" aria-selected=\"true\" tabindex = \"0\" data-testname=\"role is tab (within li), tab is selected and in tab order\" data-expectedrole=\"tab\" class=\"ex\">x</div>\n    </li>\n    <li>\n        <div role=\"tab\" aria-selected=\"false\" tabindex = \"-1\" data-testname=\"role is tab (within li), tab is not selected and in tab order\" data-expectedrole=\"tab\" class=\"ex\">y</div>\n    </li>\n</ul>\n<div role=\"tabpanel\" data-testname=\"role is tabpanel as sibling to ul\" data-expectedrole=\"tabpanel\" class=\"ex\">Tab one's stuff</div>\n<div role=\"tabpanel\" data-testname=\"role is tabpanel as sibling to ul (duplicate)\" data-expectedrole=\"tabpanel\" class=\"ex\">Tab two's stuff</div>\n\n<!--<ul> tablist with child <divs> that have explicit role=\"tab\", role=\"none\" on li elements-->\n    <ul role=\"tablist\" data-testname=\"ul role is tablist (child li have role none)\" data-expectedrole=\"tablist\" class=\"ex\">\n        <li role=\"none\">\n            <div role=\"tab\" aria-selected=\"true\" tabindex = \"0\" data-testname=\"role is tab (within li with role none), tab is selected and in tab order\" data-expectedrole=\"tab\" class=\"ex\">x</div>\n        </li>\n        <li role=\"none\">\n            <div role=\"tab\" aria-selected=\"false\" tabindex = \"-1\" data-testname=\"role is tab (within li with role none), tab is not selected and in tab order\" data-expectedrole=\"tab\" class=\"ex\">y</div>\n        </li>\n    </ul>\n    <div role=\"tabpanel\" data-testname=\"role is tabpanel as sibling to ul with child role none li elements\" data-expectedrole=\"tabpanel\" class=\"ex\">Tab one's stuff</div>\n    <div role=\"tabpanel\" data-testname=\"role is tabpanel as sibling to ul with child role none li elements (duplicate)\" data-expectedrole=\"tabpanel\" class=\"ex\">Tab two's stuff</div>",
-		"selector": ".ex"
-	},
-	{
 		"filename": "table-roles.html",
 		"title": "Table Role Verification Tests",
 		"html": "<style type=\"text/css\"></style><p>Tests <a href=\"https://w3c.github.io/aria/#table\">table</a> and related roles.</p>\n\n<!-- HTML <table> Elements Testing  -->\n\n    <!-- <caption> -> wpt/html-aam/table-roles.html -->\n\n    <!-- <table> -> wpt/html-aam/table-roles.html -->\n    <!-- <tbody> -> wpt/html-aam/table-roles.html -->\n\n    <!-- <td> -> wpt/html-aam/table-roles.html -->\n\n    <!-- <tfoot> -> wpt/html-aam/table-roles.html -->\n\n    <!-- <th> -> wpt/html-aam/table-roles.html -->\n    <!-- <thead> -> wpt/html-aam/table-roles.html -->\n\n    <!-- <tr> -> wpt/html-aam/table-roles.html -->\n\n\n<!-- ARIA Grid Elements Testing  -->\n\n        <!-- Grid roles tested in ./grid-roles.html -->\n\n\n<!-- ARIA Table Roles Testing  -->\n\n    <!-- caption -->\n    <div role=\"table\">\n        <div role=\"caption\" data-testname=\"div role is caption (in div with table role)\" data-expectedrole=\"caption\" class=\"ex\">x</div>\n    </div>\n\n    <p role=\"caption\" data-testname=\"orphan p role is caption\" data-expectedrole=\"caption\" class=\"ex\">x</p>\n\n    <!-- cell -->\n    <div role=\"table\">\n        <div role=\"rowgroup\">\n            <div role=\"row\">\n              <span role=\"columnheader\">x</span>\n              <span role=\"columnheader\">x</span>\n            </div>\n        </div>\n        <div role=\"rowgroup\">\n            <div role=\"row\">\n                <span role=\"cell\" data-testname=\"span role is cell (in div with row role, in div with rowgroup role, in div with table role)\" data-expectedrole=\"cell\" class=\"ex\">x</span>\n                <span role=\"cell\">x</span>\n            </div>\n        </div>\n    </div>\n\n    <span role=\"cell\" data-testname=\"orphan span role is cell\" data-expectedrole=\"cell\" class=\"ex\">x</span>\n\n    <!-- columnheader -->\n    <div role=\"table\">\n        <div role=\"rowgroup\">\n            <div role=\"row\">\n                <span role=\"columnheader\" data-testname=\"span role is columnheader (in div with row role, in div with rowgroup role, in div with table role)\" data-expectedrole=\"columnheader\" class=\"ex\">x</span>\n                <span role=\"columnheader\">x</span>\n                <span role=\"columnheader\">x</span>\n            </div>\n        </div>\n        <div role=\"rowgroup\">\n            <div role=\"row\">\n                <span role=\"rowheader\">x</span>\n                <span role=\"cell\">x</span>\n                <span role=\"cell\">x</span>\n            </div>\n        </div>\n    </div>\n\n    <!-- row -->\n    <div role=\"table\">\n        <div role=\"rowgroup\">\n            <div role=\"row\" data-testname=\"div role is row (in div with rowgroup role, in div with table role)\" data-expectedrole=\"row\" class=\"ex\">\n                <span role=\"columnheader\">x</span>\n            </div>\n        </div>\n        <div role=\"rowgroup\">\n            <div role=\"row\">\n                <span role=\"cell\">x</span>\n            </div>\n        </div>\n    </div>\n\n    <!-- rowgroup -->\n    <div role=\"table\">\n        <div role=\"rowgroup\" data-testname=\"div role is rowgroup (in div with table role)\" data-expectedrole=\"rowgroup\" class=\"ex\">\n            <div role=\"row\">\n                <span role=\"columnheader\">x</span>\n                <span role=\"columnheader\">x</span>\n            </div>\n        </div>\n        <div role=\"rowgroup\">\n            <div role=\"row\">\n                <span role=\"cell\">x</span>\n                <span role=\"cell\">x</span>\n            </div>\n        </div>\n    </div>\n\n    <!-- rowheader -->\n    <div role=\"table\">\n        <div role=\"rowgroup\">\n            <div role=\"row\">\n                <span role=\"columnheader\">x</span>\n                <span role=\"columnheader\">x</span>\n                <span role=\"columnheader\">x</span>\n            </div>\n        </div>\n        <div role=\"rowgroup\">\n            <div role=\"row\">\n                <span role=\"rowheader\" data-testname=\"role is rowheader (in div with row role, in div with rowgroup role, in div with table role)\" data-expectedrole=\"rowheader\" class=\"ex\">x</span>\n                <span role=\"cell\">x</span>\n                <span role=\"cell\">x</span>\n                <span role=\"cell\">x</span>\n            </div>\n        </div>\n      </div>\n\n    <!-- table -->\n    <div role=\"table\" data-testname=\"div role is table\" data-expectedrole=\"table\" class=\"ex\">\n        <div role=\"row\">\n            <span role=\"columnheader\">x</span>\n            <span role=\"columnheader\">x</span>\n        </div>\n        <div role=\"row\">\n            <span role=\"cell\">x</span>\n            <span role=\"cell\">x</span>\n        </div>\n    </div>",
-		"selector": ".ex"
-	},
-	{
-		"filename": "region-roles.html",
-		"title": "Region Role Verification Tests",
-		"html": "<style type=\"text/css\"></style><p>Tests <a href=\"https://w3c.github.io/aria/#region\">region</a> and related roles, as well as the \"name from author\" rule in <a href=\"https://w3c.github.io/aria/#document-handling_author-errors_roles\">9.1 Roles - handling author errors</a>.</p>\n\n<!-- no label -->\n<nav role=\"region\" data-testname=\"region without label\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n\n<!-- w/ label -->\n<nav role=\"region\" data-testname=\"region with label\" data-expectedrole=\"region\" aria-label=\"x\" class=\"ex\">x</nav>",
 		"selector": ".ex"
 	},
 	{
@@ -1226,40 +1269,9 @@ window.wpt["wai-aria"] = [
 		"selector": ".ex"
 	},
 	{
-		"filename": "tree-roles.html",
-		"title": "Tree related Role Verification Tests",
-		"html": "<style type=\"text/css\"></style><p>Tests <a href=\"https://w3c.github.io/aria/#tree\">tree</a> and related roles.</p>\n\n<ul role=\"tree\" data-testname=\"role is tree\" data-expectedrole=\"tree\" class=\"ex\">\n  <li role=\"treeitem\" data-testname=\"role is treeitem (in tree)\" data-expectedrole=\"treeitem\" class=\"ex\">\n    x\n    <ul role=\"group\" data-testname=\"role is group (in treeitem)\" data-expectedrole=\"group\" class=\"ex\">\n      <li role=\"treeitem\" data-testname=\"role is treeitem (in group, in treeitem)\" data-expectedrole=\"treeitem\" class=\"ex\">x</li>\n      <li role=\"treeitem\">x</li>\n    </ul>\n  </li>\n  <li role=\"treeitem\">x</li>\n</ul>\n\n<table role=\"treegrid\" data-testname=\"role is treegrid\" data-expectedrole=\"treegrid\" class=\"ex\">\n  <tbody>\n    <tr role=\"row\" aria-expanded=\"true\" aria-level=\"1\" aria-posinset=\"1\" aria-setsize=\"2\" data-testname=\"role is row (in treegrid)\" data-expectedrole=\"row\" class=\"ex expander\">\n      <td role=\"gridcell\" data-testname=\"role is gridcell (in row, in treegrid)\" data-expectedrole=\"gridcell\" class=\"ex\">x</td>\n      <td role=\"gridcell\">x</td>\n      <td role=\"gridcell\">x</td>\n    </tr>\n    <tr role=\"row\" aria-level=\"2\" aria-posinset=\"1\" aria-setsize=\"2\">\n      <td role=\"gridcell\">x</td>\n      <td role=\"gridcell\">x</td>\n      <td role=\"gridcell\">x</td>\n    </tr>\n    <tr aria-expanded=\"false\" aria-level=\"2\" aria-posinset=\"2\" aria-setsize=\"2\" role=\"row\" class=\"expander\">\n      <td role=\"gridcell\">x</td>\n      <td role=\"gridcell\">x</td>\n      <td role=\"gridcell\">x</td>\n    </tr>\n    <tr role=\"row\" aria-level=\"3\" aria-posinset=\"1\" aria-setsize=\"1\" class=\"hidden\">\n      <td role=\"gridcell\">x</td>\n      <td role=\"gridcell\">x</td>\n      <td role=\"gridcell\">x</td>\n    </tr>\n    <tr role=\"row\" aria-expanded=\"false\" aria-level=\"1\" aria-posinset=\"2\" aria-setsize=\"2\" class=\"expander\">\n      <td role=\"gridcell\">x</td>\n      <td role=\"gridcell\">x</td>\n      <td role=\"gridcell\">x</td>\n    </tr>\n    <tr role=\"row\" aria-level=\"2\" aria-posinset=\"1\" aria-setsize=\"2\" class=\"hidden\">\n      <td role=\"gridcell\">x</td>\n      <td role=\"gridcell\">x</td>\n      <td role=\"gridcell\">x</td>\n    </tr>\n    <tr role=\"row\" aria-level=\"2\" aria-posinset=\"1\" aria-setsize=\"2\" class=\"hidden\">\n      <td role=\"gridcell\">x</td>\n      <td role=\"gridcell\">x</td>\n      <td role=\"gridcell\">x</td>\n    </tr>\n  </tbody>\n</table>",
-		"selector": ".ex"
-	},
-	{
-		"filename": "form-roles.html",
-		"title": "Form Role Verification Tests",
-		"html": "<style type=\"text/css\"></style><p>Verifies <a href=\"https://w3c.github.io/aria/#document-handling_author-errors_roles\">9.1 Roles - handling author errors</a> and the <a href=\"https://w3c.github.io/aria/#form\">form</a> role.</p>\n\n\n<!-- no label -->\n<nav role=\"form\" data-testname=\"form without label\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n\n<!-- w/ label -->\n<nav role=\"form\" data-testname=\"form with label\" data-expectedrole=\"form\" aria-label=\"x\" class=\"ex\">x</nav>",
-		"selector": ".ex"
-	},
-	{
-		"filename": "generic-roles.html",
-		"title": "Generic Role Verification Tests",
-		"html": "<style type=\"text/css\"></style><p>Tests <a href=\"https://w3c.github.io/aria/#generic\">generic</a>.</p>\n\n<p role=\"generic\" data-testname=\"generic role on p element is generic\" class=\"ex-generic\">x</p>",
-		"role": "generic",
-		"selector": ".ex-generic"
-	},
-	{
-		"filename": "contextual-roles.html",
-		"title": "Contextual Role Verification Tests",
-		"html": "<style type=\"text/css\"></style><p>Verifies Required Accessibility Parent Roles from <a href=\"https://w3c.github.io/aria/#scope\">5.2.7 Required Accessibility Parent Role</a></p>\n    <p>Also verifies Allowed Accessibility Child Roles from <a href=\"https://w3c.github.io/aria/#mustContain\">5.2.6 Allowed Accessibility Child Roles</a></p>\n\n<!-- Notes for \"required context\" testing:\n\n    - See Computed Role for more details on role computation when an element lacks required context:\n    https://w3c.github.io/core-aam/#roleMappingComputedRole\n\n    - See ARIA spec for full listing of \"Required Accessibility Parent Role\" for each element:\n    https://w3c.github.io/aria/#scope\n\n    Identified roles with \"Required Context\" excluding abstract roles (e.g., child -> parent):\n\n    - caption -> {figure, grid, table, treegrid}\n    - cell -> row\n    - columnheader -> row\n    - gridcell -> row\n    - listitem -> {list, directory} *Note: directory role is deprecated as of ARIA 1.2\n    - menuitem -> {group, menu, menubar}\n    - menuitemcheckbox -> {group, menu, menubar}\n    - menuitemradio -> {group, menu, menubar}\n    - option -> {group, listbox}\n    - row -> {grid, rowgroup, table, treegrid}\n    - rowgroup -> {grid, table, treegrid}\n    - rowheader -> row\n    - tab -> tablist\n    - treeitem -> {group, tree}\n\n    -->\n\n<!-- Required Context Roles Testing  -->\n\n    <!-- caption -> ./table-roles.html -->\n\n    <!-- cell -> ./table-roles.html -->\n\n    <!-- columnheader -> ./grid-roles.html, ./table-roles.html -->\n\n    <!-- gridcell -> ./grid-roles.html -->\n\n    <!-- listitem -> ./list-roles.html -->\n\n    <!-- menuitem, menuitemcheckbox, menuitemradio -> ./menu-roles.html -->\n\n    <!-- option -> ./listbox-roles.html -->\n\n    <!-- row -> ./grid-roles.html, ./table-roles.html  -->\n\n    <!-- rowgroup -> ./grid-roles.html, ./table-roles.html -->\n\n    <!-- rowheader -> ./grid-roles.html, ./table-roles.html -->\n\n    <!-- tab -> ./tab-roles.html -->\n\n    <!-- treeitem -> ./tree-roles.html -->\n\n<!-- Misc Contextual Role Testing  -->\n\n    <!-- Testing contentinfo role computation when scoped to <main> or not:\n    1. If <footer> is a descendant of <main>, it should become 'generic'\n    2. If <footer> is scoped to <body>, it should be 'contentinfo' as expected\n\n    see: https://w3c.github.io/html-aam/#el-footer-ancestorbody -->\n    <!-- main>footer -> ./roles-contextual.tentative.html -->\n\n    <footer data-testname=\"footer scoped to body element is contentinfo\" data-expectedrole=\"contentinfo\" class=\"ex\">x</footer>\n    <div role=\"contentinfo\" data-testname=\"contentinfo region scoped to body element is contentinfo\" data-expectedrole=\"contentinfo\" class=\"ex\">x</div>",
-		"selector": ".ex"
-	},
-	{
 		"filename": "listbox-roles.html",
 		"title": "Listbox-related Role Verification Tests",
 		"html": "<style type=\"text/css\"></style><p>Tests <a href=\"https://w3c.github.io/aria/#listbox\">listbox</a> and related roles.</p>\n\n<div role=\"listbox\" data-testname=\"div role is listbox\" data-expectedrole=\"listbox\" class=\"ex\">\n    <div role=\"option\" data-testname=\"role is option (in div listbox)\" data-expectedrole=\"option\" class=\"ex\">x</div>\n    <div role=\"group\" data-testname=\"role is group (in div listbox)\" data-expectedrole=\"group\" class=\"ex\">\n        <span role=\"option\" data-testname=\"role is option (in group, in div listbox)\" data-expectedrole=\"option\" class=\"ex\">x</span>\n        <span role=\"option\">x</span>\n    </div>\n    <div role=\"option\">x</div>\n</div>\n\n<ul role=\"listbox\" data-testname=\"ul role is listbox\" data-expectedrole=\"listbox\" class=\"ex\">\n    <li role=\"option\" data-testname=\"li role is option (in ul listbox)\" data-expectedrole=\"option\" class=\"ex\">\n        x\n    </li>\n    <li role=\"option\">\n        x\n    </li>\n</ul>",
-		"selector": ".ex"
-	},
-	{
-		"filename": "grid-roles.html",
-		"title": "Grid Role Verification Tests",
-		"html": "<style type=\"text/css\"></style><p>Tests <a href=\"https://w3c.github.io/aria/#grid\">grid</a> and related roles.</p>\n\n  <!-- ARIA table roles tested in ./table-roles.html -->\n\n  <div role=\"grid\" data-testname=\"role is grid\" data-expectedrole=\"grid\" class=\"ex\">\n    <div role=\"row\" data-testname=\"role is row (in grid)\" data-expectedrole=\"row\" class=\"ex\">\n      <span role=\"columnheader\" data-testname=\"role is columnheader (in row, in grid)\" data-expectedrole=\"columnheader\" class=\"ex\">x</span>\n      <span role=\"columnheader\">x</span>\n    </div>\n    <div role=\"row\">\n      <span role=\"rowheader\" data-testname=\"role is rowheader (in row, in grid)\" data-expectedrole=\"rowheader\" class=\"ex\">x</span>\n      <span role=\"gridcell\" data-testname=\"role is gridcell (in row, in grid)\" data-expectedrole=\"gridcell\" class=\"ex\">x</span>\n    </div>\n  </div>\n\n  <div role=\"grid\">\n    <div role=\"rowgroup\" data-testname=\"role is rowgroup (in grid)\" data-expectedrole=\"rowgroup\" class=\"ex\">\n      <div role=\"row\" data-testname=\"role is row (in rowgroup, in grid)\" data-expectedrole=\"row\" class=\"ex\">\n        <span role=\"columnheader\" data-testname=\"role is columnheader (in row, in rowgroup, in grid)\" data-expectedrole=\"columnheader\" class=\"ex\">x</span>\n        <span role=\"columnheader\">x</span>\n        <span role=\"columnheader\">x</span>\n      </div>\n    </div>\n    <div role=\"rowgroup\">\n      <div role=\"row\">\n        <span role=\"rowheader\" data-testname=\"role is rowheader (in row, in rowgroup, in grid)\" data-expectedrole=\"rowheader\" class=\"ex\">x</span>\n        <span role=\"gridcell\" data-testname=\"role is gridcell (in row, in rowgroup, in grid)\" data-expectedrole=\"gridcell\" class=\"ex\">x</span>\n        <span role=\"gridcell\">x</span>\n      </div>\n    </div>\n  </div>",
 		"selector": ".ex"
 	},
 	{
@@ -1282,15 +1294,9 @@ window.wpt["wai-aria"] = [
 		"selector": ".ex-generic"
 	},
 	{
-		"filename": "abstract-roles.html",
-		"title": "Abstract Role Verification Tests",
-		"html": "<style type=\"text/css\"></style><p>Tests <a href=\"https://w3c.github.io/aria/#abstract_roles\">Abstract Roles</a> and related <a href=\"https://w3c.github.io/aria/#document-handling_author-errors_roles\">9.1 Roles - handling author errors</a></p>\n\n  <nav role=\"command\" data-testname=\"command role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n  <nav role=\"composite\" data-testname=\"composite role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n  <nav role=\"input\" data-testname=\"input role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n  <nav role=\"landmark\" data-testname=\"landmark role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n  <nav role=\"range\" data-testname=\"range role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n  <nav role=\"roletype\" data-testname=\"roletype role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n  <nav role=\"section\" data-testname=\"section role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n  <nav role=\"sectionhead\" data-testname=\"sectionhead role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n  <nav role=\"select\" data-testname=\"select role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n  <nav role=\"structure\" data-testname=\"structure role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n  <nav role=\"widget\" data-testname=\"widget role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n  <nav role=\"window\" data-testname=\"window role\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>",
-		"selector": ".ex"
-	},
-	{
-		"filename": "fallback-roles.html",
-		"title": "Fallback Role Verification Tests",
-		"html": "<style type=\"text/css\"></style><p>Tests <a href=\"https://w3c.github.io/aria/#host_general_role\">8.1 Role Attribute</a> role token list selection and <a href=\"https://w3c.github.io/aria/#document-handling_author-errors_roles\">9.1 Roles - handling author errors</a>.</p>\n\n  <!-- known el and two known ARIA 1.0 roles -->\n  <nav role=\"region group\" data-testname=\"fallback role w/ region with no label\" data-expectedrole=\"group\" class=\"ex\">x</nav>\n  <nav role=\"region group\" data-testname=\"fallback role w/ region with label\" aria-label=\"x\" data-expectedrole=\"region\" class=\"ex\">x</nav>\n\n  <!-- known el and known ARIA 1.1 with 1.0 role backup -->\n  <div role=\"switch checkbox\" aria-checked=\"true\" data-testname=\"aria 1.1 switch role w/ fallback to aria 1.0 checkbox role\" aria-label=\"x\" data-expectedrole=\"switch\" class=\"ex\">x</div>\n\n  <!-- known el and invalid role token with valid backup -->\n  <div role=\"foo button\" data-testname=\"div[role=button] ignoring invalid foo role token\" aria-label=\"x\" data-expectedrole=\"button\" class=\"ex\">x</div>\n\n  <!-- unknown el and invalid role token with valid backup -->\n  <unknown role=\"foo button\" data-testname=\"unknown[role=button] ignoring invalid foo role token\" aria-label=\"x\" data-expectedrole=\"button\" class=\"ex\">x</unknown>\n\n  <!-- known el and invalid role(s) -->\n  <button role=\"foo\" data-testname=\"button ignoring single invalid role token\" aria-label=\"x\" data-expectedrole=\"button\" class=\"ex\">x</unknown>\n  <button role=\"foo bar\" data-testname=\"button ignoring multiple invalid role tokens\" aria-label=\"x\" data-expectedrole=\"button\" class=\"ex\">x</unknown>\n\n  <!-- known el with invalid punctuation -->\n  <div role=\"invalid, punctuation, tests, link, button\" data-testname=\"div[role=button] ignoring invalid foo role token including punctuation-contaminated known link role\" aria-label=\"x\" data-expectedrole=\"button\" class=\"ex\">x</div>\n\n\n\n  <!-- extra line breaks here to account for rendering of unicode diacritic etc char glitch tests -->\n\n\n\n  <div role=\"l\u0337\u0357\u030c\u0303\u035d\u0350\u0314\u031a\u0344\u0316\u033b\u0317\u0324\u033a\u031f\u0331\u035a\u0354\u0347\u034d\u0347\u032b\u0328\u0322\u032b\u031c\u0354\u0317\u031f\u0318\u032b\u031f\u0330\u0321\u033c\u0318i\u0335\u035d\u0342\u0358\u030d\u0350\u0314\u030d\u034c\u0310\u0307\u030f\u030e\u0328\u0332\u0321\u032f\u0320\u032e\u0348\u0356\u0325\u032e\u0332\u0353\u0326\u0317\u0317\u0331\u031e\u034d\u0317\u032a\u0359\u0347\u035an\u0336\u0300\u0342\u0343\u030b\u030a\u031c\u0332\u032b\u0347\u032e\u0349\u032c\u035c\u034e\u034e\u0355\u031d\u0331\u0354\u0319\u0328\u0331\u0326\u0327\u0330\u0326\u0320\u0330\u0322\u0323\u031dk\u0337\u0300\u0352\u0306\u0351\u0312\u0305\u0315\u0351\u0313\u0312\u0342\u033d\u0344\u033d\u0309\u0358\u0340\u035d\u0318\u0333\u0355\u0330\u034e\u032e\u0327\u0320\u0327\u0318\u032a\u0327\u0328\u0347\u0355\u0325\u032d\u035c\u033c\u033c\u031c\u0324\u032b\u0328\u0325\u0328\u033c\u0324\u0330\u0326\u0356\u032a \u0337\u0350\u0342\u0301\u035b\u0303\u0341\u030a\u0308\u034c\u0315\u0304\u0343\u031a\u030c\u0302\u035d\u0308\u0307\u0340\u030c\u0344\u0301\u0300\u0344\u030d\u0344\u0307\u0304\u030a\u0360\u0314\u0352\u033e\u033e\u0307\u0301\u0352\u033d\u0342\u033e\u032e\u0326\u0345\u0318\u0353\u032b\u031c\u0355\u0356\u0330\u035c\u0319\u0318\u0345\u0353\u0321\u033c\u034e\u0333\u0339\u0347\u032e\u035cg\u0338\u034b\u0351\u035d\u0311\u0315\u0343\u035b\u0313\u0309\u0314\u0309\u0351\u0307\u0301\u0344\u0309\u0303\u0301\u0311\u030d\u035d\u031b\u0302\u0315\u0312\u0350\u031a\u035b\u0357\u0311\u030f\u0343\u031a\u033e\u034c\u0308\u0305\u0301\u0307\u033a\u0328\u0326\u0323\u0327\u0347\u0348\u0359\u0347\u0327\u0327\u034e\u0355\u0320\u031e\u0333\u0339\u0345\u0327\u0323r\u0336\u030b\u033e\u0340\u0358\u0360\u0301\u0341\u0312\u0340\u0340\u0351\u0358\u030e\u0340\u030c\u031b\u0308\u0300\u030d\u0360\u0302\u030f\u030a\u030e\u0350\u0358\u0352\u0357\u0357\u0340\u0324\u0332\u0318\u032e\u031f\u032d\u0332o\u0334\u030f\u030a\u034b\u0350\u0310\u0346\u0358\u0308\u033f\u0312\u030a\u0304\u0351\u0344\u0314\u034b\u0314\u0303\u0350\u0343\u0313\u0360\u035b\u0358\u0301\u034a\u0309\u0351\u030a\u0314\u0346\u031e\u031d\u0320\u0319\u0327\u032c\u0321\u0322\u0317\u034d\u034d\u0349\u0321\u033a\u0354\u0359\u0322\u032b\u031d\u0330\u032e\u031c\u0329\u035c\u0319\u0345\u0333\u0349\u033b\u033b\u033c\u034du\u0334\u0307\u0308\u0360\u0352\u0331\u032f\u031e\u031e\u031e\u033a\u033c\u0333\u0333\u035a\u031ep\u0336\u035d\u0302\u0310\u030c\u030f\u034c\u0344\u035d\u0357\u033e\u035d\u034c\u033f\u0313\u0358\u0352\u030b\u0306\u0346\u031a\u033e\u035b\u031b\u0310\u0344\u0343\u034b\u0300\u0349\u032e\u0319\u032f\u032e\u0331\u0349\u0316\u035a\u0349\u0329\u0331\u033a\u0329\u0326\u033a\u0348\u032b\u034d\u0354\u0332\u0323\u0317\u031f\u031c \u0336\u030d\u0344\u0357\u0350\u0300\u030a\u030f\u035b\u0303\u0344\u034b\u035d\u0305\u0354\u035a\u0329\u032c\u0348  button\" data-testname=\"div[role=button] ignoring invalid unicode diacritics etc on link and group role tokens\" aria-label=\"x\" data-expectedrole=\"button\" class=\"ex\">x</div>\n\n\n  <!-- known el and known role with whitespace edge cases -->\n  <div role=\" button\" data-testname=\"div[role=button] ignoring tab char\" aria-label=\"x\" data-expectedrole=\"button\" class=\"ex\">x</div>\n  <div role=\"\nbutton\" data-testname=\"div[role=button] ignoring line break\" aria-label=\"x\" data-expectedrole=\"button\" class=\"ex\">x</div>\n  <div role=\"\u2800 button\" data-testname=\"div[role=button] ignoring braille whitespace char\" aria-label=\"x\" data-expectedrole=\"button\" class=\"ex\">x</div>",
+		"filename": "form-roles.html",
+		"title": "Form Role Verification Tests",
+		"html": "<style type=\"text/css\"></style><p>Verifies <a href=\"https://w3c.github.io/aria/#document-handling_author-errors_roles\">9.1 Roles - handling author errors</a> and the <a href=\"https://w3c.github.io/aria/#form\">form</a> role.</p>\n\n\n<!-- no label -->\n<nav role=\"form\" data-testname=\"form without label\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n\n<!-- w/ label -->\n<nav role=\"form\" data-testname=\"form with label\" data-expectedrole=\"form\" aria-label=\"x\" class=\"ex\">x</nav>",
 		"selector": ".ex"
 	}
 ];
@@ -1305,11 +1311,17 @@ window.wpt["graphics-aria"] = [
 window.wpt["dpub-aria"] = [];
 window.wpt["core-aam"] = [
 	{
-		"filename": "aria-label-manual.html",
-		"title": "aria-label",
-		"html": "<p>This test examines the ARIA properties for aria-label.</p>\n    <div role='group' id='test' aria-label='hello world'>content</div>",
-		"selector": "#test",
-		"name": "hello world"
+		"filename": "roles-contextual.html",
+		"title": "Core AAM Contextual-Specific Role Verification Tests",
+		"html": "<style type=\"text/css\"></style><p>Tests contextual computed role mappings defined in <a href=\"https://w3c.github.io/core-aam/\">HTML AAM</a>, where the returned computed role is expected to change based on the context. Most test names correspond to a unique ID defined in the spec.<p>\n\n<p>These should remain in alphabetical order.</code></p>\n\n<!-- role-map-region and role-map-region-nameless -->\n<div role=\"region\" data-testname=\"role-map-region\" aria-label=\"x\" data-expectedrole=\"region\" class=\"ex\">x</div>\n<div role=\"region\" data-testname=\"role-map-region-nameless\" class=\"ex-generic\">x</div>\n<div role=\"region\" data-testname=\"role-map-region-aria-label-empty\" class=\"ex-generic\" aria-label=\"\">x</div>\n<div role=\"region\" data-testname=\"role-map-region-aria-label-whitespace\" class=\"ex-generic\" aria-label=\" \">x</div>\n<div role=\"region\" data-testname=\"role-map-region-aria-labelledby\" data-expectedrole=\"region\" class=\"ex\" aria-labelledby=\"labelledby\">x</div>\n<div role=\"region\" data-testname=\"role-map-region-aria-labelledby-non-existing\" class=\"ex-generic\" aria-labelledby=\"non-existing\">x</div>\n<div role=\"region\" data-testname=\"role-map-region-aria-labelledby-empty\" class=\"ex-generic\" aria-labelledby=\"empty\">x</div>\n<div role=\"region\" data-testname=\"role-map-region-aria-labelledby-whitespace\" class=\"ex-generic\" aria-labelledby=\"space\">x</div>\n<div role=\"region\" data-testname=\"role-map-region-title\" data-expectedrole=\"region\" title=\"x\" class=\"ex\">x</div>\n<div role=\"region\" data-testname=\"role-map-region-title-empty\" class=\"ex-generic\" title=\"\">x</div>\n<div role=\"region\" data-testname=\"role-map-region-title-whitespace\" class=\"ex-generic\" title=\" \">x</div>\n\n<!-- element to reference for aria-labelledby tests -->\n<div id=\"labelledby\">labelledby</div>\n<div id=\"empty\"></div>\n<div id=\"space\"> </div>",
+		"selector": ".ex"
+	},
+	{
+		"filename": "roles-contextual.html",
+		"title": "Core AAM Contextual-Specific Role Verification Tests",
+		"html": "<style type=\"text/css\"></style><p>Tests contextual computed role mappings defined in <a href=\"https://w3c.github.io/core-aam/\">HTML AAM</a>, where the returned computed role is expected to change based on the context. Most test names correspond to a unique ID defined in the spec.<p>\n\n<p>These should remain in alphabetical order.</code></p>\n\n<!-- role-map-region and role-map-region-nameless -->\n<div role=\"region\" data-testname=\"role-map-region\" aria-label=\"x\" data-expectedrole=\"region\" class=\"ex\">x</div>\n<div role=\"region\" data-testname=\"role-map-region-nameless\" class=\"ex-generic\">x</div>\n<div role=\"region\" data-testname=\"role-map-region-aria-label-empty\" class=\"ex-generic\" aria-label=\"\">x</div>\n<div role=\"region\" data-testname=\"role-map-region-aria-label-whitespace\" class=\"ex-generic\" aria-label=\" \">x</div>\n<div role=\"region\" data-testname=\"role-map-region-aria-labelledby\" data-expectedrole=\"region\" class=\"ex\" aria-labelledby=\"labelledby\">x</div>\n<div role=\"region\" data-testname=\"role-map-region-aria-labelledby-non-existing\" class=\"ex-generic\" aria-labelledby=\"non-existing\">x</div>\n<div role=\"region\" data-testname=\"role-map-region-aria-labelledby-empty\" class=\"ex-generic\" aria-labelledby=\"empty\">x</div>\n<div role=\"region\" data-testname=\"role-map-region-aria-labelledby-whitespace\" class=\"ex-generic\" aria-labelledby=\"space\">x</div>\n<div role=\"region\" data-testname=\"role-map-region-title\" data-expectedrole=\"region\" title=\"x\" class=\"ex\">x</div>\n<div role=\"region\" data-testname=\"role-map-region-title-empty\" class=\"ex-generic\" title=\"\">x</div>\n<div role=\"region\" data-testname=\"role-map-region-title-whitespace\" class=\"ex-generic\" title=\" \">x</div>\n\n<!-- element to reference for aria-labelledby tests -->\n<div id=\"labelledby\">labelledby</div>\n<div id=\"empty\"></div>\n<div id=\"space\"> </div>",
+		"role": "generic",
+		"selector": ".ex-generic"
 	},
 	{
 		"filename": "aria-labelledby-manual.html",
@@ -1326,6 +1338,13 @@ window.wpt["core-aam"] = [
 		"description": "hello world"
 	},
 	{
+		"filename": "aria-label-manual.html",
+		"title": "aria-label",
+		"html": "<p>This test examines the ARIA properties for aria-label.</p>\n    <div role='group' id='test' aria-label='hello world'>content</div>",
+		"selector": "#test",
+		"name": "hello world"
+	},
+	{
 		"filename": "rowgroup-no-name-from-contents-manual.html",
 		"title": "rowgroup no name from contents",
 		"html": "<p>This test examines the ARIA properties for rowgroup with no author-provided name.</p>\n    <div role='grid'>\n    <div role='rowgroup' id='test'>\n      <div role='row'>\n        <div role='cell'>content</div>\n      </div>\n      <div role='row'>\n        <div role='cell'>content</div>\n      </div>\n    </div>\n  </div>",
@@ -1337,15 +1356,15 @@ window.wpt["graphics-aam"] = [];
 window.wpt["dpub-aam"] = [];
 window.wpt["html-aam"] = [
 	{
-		"filename": "roles.html",
-		"title": "HTML-AAM Role Verification Tests",
-		"html": "<style type=\"text/css\"></style><p>Tests the computedrole mappings defined in <a href=\"https://w3c.github.io/html-aam/\">HTML-AAM</a>. Most test names correspond to a unique ID defined in the spec.<p>\n\n<p>These should remain in alphabetical order, and include all HTML tagnames. If a tag is not tested here, include a pointer to the file where it is tested, such as: <code>&lt;!-- caption -&gt; ./table-roles.html --&gt;</code></p>\n\n\n<!-- a (w/ and w/o href) -> ./roles-contextual.html -->\n<!-- todo: abbr -->\n<address data-testname=\"el-address\" data-expectedrole=\"group\" class=\"ex\">x</address>\n<!-- area -> ./fragile/area-role.html -->\n<article data-testname=\"el-article\" data-expectedrole=\"article\" class=\"ex\">x</article>\n<!-- aside -> ./roles-contextual.html -->\n<!-- todo: audio -->\n<!-- todo: autonomous custom element -->\n<!-- b -> ./roles-generic.html -->\n<!-- base (not mapped) -->\n<!-- bdi -> ./roles-generic.html -->\n<!-- bdo -> ./roles-generic.html -->\n<blockquote data-testname=\"el-blockquote\" data-expectedrole=\"blockquote\" class=\"ex\">x</blockquote>\n<!-- todo: body -->\n<!-- br (not mapped) -->\n<button data-testname=\"el-button\" data-expectedrole=\"button\" class=\"ex\">x</button>\n<!-- todo: canvas -->\n<!-- caption -> ./table-roles.html -->\n<!-- todo: cite -->\n<code data-testname=\"el-code\" data-expectedrole=\"code\" class=\"ex\">x</code>\n<!-- todo: col -->\n<!-- todo: colgroup -->\n<!-- data -> ./roles-generic.html -->\n<!-- todo: datalist -->\n\n<!-- el-dd -->\n<dl>\n  <dt>x</dt>\n  <!-- dt/dd pending listitemkey and listitemvalue roles: https://github.com/w3c/aria/issues/1662 -->\n  <dd data-testname=\"el-dd\" data-expectedrole=\"definition\" class=\"ex\">x</dd>\n</dl>\n\n<del data-testname=\"el-del\" data-expectedrole=\"deletion\" class=\"ex\">x</del>\n<details data-testname=\"el-details\" data-expectedrole=\"group\" class=\"ex\"><summary>x</summary>x</details>\n<dfn data-testname=\"el-dfn\" data-expectedrole=\"term\" class=\"ex\">x</dfn>\n<!-- dir -> ./dir-role.tentative.html -->\n<!-- div -> ./roles-generic.html -->\n<!-- todo: dl -->\n\n<!-- el-dt -->\n<dl>\n  <!-- dt/dd pending listitemkey and listitemvalue roles: https://github.com/w3c/aria/issues/1662 -->\n  <dt data-testname=\"el-dt\" data-expectedrole=\"term\" class=\"ex\">x</dt>\n  <dd>x</dd>\n</dl>\n\n<em data-testname=\"el-em\" data-expectedrole=\"emphasis\" class=\"ex\">x</em>\n<!-- todo: embed -->\n<fieldset data-testname=\"el-fieldset\" data-expectedrole=\"group\" class=\"ex\"><legend>x</legend><input></fieldset>\n<!-- todo: figcaption -->\n<figure data-testname=\"el-figure\" data-expectedrole=\"figure\" class=\"ex\"><img alt=\"x\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\"><figcaption>x</figcaption></figure>\n<!-- footer -> ./roles-contextual.html -->\n<form aria-label=\"form\" data-testname=\"el-form\" data-expectedrole=\"form\" class=\"ex\"><input></form>\n<!-- todo: form-associated custom element -->\n\n<!-- el-h1-h6 -->\n<h1 data-testname=\"el-h1\" data-expectedrole=\"heading\" class=\"ex\">x</h1>\n<h2 data-testname=\"el-h2\" data-expectedrole=\"heading\" class=\"ex\">x</h2>\n<h3 data-testname=\"el-h3\" data-expectedrole=\"heading\" class=\"ex\">x</h3>\n<h4 data-testname=\"el-h4\" data-expectedrole=\"heading\" class=\"ex\">x</h4>\n<h5 data-testname=\"el-h5\" data-expectedrole=\"heading\" class=\"ex\">x</h5>\n<h6 data-testname=\"el-h6\" data-expectedrole=\"heading\" class=\"ex\">x</h6>\n\n<!-- head (not mapped) -->\n\n<!-- header -> ./roles-contextual.html -->\n<hgroup data-testname=\"el-hgroup\" data-expectedrole=\"group\" class=\"ex\"><h1>x</h1></hgroup>\n<hr data-testname=\"el-hr\" data-expectedrole=\"separator\" class=\"ex\">\n<!-- todo: html -->\n<!-- i -> ./roles-generic.html -->\n<!-- todo: iframe -->\n<img alt=\"x\" data-testname=\"el-img\" data-expectedrole=\"image\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n\n<!-- Implementations might also be valid if ignored rather than returning 'none' for the following images. -->\n<img alt data-testname=\"el-img-alt-no-value\" class=\"ex-generic\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n<img alt=\"\" data-testname=\"el-img-empty-alt\" class=\"ex-generic\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n\n<input type=\"button\" value=\"x\" data-testname=\"el-input-button\" data-expectedrole=\"button\" class=\"ex\">\n<input type=\"checkbox\" data-testname=\"el-input-checkbox\" data-expectedrole=\"checkbox\" class=\"ex\">\n<!-- todo: input type=\"color\" -->\n<!-- todo: input type=\"date\" -->\n<!-- todo: input type=\"datetime\" -->\n<!-- todo: input type=\"datetime-local\" -->\n<input type=\"email\" data-testname=\"el-input-email\" data-expectedrole=\"textbox\" class=\"ex\">\n<!-- todo: input type=\"file\" -->\n<!-- input type=\"hidden\" (not mapped) -->\n<!-- todo: input type=\"month\" -->\n\n<!-- Blocked: HTML-AAM Issue #467 -->\n<!-- <input type=\"number\" data-testname=\"el-input-number\" data-expectedrole=\"spinbutton\" class=\"ex\"> -->\n\n<!-- todo: input type=\"password\" -->\n<input type=\"radio\" data-testname=\"el-input-radio\" data-expectedrole=\"radio\" class=\"ex\">\n<input type=\"range\" data-testname=\"el-input-range\" data-expectedrole=\"slider\" class=\"ex\">\n<input type=\"reset\" value=\"x\" data-testname=\"el-input-reset\" data-expectedrole=\"button\" class=\"ex\">\n<input type=\"search\" data-testname=\"el-input-search\" data-expectedrole=\"searchbox\" class=\"ex\">\n<input type=\"submit\" value=\"x\" data-testname=\"el-input-submit\" data-expectedrole=\"button\" class=\"ex\">\n<input type=\"tel\" data-testname=\"el-input-tel\" data-expectedrole=\"textbox\" class=\"ex\">\n<input type=\"text\" data-testname=\"el-input-text\" data-expectedrole=\"textbox\" class=\"ex\">\n<!-- todo: input (type attribute in the Text, Search, Telephone, URL, or E-mail states with a suggestions source element) -->\n<!-- todo: input type=\"time\" -->\n<input type=\"url\" data-testname=\"el-input-url\" data-expectedrole=\"textbox\" class=\"ex\">\n<!-- todo: input type=\"week\" -->\n<ins data-testname=\"el-ins\" data-expectedrole=\"insertion\" class=\"ex\">x</ins>\n<!-- todo: kbd -->\n<!-- todo: label -->\n<!-- todo: legend -->\n\n<!-- el-li -->\n<!-- li (orphaned) -> ./roles-generic.html -->\n<ul><li data-testname=\"el-li-in-ul\" data-expectedrole=\"listitem\" class=\"ex\">x</li><li>x</li></ul>\n<ol><li data-testname=\"el-li-in-ol\" data-expectedrole=\"listitem\" class=\"ex\">x</li><li>x</li></ol>\n\n<!-- link (not mapped) -->\n<main data-testname=\"el-main\" data-expectedrole=\"main\" class=\"ex\">x</main>\n<!-- map (not mapped) -->\n<mark data-testname=\"el-mark\" data-expectedrole=\"mark\" class=\"ex\">x</mark>\n<!-- todo: math -->\n<menu data-testname=\"el-menu\" data-expectedrole=\"list\" class=\"ex\"><li>x</li></menu>\n<!-- meta (not mapped) -->\n<meter data-testname=\"el-meter\" data-expectedrole=\"meter\" class=\"ex\" min=\"0\" max=\"100\" low=\"20\" high=\"80\" optimum=\"60\" value=\"50\">x</meter>\n<nav data-testname=\"el-nav\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n<!-- noscript (not mapped) -->\n<!-- object (not mapped) -->\n<ol data-testname=\"el-ol\" data-expectedrole=\"list\" class=\"ex\"><li>x</li><li>x</li></ol>\n\n<!-- optgroup -> ./fragile/optgroup-role.html -->\n\n<!-- option -->\n<select>\n  <option data-testname=\"el-option\" data-expectedrole=\"option\" class=\"ex\">x</option>\n  <option>x</option>\n</select>\n\n<output data-testname=\"el-output\" data-expectedrole=\"status\" class=\"ex\">x</output>\n<p data-testname=\"el-p\" data-expectedrole=\"paragraph\" class=\"ex\">x</p>\n<!-- param (not mapped) -->\n<!-- todo: picture -->\n<!-- pre -> ./roles-generic.html -->\n<progress data-testname=\"el-progress\" data-expectedrole=\"progressbar\" class=\"ex\">x</progress>\n<!-- q -> ./roles-generic.html -->\n<!-- todo: rp -> /ruby-aam? -->\n<!-- todo: rt -> /ruby-aam? -->\n<!-- todo: ruby -> /ruby-aam? -->\n<s data-testname=\"el-s\" data-expectedrole=\"deletion\" class=\"ex\">x</s>\n<!-- samp -> ./roles-generic.html -->\n<!-- script (not mapped) -->\n<search data-testname=\"el-search\" data-expectedrole=\"search\" class=\"ex\">x</search>\n<!-- section -> ./roles-contextual.html -->\n\n<!-- Blocked: HTML-AAM Issue #467 -->\n<!-- <select data-testname=\"el-select-combobox\" data-expectedrole=\"combobox\" class=\"ex\"><option>a1</option><option>a2</option></select>-->\n\n<select data-testname=\"el-select-listbox\" size=\"2\" data-expectedrole=\"listbox\" class=\"ex\"><option>b1</option><option>b2</option></select>\n\n<!-- slot (not mapped) -->\n<!-- small -> ./roles-generic.html -->\n<!-- source (not mapped) -->\n<!-- span -> ./roles-generic.html -->\n<strong data-testname=\"el-strong\" data-expectedrole=\"strong\" class=\"ex\">x</strong>\n<!-- style (not mapped) -->\n<sub data-testname=\"el-sub\" data-expectedrole=\"subscript\" class=\"ex\">x</sub>\n<!-- todo: summary -->\n<sup data-testname=\"el-sup\" data-expectedrole=\"superscript\" class=\"ex\">x</sup>\n<!-- todo: svg (see /graphics-aam and /svg-aam tests) -->\n<!-- table -> ./table-roles.html -->\n<!-- tbody -> ./table-roles.html -->\n<!-- td -> ./table-roles.html -->\n<!-- template (not mapped) -->\n<!-- tfoot -> ./table-roles.html -->\n<!-- th -> ./table-roles.html -->\n<!-- thead -> ./table-roles.html -->\n<time data-testname=\"el-time\" data-expectedrole=\"time\" class=\"ex\">x</time>\n<!-- title (not mapped) -->\n<!-- tr -> ./table-roles.html -->\n<textarea data-testname=\"el-textarea\" data-expectedrole=\"textbox\" class=\"ex\">x</textarea>\n<!-- track (not mapped) -->\n<!-- u -> ./roles-generic.html -->\n<ul data-testname=\"el-ul\" data-expectedrole=\"list\" class=\"ex\"><li>x</li><li>x</li></ul>\n<!-- var (not mapped) -->\n<!-- todo: video -->\n<!-- wbr (not mapped) -->",
+		"filename": "roles-contextual.html",
+		"title": "HTML-AAM Contextual-Specific Role Verification Tests",
+		"html": "<style type=\"text/css\"></style><p>Tests contextual computed role mappings defined in <a href=\"https://w3c.github.io/html-aam/\">HTML-AAM</a>, where the returned computed role is expected to change based on the context. Most test names correspond to a unique ID defined in the spec.<p>\n\n<p>These should remain in alphabetical order.</code></p>\n\n\n<!-- el-a -->\n<a href=\"#\" data-testname=\"el-a\" data-expectedrole=\"link\" class=\"ex\">x</a>\n<a data-testname=\"el-a-no-href\" class=\"ex-generic\">x</a>\n\n<!-- el-aside -->\n<aside data-testname=\"el-aside\" data-expectedrole=\"complementary\" class=\"ex\">x</aside>\n<main>\n  <aside data-testname=\"el-aside-in-main\" data-expectedrole=\"complementary\" class=\"ex\">x</aside>\n  <article>\n    <aside data-testname=\"el-aside-in-article-in-main\" class=\"ex-generic\">x</aside>\n    <aside data-testname=\"el-aside-in-article-in-main-with-name\" data-expectedrole=\"complementary\" aria-label=\"x\" class=\"ex\">x</aside>\n  </article>\n</main>\n<article>\n  <aside data-testname=\"el-aside-in-article\" class=\"ex-generic\">x</aside>\n  <aside data-testname=\"el-aside-in-article-with-name\" data-expectedrole=\"complementary\" aria-label=\"x\" class=\"ex\">x</aside>\n</article>\n<aside>\n  <aside data-testname=\"el-aside-in-aside\" class=\"ex-generic\">x</aside>\n  <aside data-testname=\"el-aside-in-aside-with-name\" data-expectedrole=\"complementary\" aria-label=\"x\" class=\"ex\">x</aside>\n</aside>\n<nav>\n  <aside data-testname=\"el-aside-in-nav\" class=\"ex-generic\">x</aside>\n  <aside data-testname=\"el-aside-in-nav-with-name\" data-expectedrole=\"complementary\" aria-label=\"x\" class=\"ex\">x</aside>\n  <aside data-testname=\"el-aside-in-nav-with-role\" data-expectedrole=\"complementary\" class=\"ex\" role=\"complementary\">x</aside>\n</nav>\n<!-- Spec says that the conditional aside mapping happens when nested in a sectioning content element.\n  However, this doesn't make sense if the parent <section> isn't a landmark in the first place.\n  Let's force the section to always be a landmark for now, but we should probably expand on this test\n  case pending discussions in https://github.com/w3c/html-aam/pull/484 -->\n<section aria-label=\"x\">\n  <aside data-testname=\"el-aside-in-section\" class=\"ex-generic\">x</aside>\n  <aside data-testname=\"el-aside-in-section-with-name\" data-expectedrole=\"complementary\" aria-label=\"x\" class=\"ex\">x</aside>\n  <aside data-testname=\"el-aside-in-section-aria-label-empty\" class=\"ex-generic\" aria-label=\"\">x</aside>\n  <aside data-testname=\"el-aside-in-section-aria-label-whitespace\" class=\"ex-generic\" aria-label=\" \">x</aside>\n  <aside data-testname=\"el-aside-in-section-aria-labelledby\" data-expectedrole=\"complementary\" class=\"ex\" aria-labelledby=\"labelledby\">x</aside>\n  <aside data-testname=\"el-aside-in-section-aria-labelledby-non-existing\" class=\"ex-generic\" aria-labelledby=\"non-existing\">x</aside>\n  <aside data-testname=\"el-aside-in-section-aria-labelledby-empty\" class=\"ex-generic\" aria-labelledby=\"empty\">x</aside>\n  <aside data-testname=\"el-aside-in-section-aria-labelledby-whitespace\" class=\"ex-generic\" aria-labelledby=\"space\">x</aside>\n  <aside data-testname=\"el-aside-in-section-title\" data-expectedrole=\"complementary\" title=\"x\" class=\"ex\">x</aside>\n  <aside data-testname=\"el-aside-in-section-title-empty\" class=\"ex-generic\" title=\"\">x</aside>\n  <aside data-testname=\"el-aside-in-section-title-whitespace\" class=\"ex-generic\" title=\" \">x</aside>\n</section>\n\n<!-- el-footer -->\n<!-- nav>footer -> ./roles-contextual.tentative.html -->\n<footer data-testname=\"el-footer-ancestorbody\" data-expectedrole=\"contentinfo\" class=\"ex\">x</footer>\n<!-- main>footer -> ./roles-contextual.tentative.html -->\n\n<!-- el-header -->\n<!-- nav>header -> ./roles-contextual.tentative.html -->\n<header data-testname=\"el-header-ancestorbody\" data-expectedrole=\"banner\" class=\"ex\">x</header>\n<!-- main>header -> ./roles-contextual.tentative.html -->\n\n<!-- el-img-empty-alt -->\n<img data-testname=\"el-img-no-name\" data-expectedrole=\"image\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n<!-- img empty alt -> ./roles.html -->\n<img data-testname=\"el-img-empty-alt-aria-label\" data-expectedrole=\"image\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\" alt aria-label=\"x\">\n<img data-testname=\"el-img-empty-alt-aria-label-empty\" class=\"ex-generic\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\" alt aria-label=\"\">\n<img data-testname=\"el-img-empty-alt-aria-label-whitespace\" class=\"ex-generic\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\" alt aria-label=\" \">\n<img data-testname=\"el-img-empty-alt-aria-labelledby\" data-expectedrole=\"image\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\" alt aria-labelledby=\"labelledby\">\n<img data-testname=\"el-img-empty-alt-aria-labelledby-non-existing\" class=\"ex-generic\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\" alt aria-labelledby=\"non-existing\">\n<img data-testname=\"el-img-empty-alt-aria-labelledby-empty\" class=\"ex-generic\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\" alt aria-labelledby=\"empty\">\n<img data-testname=\"el-img-empty-alt-aria-labelledby-whitespace\" class=\"ex-generic\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\" alt aria-labelledby=\"space\">\n<img data-testname=\"el-img-empty-alt-title\" class=\"ex-generic\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\" alt title=\"x\">\n<img data-testname=\"el-img-empty-alt-title-empty\" class=\"ex-generic\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\" alt title=\"\">\n<img data-testname=\"el-img-empty-alt-title-whitespace\" class=\"ex-generic\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\" alt title=\" \">\n\n\n<!-- el-section -->\n<section data-testname=\"el-section\" aria-label=\"x\" data-expectedrole=\"region\" class=\"ex\">x</section>\n<section data-testname=\"el-section-no-name\" class=\"ex-generic\">x</section>\n<section data-testname=\"el-section-aria-label-empty\" class=\"ex-generic\" aria-label=\"\">x</section>\n<section data-testname=\"el-section-aria-label-whitespace\" class=\"ex-generic\" aria-label=\" \">x</section>\n<section data-testname=\"el-section-aria-labelledby\" data-expectedrole=\"region\" class=\"ex\" aria-labelledby=\"labelledby\">x</section>\n<section data-testname=\"el-section-aria-labelledby-non-existing\" class=\"ex-generic\" aria-labelledby=\"non-existing\">x</section>\n<section data-testname=\"el-section-aria-labelledby-empty\" class=\"ex-generic\" aria-labelledby=\"empty\">x</section>\n<section data-testname=\"el-section-aria-labelledby-whitespace\" class=\"ex-generic\" aria-labelledby=\"space\">x</section>\n<section data-testname=\"el-section-title\" data-expectedrole=\"region\" title=\"x\" class=\"ex\">x</section>\n<section data-testname=\"el-section-title-empty\" class=\"ex-generic\" title=\"\">x</section>\n<section data-testname=\"el-section-title-whitespace\" class=\"ex-generic\" title=\" \">x</section>\n\n<!-- element to reference for aria-labelledby tests -->\n<div id=\"labelledby\">labelledby</div>\n<div id=\"empty\"></div>\n<div id=\"space\"> </div>",
 		"selector": ".ex"
 	},
 	{
-		"filename": "roles.html",
-		"title": "HTML-AAM Role Verification Tests",
-		"html": "<style type=\"text/css\"></style><p>Tests the computedrole mappings defined in <a href=\"https://w3c.github.io/html-aam/\">HTML-AAM</a>. Most test names correspond to a unique ID defined in the spec.<p>\n\n<p>These should remain in alphabetical order, and include all HTML tagnames. If a tag is not tested here, include a pointer to the file where it is tested, such as: <code>&lt;!-- caption -&gt; ./table-roles.html --&gt;</code></p>\n\n\n<!-- a (w/ and w/o href) -> ./roles-contextual.html -->\n<!-- todo: abbr -->\n<address data-testname=\"el-address\" data-expectedrole=\"group\" class=\"ex\">x</address>\n<!-- area -> ./fragile/area-role.html -->\n<article data-testname=\"el-article\" data-expectedrole=\"article\" class=\"ex\">x</article>\n<!-- aside -> ./roles-contextual.html -->\n<!-- todo: audio -->\n<!-- todo: autonomous custom element -->\n<!-- b -> ./roles-generic.html -->\n<!-- base (not mapped) -->\n<!-- bdi -> ./roles-generic.html -->\n<!-- bdo -> ./roles-generic.html -->\n<blockquote data-testname=\"el-blockquote\" data-expectedrole=\"blockquote\" class=\"ex\">x</blockquote>\n<!-- todo: body -->\n<!-- br (not mapped) -->\n<button data-testname=\"el-button\" data-expectedrole=\"button\" class=\"ex\">x</button>\n<!-- todo: canvas -->\n<!-- caption -> ./table-roles.html -->\n<!-- todo: cite -->\n<code data-testname=\"el-code\" data-expectedrole=\"code\" class=\"ex\">x</code>\n<!-- todo: col -->\n<!-- todo: colgroup -->\n<!-- data -> ./roles-generic.html -->\n<!-- todo: datalist -->\n\n<!-- el-dd -->\n<dl>\n  <dt>x</dt>\n  <!-- dt/dd pending listitemkey and listitemvalue roles: https://github.com/w3c/aria/issues/1662 -->\n  <dd data-testname=\"el-dd\" data-expectedrole=\"definition\" class=\"ex\">x</dd>\n</dl>\n\n<del data-testname=\"el-del\" data-expectedrole=\"deletion\" class=\"ex\">x</del>\n<details data-testname=\"el-details\" data-expectedrole=\"group\" class=\"ex\"><summary>x</summary>x</details>\n<dfn data-testname=\"el-dfn\" data-expectedrole=\"term\" class=\"ex\">x</dfn>\n<!-- dir -> ./dir-role.tentative.html -->\n<!-- div -> ./roles-generic.html -->\n<!-- todo: dl -->\n\n<!-- el-dt -->\n<dl>\n  <!-- dt/dd pending listitemkey and listitemvalue roles: https://github.com/w3c/aria/issues/1662 -->\n  <dt data-testname=\"el-dt\" data-expectedrole=\"term\" class=\"ex\">x</dt>\n  <dd>x</dd>\n</dl>\n\n<em data-testname=\"el-em\" data-expectedrole=\"emphasis\" class=\"ex\">x</em>\n<!-- todo: embed -->\n<fieldset data-testname=\"el-fieldset\" data-expectedrole=\"group\" class=\"ex\"><legend>x</legend><input></fieldset>\n<!-- todo: figcaption -->\n<figure data-testname=\"el-figure\" data-expectedrole=\"figure\" class=\"ex\"><img alt=\"x\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\"><figcaption>x</figcaption></figure>\n<!-- footer -> ./roles-contextual.html -->\n<form aria-label=\"form\" data-testname=\"el-form\" data-expectedrole=\"form\" class=\"ex\"><input></form>\n<!-- todo: form-associated custom element -->\n\n<!-- el-h1-h6 -->\n<h1 data-testname=\"el-h1\" data-expectedrole=\"heading\" class=\"ex\">x</h1>\n<h2 data-testname=\"el-h2\" data-expectedrole=\"heading\" class=\"ex\">x</h2>\n<h3 data-testname=\"el-h3\" data-expectedrole=\"heading\" class=\"ex\">x</h3>\n<h4 data-testname=\"el-h4\" data-expectedrole=\"heading\" class=\"ex\">x</h4>\n<h5 data-testname=\"el-h5\" data-expectedrole=\"heading\" class=\"ex\">x</h5>\n<h6 data-testname=\"el-h6\" data-expectedrole=\"heading\" class=\"ex\">x</h6>\n\n<!-- head (not mapped) -->\n\n<!-- header -> ./roles-contextual.html -->\n<hgroup data-testname=\"el-hgroup\" data-expectedrole=\"group\" class=\"ex\"><h1>x</h1></hgroup>\n<hr data-testname=\"el-hr\" data-expectedrole=\"separator\" class=\"ex\">\n<!-- todo: html -->\n<!-- i -> ./roles-generic.html -->\n<!-- todo: iframe -->\n<img alt=\"x\" data-testname=\"el-img\" data-expectedrole=\"image\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n\n<!-- Implementations might also be valid if ignored rather than returning 'none' for the following images. -->\n<img alt data-testname=\"el-img-alt-no-value\" class=\"ex-generic\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n<img alt=\"\" data-testname=\"el-img-empty-alt\" class=\"ex-generic\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n\n<input type=\"button\" value=\"x\" data-testname=\"el-input-button\" data-expectedrole=\"button\" class=\"ex\">\n<input type=\"checkbox\" data-testname=\"el-input-checkbox\" data-expectedrole=\"checkbox\" class=\"ex\">\n<!-- todo: input type=\"color\" -->\n<!-- todo: input type=\"date\" -->\n<!-- todo: input type=\"datetime\" -->\n<!-- todo: input type=\"datetime-local\" -->\n<input type=\"email\" data-testname=\"el-input-email\" data-expectedrole=\"textbox\" class=\"ex\">\n<!-- todo: input type=\"file\" -->\n<!-- input type=\"hidden\" (not mapped) -->\n<!-- todo: input type=\"month\" -->\n\n<!-- Blocked: HTML-AAM Issue #467 -->\n<!-- <input type=\"number\" data-testname=\"el-input-number\" data-expectedrole=\"spinbutton\" class=\"ex\"> -->\n\n<!-- todo: input type=\"password\" -->\n<input type=\"radio\" data-testname=\"el-input-radio\" data-expectedrole=\"radio\" class=\"ex\">\n<input type=\"range\" data-testname=\"el-input-range\" data-expectedrole=\"slider\" class=\"ex\">\n<input type=\"reset\" value=\"x\" data-testname=\"el-input-reset\" data-expectedrole=\"button\" class=\"ex\">\n<input type=\"search\" data-testname=\"el-input-search\" data-expectedrole=\"searchbox\" class=\"ex\">\n<input type=\"submit\" value=\"x\" data-testname=\"el-input-submit\" data-expectedrole=\"button\" class=\"ex\">\n<input type=\"tel\" data-testname=\"el-input-tel\" data-expectedrole=\"textbox\" class=\"ex\">\n<input type=\"text\" data-testname=\"el-input-text\" data-expectedrole=\"textbox\" class=\"ex\">\n<!-- todo: input (type attribute in the Text, Search, Telephone, URL, or E-mail states with a suggestions source element) -->\n<!-- todo: input type=\"time\" -->\n<input type=\"url\" data-testname=\"el-input-url\" data-expectedrole=\"textbox\" class=\"ex\">\n<!-- todo: input type=\"week\" -->\n<ins data-testname=\"el-ins\" data-expectedrole=\"insertion\" class=\"ex\">x</ins>\n<!-- todo: kbd -->\n<!-- todo: label -->\n<!-- todo: legend -->\n\n<!-- el-li -->\n<!-- li (orphaned) -> ./roles-generic.html -->\n<ul><li data-testname=\"el-li-in-ul\" data-expectedrole=\"listitem\" class=\"ex\">x</li><li>x</li></ul>\n<ol><li data-testname=\"el-li-in-ol\" data-expectedrole=\"listitem\" class=\"ex\">x</li><li>x</li></ol>\n\n<!-- link (not mapped) -->\n<main data-testname=\"el-main\" data-expectedrole=\"main\" class=\"ex\">x</main>\n<!-- map (not mapped) -->\n<mark data-testname=\"el-mark\" data-expectedrole=\"mark\" class=\"ex\">x</mark>\n<!-- todo: math -->\n<menu data-testname=\"el-menu\" data-expectedrole=\"list\" class=\"ex\"><li>x</li></menu>\n<!-- meta (not mapped) -->\n<meter data-testname=\"el-meter\" data-expectedrole=\"meter\" class=\"ex\" min=\"0\" max=\"100\" low=\"20\" high=\"80\" optimum=\"60\" value=\"50\">x</meter>\n<nav data-testname=\"el-nav\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n<!-- noscript (not mapped) -->\n<!-- object (not mapped) -->\n<ol data-testname=\"el-ol\" data-expectedrole=\"list\" class=\"ex\"><li>x</li><li>x</li></ol>\n\n<!-- optgroup -> ./fragile/optgroup-role.html -->\n\n<!-- option -->\n<select>\n  <option data-testname=\"el-option\" data-expectedrole=\"option\" class=\"ex\">x</option>\n  <option>x</option>\n</select>\n\n<output data-testname=\"el-output\" data-expectedrole=\"status\" class=\"ex\">x</output>\n<p data-testname=\"el-p\" data-expectedrole=\"paragraph\" class=\"ex\">x</p>\n<!-- param (not mapped) -->\n<!-- todo: picture -->\n<!-- pre -> ./roles-generic.html -->\n<progress data-testname=\"el-progress\" data-expectedrole=\"progressbar\" class=\"ex\">x</progress>\n<!-- q -> ./roles-generic.html -->\n<!-- todo: rp -> /ruby-aam? -->\n<!-- todo: rt -> /ruby-aam? -->\n<!-- todo: ruby -> /ruby-aam? -->\n<s data-testname=\"el-s\" data-expectedrole=\"deletion\" class=\"ex\">x</s>\n<!-- samp -> ./roles-generic.html -->\n<!-- script (not mapped) -->\n<search data-testname=\"el-search\" data-expectedrole=\"search\" class=\"ex\">x</search>\n<!-- section -> ./roles-contextual.html -->\n\n<!-- Blocked: HTML-AAM Issue #467 -->\n<!-- <select data-testname=\"el-select-combobox\" data-expectedrole=\"combobox\" class=\"ex\"><option>a1</option><option>a2</option></select>-->\n\n<select data-testname=\"el-select-listbox\" size=\"2\" data-expectedrole=\"listbox\" class=\"ex\"><option>b1</option><option>b2</option></select>\n\n<!-- slot (not mapped) -->\n<!-- small -> ./roles-generic.html -->\n<!-- source (not mapped) -->\n<!-- span -> ./roles-generic.html -->\n<strong data-testname=\"el-strong\" data-expectedrole=\"strong\" class=\"ex\">x</strong>\n<!-- style (not mapped) -->\n<sub data-testname=\"el-sub\" data-expectedrole=\"subscript\" class=\"ex\">x</sub>\n<!-- todo: summary -->\n<sup data-testname=\"el-sup\" data-expectedrole=\"superscript\" class=\"ex\">x</sup>\n<!-- todo: svg (see /graphics-aam and /svg-aam tests) -->\n<!-- table -> ./table-roles.html -->\n<!-- tbody -> ./table-roles.html -->\n<!-- td -> ./table-roles.html -->\n<!-- template (not mapped) -->\n<!-- tfoot -> ./table-roles.html -->\n<!-- th -> ./table-roles.html -->\n<!-- thead -> ./table-roles.html -->\n<time data-testname=\"el-time\" data-expectedrole=\"time\" class=\"ex\">x</time>\n<!-- title (not mapped) -->\n<!-- tr -> ./table-roles.html -->\n<textarea data-testname=\"el-textarea\" data-expectedrole=\"textbox\" class=\"ex\">x</textarea>\n<!-- track (not mapped) -->\n<!-- u -> ./roles-generic.html -->\n<ul data-testname=\"el-ul\" data-expectedrole=\"list\" class=\"ex\"><li>x</li><li>x</li></ul>\n<!-- var (not mapped) -->\n<!-- todo: video -->\n<!-- wbr (not mapped) -->",
+		"filename": "roles-contextual.html",
+		"title": "HTML-AAM Contextual-Specific Role Verification Tests",
+		"html": "<style type=\"text/css\"></style><p>Tests contextual computed role mappings defined in <a href=\"https://w3c.github.io/html-aam/\">HTML-AAM</a>, where the returned computed role is expected to change based on the context. Most test names correspond to a unique ID defined in the spec.<p>\n\n<p>These should remain in alphabetical order.</code></p>\n\n\n<!-- el-a -->\n<a href=\"#\" data-testname=\"el-a\" data-expectedrole=\"link\" class=\"ex\">x</a>\n<a data-testname=\"el-a-no-href\" class=\"ex-generic\">x</a>\n\n<!-- el-aside -->\n<aside data-testname=\"el-aside\" data-expectedrole=\"complementary\" class=\"ex\">x</aside>\n<main>\n  <aside data-testname=\"el-aside-in-main\" data-expectedrole=\"complementary\" class=\"ex\">x</aside>\n  <article>\n    <aside data-testname=\"el-aside-in-article-in-main\" class=\"ex-generic\">x</aside>\n    <aside data-testname=\"el-aside-in-article-in-main-with-name\" data-expectedrole=\"complementary\" aria-label=\"x\" class=\"ex\">x</aside>\n  </article>\n</main>\n<article>\n  <aside data-testname=\"el-aside-in-article\" class=\"ex-generic\">x</aside>\n  <aside data-testname=\"el-aside-in-article-with-name\" data-expectedrole=\"complementary\" aria-label=\"x\" class=\"ex\">x</aside>\n</article>\n<aside>\n  <aside data-testname=\"el-aside-in-aside\" class=\"ex-generic\">x</aside>\n  <aside data-testname=\"el-aside-in-aside-with-name\" data-expectedrole=\"complementary\" aria-label=\"x\" class=\"ex\">x</aside>\n</aside>\n<nav>\n  <aside data-testname=\"el-aside-in-nav\" class=\"ex-generic\">x</aside>\n  <aside data-testname=\"el-aside-in-nav-with-name\" data-expectedrole=\"complementary\" aria-label=\"x\" class=\"ex\">x</aside>\n  <aside data-testname=\"el-aside-in-nav-with-role\" data-expectedrole=\"complementary\" class=\"ex\" role=\"complementary\">x</aside>\n</nav>\n<!-- Spec says that the conditional aside mapping happens when nested in a sectioning content element.\n  However, this doesn't make sense if the parent <section> isn't a landmark in the first place.\n  Let's force the section to always be a landmark for now, but we should probably expand on this test\n  case pending discussions in https://github.com/w3c/html-aam/pull/484 -->\n<section aria-label=\"x\">\n  <aside data-testname=\"el-aside-in-section\" class=\"ex-generic\">x</aside>\n  <aside data-testname=\"el-aside-in-section-with-name\" data-expectedrole=\"complementary\" aria-label=\"x\" class=\"ex\">x</aside>\n  <aside data-testname=\"el-aside-in-section-aria-label-empty\" class=\"ex-generic\" aria-label=\"\">x</aside>\n  <aside data-testname=\"el-aside-in-section-aria-label-whitespace\" class=\"ex-generic\" aria-label=\" \">x</aside>\n  <aside data-testname=\"el-aside-in-section-aria-labelledby\" data-expectedrole=\"complementary\" class=\"ex\" aria-labelledby=\"labelledby\">x</aside>\n  <aside data-testname=\"el-aside-in-section-aria-labelledby-non-existing\" class=\"ex-generic\" aria-labelledby=\"non-existing\">x</aside>\n  <aside data-testname=\"el-aside-in-section-aria-labelledby-empty\" class=\"ex-generic\" aria-labelledby=\"empty\">x</aside>\n  <aside data-testname=\"el-aside-in-section-aria-labelledby-whitespace\" class=\"ex-generic\" aria-labelledby=\"space\">x</aside>\n  <aside data-testname=\"el-aside-in-section-title\" data-expectedrole=\"complementary\" title=\"x\" class=\"ex\">x</aside>\n  <aside data-testname=\"el-aside-in-section-title-empty\" class=\"ex-generic\" title=\"\">x</aside>\n  <aside data-testname=\"el-aside-in-section-title-whitespace\" class=\"ex-generic\" title=\" \">x</aside>\n</section>\n\n<!-- el-footer -->\n<!-- nav>footer -> ./roles-contextual.tentative.html -->\n<footer data-testname=\"el-footer-ancestorbody\" data-expectedrole=\"contentinfo\" class=\"ex\">x</footer>\n<!-- main>footer -> ./roles-contextual.tentative.html -->\n\n<!-- el-header -->\n<!-- nav>header -> ./roles-contextual.tentative.html -->\n<header data-testname=\"el-header-ancestorbody\" data-expectedrole=\"banner\" class=\"ex\">x</header>\n<!-- main>header -> ./roles-contextual.tentative.html -->\n\n<!-- el-img-empty-alt -->\n<img data-testname=\"el-img-no-name\" data-expectedrole=\"image\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n<!-- img empty alt -> ./roles.html -->\n<img data-testname=\"el-img-empty-alt-aria-label\" data-expectedrole=\"image\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\" alt aria-label=\"x\">\n<img data-testname=\"el-img-empty-alt-aria-label-empty\" class=\"ex-generic\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\" alt aria-label=\"\">\n<img data-testname=\"el-img-empty-alt-aria-label-whitespace\" class=\"ex-generic\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\" alt aria-label=\" \">\n<img data-testname=\"el-img-empty-alt-aria-labelledby\" data-expectedrole=\"image\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\" alt aria-labelledby=\"labelledby\">\n<img data-testname=\"el-img-empty-alt-aria-labelledby-non-existing\" class=\"ex-generic\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\" alt aria-labelledby=\"non-existing\">\n<img data-testname=\"el-img-empty-alt-aria-labelledby-empty\" class=\"ex-generic\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\" alt aria-labelledby=\"empty\">\n<img data-testname=\"el-img-empty-alt-aria-labelledby-whitespace\" class=\"ex-generic\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\" alt aria-labelledby=\"space\">\n<img data-testname=\"el-img-empty-alt-title\" class=\"ex-generic\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\" alt title=\"x\">\n<img data-testname=\"el-img-empty-alt-title-empty\" class=\"ex-generic\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\" alt title=\"\">\n<img data-testname=\"el-img-empty-alt-title-whitespace\" class=\"ex-generic\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\" alt title=\" \">\n\n\n<!-- el-section -->\n<section data-testname=\"el-section\" aria-label=\"x\" data-expectedrole=\"region\" class=\"ex\">x</section>\n<section data-testname=\"el-section-no-name\" class=\"ex-generic\">x</section>\n<section data-testname=\"el-section-aria-label-empty\" class=\"ex-generic\" aria-label=\"\">x</section>\n<section data-testname=\"el-section-aria-label-whitespace\" class=\"ex-generic\" aria-label=\" \">x</section>\n<section data-testname=\"el-section-aria-labelledby\" data-expectedrole=\"region\" class=\"ex\" aria-labelledby=\"labelledby\">x</section>\n<section data-testname=\"el-section-aria-labelledby-non-existing\" class=\"ex-generic\" aria-labelledby=\"non-existing\">x</section>\n<section data-testname=\"el-section-aria-labelledby-empty\" class=\"ex-generic\" aria-labelledby=\"empty\">x</section>\n<section data-testname=\"el-section-aria-labelledby-whitespace\" class=\"ex-generic\" aria-labelledby=\"space\">x</section>\n<section data-testname=\"el-section-title\" data-expectedrole=\"region\" title=\"x\" class=\"ex\">x</section>\n<section data-testname=\"el-section-title-empty\" class=\"ex-generic\" title=\"\">x</section>\n<section data-testname=\"el-section-title-whitespace\" class=\"ex-generic\" title=\" \">x</section>\n\n<!-- element to reference for aria-labelledby tests -->\n<div id=\"labelledby\">labelledby</div>\n<div id=\"empty\"></div>\n<div id=\"space\"> </div>",
 		"role": "generic",
 		"selector": ".ex-generic"
 	},
@@ -1357,27 +1376,27 @@ window.wpt["html-aam"] = [
 		"selector": ".ex-generic"
 	},
 	{
-		"filename": "table-roles.html",
-		"title": "HTML-AAM Role Verification Tests",
-		"html": "<style type=\"text/css\"></style><p>Tests the computedrole mappings for the table-related roles defined in <a href=\"https://w3c.github.io/html-aam/\">HTML-AAM</a>. Most test names correspond to unique ID defined in the spec.<p>\n\n<!-- ARIA table roles tested in wpt/wai-aria/role/table-roles.html -->\n\n<table data-testname=\"el-table\" data-expectedrole=\"table\" class=\"ex\">\n  <caption data-testname=\"el-caption\" data-expectedrole=\"caption\" class=\"ex\">caption</caption>\n  <thead>\n    <tr data-testname=\"el-tr-thead\" data-expectedrole=\"row\" class=\"ex\">\n      <th data-testname=\"el-th\" data-expectedrole=\"columnheader\" class=\"ex\">a</th>\n      <th>b</th>\n      <th>c</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr data-testname=\"el-tr-tbody\" data-expectedrole=\"row\" class=\"ex\">\n      <th data-testname=\"el-th-in-row\" data-expectedrole=\"rowheader\" class=\"ex\">1</th>\n      <td data-testname=\"el-td\" data-expectedrole=\"cell\" class=\"ex\">2</td>\n      <td>3</td>\n    </tr>\n    <tr>\n      <th>4</th>\n      <td>5</td>\n      <td>6</td>\n    </tr>\n  </tbody>\n  <tfoot>\n    <tr>\n      <th>x</th>\n      <th>y</th>\n      <th>z</th>\n    </tr>\n  </tfoot>\n</table>",
-		"selector": ".ex"
-	},
-	{
 		"filename": "names.html",
 		"title": "HTML-AAM Element Accessible Name From Author Tests",
 		"html": "<style type=\"text/css\"></style><p>Tests the accName for elements defined in <a href=\"https://w3c.github.io/html-aam/#accessible-name-and-description-computation\">HTML-AAM: Accessible Name Computations By HTML Element</a>.\n  These tests are meant to show whether an element returns a name per the naming mechanism used. See <a href=\"https://wpt.fyi/results/accname\">wpt: accname</a> for expanded accName testing.</p>\n\n\n<!--\nThe following elements are those which can be named by authors. They do not receive their name from elements for which they are an accessibility ancestor.\n\nThere are other elements which can be named by author, but have additional ways in which they can be named. These elements will be tested separately.\n-->\n\n\n<h2>address element</h2>\n<address data-testname=\"address no name\" data-expectedlabel=\"\" class=\"ex\">x</address>\n\n<address data-testname=\"address aria-label\" aria-label=\"label\" data-expectedlabel=\"label\" class=\"ex\">x</address>\n<address data-testname=\"address aria-labelledby\" aria-labelledby=\"labelledby\" data-expectedlabel=\"labelledby\" class=\"ex\">x</address>\n<address data-testname=\"address title\" title=\"title\" data-expectedlabel=\"title\" class=\"ex\">x</address>\n\n<address data-testname=\"address aria-labelledby vs aria-label vs title\" aria-labelledby=\"labelledby\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\">x</address>\n<address data-testname=\"address aria-labelledby vs aria-label\" aria-labelledby=\"labelledby\" aria-label=\"label\" data-expectedlabel=\"labelledby\" class=\"ex\">x</address>\n\n<address data-testname=\"address aria-labelledby vs title\" aria-labelledby=\"labelledby\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\">x</address>\n<address data-testname=\"address aria-label vs title\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"label\" class=\"ex\">x</address>\n\n\n\n<h2>aside element</h2>\n<aside data-testname=\"aside no name\" data-expectedlabel=\"\" class=\"ex\">x</aside>\n\n<aside data-testname=\"aside aria-label\" aria-label=\"label\" data-expectedlabel=\"label\" class=\"ex\">x</aside>\n<aside data-testname=\"aside aria-labelledby\" aria-labelledby=\"labelledby\" data-expectedlabel=\"labelledby\" class=\"ex\">x</aside>\n<aside data-testname=\"aside title\" title=\"title\" data-expectedlabel=\"title\" class=\"ex\">x</aside>\n\n<aside data-testname=\"aside aria-labelledby vs aria-label vs title\" aria-labelledby=\"labelledby\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\">x</aside>\n<aside data-testname=\"aside aria-labelledby vs aria-label\" aria-labelledby=\"labelledby\" aria-label=\"label\" data-expectedlabel=\"labelledby\" class=\"ex\">x</aside>\n\n<aside data-testname=\"aside aria-labelledby vs title\" aria-labelledby=\"labelledby\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\">x</aside>\n<aside data-testname=\"aside aria-label vs title\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"label\" class=\"ex\">x</aside>\n\n\n<h2>blockquote element</h2>\n<blockquote data-testname=\"blockquote no name\" data-expectedlabel=\"\" class=\"ex\">x</blockquote>\n\n<blockquote data-testname=\"blockquote aria-label\" aria-label=\"label\" data-expectedlabel=\"label\" class=\"ex\">x</blockquote>\n<blockquote data-testname=\"blockquote aria-labelledby\" aria-labelledby=\"labelledby\" data-expectedlabel=\"labelledby\" class=\"ex\">x</blockquote>\n<blockquote data-testname=\"blockquote title\" title=\"title\" data-expectedlabel=\"title\" class=\"ex\">x</blockquote>\n\n<blockquote data-testname=\"blockquote aria-labelledby vs aria-label vs title\" aria-labelledby=\"labelledby\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\">x</blockquote>\n<blockquote data-testname=\"blockquote aria-labelledby vs aria-label\" aria-labelledby=\"labelledby\" aria-label=\"label\" data-expectedlabel=\"labelledby\" class=\"ex\">x</blockquote>\n\n<blockquote data-testname=\"blockquote aria-labelledby vs title\" aria-labelledby=\"labelledby\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\">x</blockquote>\n<blockquote data-testname=\"blockquote aria-label vs title\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"label\" class=\"ex\">x</blockquote>\n\n\n\n<h2>details element</h2>\n<details data-testname=\"details no name\" data-expectedlabel=\"\" class=\"ex\"><summary>x</summary></details>\n\n<details data-testname=\"details aria-label\" aria-label=\"label\" data-expectedlabel=\"label\" class=\"ex\"><summary>x</summary></details>\n<details data-testname=\"details aria-labelledby\" aria-labelledby=\"labelledby\" data-expectedlabel=\"labelledby\" class=\"ex\"><summary>x</summary></details>\n<details data-testname=\"details title\" title=\"title\" data-expectedlabel=\"title\" class=\"ex\"><summary>x</summary></details>\n\n<details data-testname=\"details aria-labelledby vs aria-label vs title\" aria-labelledby=\"labelledby\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\"><summary>x</summary></details>\n<details data-testname=\"details aria-labelledby vs aria-label\" aria-labelledby=\"labelledby\" aria-label=\"label\" data-expectedlabel=\"labelledby\" class=\"ex\"><summary>x</summary></details>\n\n<details data-testname=\"details aria-labelledby vs title\" aria-labelledby=\"labelledby\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\"><summary>x</summary></details>\n<details data-testname=\"details aria-label vs title\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"label\" class=\"ex\"><summary>x</summary></details>\n\n\n<h2>figure element</h2>\n<figure data-testname=\"figure no name\" data-expectedlabel=\"\" class=\"ex\">x</figure>\n\n<figure data-testname=\"figure aria-label\" aria-label=\"label\" data-expectedlabel=\"label\" class=\"ex\">x</figure>\n<figure data-testname=\"figure aria-labelledby\" aria-labelledby=\"labelledby\" data-expectedlabel=\"labelledby\" class=\"ex\">x</figure>\n<figure data-testname=\"figure title\" title=\"title\" data-expectedlabel=\"title\" class=\"ex\">x</figure>\n\n<figure data-testname=\"figure aria-labelledby vs aria-label vs title\" aria-labelledby=\"labelledby\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\">x</figure>\n<figure data-testname=\"figure aria-labelledby vs aria-label\" aria-labelledby=\"labelledby\" aria-label=\"label\" data-expectedlabel=\"labelledby\" class=\"ex\">x</figure>\n\n<figure data-testname=\"figure aria-labelledby vs title\" aria-labelledby=\"labelledby\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\">x</figure>\n<figure data-testname=\"figure aria-label vs title\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"label\" class=\"ex\">x</figure>\n\n\n<h2>footer element</h2>\n<footer data-testname=\"footer no name\" data-expectedlabel=\"\" class=\"ex\">x</footer>\n\n<footer data-testname=\"footer aria-label\" aria-label=\"label\" data-expectedlabel=\"label\" class=\"ex\">x</footer>\n<footer data-testname=\"footer aria-labelledby\" aria-labelledby=\"labelledby\" data-expectedlabel=\"labelledby\" class=\"ex\">x</footer>\n<footer data-testname=\"footer title\" title=\"title\" data-expectedlabel=\"title\" class=\"ex\">x</footer>\n\n<footer data-testname=\"footer aria-labelledby vs aria-label vs title\" aria-labelledby=\"labelledby\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\">x</footer>\n<footer data-testname=\"footer aria-labelledby vs aria-label\" aria-labelledby=\"labelledby\" aria-label=\"label\" data-expectedlabel=\"labelledby\" class=\"ex\">x</footer>\n\n<footer data-testname=\"footer aria-labelledby vs title\" aria-labelledby=\"labelledby\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\">x</footer>\n<footer data-testname=\"footer aria-label vs title\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"label\" class=\"ex\">x</footer>\n\n\n<h2>form element</h2>\n<form data-testname=\"form no name\" data-expectedlabel=\"\" class=\"ex\">x</form>\n\n<form data-testname=\"form aria-label\" aria-label=\"label\" data-expectedlabel=\"label\" class=\"ex\">x</form>\n<form data-testname=\"form aria-labelledby\" aria-labelledby=\"labelledby\" data-expectedlabel=\"labelledby\" class=\"ex\">x</form>\n<form data-testname=\"form title\" title=\"title\" data-expectedlabel=\"title\" class=\"ex\">x</form>\n\n<form data-testname=\"form aria-labelledby vs aria-label vs title\" aria-labelledby=\"labelledby\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\">x</form>\n<form data-testname=\"form aria-labelledby vs aria-label\" aria-labelledby=\"labelledby\" aria-label=\"label\" data-expectedlabel=\"labelledby\" class=\"ex\">x</form>\n\n<form data-testname=\"form aria-labelledby vs title\" aria-labelledby=\"labelledby\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\">x</form>\n<form data-testname=\"form aria-label vs title\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"label\" class=\"ex\">x</form>\n\n\n<h2>hgroup element</h2>\n<hgroup data-testname=\"hgroup no name\" data-expectedlabel=\"\" class=\"ex\"><h3>x</h3><p>y</p></hgroup>\n\n<hgroup data-testname=\"hgroup aria-label\" aria-label=\"label\" data-expectedlabel=\"label\" class=\"ex\"><h3>x</h3><p>y</p></hgroup>\n<hgroup data-testname=\"hgroup aria-labelledby\" aria-labelledby=\"labelledby\" data-expectedlabel=\"labelledby\" class=\"ex\"><h3>x</h3><p>y</p></hgroup>\n<hgroup data-testname=\"hgroup title\" title=\"title\" data-expectedlabel=\"title\" class=\"ex\"><h3>x</h3><p>y</p></hgroup>\n\n<hgroup data-testname=\"hgroup aria-labelledby vs aria-label vs title\" aria-labelledby=\"labelledby\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\"><h3>x</h3><p>y</p></hgroup>\n<hgroup data-testname=\"hgroup aria-labelledby vs aria-label\" aria-labelledby=\"labelledby\" aria-label=\"label\" data-expectedlabel=\"labelledby\" class=\"ex\"><h3>x</h3><p>y</p></hgroup>\n\n<hgroup data-testname=\"hgroup aria-labelledby vs title\" aria-labelledby=\"labelledby\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\"><h3>x</h3><p>y</p></hgroup>\n<hgroup data-testname=\"hgroup aria-label vs title\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"label\" class=\"ex\"><h3>x</h3><p>y</p></hgroup>\n\n\n<h2>hr element</h2>\n<hr data-testname=\"hr no name\" data-expectedlabel=\"\" class=\"ex\">\n\n<hr data-testname=\"hr aria-label\" aria-label=\"label\" data-expectedlabel=\"label\" class=\"ex\">\n<hr data-testname=\"hr aria-labelledby\" aria-labelledby=\"labelledby\" data-expectedlabel=\"labelledby\" class=\"ex\">\n<hr data-testname=\"hr title\" title=\"title\" data-expectedlabel=\"title\" class=\"ex\">\n\n<hr data-testname=\"hr aria-labelledby vs aria-label vs title\" aria-labelledby=\"labelledby\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\">\n<hr data-testname=\"hr aria-labelledby vs aria-label\" aria-labelledby=\"labelledby\" aria-label=\"label\" data-expectedlabel=\"labelledby\" class=\"ex\">\n\n<hr data-testname=\"hr aria-labelledby vs title\" aria-labelledby=\"labelledby\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\">\n<hr data-testname=\"hr aria-label vs title\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"label\" class=\"ex\">\n\n\n<h2>ol element</h2>\n<ol data-testname=\"ol no name\" data-expectedlabel=\"\" class=\"ex\"><li>x</li></ol>\n\n<ol data-testname=\"ol aria-label\" aria-label=\"label\" data-expectedlabel=\"label\" class=\"ex\"><li>x</li></ol>\n<ol data-testname=\"ol aria-labelledby\" aria-labelledby=\"labelledby\" data-expectedlabel=\"labelledby\" class=\"ex\"><li>x</li></ol>\n<ol data-testname=\"ol title\" title=\"title\" data-expectedlabel=\"title\" class=\"ex\"><li>x</li></ol>\n\n<ol data-testname=\"ol aria-labelledby vs aria-label vs title\" aria-labelledby=\"labelledby\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\"><li>x</li></ol>\n<ol data-testname=\"ol aria-labelledby vs aria-label\" aria-labelledby=\"labelledby\" aria-label=\"label\" data-expectedlabel=\"labelledby\" class=\"ex\"><li>x</li></ol>\n\n<ol data-testname=\"ol aria-labelledby vs title\" aria-labelledby=\"labelledby\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\"><li>x</li></ol>\n<ol data-testname=\"ol aria-label vs title\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"label\" class=\"ex\"><li>x</li></ol>\n\n\n<h2>main element</h2>\n<main data-testname=\"main no name\" data-expectedlabel=\"\" class=\"ex\">x</main>\n\n<main data-testname=\"main aria-label\" aria-label=\"label\" data-expectedlabel=\"label\" class=\"ex\">x</main>\n<main data-testname=\"main aria-labelledby\" aria-labelledby=\"labelledby\" data-expectedlabel=\"labelledby\" class=\"ex\">x</main>\n<main data-testname=\"main title\" title=\"title\" data-expectedlabel=\"title\" class=\"ex\">x</main>\n\n<main data-testname=\"main aria-labelledby vs aria-label vs title\" aria-labelledby=\"labelledby\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\">x</main>\n<main data-testname=\"main aria-labelledby vs aria-label\" aria-labelledby=\"labelledby\" aria-label=\"label\" data-expectedlabel=\"labelledby\" class=\"ex\">x</main>\n\n<main data-testname=\"main aria-labelledby vs title\" aria-labelledby=\"labelledby\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\">x</main>\n<main data-testname=\"main aria-label vs title\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"label\" class=\"ex\">x</main>\n\n\n<h2>menu element</h2>\n<menu data-testname=\"menu no name\" data-expectedlabel=\"\" class=\"ex\"><li>x</li></menu>\n\n<menu data-testname=\"menu aria-label\" aria-label=\"label\" data-expectedlabel=\"label\" class=\"ex\"><li>x</li></menu>\n<menu data-testname=\"menu aria-labelledby\" aria-labelledby=\"labelledby\" data-expectedlabel=\"labelledby\" class=\"ex\"><li>x</li></menu>\n<menu data-testname=\"menu title\" title=\"title\" data-expectedlabel=\"title\" class=\"ex\"><li>x</li></menu>\n\n<menu data-testname=\"menu aria-labelledby vs aria-label vs title\" aria-labelledby=\"labelledby\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\"><li>x</li></menu>\n<menu data-testname=\"menu aria-labelledby vs aria-label\" aria-labelledby=\"labelledby\" aria-label=\"label\" data-expectedlabel=\"labelledby\" class=\"ex\"><li>x</li></menu>\n\n<menu data-testname=\"menu aria-labelledby vs title\" aria-labelledby=\"labelledby\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\"><li>x</li></menu>\n<menu data-testname=\"menu aria-label vs title\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"label\" class=\"ex\"><li>x</li></menu>\n\n\n<h2>nav element</h2>\n<nav data-testname=\"nav no name\" data-expectedlabel=\"\" class=\"ex\">x</nav>\n\n<nav data-testname=\"nav aria-label\" aria-label=\"label\" data-expectedlabel=\"label\" class=\"ex\">x</nav>\n<nav data-testname=\"nav aria-labelledby\" aria-labelledby=\"labelledby\" data-expectedlabel=\"labelledby\" class=\"ex\">x</nav>\n<nav data-testname=\"nav title\" title=\"title\" data-expectedlabel=\"title\" class=\"ex\">x</nav>\n\n<nav data-testname=\"nav aria-labelledby vs aria-label vs title\" aria-labelledby=\"labelledby\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\">x</nav>\n<nav data-testname=\"nav aria-labelledby vs aria-label\" aria-labelledby=\"labelledby\" aria-label=\"label\" data-expectedlabel=\"labelledby\" class=\"ex\">x</nav>\n\n<nav data-testname=\"nav aria-labelledby vs title\" aria-labelledby=\"labelledby\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\">x</nav>\n<nav data-testname=\"nav aria-label vs title\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"label\" class=\"ex\">x</nav>\n\n\n<h2>search element</h2>\n<search data-testname=\"search no name\" data-expectedlabel=\"\" class=\"ex\">x</search>\n\n<search data-testname=\"search aria-label\" aria-label=\"label\" data-expectedlabel=\"label\" class=\"ex\">x</search>\n<search data-testname=\"search aria-labelledby\" aria-labelledby=\"labelledby\" data-expectedlabel=\"labelledby\" class=\"ex\">x</search>\n<search data-testname=\"search title\" title=\"title\" data-expectedlabel=\"title\" class=\"ex\">x</search>\n\n<search data-testname=\"search aria-labelledby vs aria-label vs title\" aria-labelledby=\"labelledby\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\">x</search>\n<search data-testname=\"search aria-labelledby vs aria-label\" aria-labelledby=\"labelledby\" aria-label=\"label\" data-expectedlabel=\"labelledby\" class=\"ex\">x</search>\n\n<search data-testname=\"search aria-labelledby vs title\" aria-labelledby=\"labelledby\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\">x</search>\n<search data-testname=\"search aria-label vs title\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"label\" class=\"ex\">x</search>\n\n\n<h2>section element</h2>\n<section data-testname=\"section no name\" data-expectedlabel=\"\" class=\"ex\">x</section>\n\n<section data-testname=\"section aria-label\" aria-label=\"label\" data-expectedlabel=\"label\" class=\"ex\">x</section>\n<section data-testname=\"section aria-labelledby\" aria-labelledby=\"labelledby\" data-expectedlabel=\"labelledby\" class=\"ex\">x</section>\n<section data-testname=\"section title\" title=\"title\" data-expectedlabel=\"title\" class=\"ex\">x</section>\n\n<section data-testname=\"section aria-labelledby vs aria-label vs title\" aria-labelledby=\"labelledby\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\">x</section>\n<section data-testname=\"section aria-labelledby vs aria-label\" aria-labelledby=\"labelledby\" aria-label=\"label\" data-expectedlabel=\"labelledby\" class=\"ex\">x</section>\n\n<section data-testname=\"section aria-labelledby vs title\" aria-labelledby=\"labelledby\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\">x</section>\n<section data-testname=\"section aria-label vs title\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"label\" class=\"ex\">x</section>\n\n\n<h2>ul element</h2>\n<ul data-testname=\"ul no name\" data-expectedlabel=\"\" class=\"ex\"><li>x</li></ul>\n\n<ul data-testname=\"ul aria-label\" aria-label=\"label\" data-expectedlabel=\"label\" class=\"ex\"><li>x</li></ul>\n<ul data-testname=\"ul aria-labelledby\" aria-labelledby=\"labelledby\" data-expectedlabel=\"labelledby\" class=\"ex\"><li>x</li></ul>\n<ul data-testname=\"ul title\" title=\"title\" data-expectedlabel=\"title\" class=\"ex\"><li>x</li></ul>\n\n<ul data-testname=\"ul aria-labelledby vs aria-label vs title\" aria-labelledby=\"labelledby\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\"><li>x</li></ul>\n<ul data-testname=\"ul aria-labelledby vs aria-label\" aria-labelledby=\"labelledby\" aria-label=\"label\" data-expectedlabel=\"labelledby\" class=\"ex\"><li>x</li></ul>\n\n<ul data-testname=\"ul aria-labelledby vs title\" aria-labelledby=\"labelledby\" title=\"title\" data-expectedlabel=\"labelledby\" class=\"ex\"><li>x</li></ul>\n<ul data-testname=\"ul aria-label vs title\" aria-label=\"label\" title=\"title\" data-expectedlabel=\"label\" class=\"ex\"><li>x</li></ul>\n\n\n<!-- element to reference for aria-labelledby tests -->\n<div id=\"labelledby\">labelledby</div>",
 		"selector": ".ex"
 	},
 	{
-		"filename": "roles-contextual.html",
-		"title": "HTML-AAM Contextual-Specific Role Verification Tests",
-		"html": "<style type=\"text/css\"></style><p>Tests contextual computedrole mappings defined in <a href=\"https://w3c.github.io/html-aam/\">HTML-AAM</a>, where the returned computed role is expected to change based on the context. Most test names correspond to a unique ID defined in the spec.<p>\n\n<p>These should remain in alphabetical order.</code></p>\n\n\n<!-- el-a -->\n<a href=\"#\" data-testname=\"el-a\" data-expectedrole=\"link\" class=\"ex\">x</a>\n<a data-testname=\"el-a-no-href\" class=\"ex-generic\">x</a>\n\n<!-- el-aside -->\n<aside data-testname=\"el-aside\" data-expectedrole=\"complementary\" class=\"ex\">x</aside>\n<main>\n  <aside data-testname=\"el-aside-in-main\" data-expectedrole=\"complementary\" class=\"ex\">x</aside>\n  <article>\n    <aside data-testname=\"el-aside-in-article-in-main\" class=\"ex-generic\">x</aside>\n    <aside data-testname=\"el-aside-in-article-in-main-with-name\" data-expectedrole=\"complementary\" aria-label=\"x\" class=\"ex\">x</aside>\n  </article>\n</main>\n<article>\n  <aside data-testname=\"el-aside-in-article\" class=\"ex-generic\">x</aside>\n  <aside data-testname=\"el-aside-in-article-with-name\" data-expectedrole=\"complementary\" aria-label=\"x\" class=\"ex\">x</aside>\n</article>\n<aside>\n  <aside data-testname=\"el-aside-in-aside\" class=\"ex-generic\">x</aside>\n  <aside data-testname=\"el-aside-in-aside-with-name\" data-expectedrole=\"complementary\" aria-label=\"x\" class=\"ex\">x</aside>\n</aside>\n<nav>\n  <aside data-testname=\"el-aside-in-nav\" class=\"ex-generic\">x</aside>\n  <aside data-testname=\"el-aside-in-nav-with-name\" data-expectedrole=\"complementary\" aria-label=\"x\" class=\"ex\">x</aside>\n  <aside data-testname=\"el-aside-in-nav-with-role\" data-expectedrole=\"complementary\" class=\"ex\" role=\"complementary\">x</aside>\n</nav>\n<!-- Spec says that the conditional aside mapping happens when nested in a sectioning content element.\n  However, this doesn't make sense if the parent <section> isn't a landmark in the first place.\n  Let's force the section to always be a landmark for now, but we should probably expand on this test\n  case pending discussions in https://github.com/w3c/html-aam/pull/484 -->\n<section aria-label=\"x\">\n  <aside data-testname=\"el-aside-in-section\" class=\"ex-generic\">x</aside>\n  <aside data-testname=\"el-aside-in-section-with-name\" data-expectedrole=\"complementary\" aria-label=\"x\" class=\"ex\">x</aside>\n</section>\n\n<!-- el-footer -->\n<!-- nav>footer -> ./roles-contextual.tentative.html -->\n<footer data-testname=\"el-footer-ancestorbody\" data-expectedrole=\"contentinfo\" class=\"ex\">x</footer>\n<!-- main>footer -> ./roles-contextual.tentative.html -->\n\n<!-- el-header -->\n<!-- nav>header -> ./roles-contextual.tentative.html -->\n<header data-testname=\"el-header-ancestorbody\" data-expectedrole=\"banner\" class=\"ex\">x</header>\n<!-- main>header -> ./roles-contextual.tentative.html -->\n\n<!-- el-section -->\n<section data-testname=\"el-section\" aria-label=\"x\" data-expectedrole=\"region\" class=\"ex\">x</section>\n<section data-testname=\"el-section-no-name\" class=\"ex-generic\">x</section>",
+		"filename": "table-roles.html",
+		"title": "HTML-AAM Role Verification Tests",
+		"html": "<style type=\"text/css\"></style><p>Tests the computedrole mappings for the table-related roles defined in <a href=\"https://w3c.github.io/html-aam/\">HTML-AAM</a>. Most test names correspond to unique ID defined in the spec.<p>\n\n<!-- ARIA table roles tested in wpt/wai-aria/role/table-roles.html -->\n\n<table data-testname=\"el-table\" data-expectedrole=\"table\" class=\"ex\">\n  <caption data-testname=\"el-caption\" data-expectedrole=\"caption\" class=\"ex\">caption</caption>\n  <thead>\n    <tr data-testname=\"el-tr-thead\" data-expectedrole=\"row\" class=\"ex\">\n      <th data-testname=\"el-th\" data-expectedrole=\"columnheader\" class=\"ex\">a</th>\n      <th>b</th>\n      <th>c</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr data-testname=\"el-tr-tbody\" data-expectedrole=\"row\" class=\"ex\">\n      <th data-testname=\"el-th-in-row\" data-expectedrole=\"rowheader\" class=\"ex\">1</th>\n      <td data-testname=\"el-td\" data-expectedrole=\"cell\" class=\"ex\">2</td>\n      <td>3</td>\n    </tr>\n    <tr>\n      <th>4</th>\n      <td>5</td>\n      <td>6</td>\n    </tr>\n  </tbody>\n  <tfoot>\n    <tr>\n      <th>x</th>\n      <th>y</th>\n      <th>z</th>\n    </tr>\n  </tfoot>\n</table>",
 		"selector": ".ex"
 	},
 	{
-		"filename": "roles-contextual.html",
-		"title": "HTML-AAM Contextual-Specific Role Verification Tests",
-		"html": "<style type=\"text/css\"></style><p>Tests contextual computedrole mappings defined in <a href=\"https://w3c.github.io/html-aam/\">HTML-AAM</a>, where the returned computed role is expected to change based on the context. Most test names correspond to a unique ID defined in the spec.<p>\n\n<p>These should remain in alphabetical order.</code></p>\n\n\n<!-- el-a -->\n<a href=\"#\" data-testname=\"el-a\" data-expectedrole=\"link\" class=\"ex\">x</a>\n<a data-testname=\"el-a-no-href\" class=\"ex-generic\">x</a>\n\n<!-- el-aside -->\n<aside data-testname=\"el-aside\" data-expectedrole=\"complementary\" class=\"ex\">x</aside>\n<main>\n  <aside data-testname=\"el-aside-in-main\" data-expectedrole=\"complementary\" class=\"ex\">x</aside>\n  <article>\n    <aside data-testname=\"el-aside-in-article-in-main\" class=\"ex-generic\">x</aside>\n    <aside data-testname=\"el-aside-in-article-in-main-with-name\" data-expectedrole=\"complementary\" aria-label=\"x\" class=\"ex\">x</aside>\n  </article>\n</main>\n<article>\n  <aside data-testname=\"el-aside-in-article\" class=\"ex-generic\">x</aside>\n  <aside data-testname=\"el-aside-in-article-with-name\" data-expectedrole=\"complementary\" aria-label=\"x\" class=\"ex\">x</aside>\n</article>\n<aside>\n  <aside data-testname=\"el-aside-in-aside\" class=\"ex-generic\">x</aside>\n  <aside data-testname=\"el-aside-in-aside-with-name\" data-expectedrole=\"complementary\" aria-label=\"x\" class=\"ex\">x</aside>\n</aside>\n<nav>\n  <aside data-testname=\"el-aside-in-nav\" class=\"ex-generic\">x</aside>\n  <aside data-testname=\"el-aside-in-nav-with-name\" data-expectedrole=\"complementary\" aria-label=\"x\" class=\"ex\">x</aside>\n  <aside data-testname=\"el-aside-in-nav-with-role\" data-expectedrole=\"complementary\" class=\"ex\" role=\"complementary\">x</aside>\n</nav>\n<!-- Spec says that the conditional aside mapping happens when nested in a sectioning content element.\n  However, this doesn't make sense if the parent <section> isn't a landmark in the first place.\n  Let's force the section to always be a landmark for now, but we should probably expand on this test\n  case pending discussions in https://github.com/w3c/html-aam/pull/484 -->\n<section aria-label=\"x\">\n  <aside data-testname=\"el-aside-in-section\" class=\"ex-generic\">x</aside>\n  <aside data-testname=\"el-aside-in-section-with-name\" data-expectedrole=\"complementary\" aria-label=\"x\" class=\"ex\">x</aside>\n</section>\n\n<!-- el-footer -->\n<!-- nav>footer -> ./roles-contextual.tentative.html -->\n<footer data-testname=\"el-footer-ancestorbody\" data-expectedrole=\"contentinfo\" class=\"ex\">x</footer>\n<!-- main>footer -> ./roles-contextual.tentative.html -->\n\n<!-- el-header -->\n<!-- nav>header -> ./roles-contextual.tentative.html -->\n<header data-testname=\"el-header-ancestorbody\" data-expectedrole=\"banner\" class=\"ex\">x</header>\n<!-- main>header -> ./roles-contextual.tentative.html -->\n\n<!-- el-section -->\n<section data-testname=\"el-section\" aria-label=\"x\" data-expectedrole=\"region\" class=\"ex\">x</section>\n<section data-testname=\"el-section-no-name\" class=\"ex-generic\">x</section>",
+		"filename": "roles.html",
+		"title": "HTML-AAM Role Verification Tests",
+		"html": "<style type=\"text/css\"></style><p>Tests the computedrole mappings defined in <a href=\"https://w3c.github.io/html-aam/\">HTML-AAM</a>. Most test names correspond to a unique ID defined in the spec.<p>\n\n<p>These should remain in alphabetical order, and include all HTML tagnames. If a tag is not tested here, include a pointer to the file where it is tested, such as: <code>&lt;!-- caption -&gt; ./table-roles.html --&gt;</code></p>\n\n\n<!-- a (w/ and w/o href) -> ./roles-contextual.html -->\n<!-- todo: abbr -->\n<address data-testname=\"el-address\" data-expectedrole=\"group\" class=\"ex\">x</address>\n<!-- area -> ./fragile/area-role.html -->\n<article data-testname=\"el-article\" data-expectedrole=\"article\" class=\"ex\">x</article>\n<!-- aside -> ./roles-contextual.html -->\n<!-- todo: audio -->\n<!-- todo: autonomous custom element -->\n<!-- b -> ./roles-generic.html -->\n<!-- base (not mapped) -->\n<!-- bdi -> ./roles-generic.html -->\n<!-- bdo -> ./roles-generic.html -->\n<blockquote data-testname=\"el-blockquote\" data-expectedrole=\"blockquote\" class=\"ex\">x</blockquote>\n<!-- todo: body -->\n<!-- br (not mapped) -->\n<button data-testname=\"el-button\" data-expectedrole=\"button\" class=\"ex\">x</button>\n<!-- todo: canvas -->\n<!-- caption -> ./table-roles.html -->\n<!-- todo: cite -->\n<code data-testname=\"el-code\" data-expectedrole=\"code\" class=\"ex\">x</code>\n<!-- todo: col -->\n<!-- todo: colgroup -->\n<!-- data -> ./roles-generic.html -->\n<!-- todo: datalist -->\n\n<!-- el-dd -->\n<dl>\n  <dt>x</dt>\n  <!-- dt/dd pending listitemkey and listitemvalue roles: https://github.com/w3c/aria/issues/1662 -->\n  <dd data-testname=\"el-dd\" data-expectedrole=\"definition\" class=\"ex\">x</dd>\n</dl>\n\n<del data-testname=\"el-del\" data-expectedrole=\"deletion\" class=\"ex\">x</del>\n<details data-testname=\"el-details\" data-expectedrole=\"group\" class=\"ex\"><summary>x</summary>x</details>\n<dfn data-testname=\"el-dfn\" data-expectedrole=\"term\" class=\"ex\">x</dfn>\n<!-- dir -> ./dir-role.tentative.html -->\n<!-- div -> ./roles-generic.html -->\n<!-- todo: dl -->\n\n<!-- el-dt -->\n<dl>\n  <!-- dt/dd pending listitemkey and listitemvalue roles: https://github.com/w3c/aria/issues/1662 -->\n  <dt data-testname=\"el-dt\" data-expectedrole=\"term\" class=\"ex\">x</dt>\n  <dd>x</dd>\n</dl>\n\n<em data-testname=\"el-em\" data-expectedrole=\"emphasis\" class=\"ex\">x</em>\n<!-- todo: embed -->\n<fieldset data-testname=\"el-fieldset\" data-expectedrole=\"group\" class=\"ex\"><legend>x</legend><input></fieldset>\n<!-- todo: figcaption -->\n<figure data-testname=\"el-figure\" data-expectedrole=\"figure\" class=\"ex\"><img alt=\"x\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\"><figcaption>x</figcaption></figure>\n<!-- footer -> ./roles-contextual.html -->\n<form aria-label=\"form\" data-testname=\"el-form\" data-expectedrole=\"form\" class=\"ex\"><input></form>\n<!-- todo: form-associated custom element -->\n\n<!-- el-h1-h6 -->\n<h1 data-testname=\"el-h1\" data-expectedrole=\"heading\" class=\"ex\">x</h1>\n<h2 data-testname=\"el-h2\" data-expectedrole=\"heading\" class=\"ex\">x</h2>\n<h3 data-testname=\"el-h3\" data-expectedrole=\"heading\" class=\"ex\">x</h3>\n<h4 data-testname=\"el-h4\" data-expectedrole=\"heading\" class=\"ex\">x</h4>\n<h5 data-testname=\"el-h5\" data-expectedrole=\"heading\" class=\"ex\">x</h5>\n<h6 data-testname=\"el-h6\" data-expectedrole=\"heading\" class=\"ex\">x</h6>\n\n<!-- head (not mapped) -->\n\n<!-- header -> ./roles-contextual.html -->\n<hgroup data-testname=\"el-hgroup\" data-expectedrole=\"group\" class=\"ex\"><h1>x</h1></hgroup>\n<hr data-testname=\"el-hr\" data-expectedrole=\"separator\" class=\"ex\">\n<!-- todo: html -->\n<!-- i -> ./roles-generic.html -->\n<!-- todo: iframe -->\n<img alt=\"x\" data-testname=\"el-img\" data-expectedrole=\"image\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n\n<!-- Implementations might also be valid if ignored rather than returning 'none' for the following images. -->\n<img alt data-testname=\"el-img-alt-no-value\" class=\"ex-generic\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n<img alt=\"\" data-testname=\"el-img-empty-alt\" class=\"ex-generic\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n\n<!-- img with empty alt but other naming mechanism -> ./roles-contextual.html -->\n\n<input type=\"button\" value=\"x\" data-testname=\"el-input-button\" data-expectedrole=\"button\" class=\"ex\">\n<input type=\"checkbox\" data-testname=\"el-input-checkbox\" data-expectedrole=\"checkbox\" class=\"ex\">\n<!-- todo: input type=\"color\" -->\n<!-- todo: input type=\"date\" -->\n<!-- todo: input type=\"datetime\" -->\n<!-- todo: input type=\"datetime-local\" -->\n<input type=\"email\" data-testname=\"el-input-email\" data-expectedrole=\"textbox\" class=\"ex\">\n<!-- todo: input type=\"file\" -->\n<!-- input type=\"hidden\" (not mapped) -->\n<!-- todo: input type=\"month\" -->\n\n<!-- Blocked: HTML-AAM Issue #467 -->\n<!-- <input type=\"number\" data-testname=\"el-input-number\" data-expectedrole=\"spinbutton\" class=\"ex\"> -->\n\n<!-- todo: input type=\"password\" -->\n<input type=\"radio\" data-testname=\"el-input-radio\" data-expectedrole=\"radio\" class=\"ex\">\n<input type=\"range\" data-testname=\"el-input-range\" data-expectedrole=\"slider\" class=\"ex\">\n<input type=\"reset\" value=\"x\" data-testname=\"el-input-reset\" data-expectedrole=\"button\" class=\"ex\">\n<input type=\"search\" data-testname=\"el-input-search\" data-expectedrole=\"searchbox\" class=\"ex\">\n<!-- An ARIA role should override type=\"search\". -->\n<input type=\"search\" role=\"combobox\" data-testname=\"el-input-search-with-role\" data-expectedrole=\"combobox\" class=\"ex\">\n<input type=\"submit\" value=\"x\" data-testname=\"el-input-submit\" data-expectedrole=\"button\" class=\"ex\">\n<input type=\"tel\" data-testname=\"el-input-tel\" data-expectedrole=\"textbox\" class=\"ex\">\n<input type=\"text\" data-testname=\"el-input-text\" data-expectedrole=\"textbox\" class=\"ex\">\n<!-- todo: input (type attribute in the Text, Search, Telephone, URL, or E-mail states with a suggestions source element) -->\n<!-- todo: input type=\"time\" -->\n<input type=\"url\" data-testname=\"el-input-url\" data-expectedrole=\"textbox\" class=\"ex\">\n<!-- todo: input type=\"week\" -->\n<ins data-testname=\"el-ins\" data-expectedrole=\"insertion\" class=\"ex\">x</ins>\n<!-- todo: kbd -->\n<!-- todo: label -->\n<!-- todo: legend -->\n\n<!-- el-li -->\n<!-- li (orphaned) -> ./roles-generic.html -->\n<ul><li data-testname=\"el-li-in-ul\" data-expectedrole=\"listitem\" class=\"ex\">x</li><li>x</li></ul>\n<ol><li data-testname=\"el-li-in-ol\" data-expectedrole=\"listitem\" class=\"ex\">x</li><li>x</li></ol>\n\n<!-- link (not mapped) -->\n<main data-testname=\"el-main\" data-expectedrole=\"main\" class=\"ex\">x</main>\n<!-- map (not mapped) -->\n<mark data-testname=\"el-mark\" data-expectedrole=\"mark\" class=\"ex\">x</mark>\n<!-- todo: math -->\n<menu data-testname=\"el-menu\" data-expectedrole=\"list\" class=\"ex\"><li>x</li></menu>\n<!-- meta (not mapped) -->\n<meter data-testname=\"el-meter\" data-expectedrole=\"meter\" class=\"ex\" min=\"0\" max=\"100\" low=\"20\" high=\"80\" optimum=\"60\" value=\"50\">x</meter>\n<nav data-testname=\"el-nav\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n<!-- noscript (not mapped) -->\n<!-- object (not mapped) -->\n<ol data-testname=\"el-ol\" data-expectedrole=\"list\" class=\"ex\"><li>x</li><li>x</li></ol>\n\n<!-- optgroup -> ./fragile/optgroup-role.html -->\n\n<!-- option -->\n<select>\n  <option data-testname=\"el-option\" data-expectedrole=\"option\" class=\"ex\">x</option>\n  <option>x</option>\n</select>\n\n<output data-testname=\"el-output\" data-expectedrole=\"status\" class=\"ex\">x</output>\n<p data-testname=\"el-p\" data-expectedrole=\"paragraph\" class=\"ex\">x</p>\n<!-- param (not mapped) -->\n<!-- todo: picture -->\n<!-- pre -> ./roles-generic.html -->\n<progress data-testname=\"el-progress\" data-expectedrole=\"progressbar\" class=\"ex\">x</progress>\n<!-- q -> ./roles-generic.html -->\n<!-- todo: rp -> /ruby-aam? -->\n<!-- todo: rt -> /ruby-aam? -->\n<!-- todo: ruby -> /ruby-aam? -->\n<s data-testname=\"el-s\" data-expectedrole=\"deletion\" class=\"ex\">x</s>\n<!-- samp -> ./roles-generic.html -->\n<!-- script (not mapped) -->\n<search data-testname=\"el-search\" data-expectedrole=\"search\" class=\"ex\">x</search>\n<!-- section -> ./roles-contextual.html -->\n\n<!-- Blocked: HTML-AAM Issue #467 -->\n<!-- <select data-testname=\"el-select-combobox\" data-expectedrole=\"combobox\" class=\"ex\"><option>a1</option><option>a2</option></select>-->\n\n<select data-testname=\"el-select-listbox\" size=\"2\" data-expectedrole=\"listbox\" class=\"ex\"><option>b1</option><option>b2</option></select>\n\n<!-- slot (not mapped) -->\n<!-- small -> ./roles-generic.html -->\n<!-- source (not mapped) -->\n<!-- span -> ./roles-generic.html -->\n<strong data-testname=\"el-strong\" data-expectedrole=\"strong\" class=\"ex\">x</strong>\n<!-- style (not mapped) -->\n<sub data-testname=\"el-sub\" data-expectedrole=\"subscript\" class=\"ex\">x</sub>\n<!-- todo: summary -->\n<sup data-testname=\"el-sup\" data-expectedrole=\"superscript\" class=\"ex\">x</sup>\n<!-- todo: svg (see /graphics-aam and /svg-aam tests) -->\n<!-- table -> ./table-roles.html -->\n<!-- tbody -> ./table-roles.html -->\n<!-- td -> ./table-roles.html -->\n<!-- template (not mapped) -->\n<!-- tfoot -> ./table-roles.html -->\n<!-- th -> ./table-roles.html -->\n<!-- thead -> ./table-roles.html -->\n<time data-testname=\"el-time\" data-expectedrole=\"time\" class=\"ex\">x</time>\n<!-- title (not mapped) -->\n<!-- tr -> ./table-roles.html -->\n<textarea data-testname=\"el-textarea\" data-expectedrole=\"textbox\" class=\"ex\">x</textarea>\n<!-- track (not mapped) -->\n<!-- u -> ./roles-generic.html -->\n<ul data-testname=\"el-ul\" data-expectedrole=\"list\" class=\"ex\"><li>x</li><li>x</li></ul>\n<!-- var (not mapped) -->\n<!-- todo: video -->\n<!-- wbr (not mapped) -->",
+		"selector": ".ex"
+	},
+	{
+		"filename": "roles.html",
+		"title": "HTML-AAM Role Verification Tests",
+		"html": "<style type=\"text/css\"></style><p>Tests the computedrole mappings defined in <a href=\"https://w3c.github.io/html-aam/\">HTML-AAM</a>. Most test names correspond to a unique ID defined in the spec.<p>\n\n<p>These should remain in alphabetical order, and include all HTML tagnames. If a tag is not tested here, include a pointer to the file where it is tested, such as: <code>&lt;!-- caption -&gt; ./table-roles.html --&gt;</code></p>\n\n\n<!-- a (w/ and w/o href) -> ./roles-contextual.html -->\n<!-- todo: abbr -->\n<address data-testname=\"el-address\" data-expectedrole=\"group\" class=\"ex\">x</address>\n<!-- area -> ./fragile/area-role.html -->\n<article data-testname=\"el-article\" data-expectedrole=\"article\" class=\"ex\">x</article>\n<!-- aside -> ./roles-contextual.html -->\n<!-- todo: audio -->\n<!-- todo: autonomous custom element -->\n<!-- b -> ./roles-generic.html -->\n<!-- base (not mapped) -->\n<!-- bdi -> ./roles-generic.html -->\n<!-- bdo -> ./roles-generic.html -->\n<blockquote data-testname=\"el-blockquote\" data-expectedrole=\"blockquote\" class=\"ex\">x</blockquote>\n<!-- todo: body -->\n<!-- br (not mapped) -->\n<button data-testname=\"el-button\" data-expectedrole=\"button\" class=\"ex\">x</button>\n<!-- todo: canvas -->\n<!-- caption -> ./table-roles.html -->\n<!-- todo: cite -->\n<code data-testname=\"el-code\" data-expectedrole=\"code\" class=\"ex\">x</code>\n<!-- todo: col -->\n<!-- todo: colgroup -->\n<!-- data -> ./roles-generic.html -->\n<!-- todo: datalist -->\n\n<!-- el-dd -->\n<dl>\n  <dt>x</dt>\n  <!-- dt/dd pending listitemkey and listitemvalue roles: https://github.com/w3c/aria/issues/1662 -->\n  <dd data-testname=\"el-dd\" data-expectedrole=\"definition\" class=\"ex\">x</dd>\n</dl>\n\n<del data-testname=\"el-del\" data-expectedrole=\"deletion\" class=\"ex\">x</del>\n<details data-testname=\"el-details\" data-expectedrole=\"group\" class=\"ex\"><summary>x</summary>x</details>\n<dfn data-testname=\"el-dfn\" data-expectedrole=\"term\" class=\"ex\">x</dfn>\n<!-- dir -> ./dir-role.tentative.html -->\n<!-- div -> ./roles-generic.html -->\n<!-- todo: dl -->\n\n<!-- el-dt -->\n<dl>\n  <!-- dt/dd pending listitemkey and listitemvalue roles: https://github.com/w3c/aria/issues/1662 -->\n  <dt data-testname=\"el-dt\" data-expectedrole=\"term\" class=\"ex\">x</dt>\n  <dd>x</dd>\n</dl>\n\n<em data-testname=\"el-em\" data-expectedrole=\"emphasis\" class=\"ex\">x</em>\n<!-- todo: embed -->\n<fieldset data-testname=\"el-fieldset\" data-expectedrole=\"group\" class=\"ex\"><legend>x</legend><input></fieldset>\n<!-- todo: figcaption -->\n<figure data-testname=\"el-figure\" data-expectedrole=\"figure\" class=\"ex\"><img alt=\"x\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\"><figcaption>x</figcaption></figure>\n<!-- footer -> ./roles-contextual.html -->\n<form aria-label=\"form\" data-testname=\"el-form\" data-expectedrole=\"form\" class=\"ex\"><input></form>\n<!-- todo: form-associated custom element -->\n\n<!-- el-h1-h6 -->\n<h1 data-testname=\"el-h1\" data-expectedrole=\"heading\" class=\"ex\">x</h1>\n<h2 data-testname=\"el-h2\" data-expectedrole=\"heading\" class=\"ex\">x</h2>\n<h3 data-testname=\"el-h3\" data-expectedrole=\"heading\" class=\"ex\">x</h3>\n<h4 data-testname=\"el-h4\" data-expectedrole=\"heading\" class=\"ex\">x</h4>\n<h5 data-testname=\"el-h5\" data-expectedrole=\"heading\" class=\"ex\">x</h5>\n<h6 data-testname=\"el-h6\" data-expectedrole=\"heading\" class=\"ex\">x</h6>\n\n<!-- head (not mapped) -->\n\n<!-- header -> ./roles-contextual.html -->\n<hgroup data-testname=\"el-hgroup\" data-expectedrole=\"group\" class=\"ex\"><h1>x</h1></hgroup>\n<hr data-testname=\"el-hr\" data-expectedrole=\"separator\" class=\"ex\">\n<!-- todo: html -->\n<!-- i -> ./roles-generic.html -->\n<!-- todo: iframe -->\n<img alt=\"x\" data-testname=\"el-img\" data-expectedrole=\"image\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n\n<!-- Implementations might also be valid if ignored rather than returning 'none' for the following images. -->\n<img alt data-testname=\"el-img-alt-no-value\" class=\"ex-generic\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n<img alt=\"\" data-testname=\"el-img-empty-alt\" class=\"ex-generic\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n\n<!-- img with empty alt but other naming mechanism -> ./roles-contextual.html -->\n\n<input type=\"button\" value=\"x\" data-testname=\"el-input-button\" data-expectedrole=\"button\" class=\"ex\">\n<input type=\"checkbox\" data-testname=\"el-input-checkbox\" data-expectedrole=\"checkbox\" class=\"ex\">\n<!-- todo: input type=\"color\" -->\n<!-- todo: input type=\"date\" -->\n<!-- todo: input type=\"datetime\" -->\n<!-- todo: input type=\"datetime-local\" -->\n<input type=\"email\" data-testname=\"el-input-email\" data-expectedrole=\"textbox\" class=\"ex\">\n<!-- todo: input type=\"file\" -->\n<!-- input type=\"hidden\" (not mapped) -->\n<!-- todo: input type=\"month\" -->\n\n<!-- Blocked: HTML-AAM Issue #467 -->\n<!-- <input type=\"number\" data-testname=\"el-input-number\" data-expectedrole=\"spinbutton\" class=\"ex\"> -->\n\n<!-- todo: input type=\"password\" -->\n<input type=\"radio\" data-testname=\"el-input-radio\" data-expectedrole=\"radio\" class=\"ex\">\n<input type=\"range\" data-testname=\"el-input-range\" data-expectedrole=\"slider\" class=\"ex\">\n<input type=\"reset\" value=\"x\" data-testname=\"el-input-reset\" data-expectedrole=\"button\" class=\"ex\">\n<input type=\"search\" data-testname=\"el-input-search\" data-expectedrole=\"searchbox\" class=\"ex\">\n<!-- An ARIA role should override type=\"search\". -->\n<input type=\"search\" role=\"combobox\" data-testname=\"el-input-search-with-role\" data-expectedrole=\"combobox\" class=\"ex\">\n<input type=\"submit\" value=\"x\" data-testname=\"el-input-submit\" data-expectedrole=\"button\" class=\"ex\">\n<input type=\"tel\" data-testname=\"el-input-tel\" data-expectedrole=\"textbox\" class=\"ex\">\n<input type=\"text\" data-testname=\"el-input-text\" data-expectedrole=\"textbox\" class=\"ex\">\n<!-- todo: input (type attribute in the Text, Search, Telephone, URL, or E-mail states with a suggestions source element) -->\n<!-- todo: input type=\"time\" -->\n<input type=\"url\" data-testname=\"el-input-url\" data-expectedrole=\"textbox\" class=\"ex\">\n<!-- todo: input type=\"week\" -->\n<ins data-testname=\"el-ins\" data-expectedrole=\"insertion\" class=\"ex\">x</ins>\n<!-- todo: kbd -->\n<!-- todo: label -->\n<!-- todo: legend -->\n\n<!-- el-li -->\n<!-- li (orphaned) -> ./roles-generic.html -->\n<ul><li data-testname=\"el-li-in-ul\" data-expectedrole=\"listitem\" class=\"ex\">x</li><li>x</li></ul>\n<ol><li data-testname=\"el-li-in-ol\" data-expectedrole=\"listitem\" class=\"ex\">x</li><li>x</li></ol>\n\n<!-- link (not mapped) -->\n<main data-testname=\"el-main\" data-expectedrole=\"main\" class=\"ex\">x</main>\n<!-- map (not mapped) -->\n<mark data-testname=\"el-mark\" data-expectedrole=\"mark\" class=\"ex\">x</mark>\n<!-- todo: math -->\n<menu data-testname=\"el-menu\" data-expectedrole=\"list\" class=\"ex\"><li>x</li></menu>\n<!-- meta (not mapped) -->\n<meter data-testname=\"el-meter\" data-expectedrole=\"meter\" class=\"ex\" min=\"0\" max=\"100\" low=\"20\" high=\"80\" optimum=\"60\" value=\"50\">x</meter>\n<nav data-testname=\"el-nav\" data-expectedrole=\"navigation\" class=\"ex\">x</nav>\n<!-- noscript (not mapped) -->\n<!-- object (not mapped) -->\n<ol data-testname=\"el-ol\" data-expectedrole=\"list\" class=\"ex\"><li>x</li><li>x</li></ol>\n\n<!-- optgroup -> ./fragile/optgroup-role.html -->\n\n<!-- option -->\n<select>\n  <option data-testname=\"el-option\" data-expectedrole=\"option\" class=\"ex\">x</option>\n  <option>x</option>\n</select>\n\n<output data-testname=\"el-output\" data-expectedrole=\"status\" class=\"ex\">x</output>\n<p data-testname=\"el-p\" data-expectedrole=\"paragraph\" class=\"ex\">x</p>\n<!-- param (not mapped) -->\n<!-- todo: picture -->\n<!-- pre -> ./roles-generic.html -->\n<progress data-testname=\"el-progress\" data-expectedrole=\"progressbar\" class=\"ex\">x</progress>\n<!-- q -> ./roles-generic.html -->\n<!-- todo: rp -> /ruby-aam? -->\n<!-- todo: rt -> /ruby-aam? -->\n<!-- todo: ruby -> /ruby-aam? -->\n<s data-testname=\"el-s\" data-expectedrole=\"deletion\" class=\"ex\">x</s>\n<!-- samp -> ./roles-generic.html -->\n<!-- script (not mapped) -->\n<search data-testname=\"el-search\" data-expectedrole=\"search\" class=\"ex\">x</search>\n<!-- section -> ./roles-contextual.html -->\n\n<!-- Blocked: HTML-AAM Issue #467 -->\n<!-- <select data-testname=\"el-select-combobox\" data-expectedrole=\"combobox\" class=\"ex\"><option>a1</option><option>a2</option></select>-->\n\n<select data-testname=\"el-select-listbox\" size=\"2\" data-expectedrole=\"listbox\" class=\"ex\"><option>b1</option><option>b2</option></select>\n\n<!-- slot (not mapped) -->\n<!-- small -> ./roles-generic.html -->\n<!-- source (not mapped) -->\n<!-- span -> ./roles-generic.html -->\n<strong data-testname=\"el-strong\" data-expectedrole=\"strong\" class=\"ex\">x</strong>\n<!-- style (not mapped) -->\n<sub data-testname=\"el-sub\" data-expectedrole=\"subscript\" class=\"ex\">x</sub>\n<!-- todo: summary -->\n<sup data-testname=\"el-sup\" data-expectedrole=\"superscript\" class=\"ex\">x</sup>\n<!-- todo: svg (see /graphics-aam and /svg-aam tests) -->\n<!-- table -> ./table-roles.html -->\n<!-- tbody -> ./table-roles.html -->\n<!-- td -> ./table-roles.html -->\n<!-- template (not mapped) -->\n<!-- tfoot -> ./table-roles.html -->\n<!-- th -> ./table-roles.html -->\n<!-- thead -> ./table-roles.html -->\n<time data-testname=\"el-time\" data-expectedrole=\"time\" class=\"ex\">x</time>\n<!-- title (not mapped) -->\n<!-- tr -> ./table-roles.html -->\n<textarea data-testname=\"el-textarea\" data-expectedrole=\"textbox\" class=\"ex\">x</textarea>\n<!-- track (not mapped) -->\n<!-- u -> ./roles-generic.html -->\n<ul data-testname=\"el-ul\" data-expectedrole=\"list\" class=\"ex\"><li>x</li><li>x</li></ul>\n<!-- var (not mapped) -->\n<!-- todo: video -->\n<!-- wbr (not mapped) -->",
 		"role": "generic",
 		"selector": ".ex-generic"
 	},
@@ -1409,16 +1428,16 @@ window.wpt["svg-aam"] = [
 		"selector": ".ex"
 	},
 	{
-		"filename": "roles.html",
-		"title": "SVG-AAM Role Verification Tests",
-		"html": "<style type=\"text/css\"></style><p>Tests the mappings defined in <a href=\"https://w3c.github.io/svg-aam/#mapping_role_table\">SVG-AAM: 6.2 Element Mapping</a>.<p>\n\n<h2>Simple Elements With aria-label to Ensure Tree Inclusion</h2>\n<svg>\n  <!-- Some elements skipped: never-rendered elements can return unpredicable/undefined/unspecified values for computedrole. -->\n  <a href=\"#\" data-testname=\"el-a[href]\" data-expectedrole=\"link\" aria-label=\"label\" class=\"ex\">x</a>\n  <a xlink:href=\"#\" data-testname=\"el-a[xlink:href]\" data-expectedrole=\"link\" aria-label=\"label\" class=\"ex\">x</a>\n  <!-- skipped: animate -->\n  <!-- skipped: animateMotion -->\n  <!-- skipped: animateTransform -->\n  <!-- blocked: audio -> https://github.com/w3c/html-aam/issues/511 -->\n  <!-- todo: canvas -> follow HTML -->\n  <!-- blocked: circle -> https://github.com/w3c/svg-aam/issues/24 -->\n  <!-- n/a: clipPath -->\n  <!-- n/a: cursor -->\n  <!-- n/a: defs -->\n  <!-- n/a: desc -->\n  <!-- n/a: discard -->\n  <!-- blocked: ellipse -> https://github.com/w3c/svg-aam/issues/24 -->\n  <!-- n/a: feBlend -->\n  <!-- n/a: feColorMatrix -->\n  <!-- n/a: feComponentTransfer -->\n  <!-- n/a: feComposite -->\n  <!-- n/a: feConvolveMatrix -->\n  <!-- n/a: feDiffuseLighting -->\n  <!-- n/a: feDisplacementMap -->\n  <!-- n/a: feDistantLight -->\n  <!-- n/a: feDropShadow -->\n  <!-- n/a: feFlood -->\n  <!-- n/a: feFuncA -->\n  <!-- n/a: feFuncB -->\n  <!-- n/a: feFuncG -->\n  <!-- n/a: feFuncR -->\n  <!-- n/a: feGaussianBlur -->\n  <!-- n/a: feImage -->\n  <!-- n/a: feMerge -->\n  <!-- n/a: feMergeNode -->\n  <!-- n/a: feMorphology -->\n  <!-- n/a: feOffset -->\n  <!-- n/a: fePointLight -->\n  <!-- n/a: feSpecularLighting -->\n  <!-- n/a: feSpotLight -->\n  <!-- n/a: feTile -->\n  <!-- n/a: feTurbulence -->\n  <!-- n/a: filter -->\n  <!-- todo: foreignObject (spec says `group` role if rendered and labeled) -->\n  <g fill=\"white\" stroke=\"green\" stroke-width=\"2\" data-testname=\"el-g\" data-expectedrole=\"group\" aria-label=\"label\" class=\"ex\">\n    <circle cx=\"40\" cy=\"40\" r=\"25\" />\n  </g>\n  <!-- n/a: hatch -->\n  <!-- n/a: hatchPath -->\n  <!-- todo: iframe -> follow HTML -->\n  <image data-testname=\"el-image\" data-expectedrole=\"image\" aria-label=\"label\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\"></image>\n  <!-- blocked: line -> https://github.com/w3c/svg-aam/issues/24 -->\n  <!-- n/a: linearGradient -->\n  <!-- n/a: marker -->\n  <!-- n/a: mask -->\n  <!-- todo: mesh (spec says `image` role if rendered and labeled) -->\n  <!-- n/a: meshPatch -->\n  <!-- n/a: meshRow -->\n  <!-- n/a: metadata -->\n  <!-- n/a: mpath -->\n  <!-- blocked: path -> https://github.com/w3c/svg-aam/issues/24 -->\n  <!-- n/a: pattern -->\n  <!-- blocked: polygon -> https://github.com/w3c/svg-aam/issues/24 -->\n  <!-- blocked: polyline -> https://github.com/w3c/svg-aam/issues/24 -->\n  <!-- n/a: radialGradient -->\n  <!-- blocked: rect -> https://github.com/w3c/svg-aam/issues/24 -->\n  <!-- n/a: script -->\n  <!-- n/a: set -->\n  <!-- n/a: solidColor -->\n  <!-- todo: source -> follow HTML -->\n  <!-- n/a: stop -->\n  <!-- n/a: style -->\n  <!-- blocked: svg -> https://github.com/w3c/svg-aam/issues/18 -->\n  <!-- n/a: switch -->\n  <!-- blocked: symbol -> https://github.com/w3c/svg-aam/issues/24 -->\n  <!-- blocked: text -> https://github.com/w3c/svg-aam/issues/33 -->\n  <!-- blocked: textPath -> https://w3c.github.io/svg-aam/#textpath-tspan-mappings-issue-->\n  <!-- n/a: title -->\n  <!-- todo: track -> follow HTML -->\n  <!-- blocked: tspan -> https://w3c.github.io/svg-aam/#textpath-tspan-mappings-issue -->\n  <!-- blocked: use -> https://github.com/w3c/svg-aam/issues/24 -->\n  <!-- todo: video -> follow HTML -->\n  <!-- n/a: view -->\n</svg>",
-		"selector": ".ex"
-	},
-	{
 		"filename": "roles-generic.html",
 		"title": "SVG-AAM Generic Role Verification Tests",
 		"html": "<style type=\"text/css\"></style><p>Tests ONLY the default <code>generic</code> mappings defined in <a href=\"https://w3c.github.io/svg-aam/#include_elements\">SVG-AAM: 5.1.2 Including Elements in the Accessibility Tree</a>.</p>\n\n<h2>Simple Elements</h2>\n<!-- Note: adding an inoccuous label, tabindex, or some other accessible marker may cause the computedrole result to change. -->\n<svg>\n  <!-- Some elements skipped: never-rendered elements can return unpredicable/undefined/unspecified values for computedrole. -->\n  <circle data-testname=\"el-circle\" class=\"ex-generic\"></circle>\n  <ellipse data-testname=\"el-ellipse\" class=\"ex-generic\"></ellipse>\n  <foreignObject data-testname=\"el-foreignObject\" class=\"ex-generic\"></foreignObject>\n  <g data-testname=\"el-g\" class=\"ex-generic\"></g>\n  <!-- image -> in ./role-img.tentative.html -->\n  <line data-testname=\"el-line\" class=\"ex-generic\"></line>\n  <!-- skipped: mesh -->\n  <path data-testname=\"el-path\" class=\"ex-generic\"></path>\n  <polygon data-testname=\"el-polygon\" class=\"ex-generic\"></polygon>\n  <polyline data-testname=\"el-polyline\" class=\"ex-generic\"></polyline>\n  <rect data-testname=\"el-rect\" class=\"ex-generic\"></rect>\n  <!-- blocked: textPath -> https://w3c.github.io/svg-aam/#textpath-tspan-mappings-issue-->\n  <!-- blocked: tspan -> https://w3c.github.io/svg-aam/#textpath-tspan-mappings-issue -->\n  <!-- skipped: use -->\n</svg>",
 		"role": "generic",
 		"selector": ".ex-generic"
+	},
+	{
+		"filename": "roles.html",
+		"title": "SVG-AAM Role Verification Tests",
+		"html": "<style type=\"text/css\"></style><p>Tests the mappings defined in <a href=\"https://w3c.github.io/svg-aam/#mapping_role_table\">SVG-AAM: 6.2 Element Mapping</a>.<p>\n\n<h2>Simple Elements With aria-label to Ensure Tree Inclusion</h2>\n<svg>\n  <!-- Some elements skipped: never-rendered elements can return unpredicable/undefined/unspecified values for computedrole. -->\n  <a href=\"#\" data-testname=\"el-a[href]\" data-expectedrole=\"link\" aria-label=\"label\" class=\"ex\">x</a>\n  <a xlink:href=\"#\" data-testname=\"el-a[xlink:href]\" data-expectedrole=\"link\" aria-label=\"label\" class=\"ex\">x</a>\n  <!-- skipped: animate -->\n  <!-- skipped: animateMotion -->\n  <!-- skipped: animateTransform -->\n  <!-- blocked: audio -> https://github.com/w3c/html-aam/issues/511 -->\n  <!-- todo: canvas -> follow HTML -->\n  <!-- blocked: circle -> https://github.com/w3c/svg-aam/issues/24 -->\n  <!-- n/a: clipPath -->\n  <!-- n/a: cursor -->\n  <!-- n/a: defs -->\n  <!-- n/a: desc -->\n  <!-- n/a: discard -->\n  <!-- blocked: ellipse -> https://github.com/w3c/svg-aam/issues/24 -->\n  <!-- n/a: feBlend -->\n  <!-- n/a: feColorMatrix -->\n  <!-- n/a: feComponentTransfer -->\n  <!-- n/a: feComposite -->\n  <!-- n/a: feConvolveMatrix -->\n  <!-- n/a: feDiffuseLighting -->\n  <!-- n/a: feDisplacementMap -->\n  <!-- n/a: feDistantLight -->\n  <!-- n/a: feDropShadow -->\n  <!-- n/a: feFlood -->\n  <!-- n/a: feFuncA -->\n  <!-- n/a: feFuncB -->\n  <!-- n/a: feFuncG -->\n  <!-- n/a: feFuncR -->\n  <!-- n/a: feGaussianBlur -->\n  <!-- n/a: feImage -->\n  <!-- n/a: feMerge -->\n  <!-- n/a: feMergeNode -->\n  <!-- n/a: feMorphology -->\n  <!-- n/a: feOffset -->\n  <!-- n/a: fePointLight -->\n  <!-- n/a: feSpecularLighting -->\n  <!-- n/a: feSpotLight -->\n  <!-- n/a: feTile -->\n  <!-- n/a: feTurbulence -->\n  <!-- n/a: filter -->\n  <!-- todo: foreignObject (spec says `group` role if rendered and labeled) -->\n  <g fill=\"white\" stroke=\"green\" stroke-width=\"2\" data-testname=\"el-g\" data-expectedrole=\"group\" aria-label=\"label\" class=\"ex\">\n    <circle cx=\"40\" cy=\"40\" r=\"25\" />\n  </g>\n  <!-- n/a: hatch -->\n  <!-- n/a: hatchPath -->\n  <!-- todo: iframe -> follow HTML -->\n  <image data-testname=\"el-image\" data-expectedrole=\"image\" aria-label=\"label\" class=\"ex\" src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\"></image>\n  <!-- blocked: line -> https://github.com/w3c/svg-aam/issues/24 -->\n  <!-- n/a: linearGradient -->\n  <!-- n/a: marker -->\n  <!-- n/a: mask -->\n  <!-- todo: mesh (spec says `image` role if rendered and labeled) -->\n  <!-- n/a: meshPatch -->\n  <!-- n/a: meshRow -->\n  <!-- n/a: metadata -->\n  <!-- n/a: mpath -->\n  <!-- blocked: path -> https://github.com/w3c/svg-aam/issues/24 -->\n  <!-- n/a: pattern -->\n  <!-- blocked: polygon -> https://github.com/w3c/svg-aam/issues/24 -->\n  <!-- blocked: polyline -> https://github.com/w3c/svg-aam/issues/24 -->\n  <!-- n/a: radialGradient -->\n  <!-- blocked: rect -> https://github.com/w3c/svg-aam/issues/24 -->\n  <!-- n/a: script -->\n  <!-- n/a: set -->\n  <!-- n/a: solidColor -->\n  <!-- todo: source -> follow HTML -->\n  <!-- n/a: stop -->\n  <!-- n/a: style -->\n  <!-- blocked: svg -> https://github.com/w3c/svg-aam/issues/18 -->\n  <!-- n/a: switch -->\n  <!-- blocked: symbol -> https://github.com/w3c/svg-aam/issues/24 -->\n  <!-- blocked: text -> https://github.com/w3c/svg-aam/issues/33 -->\n  <!-- blocked: textPath -> https://w3c.github.io/svg-aam/#textpath-tspan-mappings-issue-->\n  <!-- n/a: title -->\n  <!-- todo: track -> follow HTML -->\n  <!-- blocked: tspan -> https://w3c.github.io/svg-aam/#textpath-tspan-mappings-issue -->\n  <!-- blocked: use -> https://github.com/w3c/svg-aam/issues/24 -->\n  <!-- todo: video -> follow HTML -->\n  <!-- n/a: view -->\n</svg>",
+		"selector": ".ex"
 	}
 ];
