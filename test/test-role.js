@@ -119,7 +119,7 @@ describe('query', () => {
 		});
 
 		it('works across shadow roots', () => {
-		testbed.setHTMLUnsafe(SHADOW_LANDMARK);
+			testbed.setHTMLUnsafe(SHADOW_LANDMARK);
 			var link = aria.querySelector(testbed, 'link')
 			var actual = aria.closest(link, 'article');
 			expect(actual).toExist();
