@@ -24,6 +24,8 @@ describe('wpt', () => {
 
 		// name required
 		'fallback role w/ region with no label',
+		'div[role=\'ReGiOn group\'] without accname, has group role',
+		'div[role=\'ReGiOn foo\'] with alternating case role and illegal fallback role without accname, has generic role',
 		'form without label',
 		'region without label',
 		'role-map-region-nameless',
@@ -103,6 +105,9 @@ describe('wpt', () => {
 		'button with alt counter on ::before',
 		'heading with alt counter on ::before',
 		'link with alt counter on ::before',
+		'button with multiple alt counters and counter increments',
+		'heading with multiple alt counters and counter increments',
+		'link with multiple alt counters and counter increments',
 
 		// hidden not directly referenced
 		'button\'s hidden referenced name (display:none) supercedes aria-label',
