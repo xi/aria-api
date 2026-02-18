@@ -1093,13 +1093,17 @@
 		for (let i = 0; i < children.length; i++) {
 			const node = children[i];
 			if (node.nodeType === node.TEXT_NODE) {
-				const styles = window.getComputedStyle(node.parentElement);
-				if (styles.textTransform === 'uppercase') {
-					ret += node.textContent.toUpperCase();
-				} else if (styles.textTransform === 'lowercase') {
-					ret += node.textContent.toLowerCase();
-				} else if (styles.textTransform === 'capitalize') {
-					ret += node.textContent.replace(/\b\w/g, c => c.toUpperCase());
+				if (node.parentElement) {
+					const styles = window.getComputedStyle(node.parentElement);
+					if (styles.textTransform === 'uppercase') {
+						ret += node.textContent.toUpperCase();
+					} else if (styles.textTransform === 'lowercase') {
+						ret += node.textContent.toLowerCase();
+					} else if (styles.textTransform === 'capitalize') {
+						ret += node.textContent.replace(/\b\w/g, c => c.toUpperCase());
+					} else {
+						ret += node.textContent;
+					}
 				} else {
 					ret += node.textContent;
 				}
