@@ -18,6 +18,18 @@ var LANDMARKS = '<header>banner</header>\n' +
 	'  <footer>contentinfo</footer>\n' +
 	'</div>';
 
+var SHADOW_LANDMARK = '<article>\n' +
+	'  <host-element>\n' +
+	'    <template shadowrootmode="open">\n' +
+	'      <header>Header</header>\n' +
+	'      <a href="//example.com">\n' +
+	'        <slot></slot>\n' +
+	'      </a>\n' +
+	'    </template>\n' +
+	'    <h2>Heading</h2>\n' +
+	'  </host-element>';
+	'</article>';
+
 
 describe('query', () => {
 	var testbed;
@@ -80,6 +92,12 @@ describe('query', () => {
 			var actual = aria.getRole(testbed.children[0]);
 			expect(actual).toEqual('none');
 		});
+
+		xit('applies scoping rules across shadow roots', () => {
+			testbed.setHTMLUnsafe(SHADOW_LANDMARK);
+			var actual = aria.querySelector(testbed, 'banner');
+			expect(actual).toNotExist();
+		});
 	});
 
 	describe('closest', () => {
@@ -98,6 +116,13 @@ describe('query', () => {
 			var actual = aria.closest(el, 'table');
 
 			expect(actual).toNotExist();
+		});
+
+		it('works across shadow roots', () => {
+		testbed.setHTMLUnsafe(SHADOW_LANDMARK);
+			var link = aria.querySelector(testbed, 'link')
+			var actual = aria.closest(link, 'article');
+			expect(actual).toExist();
 		});
 	});
 
@@ -127,6 +152,25 @@ describe('query', () => {
 			testbed.innerHTML = '<span role="generic link">';
 			var actual = aria.querySelectorAll(testbed, 'link');
 			expect(actual.length).toEqual(1);
+		});
+
+		it('finds elements inside of shadow roots', () => {
+			testbed.setHTMLUnsafe(SHADOW_LANDMARK);
+			var actual = aria.querySelector(testbed, 'link');
+			expect(actual).toExist();
+		});
+
+		it('finds slotted elements inside of shadow roots', () => {
+			testbed.setHTMLUnsafe(SHADOW_LANDMARK);
+			var actual = aria.querySelector(testbed, 'heading');
+			expect(actual).toExist();
+		});
+
+		it('finds slotted elements in the place of the slot', () => {
+			testbed.setHTMLUnsafe(SHADOW_LANDMARK);
+			var link = aria.querySelector(testbed, 'link')
+			var actual = aria.querySelector(link, 'heading');
+			expect(actual).toExist();
 		});
 	});
 });
