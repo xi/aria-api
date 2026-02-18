@@ -13,9 +13,9 @@
   "license": "MIT",
   "devDependencies": {
     "expect": "^1.20.2",
-    "mocha": "^10.2.0",
-    "mocha-headless-chrome": "^4.0.0",
-    "rollup": "^4.24.3"
+    "mocha": "^11.7.5",
+    "mocha-headless-chrome": "^5.1.0",
+    "rollup": "^4.57.1"
   },
   "files": [
     "index.js",
