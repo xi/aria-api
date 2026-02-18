@@ -912,28 +912,20 @@
 		}
 	};
 
-	const _getOwner = function(node, owners) {
+	const _getOwner = function(node) {
 		if (node.nodeType === node.ELEMENT_NODE && node.id) {
-			const selector = '[aria-owns~="' + CSS.escape(node.id) + '"]';
-			if (owners) {
-				for (const owner of owners) {
-					if (owner.matches(selector)) {
-						return owner;
-					}
-				}
-			} else {
-				return document.querySelector(selector);
-			}
+			const selector = `[aria-owns~="${CSS.escape(node.id)}"]`;
+			return node.getRootNode().querySelector(selector);
 		}
 	};
 
-	const _getParentNode = function(node, owners) {
-		return _getOwner(node, owners) || node.parentNode;
+	const _getParentNode = function(node) {
+		return _getOwner(node) || node.parentNode || node.host;
 	};
 
-	const detectLoop = function(node, owners) {
+	const detectLoop = function(node) {
 		const seen = [node];
-		while ((node = _getParentNode(node, owners))) {
+		while ((node = _getParentNode(node))) {
 			if (seen.includes(node)) {
 				return true;
 			}
@@ -941,27 +933,36 @@
 		}
 	};
 
-	const getOwner = function(node, owners) {
-		const owner = _getOwner(node, owners);
-		if (owner && !detectLoop(node, owners)) {
+	const getOwner = function(node) {
+		const owner = _getOwner(node);
+		if (owner && !detectLoop(node)) {
 			return owner;
 		}
 	};
 
-	const getParentNode = function(node, owners) {
-		return getOwner(node, owners) || node.parentNode;
+	const getParentNode = function(node) {
+		return getOwner(node) || node.parentNode || node.host;
 	};
 
 	const isHidden = function(node) {
 		return node.nodeType === node.ELEMENT_NODE && getAttribute(node, 'hidden');
 	};
 
-	const getChildNodes = function(node, owners) {
+	const getChildNodes = function(node) {
 		const childNodes = [];
+		let rawChildNodes = [];
 
-		for (let i = 0; i < node.childNodes.length; i++) {
-			const child = node.childNodes[i];
-			if (!getOwner(child, owners) && !isHidden(child)) {
+		if (node.shadowRoot) {
+			rawChildNodes = node.shadowRoot.childNodes;
+		} else if (node.assignedNodes) {
+			rawChildNodes = node.assignedNodes();
+		} else {
+			rawChildNodes = node.childNodes;
+		}
+
+		for (let i = 0; i < rawChildNodes.length; i++) {
+			const child = rawChildNodes[i];
+			if (!getOwner(child) && !isHidden(child)) {
 				childNodes.push(child);
 			}
 		}
@@ -969,9 +970,9 @@
 		if (node.nodeType === node.ELEMENT_NODE) {
 			const owns = getAttribute(node, 'owns') || [];
 			for (let i = 0; i < owns.length; i++) {
-				const child = document.getElementById(owns[i]);
+				const child = node.getRootNode().getElementById(owns[i]);
 				// double check with getOwner for consistency
-				if (child && getOwner(child, owners) === node && !isHidden(child)) {
+				if (child && getOwner(child) === node && !isHidden(child)) {
 					childNodes.push(child);
 				}
 			}
@@ -981,12 +982,11 @@
 	};
 
 	const walk = function(root, fn) {
-		const owners = document.querySelectorAll('[aria-owns]');
 		let queue = [root];
 		while (queue.length) {
 			const item = queue.shift();
 			fn(item);
-			queue = getChildNodes(item, owners).concat(queue);
+			queue = getChildNodes(item).concat(queue);
 		}
 	};
 
@@ -1141,7 +1141,7 @@
 		if (!ongoingLabelledBy && el.matches('[aria-labelledby]')) {
 			const ids = el.getAttribute('aria-labelledby').split(/\s+/);
 			const strings = ids.map(id => {
-				const label = document.getElementById(id);
+				const label = el.getRootNode().getElementById(id);
 				return label ? getNameRaw(label, true, true, visited, true) : '';
 			});
 			ret = strings.join(' ');
@@ -1252,7 +1252,7 @@
 		if (el.matches('[aria-describedby]')) {
 			const ids = el.getAttribute('aria-describedby').split(/\s+/);
 			const strings = ids.map(id => {
-				const label = document.getElementById(id);
+				const label = el.getRootNode().getElementById(id);
 				return label ? getNameRaw(label, true, true) : '';
 			});
 			ret = strings.join(' ');

@@ -1,3 +1,10 @@
+0.9.0 (2026-02-18)
+------------------
+
+-	restore cjs entry point
+-	add basic support for shadow DOM
+
+
 0.8.0 (2024-11-01)
 ------------------
 
