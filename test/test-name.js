@@ -14,4 +14,18 @@ describe('getName / getDescription', () => {
 		var element = document.querySelector('#test');
 		expect(aria.getName(element)).toBe('test');
 	});
+
+	it('processes shadow roots and slots in the correct order', () => {
+		testbed.setHTMLUnsafe(`<h1 id="test">
+			<host-element>
+				<template shadowrootmode="open">
+					Such a <slot></slot> thing!
+				</template>
+				<span>great</span>
+			</host-element>
+			</h1>
+		`);
+		var element = document.querySelector('#test');
+		expect(aria.getName(element)).toBe('Such a great thing!');
+	});
 });
