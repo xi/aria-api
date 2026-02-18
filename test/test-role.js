@@ -93,7 +93,7 @@ describe('query', () => {
 			expect(actual).toEqual('none');
 		});
 
-		xit('applies scoping rules across shadow roots', () => {
+		it.skip('applies scoping rules across shadow roots', () => {
 			testbed.setHTMLUnsafe(SHADOW_LANDMARK);
 			var actual = aria.querySelector(testbed, 'banner');
 			expect(actual).toNotExist();

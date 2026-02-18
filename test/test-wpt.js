@@ -1,4 +1,4 @@
-/* global describe, it, xit, before, after, expect, aria */
+/* global describe, it, before, after, expect, aria */
 
 expect.extend({
 	toBeIn(list) {
@@ -153,7 +153,7 @@ describe('wpt', () => {
 	};
 
 	var registerTest = function(test) {
-		var _it = known_failing.includes(test.title) ? xit : it;
+		var _it = known_failing.includes(test.title) ? it.skip : it;
 		_it(test.title, () => {
 			testbed.innerHTML = test.html;
 			expect(test.name != null || test.description != null || test.role != null).toBe(true);
