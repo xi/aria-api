@@ -1,5 +1,5 @@
 // https://www.w3.org/TR/core-aam-1.1/#mapping_conflicts
-// https://w3c.github.io/html-aria/#docconformance
+// https://www.w3.org/TR/html-aria/#docconformance
 
 describe('getAttribute()', () => {
 	var testbed;
