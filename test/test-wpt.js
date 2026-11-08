@@ -32,26 +32,17 @@ describe('wpt', () => {
 		'role-map-region-aria-label-empty',
 		'role-map-region-aria-label-whitespace',
 		'role-map-region-aria-labelledby-non-existing',
-		'role-map-region-aria-labelledby-empty',
-		'role-map-region-aria-labelledby-whitespace',
 		'role-map-region-title-empty',
-		'role-map-region-title-whitespace',
 		'el-img-empty-alt-aria-label',
 		'el-img-empty-alt-aria-labelledby',
 		'el-aside-in-section-aria-label-empty',
 		'el-aside-in-section-aria-label-whitespace',
 		'el-aside-in-section-aria-labelledby-non-existing',
-		'el-aside-in-section-aria-labelledby-empty',
-		'el-aside-in-section-aria-labelledby-whitespace',
 		'el-aside-in-section-title-empty',
-		'el-aside-in-section-title-whitespace',
 		'el-section-aria-label-empty',
 		'el-section-aria-label-whitespace',
 		'el-section-aria-labelledby-non-existing',
-		'el-section-aria-labelledby-empty',
-		'el-section-aria-labelledby-whitespace',
 		'el-section-title-empty',
-		'el-section-title-whitespace',
 
 		// role conflicts
 		'focusable heading role none with tabindex=-1',
@@ -59,37 +50,7 @@ describe('wpt', () => {
 		'heading role none with global attr aria-label',
 		'p role none with global attr aria-label (prohibited role)',
 
-		// required parents
-		'orphan p with listitem role',
-		'orphan div with listitem role',
-		'orphan button with tab role',
-		'orphan span with tab role',
-		'orphaned treeitem outside the context of tree',
-		'orphaned button with treeitem role outside tree context',
-		'orphaned option outside the context of listbox',
-		'orphaned button with gridcell role outside the context of row',
-		'orphaned row outside the context of table',
-		'orphaned rowgroup outside the context of row',
-		'orphaned div with gridcell role outside the context of row',
-		'orphaned rowheader outside the context of row',
-		'orphaned columnheader outside the context of row',
-		'orphaned menuitem outside the context of menu/menubar',
-		'orphaned menuitemradio outside the context of menu/menubar',
-		'orphaned menuitemcheckbox outside the context of menu/menubar',
-		'orphan button with menuitem role',
-		'orphan button with menuitemcheckbox role',
-		'orphan button with menuitemradio role',
-		'orphan div with menuitem role',
-		'orphan div with menuitemcheckbox role',
-		'orphan div with menuitemradio role',
-
-		// browsers do not support attr() in content fallback
-		'button name from fallback content mixing attr() and strings with ::before and ::after',
-		'heading name from fallback content mixing attr() and strings with ::before and ::after',
-		'link name from fallback content mixing attr() and strings with ::before and ::after',
-
 		// visibility
-		'heading with name from content, containing element that is visibility:hidden with nested content that is visibility:visible',
 		'button with aria-labelledby using visibility:hidden span (with nested span)',
 		'button with aria-labelledby using visibility:hidden span (with nested spans, depth 2)',
 		'button with aria-labelledby using visibility:hidden hidden span (with nested sibling spans)',
@@ -118,7 +79,6 @@ describe('wpt', () => {
 		'Name link-mixed-content',
 		'Description from content of describedby element',
 		'Name from content of label',
-		'Hidden button\'s label should be the empty string',
 	];
 
 	var withId = function(element, fn) {
