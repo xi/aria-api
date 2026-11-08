@@ -18,7 +18,7 @@ rollup. There is also an UMD build included as `dist/aria.js`.
 
 # Usage
 
-    var aria = require('aria-api'):
+    var aria = require('aria-api');
 
     aria.querySelector('landmark').forEach(landmark => {
         if (!aria.matches(landmark, ':hidden')) {
