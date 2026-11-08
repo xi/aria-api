@@ -1,4 +1,4 @@
-// https://www.w3.org/TR/core-aam-1.1/#mapping_conflicts<Paste>
+// https://www.w3.org/TR/core-aam-1.1/#mapping_conflicts
 // https://w3c.github.io/html-aria/#docconformance
 
 describe('getAttribute()', () => {
