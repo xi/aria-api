@@ -153,7 +153,15 @@ describe('wpt', () => {
 	};
 
 	var registerTest = function(test) {
-		var _it = known_failing.includes(test.title) ? it.skip : it;
+		var _it = (title, fn) => {
+			if (known_failing.includes(test.title)) {
+				known_failing = known_failing.filter(x => x !== test.title);
+				it(title, () => expect(fn).toThrow());
+			} else {
+				it(title, fn);
+			}
+		}
+
 		_it(test.title, () => {
 			testbed.innerHTML = test.html;
 			expect(test.name != null || test.description != null || test.role != null).toBe(true);
@@ -196,4 +204,8 @@ describe('wpt', () => {
 			});
 		});
 	}
+
+	it('unused known_failing', () => {
+		expect(known_failing).toEqual([]);
+	});
 });
