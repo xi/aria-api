@@ -9,7 +9,7 @@ expect.extend({
 
 describe('wpt', () => {
 	var testbed = document.createElement('div');
-	var known_failing = [
+	var knownFailing = [
 		// whitespace
 		'Name test case 659',
 		'Name test case 660',
@@ -114,8 +114,8 @@ describe('wpt', () => {
 
 	var registerTest = function(test) {
 		var _it = (title, fn) => {
-			if (known_failing.includes(test.title)) {
-				known_failing = known_failing.filter(x => x !== test.title);
+			if (knownFailing.includes(test.title)) {
+				knownFailing = knownFailing.filter(x => x !== test.title);
 				it(title, () => expect(fn).toThrow());
 			} else {
 				it(title, fn);
@@ -165,7 +165,7 @@ describe('wpt', () => {
 		});
 	}
 
-	it('unused known_failing', () => {
-		expect(known_failing).toEqual([]);
+	it('unused knownFailing', () => {
+		expect(knownFailing).toEqual([]);
 	});
 });
