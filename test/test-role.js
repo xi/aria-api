@@ -148,10 +148,10 @@ describe('query', () => {
 			expect(actual.length).toEqual(2);
 		});
 
-		it('matches all explicitly given roles', () => {
+		it('matches only the first explicitly given role', () => {
 			testbed.innerHTML = '<span role="generic link">';
 			var actual = aria.querySelectorAll(testbed, 'link');
-			expect(actual.length).toEqual(1);
+			expect(actual.length).toEqual(0);
 		});
 
 		it('finds elements inside of shadow roots', () => {
