@@ -23,26 +23,8 @@ describe('wpt', () => {
 		'el-th',
 
 		// name required
-		'fallback role w/ region with no label',
-		'div[role=\'ReGiOn group\'] without accname, has group role',
-		'div[role=\'ReGiOn foo\'] with alternating case role and illegal fallback role without accname, has generic role',
-		'form without label',
-		'region without label',
-		'role-map-region-nameless',
-		'role-map-region-aria-label-empty',
-		'role-map-region-aria-label-whitespace',
-		'role-map-region-aria-labelledby-non-existing',
-		'role-map-region-title-empty',
 		'el-img-empty-alt-aria-label',
 		'el-img-empty-alt-aria-labelledby',
-		'el-aside-in-section-aria-label-empty',
-		'el-aside-in-section-aria-label-whitespace',
-		'el-aside-in-section-aria-labelledby-non-existing',
-		'el-aside-in-section-title-empty',
-		'el-section-aria-label-empty',
-		'el-section-aria-label-whitespace',
-		'el-section-aria-labelledby-non-existing',
-		'el-section-title-empty',
 
 		// role conflicts
 		'focusable heading role none with tabindex=-1',
