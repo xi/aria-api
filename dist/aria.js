@@ -21,7 +21,7 @@
 		'current': 'token',
 		'describedby': 'id-list',
 		'description': 'string',
-		'details': 'id',
+		'details': 'id-list',
 		'disabled': 'bool',
 		'dropeffect': 'token-list',
 		'errormessage': 'id',
@@ -75,12 +75,13 @@
 		'multiselectable': 'multiple',
 		'rowspan': 'rowSpan',
 		'selected': 'selected',
+		'valuenow': 'value',
 	};
 
 	// https://www.w3.org/TR/html/dom.html#sectioning-content-2
 	const scoped = ['article *', 'aside *', 'nav *', 'section *'].join(',');
 
-	const svgSelectors = function(selector) {
+	function svgSelectors(selector) {
 		return [
 			// `${selector}:has(> title:not(:empty))`,
 			// `${selector}:has(> desc:not(:empty))`,
@@ -91,7 +92,7 @@
 			`${selector}[tabindex]`,
 			`${selector}[role]`,
 		];
-	};
+	}
 
 	// https://www.w3.org/TR/html-aam-1.0/#html-element-role-mappings
 	// https://www.w3.org/TR/wai-aria/roles
@@ -122,7 +123,7 @@
 				'input[type="image"]',
 				'input[type="reset"]',
 				'input[type="submit"]',
-				'summary',
+				'details > summary:first-of-type',
 			],
 			nameFromContents: true,
 		},
@@ -174,12 +175,7 @@
 			nameFromContents: true,
 		},
 		complementary: {
-			selectors: [
-				`aside:not(${scoped})`,
-				'aside[aria-label]',
-				'aside[aria-labelledby]',
-				'aside[title]',
-			],
+			selectors: ['aside'],
 		},
 		composite: {
 			abstract: true,
@@ -252,7 +248,6 @@
 		'doc-tip': {},
 		'doc-toc': {},
 		document: {
-			selectors: ['html'],
 			childRoles: ['article', 'graphics-document'],
 		},
 		emphasis: {
@@ -264,13 +259,12 @@
 			childRoles: ['doc-example'],
 		},
 		form: {
-			selectors: ['form[aria-label]', 'form[aria-labelledby]', 'form[title]'],
+			selectors: ['form'],
 		},
 		generic: {
 			selectors: [
 				'a:not([*|href])',
 				'area:not([*|href])',
-				`aside:not(${scoped}):not([aria-label]):not([aria-labelledby]):not([title])`,
 				'b',
 				'bdi',
 				'bdo',
@@ -279,12 +273,12 @@
 				'div',
 				// footer scoped
 				// header scoped
+				'html',
 				'i',
 				'li:not(ul > li):not(ol > li)',
 				'pre',
 				'q',
 				'samp',
-				'section:not([aria-label]):not([aria-labelledby]):not([title])',
 				'small',
 				'span',
 				'u',
@@ -506,7 +500,7 @@
 			childRoles: ['meter', 'progressbar', 'scrollbar', 'slider', 'spinbutton'],
 		},
 		region: {
-			selectors: ['section[aria-label]', 'section[aria-labelledby]', 'section[title]'],
+			selectors: ['section'],
 		},
 		roletype: {
 			abstract: true,
@@ -737,7 +731,7 @@
 		},
 	};
 
-	const getSubRoles = function(role) {
+	function getSubRoles(role) {
 		const children = (roles[role]).childRoles || [];
 		const descendents = children.map(getSubRoles);
 
@@ -752,7 +746,7 @@
 		});
 
 		return result;
-	};
+	}
 
 	const attrsWithDefaults = [];
 
@@ -783,59 +777,86 @@
 		'summary': 'Details',
 	};
 
-	var unique = function(arr) {
+	function unique(arr) {
 		return arr.filter((a, i) => arr.indexOf(a) === i);
-	};
+	}
 
-	var flatten = function(arr) {
+	function flatten(arr) {
 		return [].concat.apply([], arr);
-	};
+	}
 
-	var normalizeRoles = function(roles$1, includeAbstract) {
+	function normalizeRoles(roles$1, includeAbstract) {
 		return unique(roles$1
 			.map(r => aliases[r] || r)
 			.filter(r => roles[r])
 			.filter(r => includeAbstract || !roles[r].abstract)
 		);
-	};
+	}
+
+	function hasName(el) {
+		// FIXME: we should do full getName() here. However, that would be
+		// complex and slow. In practice, this function is only called for
+		// roles that do not allow nameFromContent. Still, we do not verify
+		// that labelledby results in a non-empty name.
+		return (
+			(el.getAttribute('aria-label') || '').trim().length > 0
+			|| (el.getAttribute('title') || '').trim().length > 0
+			|| (el.getAttribute('aria-labelledby') || '').split(/\s+/).some(id => {
+				return el.getRootNode().getElementById(id);
+			})
+		);
+	}
+
+	function checkExtraConditions(el, role) {
+		if (role === 'region' || role === 'form') {
+			return hasName(el);
+		} else if (role === 'complementary') {
+			return el.matches('[role~="complementary"]') || el.matches(`:not(${scoped})`) || hasName(el);
+		} else {
+			return true;
+		}
+	}
 
 	// candidates can be passed for performance optimization
-	const getRoleRaw = function(el, candidates) {
-		// TODO: filter out any invalid roles (e.g. name or context required)
+	function getRoleRaw(el, candidates) {
+		// TODO: filter out any invalid roles (e.g. context required)
 		const roles$1 = normalizeRoles(
 			(el.getAttribute('role') || '').toLowerCase().split(/\s+/)
 		);
 
-		if (roles$1.length > 1 && candidates) {
-			return [roles$1, candidates];
-		} else if (roles$1.length) {
-			for (const role of roles$1) {
-				if (!candidates || candidates.includes(role)) {
-					return role;
+		for (const role of roles$1) {
+			if (checkExtraConditions(el, role)) {
+				if (candidates && !candidates.includes(role)) {
+					return null;
 				}
-			}
-		} else {
-			for (const role of (candidates || Object.keys(roles))) {
-				const r = roles[role];
-				if (!r.abstract && r.selectors && el.matches(r.selectors.join(','))) {
-					return role;
-				}
+				return role;
 			}
 		}
-	};
+		for (const role of (candidates || Object.keys(roles))) {
+			const r = roles[role];
+			if (
+				!r.abstract
+				&& r.selectors
+				&& el.matches(r.selectors.join(','))
+				&& checkExtraConditions(el, role)
+			) {
+				return role;
+			}
+		}
+	}
 
-	const getRole = function(el) {
+	function getRole(el) {
 		return getRoleRaw(el);
-	};
+	}
 
-	const hasRole = function(el, roles$1) {
+	function hasRole(el, roles$1) {
 		const subRoles = normalizeRoles(roles$1, true).map(role => {
 			return roles[role].subRoles || [role];
 		});
 		return !!getRoleRaw(el, unique(flatten(subRoles)));
-	};
+	}
 
-	const getAttribute = function(el, key) {
+	function getAttribute(el, key) {
 		if (attributeStrongMapping.hasOwnProperty(key)) {
 			const value = el[attributeStrongMapping[key]];
 			if (value) {
@@ -899,7 +920,7 @@
 			return el[attributeWeakMapping[key]];
 		}
 
-		if (key in attrsWithDefaults) {
+		if (attrsWithDefaults.includes(key)) {
 			const role = getRole(el);
 			const defaults = roles[role].defaults;
 			if (defaults && defaults.hasOwnProperty(key)) {
@@ -910,20 +931,20 @@
 		if (type === 'bool' || type === 'tristate') {
 			return false;
 		}
-	};
+	}
 
-	const _getOwner = function(node) {
+	function _getOwner(node) {
 		if (node.nodeType === node.ELEMENT_NODE && node.id) {
 			const selector = `[aria-owns~="${CSS.escape(node.id)}"]`;
 			return node.getRootNode().querySelector(selector);
 		}
-	};
+	}
 
-	const _getParentNode = function(node) {
+	function _getParentNode(node) {
 		return _getOwner(node) || node.parentNode || node.host;
-	};
+	}
 
-	const detectLoop = function(node) {
+	function detectLoop(node) {
 		const seen = [node];
 		while ((node = _getParentNode(node))) {
 			if (seen.includes(node)) {
@@ -931,24 +952,24 @@
 			}
 			seen.push(node);
 		}
-	};
+	}
 
-	const getOwner = function(node) {
+	function getOwner(node) {
 		const owner = _getOwner(node);
 		if (owner && !detectLoop(node)) {
 			return owner;
 		}
-	};
+	}
 
-	const getParentNode = function(node) {
+	function getParentNode(node) {
 		return getOwner(node) || node.parentNode || node.host;
-	};
+	}
 
-	const isHidden = function(node) {
+	function isHidden(node) {
 		return node.nodeType === node.ELEMENT_NODE && getAttribute(node, 'hidden');
-	};
+	}
 
-	const getChildNodes = function(node) {
+	function getChildNodes(node) {
 		const childNodes = [];
 		let rawChildNodes = [];
 
@@ -979,18 +1000,18 @@
 		}
 
 		return childNodes;
-	};
+	}
 
-	const walk = function(root, fn) {
+	function walk(root, fn) {
 		let queue = [root];
 		while (queue.length) {
 			const item = queue.shift();
 			fn(item);
 			queue = getChildNodes(item).concat(queue);
 		}
-	};
+	}
 
-	const searchUp = function(node, test) {
+	function searchUp(node, test) {
 		const candidate = getParentNode(node);
 		if (candidate) {
 			if (test(candidate)) {
@@ -999,9 +1020,9 @@
 				return searchUp(candidate, test);
 			}
 		}
-	};
+	}
 
-	const matches = function(el, selector) {
+	function matches(el, selector) {
 		if (selector.substr(0, 1) === ':') {
 			const attr = selector.substr(1);
 			return getAttribute(el, attr);
@@ -1013,9 +1034,9 @@
 		} else {
 			return hasRole(el, selector.split(','));
 		}
-	};
+	}
 
-	const _querySelector = function(all) {
+	function _querySelector(all) {
 		return function(root, selector) {
 			const results = [];
 			try {
@@ -1037,27 +1058,27 @@
 			}
 			return all ? results : results[0];
 		};
-	};
+	}
 
-	const closest = function(el, selector) {
+	function closest(el, selector) {
 		return searchUp(el, candidate => {
 			if (candidate.nodeType === candidate.ELEMENT_NODE) {
 				return matches(candidate, selector);
 			}
 		});
-	};
+	}
 
 	const querySelector = _querySelector();
 	const querySelectorAll = _querySelector(true);
 
-	const addSpaces = function(text, el, pseudoSelector) {
+	function addSpaces(text, el, pseudoSelector) {
 		// https://github.com/w3c/accname/issues/3
 		const styles = window.getComputedStyle(el, pseudoSelector);
 		const inline = styles.display === 'inline';
 		return inline ? text : ` ${text} `;
-	};
+	}
 
-	const getPseudoContent = function(el, pseudoSelector) {
+	function getPseudoContent(el, pseudoSelector) {
 		const styles = window.getComputedStyle(el, pseudoSelector);
 		let tail = styles.getPropertyValue('content').trim();
 		let ret = [];
@@ -1084,9 +1105,9 @@
 		}
 
 		return addSpaces(ret.join(''), el, pseudoSelector);
-	};
+	}
 
-	const getContent = function(root, ongoingLabelledBy, visited) {
+	function getContent(root, ongoingLabelledBy, visited) {
 		const children = getChildNodes(root);
 
 		let ret = '';
@@ -1117,16 +1138,16 @@
 		}
 
 		return ret;
-	};
+	}
 
-	const allowNameFromContent = function(el) {
+	function allowNameFromContent(el) {
 		const role = getRole(el);
 		if (role) {
 			return roles[role].nameFromContents;
 		}
-	};
+	}
 
-	const getNameRaw = function(el, recursive, ongoingLabelledBy, visited, directReference) {
+	function getNameRaw(el, recursive, ongoingLabelledBy, visited, directReference) {
 		let ret = '';
 
 		visited = visited || [];
@@ -1174,7 +1195,7 @@
 		}
 
 		// D
-		if (!ret.trim() && !recursive && el.labels) {
+		if (!ret.trim() && el.labels) {
 			const strings = Array.prototype.map.call(el.labels, label => {
 				return getNameRaw(label, true, ongoingLabelledBy, visited);
 			});
@@ -1241,16 +1262,16 @@
 		const before = getPseudoContent(el, ':before');
 		const after = getPseudoContent(el, ':after');
 		return addSpaces(before + ret + after, el);
-	};
+	}
 
-	const getName = function(el) {
+	function getName(el) {
 		return getNameRaw(el)
 			.replace(/[ \n\r\t\f]+/g, ' ')
 			.replace(/^ /, '')
 			.replace(/ $/, '');
-	};
+	}
 
-	const getDescription = function(el) {
+	function getDescription(el) {
 		let ret = '';
 
 		if (el.matches('[aria-describedby]')) {
@@ -1281,7 +1302,7 @@
 		}
 
 		return ret;
-	};
+	}
 
 	exports.closest = closest;
 	exports.getAttribute = getAttribute;

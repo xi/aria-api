@@ -1,3 +1,20 @@
+0.9.2 (2026-11-11)
+------------------
+
+-	role: when a name is required, also consider whether that name is non-empty
+	(empty names may still slip through when using `aria-labelledby` because this
+	check does not use recursion)
+-	role: only consider the first valid non-abstract value from the role
+	attribute
+-	role: map `<html>` to `generic`
+-	role: only map the first immediate `<summary>` child of `<details>` to
+	`button`
+-	attr: fix role-dependent default values
+-	attr: add weak mapping from `value` to `valuenow`
+-	attr: change type of `aria-details` to `id-list`
+-	name: do not ignore host language labels during recursion
+
+
 0.9.1 (2026-02-18)
 ------------------
 
